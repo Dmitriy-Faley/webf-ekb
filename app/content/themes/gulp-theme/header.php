@@ -65,7 +65,7 @@
 
 	<section class="home-about">
 		<div class="container">
-			<h1 class="title">
+			<h1 class="title new">
 				Маркетинговое <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/lightning.svg" alt="">
 				агентство полного <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/fire.svg" alt=""> цикла
 			</h1>
