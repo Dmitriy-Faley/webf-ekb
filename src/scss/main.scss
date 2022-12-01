@@ -6,32 +6,33 @@
 @import "utils/mixins";
 @import "utils/fonts";
 @import "utils/reset";
+/* 
 @import "./header";
 @import "./footer";
 @import "./wraper";
-
+ */
 
 html {
-  line-height: $mainLineHeight;
-  font-size: $mainFontSize;
-  color: $mainFontColor;
-  height: 100%;
-  background: initial !important;
+    line-height: $mainLineHeight;
+    font-size: $mainFontSize;
+    color: $mainFontColor;
+    height: 100%;
+    background: initial !important;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-  font-size: $mainFontSize;
-  font-weight: 400;
-  background: url('/content/themes/gulp-theme/assets/img/bg.png');
-  background-color: #fff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: $mainLineHeight;
-  position: relative;
-  height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: $mainFontSize;
+    font-weight: 400;
+    background: url('/content/themes/gulp-theme/assets/img/bg.png');
+    background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: $mainLineHeight;
+    position: relative;
+    height: 100%;
 }
 
 *,
@@ -130,33 +131,46 @@ section,
     overflow: hidden;
     display: block;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 20px;
-    background: $yellow-color;
-    border-radius: 30px;
+    background: $second-color;
+    border-radius: 50px;
     color: $default-color;
     cursor: pointer;
-    padding: 15px 35px;
+    padding: 18px 0 20px 0;
     transition: all 0.3s ease-in-out;
     text-align: center;
+    width: 218px;
 
 
-    &:hover{
+    &:hover {
+        background: $pink-color;
     }
 
-    &:active {
-        
-    }
+    &:active {}
 
-    :focus {
-
-    }
+    :focus {}
 
 }
 
 
 .title {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 58px;
+    width: 655px;
+    padding-bottom: 40px;
+    color: $default-color;
+}
 
+.fixed {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    width: 100%;
+    background: $second-color;
+    transition: all .3s ease-in-out;
+    padding: 31px 0;
 }
 
 
