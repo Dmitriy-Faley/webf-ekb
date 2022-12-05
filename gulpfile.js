@@ -7,6 +7,7 @@ const prefix = require("gulp-autoprefixer");
 const cleanCSS = require("gulp-clean-css");
 const imagemin = require("gulp-imagemin");
 const newer = require("gulp-newer");
+const aos = require("aos");
 
 const siteUrl = "http://webf-ekb.loc/";
 const assetsPath = "app/content/themes/gulp-theme/assets/";
@@ -24,7 +25,7 @@ function browsersync() {
 }
 
 function scripts() {
-	return src(["src/js/main.js"])
+	return src(["node_modules/aos/dist/aos.js", "src/js/main.js"])
 		.pipe(concat("main.min.js"))
 		.pipe(uglify())
 		.pipe(dest(assetsPath))
@@ -32,7 +33,7 @@ function scripts() {
 }
 
 function styles() {
-	return src("src/scss/**/*.scss")
+	return src(["node_modules/aos/dist/aos.css", "src/scss/**/*.scss"])
 		.pipe(sass())
 		.pipe(concat("main.min.css"))
 		.pipe(prefix({ overrideBrowserslist: ["last 10 versions"], grid: true }))
