@@ -10,6 +10,7 @@ jQuery(function () {
 	});
 });
 
+
 function get_vw() {
 	return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 }
@@ -41,6 +42,7 @@ $(window).scroll(function (event) {
 
 //fixed header
 
+/*
 let $navOffset = $("#header").offset().top;
 $(window).on("scroll", function () {
 	if ($(window).width()) {
@@ -51,3 +53,4 @@ $(window).on("scroll", function () {
 		}
 	}
 });
+*/

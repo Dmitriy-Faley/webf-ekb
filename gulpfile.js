@@ -25,7 +25,12 @@ function browsersync() {
 }
 
 function scripts() {
-	return src(["node_modules/aos/dist/aos.js", "src/js/main.js"])
+	return src([
+		"node_modules/aos/dist/aos.js",
+		//"node_modules/swiper/swiper-bundle.js",
+		//"node_modules/swiper/swiper-bundle.esm.js",
+		"src/js/main.js",
+	])
 		.pipe(concat("main.min.js"))
 		.pipe(uglify())
 		.pipe(dest(assetsPath))
@@ -33,7 +38,15 @@ function scripts() {
 }
 
 function styles() {
-	return src(["node_modules/aos/dist/aos.css", "src/scss/**/*.scss"])
+	return src([
+		"node_modules/aos/dist/aos.css",
+		/* "node_modules/swiper/swiper.scss",
+		"node_modules/swiper/swiper.min.css",
+		"node_modules/swiper/modules/navigation/navigation.scss",
+		"node_modules/swiper/modules/pagination/pagination.scss",
+		"node_modules/swiper/modules/scrollbar/scrollbar.scss", */
+		"src/scss/**/*.scss",
+	])
 		.pipe(sass())
 		.pipe(concat("main.min.css"))
 		.pipe(prefix({ overrideBrowserslist: ["last 10 versions"], grid: true }))

@@ -100,17 +100,19 @@
 
     .icon {
       &:first-child {
-        margin-right: 102px;
-        margin-bottom: 20px;
+        margin-top: 25px;
+        margin-right: 100px;
+        margin-bottom: 40px;
       }
 
       &:nth-child(2) {
         position: absolute;
-        top: 234px;
-        right: 236px;
+        top: 250px;
+        right: 225px;
       }
 
       &:nth-child(4) {
+        //margin-top: 20px;
         margin-right: 154px;
       }
     }
@@ -121,6 +123,7 @@
   padding-bottom: 150px;
 
   .title {
+    padding-bottom: 50px;
     img {
       margin: 0 0 11px 15px;
     }
@@ -248,7 +251,7 @@
   }
 
   .button {
-    margin: 60px auto 0;
+    margin: 20px auto 0;
   }
 
   .team__content {
@@ -279,7 +282,7 @@
 
 .strip {
   background: #0E0F11;
-  padding-bottom: 158px;
+  padding-bottom: 250px;
 
   >div {
     width: 100%;
@@ -352,6 +355,7 @@
         li {
           position: relative;
           padding-left: 31px;
+          line-height: 24px;
 
           &:not(:last-child) {
             margin-bottom: 20px;
@@ -374,7 +378,7 @@
 
 
 .format {
-  padding-top: 150px;
+  padding-top: 115px;
 
   .format__content {
     display: flex;
@@ -395,11 +399,12 @@
 }
 
 .contacts {
-  padding-top: 119px;
+  padding-top: 100px;
 
   .contacts__info {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-bottom: 2rem;
 
     .address {
@@ -438,63 +443,64 @@
 }
 
 
-$finalHeight: 450px;
-$finalWidth: 4 * $finalHeight;
-$scrollBarHeight: 1px;
+
 
 .services {
-  display: none;
   position: relative;
   width: 100%;
-  height: 40rem;
   overflow: hidden;
+  padding-top: 150px;
 
-  ::-webkit-scrollbar {
-    width: $scrollBarHeight;
-    height: $scrollBarHeight;
+  .subtitle {
+    width: 572px;
+    line-height: 24px;
+    color: #0E0F11;
   }
 
-  ::-webkit-scrollbar-button {
-    width: $scrollBarHeight;
-    height: $scrollBarHeight;
+  .button {
+    background: #0E0F11;
+    color: #fff;
+    margin-top: 40px;
+
+    &:hover {
+      color: #0E0F11;
+      background: #FDD0BF;
+    }
   }
 
-  .services__content {}
+  .services__content {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 40px;
+    padding: 40px 0;
+
+    .services__item {
+      width: 320px;
+      height: 451px;
+      background: #FFFFFF;
+      border-radius: 40px;
+      padding: 30px;
+
+      .name {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+        text-decoration-line: underline;
+        transition: all 0.2s ease-in;
+        color: #DC7148;
+        padding: 20px 0;
+      }
+
+      &:hover {
+        .name {
+          color: #0E0F11;
+        }
+      }
+    }
+  }
 }
 
-.horizontal-scroll-wrapper {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  width: 35rem;
-  max-height: 1900px;
-  margin: 0;
-  background: #abc;
-  overflow-y: auto;
-  overflow-x: hidden;
-  transform: rotate(-90deg) translateY(-15%);
-  transform-origin: right top;
-}
 
-.horizontal-scroll-wrapper>div {
-  display: block;
-  padding: 30px;
-  background: #fff;
-  border-radius: 40px;
-  transform: rotate(90deg);
-  transform-origin: right center;
-}
-
-.squares {
-  padding: 100px 0 0 0;
-}
-
-.squares>div {
-  width: 451px;
-  height: 320px;
-  margin: 0rem 0 0rem -3rem;
-}
 
 .connect {
   padding: 150px 0;

@@ -160,7 +160,7 @@
 
 <section class="interests">
   <div class="container">
-    <p class="title">Интересы клиента – на первом месте!</p>
+    <p class="title">Интересы клиента –<br>на первом месте!</p>
     <div class="interests__content">
       <div>
         <p>Digital-агентство закрепится в отрасли только при условии, что потребности обратившегося будут в доминирующей
@@ -190,18 +190,46 @@
 
 <div class="services">
   <div class="container">
-    <div class="horizontal-scroll-wrapper squares">
-      <div>item 1</div>
-      <div>item 2</div>
-      <div>item 3</div>
-      <div>item 4</div>
-      <div>item 5</div>
-      <div>item 6</div>
-      <div>item 7</div>
-      <div>item 8</div>
+    <p class="title">Полный набор услуг по продвижению в Интернете</p>
+    <p class="subtitle">Заказчик должен все получить в одном месте! Исповедуем только такой подход.
+      Рекламно-маркетинговое агентство «Веб Фокус» охватывает все диджитал-направления:</p>
+    <div class="services__content">
+      <div class="services__item">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+        <p class="name">Cоздание сайтов</p>
+        <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит не
+          меньше, а то и больше прибыли, чем другие подразделения</p>
+      </div>
+      <div class="services__item">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+        <p class="name">Cоздание сайтов</p>
+        <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит не
+          меньше, а то и больше прибыли, чем другие подразделения</p>
+      </div>
+      <div class="services__item">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+        <p class="name">Cоздание сайтов</p>
+        <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит не
+          меньше, а то и больше прибыли, чем другие подразделения</p>
+      </div>
+      <div class="services__item">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+        <p class="name">Cоздание сайтов</p>
+        <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит не
+          меньше, а то и больше прибыли, чем другие подразделения</p>
+      </div>
     </div>
+    <p class="subtitle">
+      Как видите, предлагаемый вариант взаимодействия позволит воплотить любой проект. Внимательные менеджеры легко
+      прояснят непонятные моменты, дадут дельные советы по составлению ТЗ – сделают все, чтобы добиться гармонии с
+      клиентом. Заслуживаем доверия!
+    </p>
+    <a href="#" class="button">Все услуги</a>
   </div>
 </div>
+
+
+
 
 <section class="connect">
   <div class="container">
