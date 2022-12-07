@@ -55,6 +55,38 @@
   </div>
 </footer>
 
+<!-- <a href="#ex1" rel="modal:open" class="button_fix">
+  <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/btn-fix.svg" alt="btn-fix">
+</a> -->
+
+<a href="#ex1" rel="modal:open" class="wheel">
+  <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/btn-fix.svg" alt="btn-fix">
+  
+  <div class="wheel__word">
+    <div class="wheel__letter">с</div>
+    <div class="wheel__letter">в</div>
+    <div class="wheel__letter">я</div>
+    <div class="wheel__letter">з</div>
+    <div class="wheel__letter">а</div>
+    <div class="wheel__letter">т</div>
+    <div class="wheel__letter">ь</div>
+    <div class="wheel__letter">с</div>
+    <div class="wheel__letter">я</div>
+  </div>
+
+  <div class="wheel__word">
+    <div class="wheel__letter">с</div>
+  </div>
+
+  <div class="wheel__word">
+    <div class="wheel__letter">н</div>
+    <div class="wheel__letter">а</div>
+    <div class="wheel__letter">м</div>
+    <div class="wheel__letter">и</div>
+  </div>
+</a>
+
+
 
 <!-- Modal HTML embedded directly into document -->
 <div div id="ex1" class="modal">
@@ -87,6 +119,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
+
+<script>
+  // расстояние между словами
+  const rotateBetweenWords = (value) => {
+    const words = document.querySelectorAll('.wheel__word')
+    let deg = 270
+
+    for (let word of words) {
+      word.style.transform = `rotate(${ deg }deg)`
+      deg += value
+    }
+  }
+
+  // расстояние между буквами
+  const rotateBetweenLetters = (value) => {
+    const letters = document.querySelectorAll('.wheel__letter')
+    let deg = 0
+
+    for (let letter of letters) {
+      letter.style.transform = `rotate(${ deg }deg)`
+      deg += value
+    }
+  }
+
+  rotateBetweenWords(10);
+  rotateBetweenLetters(12);
+</script>
 
 <?php wp_footer(); ?>
 

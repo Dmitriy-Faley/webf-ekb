@@ -159,11 +159,15 @@ span::selection {
 
 
 .container {
-    //width: 90%;
+    width: 97%;
     max-width: 1390px;
     margin: 0 auto;
 
-    /* @media screen and (max-width: $smDesktopWidth) {
+    @media screen and (max-width: 1368px) {
+        max-width: 1181.02px;
+    }
+
+    @media screen and (max-width: $smDesktopWidth) {
         max-width: tableWidth;
     }
 
@@ -173,7 +177,7 @@ span::selection {
 
     @media screen and (max-width: $phoneWidth) {
         max-width: 288px;
-    } */
+    }
 }
 
 .button {
@@ -226,11 +230,13 @@ span::selection {
 /*Modal Style*/
 .blocker {
     z-index: 99 !important;
+    //background-color: transparent !important;
 }
 
 #ex1 {
     background: #fff;
     border-radius: 40px;
+    box-shadow: none;
 }
 
 
@@ -339,6 +345,86 @@ span::selection {
     }
 }
 
+.button_fix {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    z-index: 9999;
+    width: 76.33px;
+    height: 76.33px;
+    text-align: center;
+    line-height: 30px;
+    background: #fff;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 39.25px;
+        height: 39.25px;
+    }
+}
+
+
+
+.wheel {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    transform: translate(-50%, -50%);
+    width: 76.33px;
+    height: 76.33px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        animation: rotation 2.5s linear infinite;
+        --angle: 15deg;
+    }
+
+    .wheel__word {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .wheel__letter {
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        width: 0;
+        transform-origin: 0 100%;
+        text-transform: uppercase;
+        padding-bottom: 40px;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        color: #fff;
+    }
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(var(--angle))
+    }
+
+    50% {
+        transform: rotate(calc(var(--angle) * -1))
+    }
+
+    100% {
+        transform: rotate(var(--angle))
+    }
+}
+
+
 
 @media screen and (max-width: 1920px) {}
 
@@ -346,7 +432,13 @@ span::selection {
 @media screen and (max-width: 1600px) {}
 
 /* 961 - 1368 px */
-@media screen and (max-width: 1368px) {}
+@media screen and (max-width: 1368px) {
+    .button{
+        font-size: 14px;
+        width: 180px;
+        padding: 11px 0 12px 0;
+    }
+}
 
 /* 769 - 960 px */
 @media screen and (max-width: 960px) {}

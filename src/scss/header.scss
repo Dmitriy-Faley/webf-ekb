@@ -1,9 +1,9 @@
 // Main color
-$default-color           : #0E0F11;
-$second-color            : #ffffff;
-$pink-color              : #FDD0BF;
-$yellow-color            : #F8F5D4;
-$purple-color            : #F1DDF2;
+$default-color : #0E0F11;
+$second-color : #ffffff;
+$pink-color : #FDD0BF;
+$yellow-color : #F8F5D4;
+$purple-color : #F1DDF2;
 
 .header {
   position: relative;
@@ -91,7 +91,7 @@ $purple-color            : #F1DDF2;
         line-height: 28px;
         transition: all 0.2s ease;
 
-        &:hover{
+        &:hover {
           color: $default-color;
         }
       }
@@ -311,48 +311,36 @@ $purple-color            : #F1DDF2;
   overflow: hidden;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1368px) {
   .header {
     .header__menu {
+      .header__logo {
+        width: 106.01px;
+      }
+
       .header__list {
         .topmenu {
-          display: none;
+          gap: 30px;
+
+          li a {
+            font-size: 14px;
+            line-height: 20px;
+          }
+        }
+      }
+
+      .header__phone {
+        a {
+          font-size: 14.23px;
+          line-height: 20px;
         }
       }
     }
-
-    .menu-btn {
-      display: block !important;
-    }
   }
 }
 
-@media screen and (max-width: 768px) {
-  .header {
-    .header__top {
-      &::before {
-        width: 75%;
-      }
-    }
-  }
-}
+@media screen and (max-width: 960px) {}
 
-@media screen and (max-width: 480px) {
-  .header {
-    .header__top {
-      display: none;
-    }
+@media screen and (max-width: 768px) {}
 
-    .header__menu {
-      .header__phone {
-        display: none;
-      }
-    }
-
-    .menu-btn {
-      right: 0;
-      left: auto;
-      height: 70%;
-    }
-  }
-}
+@media screen and (max-width: 480px) {}

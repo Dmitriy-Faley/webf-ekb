@@ -124,6 +124,7 @@
 
   .title {
     padding-bottom: 50px;
+
     img {
       margin: 0 0 11px 15px;
     }
@@ -149,10 +150,10 @@
       }
 
       .item__data {
-        margin-left: 40px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        padding-left: 40px;
 
         .data__teg {
           display: flex;
@@ -189,6 +190,7 @@
             padding-bottom: 8px;
             transition: all 0.2s ease-in;
             cursor: pointer;
+            width: auto;
 
             &:hover {
               color: #DC7148;
@@ -222,23 +224,31 @@
 .articles {
   padding-top: 150px;
 
-  .projects__content .projects__content__item .item__data .data__teg span {
-    background: #F8F5D4;
+  .projects__content .projects__content__item .item__data {
+    .data__teg span {
+      background: #F8F5D4;
 
-    &:hover {
-      background: #F0EBB1;
+      &:hover {
+        background: #F0EBB1;
+      }
+
+      &:active {
+        background: #0E0F11;
+        color: #fff;
+      }
     }
 
-    &:active {
-      background: #0E0F11;
-      color: #fff;
+    .data__info {
+      .desk {
+        font-size: 1rem;
+      }
     }
   }
 }
 
 .team {
   background: #0E0F11;
-  padding: 150px 0 250px 0;
+  padding: 150px 0 245px 0;
   color: #fff;
 
   .title {
@@ -255,7 +265,7 @@
   }
 
   .team__content {
-    padding-top: 40px;
+    padding-top: 45px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -545,7 +555,7 @@
       }
 
       >div {
-        padding-top: 3.75rem;
+        padding-top: 4rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -561,7 +571,7 @@
         }
 
         p {
-          width: 419px;
+          width: 435px;
 
           a {
             color: #DC7148;
@@ -584,11 +594,16 @@
       .icon {
         &:first-child {
           position: absolute;
-          right: 236px;
-          top: 15%;
+          right: 226px;
+          top: 16%;
         }
 
-        &:nth-child(3) {
+        &:nth-child(2) {
+          margin-top: 20px;
+
+        }
+
+        &:last-child {
           margin-right: 154px;
         }
       }
@@ -674,6 +689,47 @@
         position: absolute;
         right: 0;
         top: 50%;
+      }
+    }
+  }
+}
+
+
+/* 961 - 1368 px */
+@media screen and (max-width: 1368px) {
+  .home-about {
+    padding-bottom: 170px;
+    .title {
+      padding-top: 178.15px;
+      font-size: 59.7625px;
+      line-height: 58px;
+
+      span {
+        padding-bottom: 15px;
+
+        &:first-child {
+          img {
+            width: 44.82px;
+          }
+        }
+
+        &:last-child {
+          img {
+            width: 45.53px;
+          }
+        }
+      }
+    }
+
+    .info {
+      padding-bottom: 45px;
+      .dop {
+        p {
+          font-size: 14.2292px;
+          line-height: 20px;
+          width: 185px;
+          padding-bottom: 22.5px;
+        }
       }
     }
   }

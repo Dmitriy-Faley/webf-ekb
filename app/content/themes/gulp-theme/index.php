@@ -54,9 +54,11 @@
         src="<?php echo get_template_directory_uri() ?>/assets/img/icons/fire-title.svg" alt="fire"></h3>
     <div class="projects__content">
       <div class="projects__content__item">
-        <a href="#" class="item__img">
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/projects/project1.png" alt="projects">
-        </a>
+        <div>
+          <a href="#" class="item__img">
+            <img src="<?php echo get_template_directory_uri() ?>/assets/img/projects/project1.png" alt="projects">
+          </a>
+        </div>
         <div class="item__data">
           <div class="data__teg">
             <span>Ui/UX Дизайн</span>
@@ -69,9 +71,11 @@
         </div>
       </div>
       <div class="projects__content__item">
-        <a href="#" class="item__img">
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/projects/project2.png" alt="projects">
-        </a>
+        <div>
+          <a href="#" class="item__img">
+            <img src="<?php echo get_template_directory_uri() ?>/assets/img/projects/project2.png" alt="projects">
+          </a>
+        </div>
         <div class="item__data">
           <div class="data__teg">
             <span>Ui/UX Дизайн</span>
@@ -84,9 +88,11 @@
         </div>
       </div>
       <div class="projects__content__item">
-        <a href="#" class="item__img">
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/projects/project3.png" alt="projects">
-        </a>
+        <div>
+          <a href="#" class="item__img">
+            <img src="<?php echo get_template_directory_uri() ?>/assets/img/projects/project3.png" alt="projects">
+          </a>
+        </div>
         <div class="item__data">
           <div class="data__teg">
             <span>Ui/UX Дизайн</span>
@@ -95,7 +101,7 @@
           <div class="data__info">
             <a href="#" class="title">Название проекта</a>
             <p class="desk">Сфера проекта</p>
-          </div>
+          </div>  
         </div>
       </div>
     </div>
@@ -391,9 +397,11 @@
         src="<?php echo get_template_directory_uri() ?>/assets/img/icons/fire-title.svg" alt="fire"></h3>
     <div class="projects__content">
       <div class="projects__content__item">
-        <a href="#" class="item__img">
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article1.png" alt="projects">
-        </a>
+        <div>
+          <a href="#" class="item__img">
+            <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article1.png" alt="projects">
+          </a>
+        </div>
         <div class="item__data">
           <div class="data__teg">
             <span>Статьи</span>
@@ -406,32 +414,36 @@
         </div>
       </div>
       <div class="projects__content__item">
-        <a href="#" class="item__img">
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article2.png" alt="projects">
-        </a>
+        <div>
+          <a href="#" class="item__img">
+            <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article2.png" alt="projects">
+          </a>
+        </div>
         <div class="item__data">
           <div class="data__teg">
-            <span>Ui/UX Дизайн</span>
-            <span>Разработка сайта</span>
+            <span>Статьи</span>
+            <span>SMM</span>
           </div>
           <div class="data__info">
-            <a href="#" class="title">Название проекта</a>
-            <p class="desk">Сфера проекта</p>
+            <a href="#" class="title">Одноклассники: как оформить группы?</a>
+            <p class="desk">2 дня назад</p>
           </div>
         </div>
       </div>
       <div class="projects__content__item">
-        <a href="#" class="item__img">
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article3.png" alt="projects">
-        </a>
+        <div>
+          <a href="#" class="item__img">
+            <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article3.png" alt="projects">
+          </a>
+        </div>
         <div class="item__data">
           <div class="data__teg">
-            <span>Ui/UX Дизайн</span>
-            <span>Разработка сайта</span>
+            <span>Статьи</span>
+            <span>дизайн</span>
           </div>
           <div class="data__info">
-            <a href="#" class="title">Название проекта</a>
-            <p class="desk">Сфера проекта</p>
+            <a href="#" class="title">Что такое дизайн-системы и для чего они нужны?</a>
+            <p class="desk">3 октября 2022</p>
           </div>
         </div>
       </div>
