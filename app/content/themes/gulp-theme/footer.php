@@ -94,8 +94,8 @@
     <div class="modal-form">
       <form method="post" class="form">
         <p class="title">Связаться с нами</p>
-        <input type="text" name="name" placeholder="Ваше имя" required minlength="2">
-        <input type="tel" name="phone" placeholder="Ваш номер" required>
+        <input type="text" name="name" placeholder="Имя" required minlength="2">
+        <input type="tel" name="phone" placeholder="Телефон" required>
         <div>
           <button class="button">Отправить</button>
           <p>Нажимая на кнопку "Отправить", вы соглашаетесь с <a href="#">условиями политики конфиденциальности</a>

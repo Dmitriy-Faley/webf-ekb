@@ -235,8 +235,6 @@
 </div>
 
 
-
-
 <section class="connect">
   <div class="container">
     <div class="connect__content">

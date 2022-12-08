@@ -164,7 +164,7 @@ span::selection {
     margin: 0 auto;
 
     @media screen and (max-width: 1368px) {
-        max-width: 1181.02px;
+        max-width: 985px;
     }
 
     @media screen and (max-width: $smDesktopWidth) {
@@ -433,10 +433,76 @@ span::selection {
 
 /* 961 - 1368 px */
 @media screen and (max-width: 1368px) {
-    .button{
+    .title {
+        font-size: 2.134rem;
+        line-height: 41px;
+        width: 465px;
+        padding-bottom: 30px;
+    }
+
+    .button {
         font-size: 14px;
         width: 180px;
         padding: 11px 0 12px 0;
+    }
+
+    .fixed {
+        padding: 22.06px 0;
+    }
+
+    .modal {
+        .modal-content {
+            max-width: 996px;
+            padding: 72px 57px;
+
+            .form {
+                width: 505px;
+
+                input[type="text"] {
+                    margin-bottom: 2.5rem;
+                }
+
+                input[type="text"],
+                input[type="tel"] {
+                    padding: 11px 17px;
+                    width: 484px;
+
+                    &::placeholder {
+                        font-size: 14px;
+                    }
+                }
+
+                >div {
+                    padding-top: 2.5rem;
+
+                    p {
+                        font-size: 12px;
+                        line-height: 17px;
+                        width: 309px;
+                    }
+                }
+            }
+
+            .modal__icons {
+                .icon {
+                    &:first-child {
+                        width: 38.42px;
+                        height: 38.42px;
+                    }
+
+                    &:nth-child(2) {
+                        width: 124.51px;
+                        height: 124.51px;
+                    }
+
+                    &:last-child {
+                        width: 142.29px;
+                        height: 142.29px;
+                        margin-right: 125px;
+                    }
+                }
+            }
+        }
     }
 }
 

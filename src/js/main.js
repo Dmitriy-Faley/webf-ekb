@@ -31,7 +31,7 @@ $(window).scroll(function (event) {
 });
 
 //fixed header
-/*
+/* 
 let $navOffset = $("#header").offset().top;
 $(window).on("scroll", function () {
 	if ($(window).width()) {
@@ -42,4 +42,4 @@ $(window).on("scroll", function () {
 		}
 	}
 });
-*/
+ */
