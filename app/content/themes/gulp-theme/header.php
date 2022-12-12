@@ -24,13 +24,13 @@
 				<a href="/" class="header__logo">
 					<img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.svg" alt="logo site" />
 				</a>
+				<a class="menu-btn">
+					<span></span>
+					<span></span>
+					<span></span>
+				</a>
 				<div class="header__list">
 					<nav class="one">
-						<a href="#" class="menu-btn menu-hide">
-							<span></span>
-							<span></span>
-							<span></span>
-						</a>
 						<ul class="topmenu">
 							<li>
 								<a href="#">Услуги<img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/arrow-menu.svg"

@@ -35,6 +35,27 @@ body {
     height: 100%;
 }
 
+/* @media screen and (max-width: 1368px) {
+    body {
+        font-size: 14px !important;
+        line-height: 21px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px !important;
+        line-height: 24px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px !important;
+        line-height: 21px !important;
+    }
+}
+ */
 
 /* Works on Firefox */
 * {
@@ -176,7 +197,7 @@ span::selection {
     }
 
     @media screen and (max-width: $phoneWidth) {
-        max-width: 288px;
+        //max-width: 288px;
     }
 }
 
@@ -504,13 +525,40 @@ span::selection {
             }
         }
     }
+
+    .wheel {
+        width: 54.3px;
+        height: 54.3px;
+
+        img {
+            width: 27.93px;
+        }
+
+        .wheel__letter {
+            font-size: 8.36px;
+            padding-bottom: 28px;
+        }
+    }
 }
 
 /* 769 - 960 px */
 @media screen and (max-width: 960px) {}
 
 /* 481 - 768 px */
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+        line-height: 58px;
+        width: 654px;
+        padding-bottom: 40px;
+    }
+
+    .button {
+        font-size: 1rem;
+        width: 218px;
+        padding: 18px 0 20px 0;
+    }
+}
 
 /* 320 - 480 px */
 @media screen and (max-width: 480px) {}

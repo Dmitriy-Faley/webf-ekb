@@ -7,7 +7,10 @@
         <span>Маркетинговое
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/lightning.svg" alt="">
         </span>
-        <span>агентство полного</span>
+        <span>
+          <p>агентство</p>
+          <p>полного</p>
+        </span>
         <span>
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/fire.svg" alt="">цикла
         </span>
@@ -101,7 +104,7 @@
           <div class="data__info">
             <a href="#" class="title">Название проекта</a>
             <p class="desk">Сфера проекта</p>
-          </div>  
+          </div>
         </div>
       </div>
     </div>

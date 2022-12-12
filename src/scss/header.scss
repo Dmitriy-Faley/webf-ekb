@@ -14,6 +14,43 @@ $purple-color : #F1DDF2;
     justify-content: space-between;
     align-items: center;
 
+    .menu-btn {
+      display: none;
+      position: relative;
+      width: 50px;
+      z-index: 99;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-btn span,
+    .menu-btn span:after,
+    .menu-btn span:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-top: -2px;
+      //margin-left: -10px;
+      width: 50px;
+      height: 3px;
+      background: #0E0F11;
+      border-radius: 100px;
+    }
+
+    .menu-btn span:before {
+      transform: translateY(-12px);
+    }
+
+    .menu-btn span:after {
+      transform: translateY(16px);
+    }
+
+    .menu-btn span:after,
+    .menu-btn span:before {
+      content: "";
+      display: block;
+      transition: 0.2s;
+    }
+
     .header__list {
       .topmenu {
         display: flex;
@@ -152,43 +189,10 @@ $purple-color : #F1DDF2;
   }
 }
 
-.mobile-menu_active {
-  transform: translateX(0%);
-}
 
-.menu-btn {
-  display: none;
-  width: 40px;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0px;
-  bottom: 0;
-}
 
-.menu-btn span {
-  position: absolute;
-  top: 70%;
-  left: 0%;
-  margin-left: 10px;
-  width: 27px;
-  height: 2px;
-  background-color: #090230;
-  transform: scale(-1, 1);
 
-  &:first-child {
-    transform: translateY(-7px);
-  }
 
-  &:last-child {
-    transform: translateY(3px);
-  }
-
-  &:nth-child(2) {
-    transform: translateY(-2px);
-  }
-
-}
 
 
 .menu-list {
@@ -312,10 +316,10 @@ $purple-color : #F1DDF2;
 
 @media screen and (max-width: 1368px) {
   .header {
-    padding-top: 36px;
+    padding-top: 33px;
 
     .header__menu {
-      .header__logo {
+      .header__logo img {
         width: 106.01px;
       }
 
@@ -342,6 +346,31 @@ $purple-color : #F1DDF2;
 
 @media screen and (max-width: 960px) {}
 
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 768px) {
+  .header {
+    padding-top: 30px;
+
+    .header__menu {
+      .menu-btn {
+        display: block;
+      }
+
+      .header__logo img {
+        width: 100%;
+      }
+
+      .header__list {
+        display: none;
+      }
+
+      .header__phone {
+        a {
+          font-size: 20px;
+          line-height: 28px;
+        }
+      }
+    }
+  }
+}
 
 @media screen and (max-width: 480px) {}
