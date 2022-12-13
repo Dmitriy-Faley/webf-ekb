@@ -198,44 +198,124 @@
 </section>
 
 <div class="services">
-  <div class="container">
-    <p class="title">Полный набор услуг по продвижению в Интернете</p>
-    <p class="subtitle">Заказчик должен все получить в одном месте! Исповедуем только такой подход.
-      Рекламно-маркетинговое агентство «Веб Фокус» охватывает все диджитал-направления:</p>
-    <div class="services__content">
-      <div class="services__item">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-        <p class="name">Cоздание сайтов</p>
-        <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит не
-          меньше, а то и больше прибыли, чем другие подразделения</p>
+  <div class="swiper-container">
+    <div class="services__slider">
+
+      <div class="services__content">
+        <div class="container">
+          <p class="title">Полный набор услуг по продвижению в Интернете</p>
+          <p class="subtitle">Заказчик должен все получить в одном месте! Исповедуем только такой подход.
+            Рекламно-маркетинговое агентство «Веб Фокус» охватывает все диджитал-направления:</p>
+        </div>
+        <div class="swiper-wrapper container">
+          <div class="swiper-slide">
+            <div class="services__item">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+              <p class="name">Cоздание сайтов</p>
+              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
+                не
+                меньше, а то и больше прибыли, чем другие подразделения</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="services__item">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+              <p class="name">Cоздание сайтов</p>
+              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
+                не
+                меньше, а то и больше прибыли, чем другие подразделения</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="services__item">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+              <p class="name">Cоздание сайтов</p>
+              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
+                не
+                меньше, а то и больше прибыли, чем другие подразделения</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="services__item">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+              <p class="name">Cоздание сайтов</p>
+              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
+                не
+                меньше, а то и больше прибыли, чем другие подразделения</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="services__item">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+              <p class="name">Cоздание сайтов</p>
+              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
+                не
+                меньше, а то и больше прибыли, чем другие подразделения</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="services__item">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+              <p class="name">Cоздание сайтов</p>
+              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
+                не
+                меньше, а то и больше прибыли, чем другие подразделения</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="services__item">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+              <p class="name">Cоздание сайтов</p>
+              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
+                не
+                меньше, а то и больше прибыли, чем другие подразделения</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="services__item">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+              <p class="name">Cоздание сайтов</p>
+              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
+                не
+                меньше, а то и больше прибыли, чем другие подразделения</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="services__item">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+              <p class="name">Cоздание сайтов</p>
+              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
+                не
+                меньше, а то и больше прибыли, чем другие подразделения</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="services__item">
+              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
+              <p class="name">Cоздание сайтов</p>
+              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
+                не
+                меньше, а то и больше прибыли, чем другие подразделения</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <p class="subtitle">
+            Как видите, предлагаемый вариант взаимодействия позволит воплотить любой проект. Внимательные менеджеры
+            легко
+            прояснят непонятные моменты, дадут дельные советы по составлению ТЗ – сделают все, чтобы добиться гармонии с
+            клиентом. Заслуживаем доверия!
+          </p>
+          <a href="#" class="button">Все услуги</a>
+        </div>
+
       </div>
-      <div class="services__item">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-        <p class="name">Cоздание сайтов</p>
-        <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит не
-          меньше, а то и больше прибыли, чем другие подразделения</p>
-      </div>
-      <div class="services__item">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-        <p class="name">Cоздание сайтов</p>
-        <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит не
-          меньше, а то и больше прибыли, чем другие подразделения</p>
-      </div>
-      <div class="services__item">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-        <p class="name">Cоздание сайтов</p>
-        <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит не
-          меньше, а то и больше прибыли, чем другие подразделения</p>
-      </div>
+
     </div>
-    <p class="subtitle">
-      Как видите, предлагаемый вариант взаимодействия позволит воплотить любой проект. Внимательные менеджеры легко
-      прояснят непонятные моменты, дадут дельные советы по составлению ТЗ – сделают все, чтобы добиться гармонии с
-      клиентом. Заслуживаем доверия!
-    </p>
-    <a href="#" class="button">Все услуги</a>
   </div>
 </div>
+
 
 
 <section class="connect">
@@ -353,6 +433,10 @@
   <div class="container">
     <p class="title">Привлекательный формат для бизнеса</p>
     <div class="format__content">
+
+
+
+    
       <div>
         <p>Строим сотрудничество так, чтобы заказчик чувствовал уверенно и комфортно. В web-студии трудятся не только
           классные специалисты, но и просто хорошие люди. Ламповую атмосферу гарантируем!</p>

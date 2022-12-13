@@ -55,13 +55,10 @@
   </div>
 </footer>
 
-<!-- <a href="#ex1" rel="modal:open" class="button_fix">
-  <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/btn-fix.svg" alt="btn-fix">
-</a> -->
 
 <a href="#ex1" rel="modal:open" class="wheel">
   <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/btn-fix.svg" alt="btn-fix">
-  
+
   <div class="wheel__word">
     <div class="wheel__letter">с</div>
     <div class="wheel__letter">в</div>
@@ -113,11 +110,58 @@
 </div>
 
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" referrerpolicy="no-referrer"></script>
 
 <!-- jQuery Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+
+<script>
+  var swiper = new Swiper(".services__content", {
+    slidesPerView: 5,
+    spaceBetween: 10,
+    freeMode: {
+      enabled: true,
+      sticky: false,
+      minimumVelocity: 5.50
+    },
+    mousewheel: true,
+
+    breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    // when window width is >= 480px
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    },
+    // when window width is >= 640px
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 40
+    }
+  }
+  });
+
+  /* var thumb = document.querySelectorAll(".thumbContainer");
+
+  thumb.forEach(function (image, index) {
+    var delay = index * 90;
+    image.classList.add("fadeInSlide");
+    image.style.animationDelay = delay + "ms";
+  }); */
+</script>
+
 
 
 <script>
