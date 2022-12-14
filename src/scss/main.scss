@@ -198,6 +198,7 @@ span::selection {
 
     @media screen and (max-width: $phoneWidth) {
         //max-width: 288px;
+        width: 90%;
     }
 }
 
@@ -558,7 +559,152 @@ span::selection {
         width: 218px;
         padding: 18px 0 20px 0;
     }
+
+    .wheel {
+        width: 76.33px;
+        height: 76.33px;
+
+        img {
+            width: 39.25px;
+        }
+
+        .wheel__letter {
+            font-size: 11px;
+            padding-bottom: 28px;
+        }
+    }
+
+    .modal {
+        .modal-content {
+            max-width: fit-content;
+            padding: 70px 40px;
+            width: 100%;
+
+            .form {
+                width: 100%;
+
+                .title {
+                    width: auto;
+                    padding-bottom: 60px;
+                }
+
+                input[type="text"] {
+                    margin-bottom: 3.125rem;
+                }
+
+                input[type="text"],
+                input[type="tel"] {
+                    padding: 18px 24px 20px 24px;
+                    width: 100%;
+
+                    &::placeholder {
+                        font-size: 1rem;
+                        line-height: 22px;
+                    }
+                }
+
+                >div {
+                    padding-top: 3.75rem;
+                    justify-content: space-between;
+                    width: 100%;
+
+                    p {
+                        font-size: 1rem;
+                        line-height: 22px;
+                        width: 409px;
+                        margin-left: 27px;
+                    }
+                }
+            }
+
+            .modal__icons {
+                display: none;
+            }
+        }
+    }
 }
 
 /* 320 - 480 px */
-@media screen and (max-width: 480px) {}
+@media screen and (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+        line-height: 29px;
+        width: 288px;
+        padding-bottom: 30px;
+    }
+
+    .button {
+        font-size: 1rem;
+        width: 200px;
+        padding: 16px 0 17px 0;
+    }
+
+    .wheel {
+        width: 59.62px;
+        height: 59.62px;
+        right: 0;
+
+        img {
+            width: 30.66px;
+        }
+
+        .wheel__letter {
+            font-size: 9.18259px;
+            line-height: 11px;
+            padding-bottom: 35px;
+        }
+    }
+
+    #ex1 {
+        border-radius: 20px;
+    }
+
+    .modal {
+        .modal-content {
+            padding: 44px 15px;
+
+            .form {
+                .title {
+                    text-align: center;
+                    padding-bottom: 30px;
+                }
+
+                input[type="text"] {
+                    margin-bottom: 1.875rem;
+                }
+
+                input[type="text"],
+                input[type="tel"] {
+                    padding: 17px 20px 18px 20px;
+                    font-size: 14px;
+                    line-height: 20px;
+
+                    &::placeholder {
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                }
+
+                >div {
+                    padding-top: 1.875rem;
+                    flex-direction: column-reverse;
+
+                    p {
+                        font-size: 12px;
+                        line-height: 17px;
+                        width: 100%;
+                        margin-left: 0;
+                        padding-bottom: 20px;
+                    }
+                }
+            }
+        }
+
+        a.close-modal {
+            top: 14px !important;
+            right: 14px !important;
+            width: 14.57px !important;
+            height: 14.38px !important;
+        }
+    }
+}

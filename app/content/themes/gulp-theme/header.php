@@ -29,8 +29,6 @@
 				</a>
 				<a class="menu-btn">
 					<span></span>
-					<span></span>
-					<span></span>
 				</a>
 				<div class="header__list">
 					<nav class="one">

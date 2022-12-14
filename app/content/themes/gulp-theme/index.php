@@ -9,7 +9,7 @@
         </span>
         <span>
           <p>агентство</p>
-          <p>полного</p>
+          <p>полного <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/fire.svg" alt=""></p>
         </span>
         <span>
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/fire.svg" alt="">цикла
@@ -433,10 +433,6 @@
   <div class="container">
     <p class="title">Привлекательный формат для бизнеса</p>
     <div class="format__content">
-
-
-
-    
       <div>
         <p>Строим сотрудничество так, чтобы заказчик чувствовал уверенно и комфортно. В web-студии трудятся не только
           классные специалисты, но и просто хорошие люди. Ламповую атмосферу гарантируем!</p>

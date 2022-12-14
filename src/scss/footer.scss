@@ -47,9 +47,22 @@
       a {
         display: block;
         width: 25%;
+        transition: all 0.2s ease;
 
         img {
           margin-right: 8px;
+        }
+
+        svg path{
+          transition: all 0.2s ease;
+        }
+
+        &:hover {
+          color: #DC7148;
+
+          svg path {
+            fill: #DC7148;
+          }
         }
       }
     }
@@ -163,6 +176,162 @@
           font-size: 12px;
           line-height: 14px;
           padding-left: 20px;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .footer {
+    .footer__top {
+      padding: 90px 0 35px 0;
+      flex-direction: column;
+
+      .footer__contacts {
+        padding-bottom: 65px;
+
+        .footer__logo {
+          width: 149px;
+          padding-bottom: 65px !important;
+        }
+
+        a {
+          font-size: 20px;
+          line-height: 28px;
+
+          &:not(:last-child) {
+            padding-bottom: 30px;
+          }
+        }
+      }
+
+      .footer__social {
+        width: 83%;
+
+        >div {
+          row-gap: 42px;
+        }
+
+        a {
+          font-size: 1rem;
+          line-height: 19px;
+
+          img {
+            width: auto;
+          }
+
+          &:nth-child(3) {
+            img {
+              width: 11px;
+            }
+          }
+
+          &:nth-child(4) {
+            //width: 29%;
+
+            img {
+              width: 14px;
+            }
+          }
+        }
+      }
+    }
+
+    .footer__bottom {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      padding: 30px 0 70px 0;
+
+      .copy {
+        font-size: 1rem;
+        line-height: 19px;
+        padding-top: 10px;
+      }
+
+      .footer__bottom__menu {
+        display: flex;
+        flex-direction: column;
+
+        a {
+          font-size: 1rem;
+          line-height: 19px;
+          padding-left: 0;
+          padding-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width:480px) {
+  .footer {
+    .footer__top {
+      padding: 40px 0;
+
+      .footer__contacts {
+        padding-bottom: 50px;
+
+        .footer__logo {
+          padding-bottom: 50px !important;
+        }
+
+        a {
+          font-size: 1rem;
+          line-height: 22px;
+
+          &:not(:last-child) {
+            padding-bottom: 20px;
+          }
+        }
+      }
+
+      .footer__social {
+        width: 100%;
+
+        >div {
+          row-gap: 18px;
+        }
+
+        a {
+          font-size: 12px;
+          line-height: 14px;
+          width: 33.3%;
+
+          img {
+            width: 17px;
+          }
+
+          &:last-child {
+            width: 115px;
+
+            img {
+              width: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .footer__bottom {
+      padding: 10px 0 35px 0;
+
+      .copy {
+        font-size: 14px;
+        line-height: 17px;
+        padding-top: 35px;
+      }
+
+      .footer__bottom__menu {
+        display: flex;
+        flex-direction: column;
+
+        a {
+          font-size: 1rem;
+          line-height: 19px;
+          padding-left: 0;
+          padding-bottom: 15px;
         }
       }
     }

@@ -24,10 +24,6 @@
             Facebook
           </a>
           <a href="#">
-            <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/ok.svg" alt="social" />
-            Одноклассники
-          </a>
-          <a href="#">
             <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/youtube.svg" alt="social" />
             Youtube
           </a>
@@ -38,6 +34,10 @@
           <a href="#">
             <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/whatsap.svg" alt="social" />
             WhatsApp
+          </a>
+          <a href="#">
+            <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/ok.svg" alt="social" />
+            Одноклассники
           </a>
         </div>
       </div>
@@ -124,6 +124,37 @@
 
 
 <script>
+  $(".footer .footer__top .footer__social a img").each(function () {
+    console.log(this);
+    var $img = $(this);
+    var imgClass = $img.attr("class");
+    var imgURL = $img.attr("src");
+    $.get(
+      imgURL,
+      function (data) {
+        var $svg = $(data).find("svg");
+        if (typeof imgClass !== "undefined") {
+          $svg = $svg.attr("class", imgClass + " replaced-svg");
+        }
+        $svg = $svg.removeAttr("xmlns:a");
+        if (
+          !$svg.attr("viewBox") &&
+          $svg.attr("height") &&
+          $svg.attr("width")
+        ) {
+          $svg.attr(
+            "viewBox",
+            "0 0 " + $svg.attr("height") + " " + $svg.attr("width")
+          );
+        }
+        $img.replaceWith($svg);
+      },
+      "xml"
+    );
+  });
+</script>
+
+<script>
   var swiper = new Swiper(".services__content", {
     slidesPerView: 5,
     spaceBetween: 10,
@@ -135,22 +166,22 @@
     mousewheel: true,
 
     breakpoints: {
-    // when window width is >= 320px
-    320: {
-      slidesPerView: 2,
-      spaceBetween: 20
-    },
-    // when window width is >= 480px
-    480: {
-      slidesPerView: 3,
-      spaceBetween: 30
-    },
-    // when window width is >= 640px
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 40
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 15
+      },
+      // when window width is >= 480px
+      480: {
+        slidesPerView: 2,
+        spaceBetween: 30
+      },
+      // when window width is >= 640px
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 40
+      }
     }
-  }
   });
 
   /* var thumb = document.querySelectorAll(".thumbContainer");
