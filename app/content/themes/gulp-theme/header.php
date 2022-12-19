@@ -21,44 +21,46 @@
 
 <body <?php body_class(); ?>>
 
+	<div class="nav__menu-btn--mobile">
+		<div class="wrapper-menu">
+			<div class="line-menu half start"></div>
+			<div class="line-menu line-menu"></div>
+			<div class="line-menu half end"></div>
+		</div>
+	</div>
+
 	<header class="header" id="header">
 		<div class="container">
 			<div class="header__menu">
 				<a href="/" class="header__logo">
 					<img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.svg" alt="logo site" />
 				</a>
-				<a class="menu-btn">
+				<a class="menu-btn activeBut">
 					<span></span>
 				</a>
-				<div class="header__list">
-					<nav class="one">
-						<ul class="topmenu">
-							<li>
-								<a href="#">Услуги<img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/arrow-menu.svg"
-										class="arrow" alt="icon:arrow-menu" /></a>
-								<ul class="submenu">
-									<li><a href="television.html">Телевизоры</a></li>
-									<li><a href="washer.html">Стиральные машины</a></li>
-									<li><a href="coffee-machine.html">Кофемашины</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">О компании<img
-										src="<?php echo get_template_directory_uri() ?>/assets/img/icons/arrow-menu.svg" class="arrow"
-										alt="icon:arrow-menu" /></a>
-								<ul class="submenu">
-									<li><a href="television.html">Телевизоры</a></li>
-									<li><a href="washer.html">Стиральные машины</a></li>
-									<li><a href="coffee-machine.html">Кофемашины</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">Портфолио</a>
-							</li>
-							<li><a href="#">Контакты</a></li>
-							<li><a href="#">Блог</a></li>
-						</ul>
-					</nav>
+				<div class="menu__but-close"></div>
+				<div class="main-header-menu">
+					<?php
+						wp_nav_menu( [
+						'menu'            => '', 
+						'container'       => false, 
+						'container_class' => '', 
+						'container_id'    => '',
+						'menu_class'      => 'main-header-menu', 
+						'menu_id'         => '',
+						'echo'            => true,
+						'theme_location'  => 'button_menu',
+						'fallback_cb'     => 'wp_page_menu',
+						'before'          => '',
+						'after'           => '',
+						'link_before'     => '',
+						'link_after'      => '',
+						'items_wrap'      => '<ul id="%1$s" class="header-menu__ul">%3$s</ul>',
+						'depth'           => 0,
+						'walker'          => '',
+						] );?>
+
+					<span class="closeMenu"></span>
 				</div>
 				<div class="header__phone">
 					<a href="tel:+7 (985) 193-82-42">+7 (985) 193-82-42</a>
@@ -66,3 +68,143 @@
 			</div>
 		</div>
 	</header>
+
+	<div class="mobile-header-menu">
+		<a <?php if(!is_front_page()) echo 'href="/"'; ?> class="mobile-logo"><img class="tablet-logo__img"
+				src="/wp-content/uploads/2020/08/logo-white.svg" alt="" />
+			<img class="mobile-logo__img" src="/wp-content/uploads/2021/06/sloj-4.svg" alt="" />
+		</a>
+		<a href="tel:+7(985)193-82-42" class="mobile-header-menu-tel">
+			<img src="https://web-f.ru/wp-content/uploads/2021/04/el_phone-1.svg" alt="" /> <span>+7 (985) 193-82-42</span>
+		</a>
+		<div class="mobile-header-menu__button">
+			<div class="menu__but-open activeBut"></div>
+			<div class="menu__but-close"></div>
+		</div>
+	</div>
+
+	<div class="block-mobile-menu">
+		<?php
+			wp_nav_menu( [
+				'menu'            => '', 
+				'container'       => false, 
+				'container_class' => '', 
+				'container_id'    => '',
+				'menu_class'      => 'block-mobile-menu', 
+				'menu_id'         => '',
+				'echo'            => true,
+					'theme_location'  => 'button_menu',
+				'fallback_cb'     => 'wp_page_menu',
+				'before'          => '',
+				'after'           => '',
+				'link_before'     => '',
+				'link_after'      => '',
+				'items_wrap'      => '<ul id="%1$s" class="mobile-menu__ul">%3$s</ul>',
+				'depth'           => 0,
+				'walker'          => '',
+			]);
+		?>
+
+		<ul class="mobile-menu__ul">
+			<li><a href="https://web-f.ru/kejsy/">Портфолио</a></li>
+			<li><a href="https://web-f.ru/ceny/">Цены</a></li>
+			<li><a href="https://web-f.ru/kontakty/">Контакты</a></li>
+			<li><a href="https://web-f.ru/blog/">Блог</a></li>
+		</ul>
+		<ul class="mobile-menu__ul">
+			<li><a href="https://t.me/Web_Focus">
+				<img src="https://web-f.ru/wp-content/uploads/2022/04/telegtam-header.svg"
+						class="contact-link-icon" alt="icon: telegram">Telegram</a></li>
+			<li><a href="https://wa.me/79851938242"> <img
+						src="https://web-f.ru/wp-content/uploads/2022/04/whatsapp-header.svg" class="contact-link-icon"
+						alt="icon: whatsapp">WhatsApp</a></li>
+		</ul>
+	</div>
+
+
+	<script>
+		if (document.documentElement.clientWidth > 1e3) {
+			function openSecondLevelMenu(e) {
+				e.addEventListener("mouseover", l => {
+					document.querySelector(".closeMenu").style.display = "block", document.querySelector(".header").classList
+						.add("active_header"), closeMenu(e.closest("ul")), l.target.closest("li>a").classList.add("activeLi"), l
+						.target.closest("li").querySelector("ul") && (l.target.closest("li").querySelector("ul").classList.add(
+							"activeUl"), openThirdLevelMenu())
+				})
+			}
+
+			function openThirdLevelMenu() {
+				document.querySelectorAll(".activeUl>li>a").forEach(e => {
+					e.addEventListener("mouseover", e => {
+						closeMenu(document.querySelector(".activeUl")), e.target.classList.add("activeLi"), e.target.closest(
+							"li").querySelector("ul") && (e.target.closest("li").querySelector("ul").classList.add(
+							"activeUl"), hoverLastLinks(e.target.closest("li").querySelector("ul")))
+					})
+				})
+			}
+
+			function closeMenu(e) {
+				e.querySelectorAll("li>a").forEach(e => {
+					e.classList.contains("activeLi") && e.classList.remove("activeLi")
+				}), e.querySelectorAll("li>ul").forEach(e => {
+					e.classList.contains("activeUl") && e.classList.remove("activeUl")
+				})
+			}
+
+			function hoverLastLinks(e) {
+				e.querySelectorAll("li>a").forEach(l => {
+					l.addEventListener("mouseover", l => {
+						e.querySelectorAll("li>a").forEach(e => {
+							e.classList.contains("activeLi") && e.classList.remove("activeLi")
+						}), l.target.classList.add("activeLi")
+					})
+				})
+			}
+			document.querySelectorAll(".main-header-menu").forEach(e => {
+					e.querySelector("ul") && e.querySelector("ul").classList.add("header-menu__ul")
+				}), document.querySelector(".closeMenu").onclick = (() => {
+					closeMenu(document.querySelector(".activeUl")), closeMenu(document.querySelector(".header-menu__ul")),
+						document.querySelector(".closeMenu").style.display = "none", document.querySelector(".header").classList
+						.remove("active_header")
+				}), document.querySelector(".closeMenu").style.display = "none", document.querySelector(".header").classList
+				.remove("active_header"), document.querySelectorAll(".header-menu__ul>li>a").forEach(e => {
+					openSecondLevelMenu(e)
+				})
+		} else {
+			function openMobileMenu() {
+				let e;
+				document.addEventListener("click", l => {
+					if (l.target == e) return closeMobileMenu(l.target.closest("ul")), openMobileMenu();
+					e = l.target, closeMobileMenu(l.target.closest("ul")), l.target.closest("li") && (l.target.closest("li")
+						.classList.add("activeMobileLI"), l.target.closest("li").querySelector("a").classList.add(
+							"activeMobileLI"), l.target.closest("li").querySelector("ul") && l.target.closest("li").querySelector(
+							"ul").classList.add("activeMobileUl"))
+				})
+			}
+
+			function closeMobileMenu(e) {
+				e && (e.querySelectorAll("li>a").forEach(e => {
+					e.classList.contains("activeMobileLI") && (e.closest("li").classList.remove("activeMobileLI"), e.classList
+						.remove("activeMobileLI"))
+				}), e.querySelectorAll("li>ul").forEach(e => {
+					e.classList.contains("activeMobileUl") && e.classList.remove("activeMobileUl")
+				}))
+			}
+			document.querySelectorAll(".block-mobile-menu").forEach(e => {
+				e.querySelector("ul") && e.querySelector("ul").classList.add("mobile-menu__ul")
+			}), document.querySelector(".menu-btn").onclick = (() => {
+				document.querySelector(".menu-btn").classList.remove("activeBut"), document.querySelector(
+						".menu__but-close").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
+					.add("activeMenu")
+			}), document.querySelector(".menu__but-close").onclick = (() => {
+				document.querySelector(".menu__but-close").classList.remove("activeBut"), document.querySelector(
+						".menu-btn").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
+					.remove("activeMenu")
+			}), document.querySelectorAll(".mobile-menu__ul li").forEach(e => {
+				if (e.querySelector("ul")) {
+					let l = document.createElement("span");
+					l.classList.add("mobileArrow"), e.append(l)
+				}
+			}), openMobileMenu()
+		}
+	</script>

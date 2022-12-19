@@ -8,11 +8,13 @@ $purple-color : #F1DDF2;
 .header {
   position: relative;
   padding-top: 50px;
+  padding-bottom: 51px;
 
   .header__menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 
     .menu-btn {
       display: none;
@@ -413,3 +415,7 @@ $purple-color : #F1DDF2;
     }
   }
 }
+
+
+
+

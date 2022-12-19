@@ -49,13 +49,22 @@
         width: 25%;
         transition: all 0.2s ease;
 
-        img {
+        svg {
           margin-right: 8px;
+          vertical-align: bottom;
+
+          path {
+            transition: all 0.2s ease;
+          }
         }
 
-        svg path{
-          transition: all 0.2s ease;
+        &:nth-child(2) {
+          svg {
+            width: 26px;
+            height: 16px;
+          }
         }
+
 
         &:hover {
           color: #DC7148;

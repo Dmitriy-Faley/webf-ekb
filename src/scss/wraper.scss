@@ -30,7 +30,7 @@
     line-height: 82px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    padding-top: 244px;
+    padding-top: 193px;
     padding-bottom: 0;
     width: auto;
     position: relative;
@@ -287,6 +287,7 @@
 
       img {
         width: 320px;
+        object-fit: contain;
       }
 
       .name {
@@ -563,7 +564,7 @@
         }
       }
 
-      >div {
+      .form__button {
         padding-top: 4rem;
         display: flex;
         align-items: center;
@@ -1029,7 +1030,7 @@
           }
         }
 
-        >div {
+        .form__button {
           padding-top: 2.5rem;
 
           p {
@@ -1215,7 +1216,7 @@
           img {
             display: inline-block;
             width: 49px;
-            margin: -16px 0 0 19px;
+            margin: -16px 0 0 -5px;
           }
         }
 
@@ -1265,6 +1266,7 @@
 
         p {
           width: 572px;
+          width: calc(100% - 136px);
           font-size: 1rem;
           line-height: 24px;
 
@@ -1297,6 +1299,7 @@
 
           &:nth-child(3) {
             width: 175px;
+            margin-left: 2rem;
           }
 
           &:last-child {
@@ -1343,6 +1346,7 @@
           img {
             width: 628px;
             height: 362px;
+            object-fit: contain;
           }
         }
 
@@ -1407,6 +1411,7 @@
       font-size: 16px;
       line-height: 24px;
       width: 572px;
+      width: calc(100% - 136px);
     }
 
     .button {
@@ -1455,7 +1460,7 @@
       flex-direction: column;
 
       >div {
-        width: 572px !important;
+        width: calc(100% - 136px) !important;
         margin-right: 0 !important;
 
         p {
@@ -1499,7 +1504,7 @@
     .subtitle {
       font-size: 16px;
       line-height: 24px;
-      width: 572px;
+      width: calc(100% - 136px);
     }
 
     .button {
@@ -1511,6 +1516,7 @@
         width: 320px;
         height: 451px;
         padding: 30px;
+        border-radius: 40px;
 
         img {
           width: 34px;
@@ -1559,9 +1565,10 @@
           }
         }
 
-        >div {
+        .form__button {
           padding-top: 3.75rem;
           justify-content: initial;
+          flex-wrap: wrap-reverse;
 
           p {
             font-size: 1rem;
@@ -1606,7 +1613,7 @@
     padding: 25px 0 0 0;
 
     .desk {
-      width: 572px;
+      width: calc(100% - 136px);
 
       p {
         font-size: 1rem;
@@ -1667,7 +1674,7 @@
       flex-direction: column;
 
       >div {
-        width: 572px;
+        width: calc(100% - 136px);
 
         p {
           font-size: 1rem;
@@ -1700,6 +1707,7 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
 
         a {
           font-size: 36px;
@@ -1813,6 +1821,7 @@
       padding-top: 120px;
       font-size: 26px;
       line-height: 25px;
+      justify-content: center;
 
       span {
         padding-bottom: 7px;
@@ -1846,6 +1855,7 @@
 
         &:last-child {
           padding-left: 94px;
+          padding-left: 0px;
         }
       }
     }
@@ -1899,9 +1909,9 @@
           &:first-child {
             width: 74px;
             margin-right: 0;
-            top: 10px;
-            right: 0;
-            margin: 0;
+            top: 7px;
+            right: -12px;
+            margin: 0px;
           }
 
           &:nth-child(2) {
@@ -1912,13 +1922,14 @@
 
           &:nth-child(3) {
             width: 87.31px;
+            margin-left: 0;
           }
 
           &:last-child {
             width: 100px;
             margin-top: 50px;
-            margin-right: 25px;
-            margin-left: 0;
+            margin-right: 35px;
+            margin-left: -10px;
           }
         }
       }
@@ -1933,7 +1944,7 @@
 
       img {
         width: 18px;
-        margin: 0 0 0 5px;
+        margin: 0 0 4px 4px;
       }
     }
 
@@ -1996,10 +2007,12 @@
     .projects__content {
       .projects__content__item {
         height: 339px;
+        height: calc(339px + (420 - 339) * ((100vw - 320px) / (480 - 320)));
 
         .item__data {
           margin-top: auto;
           height: inherit;
+
           .data__teg {
             padding-bottom: 16px;
           }
@@ -2178,9 +2191,9 @@
           }
         }
 
-        >div {
+        .form__button {
           flex-direction: column-reverse;
-          align-items: flex-start;
+          align-items: flex-end;
           padding-top: 2.5rem;
 
           p {

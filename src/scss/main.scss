@@ -249,6 +249,11 @@ span::selection {
     padding: 31px 0;
 }
 
+.active_header{
+    background: $second-color;
+    transition: all .3s ease-in-out;
+}
+
 /*Modal Style*/
 .blocker {
     z-index: 99 !important;
@@ -315,7 +320,7 @@ span::selection {
                 }
             }
 
-            >div {
+            .form__button {
                 padding-top: 3.75rem;
                 display: flex;
                 align-items: center;
@@ -494,7 +499,7 @@ span::selection {
                     }
                 }
 
-                >div {
+                .form__button {
                     padding-top: 2.5rem;
 
                     p {
@@ -551,6 +556,7 @@ span::selection {
         font-size: 3rem;
         line-height: 58px;
         width: 654px;
+        width: calc(100% - 54px);
         padding-bottom: 40px;
     }
 
@@ -558,6 +564,10 @@ span::selection {
         font-size: 1rem;
         width: 218px;
         padding: 18px 0 20px 0;
+    }
+
+    .fixed {
+        padding: 30px 0;
     }
 
     .wheel {
@@ -570,7 +580,7 @@ span::selection {
 
         .wheel__letter {
             font-size: 11px;
-            padding-bottom: 28px;
+            padding-bottom: 35px;
         }
     }
 
@@ -603,7 +613,7 @@ span::selection {
                     }
                 }
 
-                >div {
+                .form__button {
                     padding-top: 3.75rem;
                     justify-content: space-between;
                     width: 100%;
@@ -612,6 +622,7 @@ span::selection {
                         font-size: 1rem;
                         line-height: 22px;
                         width: 409px;
+                        width: calc(100px + (409 - 100) * ((100vw - 480px) / (768 - 480)));
                         margin-left: 27px;
                     }
                 }
@@ -637,6 +648,10 @@ span::selection {
         font-size: 1rem;
         width: 200px;
         padding: 16px 0 17px 0;
+    }
+
+    .fixed {
+        padding: 20px 0;
     }
 
     .wheel {
@@ -685,7 +700,7 @@ span::selection {
                     }
                 }
 
-                >div {
+                .form__button {
                     padding-top: 1.875rem;
                     flex-direction: column-reverse;
 
