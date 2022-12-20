@@ -16,17 +16,18 @@ $purple-color : #F1DDF2;
     align-items: center;
     position: relative;
 
-    .menu-btn {
-      display: none;
+    .menu__but-open {
+      //display: none;
       position: relative;
       width: 50px;
       z-index: 99;
       transition: all 0.3s ease-in-out;
+      margin-left: 29px;
     }
 
-    .menu-btn span,
-    .menu-btn span:after,
-    .menu-btn span:before {
+    .menu__but-open span,
+    .menu__but-open span:after,
+    .menu__but-open span:before {
       position: absolute;
       top: 0;
       left: 0;
@@ -38,16 +39,16 @@ $purple-color : #F1DDF2;
       border-radius: 100px;
     }
 
-    .menu-btn span:before {
+    .menu__but-open span:before {
       transform: translateY(-12px);
     }
 
-    .menu-btn span:after {
+    .menu__but-open span:after {
       transform: translateY(16px);
     }
 
-    .menu-btn span:after,
-    .menu-btn span:before {
+    .menu__but-open span:after,
+    .menu__but-open span:before {
       content: "";
       display: block;
       transition: 0.2s;
@@ -344,6 +345,17 @@ $purple-color : #F1DDF2;
       }
     }
   }
+
+  .header-menu__ul {
+    gap: 30px;
+
+    >li {
+      >a {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 960px) {}
@@ -353,9 +365,12 @@ $purple-color : #F1DDF2;
     padding-top: 30px;
 
     .header__menu {
-      .menu-btn {
+
+      .menu__but-open.activeBut,
+      .menu__but-close.activeBut {
         display: block;
       }
+
 
       .header__logo img {
         width: 100%;
@@ -380,28 +395,23 @@ $purple-color : #F1DDF2;
     padding-top: 18px;
 
     .header__menu {
-      .menu-btn {
+      .menu__but-open {
         width: 31px;
       }
 
-      .menu-btn span,
-      .menu-btn span:after,
-      .menu-btn span:before {
-        top: 0;
-        left: 0;
-        margin-top: -2px;
-        //margin-left: -10px;
+      .menu__but-open span,
+      .menu__but-open span:after,
+      .menu__but-open span:before {
+        margin-top: -1px;
         width: 32px;
         height: 2px;
-        background: #0E0F11;
-        border-radius: 100px;
       }
 
-      .menu-btn span:before {
+      .menu__but-open span:before {
         transform: translateY(-7px);
       }
 
-      .menu-btn span:after {
+      .menu__but-open span:after {
         transform: translateY(10px);
       }
 
@@ -415,7 +425,3 @@ $purple-color : #F1DDF2;
     }
   }
 }
-
-
-
-

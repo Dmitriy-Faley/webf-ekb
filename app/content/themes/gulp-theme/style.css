@@ -262,26 +262,6 @@ Version: 0.1
 
 /*New HEADER MOBILE MENU*/
 
-.mobile-header-menu {
-	max-width: 1000px;
-	margin: 0 auto;
-	width: 100%;
-	height: 45px;
-	padding: 8px;
-	background-color: #000;
-	color: #fff;
-	display: none;
-	justify-content: space-between;
-	align-items: center;
-	box-sizing: border-box;
-}
-
-.mobile-header-menu > a {
-	text-decoration: none;
-	color: #fff;
-	display: flex;
-}
-
 .mobile-header-menu-tel span {
 	padding-left: 5px;
 }
@@ -292,19 +272,11 @@ Version: 0.1
 	justify-content: center;
 }
 
-.menu__but-open {
-	background-image: url("/wp-content/uploads/2020/08/group-67.png");
-	background-size: auto;
-	width: 40px;
-	height: 18px;
-	background-position: center;
-}
-
 .menu__but-close {
-	background-image: url("/wp-content/uploads/2021/04/error-1.svg");
+	background-image: url("/content/themes/gulp-theme/assets/img/icons/close-menu.svg");
 	background-size: contain;
-	width: 15px;
-	height: 15px;
+	width: 25.57px;
+	height: 25.24px;
 	background-position: center;
 }
 
@@ -313,10 +285,6 @@ Version: 0.1
 	display: none;
 }
 
-.menu__but-open.activeBut,
-.menu__but-close.activeBut {
-	display: block;
-}
 
 .block-mobile-menu ul,
 .block-mobile-menu li {
@@ -431,11 +399,7 @@ Version: 0.1
 	display: none;
 }
 
-@media (max-width: 1000px) {
-	.mobile-header-menu {
-		display: flex;
-	}
-
+@media (max-width: 768px) {
 	.main-header-menu {
 		display: none;
 	}
@@ -446,11 +410,6 @@ Version: 0.1
 }
 
 @media (max-width: 465px) {
-	.mobile-header-menu {
-		padding: 11px 20px;
-		height: 100%;
-	}
-
 	.mobile-header-menu-tel span {
 		padding-left: 0;
 	}
@@ -467,28 +426,8 @@ Version: 0.1
 		display: none;
 	}
 
-	.mobile-header-menu {
-		height: 48px;
-		background-color: #fafafa;
-	}
-
-	.menu__but-open {
-		background-image: url("/wp-content/uploads/2021/06/group-66.png");
-	}
-
-	.menu__but-close {
-		background-image: url("/wp-content/uploads/2021/06/union.svg");
-		width: 18px;
-		height: 18px;
-	}
-
-	.mobile-header-menu > a {
-		font-size: 12px;
-		color: #000;
-	}
-
 	.mobile-menu__ul > li > .mobileArrow:after {
-		content: url("/wp-content/uploads/2021/06/vector.svg");
+		content: url("/content/themes/gulp-theme/assets/img/icons/arrow-sub-menu-tablet.svg");
 		top: 18px;
 		right: 20px;
 	}
@@ -591,7 +530,7 @@ Version: 0.1
 	}
 
 	.mobile-menu__ul > li.activeMobileLI > .mobileArrow:after {
-		content: url(/wp-content/uploads/2021/06/vector-1.svg);
+		transform: rotate(180deg);
 	}
 
 	.mobile-menu__ul > li.activeMobileLI > a.activeMobileLI {
@@ -620,16 +559,6 @@ Version: 0.1
 		.mobile-menu__ul > li > ul > li > ul > li > a {
 			padding-right: 30px;
 		}
-	}
-}
-
-@media (max-width: 330px) {
-	.mobile-header-menu {
-		padding: 10px;
-	}
-
-	.mobile-logo__img {
-		width: 80px;
 	}
 }
 

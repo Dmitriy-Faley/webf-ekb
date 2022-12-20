@@ -35,7 +35,7 @@
 				<a href="/" class="header__logo">
 					<img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.svg" alt="logo site" />
 				</a>
-				<a class="menu-btn activeBut">
+				<a class="menu__but-open activeBut">
 					<span></span>
 				</a>
 				<div class="menu__but-close"></div>
@@ -69,19 +69,6 @@
 		</div>
 	</header>
 
-	<div class="mobile-header-menu">
-		<a <?php if(!is_front_page()) echo 'href="/"'; ?> class="mobile-logo"><img class="tablet-logo__img"
-				src="/wp-content/uploads/2020/08/logo-white.svg" alt="" />
-			<img class="mobile-logo__img" src="/wp-content/uploads/2021/06/sloj-4.svg" alt="" />
-		</a>
-		<a href="tel:+7(985)193-82-42" class="mobile-header-menu-tel">
-			<img src="https://web-f.ru/wp-content/uploads/2021/04/el_phone-1.svg" alt="" /> <span>+7 (985) 193-82-42</span>
-		</a>
-		<div class="mobile-header-menu__button">
-			<div class="menu__but-open activeBut"></div>
-			<div class="menu__but-close"></div>
-		</div>
-	</div>
 
 	<div class="block-mobile-menu">
 		<?php
@@ -192,14 +179,16 @@
 			}
 			document.querySelectorAll(".block-mobile-menu").forEach(e => {
 				e.querySelector("ul") && e.querySelector("ul").classList.add("mobile-menu__ul")
-			}), document.querySelector(".menu-btn").onclick = (() => {
-				document.querySelector(".menu-btn").classList.remove("activeBut"), document.querySelector(
+			}), document.querySelector(".menu__but-open").onclick = (() => {
+				document.querySelector(".menu__but-open").classList.remove("activeBut"), document.querySelector(
 						".menu__but-close").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
-					.add("activeMenu")
+					.add("activeMenu"), document.querySelector(".header").classList
+						.add("active_header")
 			}), document.querySelector(".menu__but-close").onclick = (() => {
 				document.querySelector(".menu__but-close").classList.remove("activeBut"), document.querySelector(
-						".menu-btn").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
-					.remove("activeMenu")
+						".menu__but-open").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
+					.remove("activeMenu"), document.querySelector(".header").classList
+						.remove("active_header")
 			}), document.querySelectorAll(".mobile-menu__ul li").forEach(e => {
 				if (e.querySelector("ul")) {
 					let l = document.createElement("span");

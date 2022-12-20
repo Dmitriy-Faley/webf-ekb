@@ -473,7 +473,8 @@ span::selection {
         padding: 11px 0 12px 0;
     }
 
-    .fixed {
+    .fixed,
+    .active_header {
         padding: 22.06px 0;
     }
 
@@ -566,7 +567,8 @@ span::selection {
         padding: 18px 0 20px 0;
     }
 
-    .fixed {
+    .fixed,
+    .active_header {
         padding: 30px 0;
     }
 
@@ -650,7 +652,8 @@ span::selection {
         padding: 16px 0 17px 0;
     }
 
-    .fixed {
+    .fixed,
+    .active_header {
         padding: 20px 0;
     }
 
