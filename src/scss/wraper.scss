@@ -200,10 +200,6 @@
             transition: all 0.2s ease-in;
             cursor: pointer;
             width: auto;
-
-            &:hover {
-              color: #DC7148;
-            }
           }
 
           .desk {
@@ -212,6 +208,14 @@
             line-height: 29px;
             color: #ACAFB5;
 
+          }
+        }
+      }
+
+      &:hover {
+        .data__info {
+          .title {
+            color: #DC7148;
           }
         }
       }

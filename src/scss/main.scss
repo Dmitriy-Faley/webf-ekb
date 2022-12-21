@@ -28,6 +28,8 @@ body {
     font-weight: 400;
     background: url('/content/themes/gulp-theme/assets/img/bg.png');
     background-color: #fff;
+    background-attachment: fixed;
+    background-position: 50% 15%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: $mainLineHeight;
@@ -411,7 +413,7 @@ span::selection {
     justify-content: center;
 
     img {
-        animation: rotation 2.5s linear infinite;
+        animation: rotation 1.5s linear infinite;
         --angle: 15deg;
     }
 

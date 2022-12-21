@@ -25,9 +25,10 @@ Version: 0.1
 .wpcf7 form.failed .wpcf7-response-output,
 .wpcf7 form.sent .wpcf7-response-output {
 	border-radius: 5px;
-	width: 27rem;
+	width: 31rem;
 	font-weight: 600;
 	margin: 1rem 0 0 0;
+	padding: 0;
 	line-height: initial;
 	color: #000;
 }
