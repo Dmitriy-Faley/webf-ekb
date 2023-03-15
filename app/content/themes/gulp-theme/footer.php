@@ -5,9 +5,9 @@
         <a href="/" class="footer__logo">
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.svg" alt="logo site" />
         </a>
-        <a href="tel:+7 (985) 193-82-42">+7 (985) 193-82-42</a>
-        <a href="mailto:info@web-f.ru">info@web-f.ru</a>
-        <a href="#">г.Москва, ул. Вертолетчиков, д. 7, к. 1, офис 66</a>
+        <a href="tel:<?php the_field('telefon', 'option') ?>"><?php the_field('telefon', 'option') ?></a>
+        <a href="mailto:<?php the_field('pochta', 'option') ?>"><?php the_field('pochta', 'option') ?></a>
+        <a href="#"><?php the_field('adres', 'option') ?></a>
       </div>
       <div class="footer__social">
         <div>
@@ -72,7 +72,7 @@
     </div>
     <div class="footer__bottom">
       <div>
-        <p class="copy">© 2022 Веб Фокус</p>
+        <p class="copy">© <?php the_field('copyright', 'option') ?></p>
       </div>
       <div class="footer__bottom__menu">
         <a href="#">Политика конфиденциальности</a>

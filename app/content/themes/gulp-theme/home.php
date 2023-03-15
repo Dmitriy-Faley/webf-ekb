@@ -463,16 +463,16 @@ get_header();
   <div class="container">
     <div class="contacts__info">
       <div class="address">
-        г.Москва, ул. Вертолетчиков, д. 7, к. 1, офис 66
+        <?php the_field('adres', 'option') ?>
       </div>
       <div class="data">
-        <a href="mailto:info@web-f.ru">info@web-f.ru</a>
-        <a href="tel:+7 (985) 193-82-42">+7 (985) 193-82-42</a>
+        <a href="mailto:<?php the_field('pochta', 'option') ?>"><?php the_field('pochta', 'option') ?></a>
+        <a href="tel:<?php the_field('telefon', 'option') ?>"><?php the_field('telefon', 'option') ?></a>
       </div>
     </div>
     <div class="contacts__map">
       <iframe
-        src="https://yandex.ru/map-widget/v1/?um=constructor%3A8fba615cea64f1ef129e27788c3a3fb5baaa865566c5b93ae0009a6a50172719&amp;source=constructor"
+        src="<?php the_field('ssylka_na_yandeks_kartu', 'option') ?>"
         width="100%" height="485" frameborder="0"></iframe>
     </div>
   </div>

@@ -63,7 +63,7 @@
 					<span class="closeMenu"></span>
 				</div>
 				<div class="header__phone">
-					<a href="tel:+7 (985) 193-82-42">+7 (985) 193-82-42</a>
+					<a href="tel:<?php the_field('telefon', 'option') ?>"><?php the_field('telefon', 'option') ?></a>
 				</div>
 			</div>
 		</div>

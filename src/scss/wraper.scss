@@ -466,6 +466,12 @@
   }
 }
 
+.contacts-page {
+  .contacts__title {
+    padding-bottom: 60px;
+  }
+}
+
 
 
 
@@ -1179,6 +1185,14 @@
         height: 345px;
         border-radius: 28px;
       }
+    }
+  }
+
+  .contacts-page {
+    padding-top: 55px;
+
+    .contacts__title {
+      padding-bottom: 45px;
     }
   }
 }
@@ -2352,6 +2366,14 @@
         height: 197px;
         border-radius: 20px;
       }
+    }
+  }
+
+  .contacts-page {
+    padding-top: 30px;
+
+    .contacts__title {
+      padding-bottom: 28px;
     }
   }
 }
