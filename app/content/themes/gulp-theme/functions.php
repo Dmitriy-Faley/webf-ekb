@@ -380,3 +380,16 @@ function dimox_breadcrumbs() {
 
 	}
 } // end of dimox_breadcrumbs()
+
+
+
+// Подключит файл 'inc/sidebar.php' из папки текущей темы.
+function theme_sidebar( $name = '' ){
+	do_action( 'get_sidebar', $name );
+
+	if( $name )
+		$name = "-$name";
+
+	locate_template( "inc/sidebar$name.php", true );
+}
+

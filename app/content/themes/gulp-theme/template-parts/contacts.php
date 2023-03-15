@@ -7,7 +7,7 @@ get_header();
 
 <section class="contacts contacts-page">
   <div class="container">
-    <h1 class="title contacts__title">Контакты</h1>
+    <h1 class="title contacts__title"><?php the_title(); ?></h1>
     <div class="contacts__info">
       <div class="address">
         <?php the_field('adres', 'option') ?>
@@ -25,21 +25,8 @@ get_header();
   </div>
 </section>
 
-<section class="connect">
-  <div class="container">
-    <div class="connect__content">
-      <div class="connect__form">
-        <p class="title">Связаться с нами</p>
-        <?php echo do_shortcode('[contact-form-7 id="18" title="Связаться с нами"]'); ?>
-      </div>
-      <div class="connect__icons">
-        <img class="icon" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/ee.svg" alt="icon">
-        <img class="icon" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/about2.svg" alt="icon">
-        <img class="icon" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/about4.svg" alt="icon">
-      </div>
-    </div>
-  </div>
-</section>
+
+<?php theme_sidebar( 'form' ); ?>
 
 
 <?php get_footer(); ?>

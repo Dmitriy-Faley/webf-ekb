@@ -7,7 +7,7 @@ get_header();
 
 <section class="projects blog">
     <div class="container">
-        <h1 class="title blog__title">Блог</h1>
+        <h1 class="title blog__title"><?php the_title(); ?></h1>
         <div class="blog__tegs">
             <a href="#" class="active">Все</a>
             <a href="#">Статьи</a>
