@@ -238,15 +238,15 @@ Version: 0.1
 }
 
 .current_page_item > a {
-	background: radial-gradient(
+	/* background: radial-gradient(
 		100% 1024% at 100% 100%,
 		#b57efe 0%,
 		#68c5fe 76.04%,
 		#7ab6ff 100%
 	);
 	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	font-size: 19px;
+	-webkit-text-fill-color: transparent; */
+	color: #dc7148 !important;
 }
 
 .closeMenu {

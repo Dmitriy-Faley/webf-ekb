@@ -108,9 +108,13 @@ class WPCF7_ContactForm {
 	 */
 	public static function get_template( $args = '' ) {
 		$args = wp_parse_args( $args, array(
-			'locale' => determine_locale(),
+			'locale' => null,
 			'title' => __( 'Untitled', 'contact-form-7' ),
 		) );
+
+		if ( ! isset( $args['locale'] ) ) {
+			$args['locale'] = determine_locale();
+		}
 
 		$callback = function ( $args ) {
 			$contact_form = new self;
@@ -537,7 +541,7 @@ class WPCF7_ContactForm {
 			$lang_tag = $matches[1];
 		}
 
-		$html = sprintf( '<div %s>',
+		$html = "\n" . sprintf( '<div %s>',
 			wpcf7_format_atts( array(
 				'class' => 'wpcf7 no-js',
 				'id' => $this->unit_tag(),
@@ -626,10 +630,10 @@ class WPCF7_ContactForm {
 			$html .= $this->form_response_output();
 		}
 
-		$html .= '</form>';
-		$html .= '</div>';
+		$html .= "\n" . '</form>';
+		$html .= "\n" . '</div>';
 
-		return $html;
+		return $html . "\n";
 	}
 
 

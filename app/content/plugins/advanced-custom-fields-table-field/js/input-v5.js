@@ -4,7 +4,7 @@
 
 		var t = this;
 
-		t.version = '1.3.17';
+		t.version = '1.3.20';
 
 		t.param = {};
 
@@ -104,31 +104,69 @@
 
 		t.init = function() {
 
-			t.init_workflow();
+			t.init_once();
+			t.update_tables();
+
+			// DETECT NEW TABLES AFTER DOM CHANGES {
+
+				var interval = false;
+
+				let mutationObserver = new MutationObserver( function( mutations ) {
+
+					clearInterval( interval );
+
+					interval = setInterval( function() {
+
+						if ( $( '.acf-table-root' ).not( '.acf-table-rendered' ).length > 0 ) {
+
+							t.update_tables();
+						}
+
+						clearInterval( interval );
+
+					}, 500 );
+
+				});
+
+				mutationObserver.observe( document.documentElement, {
+					childList: true,
+					subtree: true,
+				});
+
+			// }
+
 		};
 
-		t.init_workflow = function() {
+		t.update_tables = function() {
 
 			t.each_table();
-			t.table_add_col_event();
-			t.table_remove_col();
-			t.table_add_row_event();
+		};
+
+		t.init_once = function() {
+
 			t.table_remove_row();
+			t.table_remove_col();
+			t.table_add_col_event();
+			t.table_add_row_event();
+			t.sortable_event();
 			t.cell_editor();
 			t.cell_editor_tab_navigation();
 			t.prevent_cell_links();
+			//t.ui_event_ajax();
 			t.ui_event_use_header();
 			t.ui_event_caption();
 			t.ui_event_change_location_rule();
-			t.ui_event_ajax();
-			t.sortable_event();
 		};
 
 		t.ui_event_ajax = function() {
 
 			$( document ).ajaxComplete( function( event ) {
 
-				t.each_table();
+				setTimeout( function() {
+
+					t.each_table();
+
+				}, 1 );
 			});
 		}
 
@@ -155,7 +193,27 @@
 
 		t.get_field_key = function( that ) {
 
-			return that.closest( '[data-key]').data( 'key' );
+			// DETECT BLOCK, GETS BLOCK ID {
+
+				var block_id = '';
+
+				$wp_block = that.closest( '.wp-block' );
+
+				if ( $wp_block.length > 0 ) {
+
+					var block_id = $wp_block.attr( 'id' );
+				}
+
+			// }
+
+			var target = that.closest( '[data-key^="field_"]' );
+
+			if ( target.length > 0 ) {
+
+				return block_id + ':' + target.data( 'key' );
+			}
+
+			return false;
 		};
 
 		t.each_table = function( ) {

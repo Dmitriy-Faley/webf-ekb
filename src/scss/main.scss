@@ -228,7 +228,10 @@ span::selection {
     &:active {}
 
     :focus {}
+}
 
+.button-more {
+    width: 218px;
 }
 
 
@@ -251,7 +254,7 @@ span::selection {
     padding: 31px 0;
 }
 
-.active_header{
+.active_header {
     background: $second-color;
     transition: all .3s ease-in-out;
 }
@@ -475,6 +478,11 @@ span::selection {
         padding: 11px 0 12px 0;
     }
 
+    .button-more {
+        width: 155px;
+        margin-top: 45px !important;
+    }
+
     .fixed,
     .active_header {
         padding: 22.06px 0;
@@ -654,6 +662,11 @@ span::selection {
         padding: 16px 0 17px 0;
     }
 
+    .button-more {
+        width: 200px;
+        margin-top: 33px !important;
+    }
+
     .fixed,
     .active_header {
         padding: 20px 0;
@@ -727,4 +740,9 @@ span::selection {
             height: 14.38px !important;
         }
     }
+}
+
+
+.hidden {
+    display: none;
 }

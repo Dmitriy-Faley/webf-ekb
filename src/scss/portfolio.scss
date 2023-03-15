@@ -1,0 +1,129 @@
+.portfolio {
+    padding-top: 99px;
+
+    .portfolio__title {
+        padding-bottom: 40px !important;
+    }
+
+    .portfolio__tegs {
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 38px;
+
+        a {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            transition: all 0.2s ease-in;
+            padding: 12px 14px;
+            background: #FDD0BF;
+            border-radius: 50px;
+            margin-right: 12px;
+            margin-bottom: 12px;
+            cursor: pointer;
+
+            &:hover {
+                background: #F0B59F;
+            }
+
+            &:active {
+                background: #0E0F11;
+                color: #fff;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        a.active {
+            background: #0E0F11;
+            color: #fff;
+        }
+    }
+
+    .projects__content .projects__content__item {
+        display: none !important;
+
+        &:nth-child(-n+9) {
+            display: flex !important;
+        }
+
+        .item__data {
+
+            .data__info .desk {}
+        }
+    }
+
+    .projects__content .projects__content__item.active_cards {
+        display: flex !important;
+    }
+}
+
+@media screen and (max-width: 1368px) {
+    .portfolio {
+        padding-top: 55px;
+
+        .portfolio__title {
+            padding-bottom: 29px !important;
+        }
+
+        .portfolio__tegs {
+            padding-bottom: 17px;
+
+            a {
+                font-size: 12px;
+                padding: 8.5px 10px;
+                margin-right: 8.55px;
+            }
+        }
+
+        .projects__content {
+            .projects__content__item {
+                border-radius: 28.5px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .portfolio {
+        padding-top: 70px;
+
+        .portfolio__tegs {
+            padding-bottom: 18px;
+
+            a {
+                font-size: 14px;
+                padding: 12px 14px;
+                margin-right: 12px;
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .portfolio {
+        padding-top: 30px;
+
+        .portfolio__tegs {
+            padding-bottom: 22px;
+
+            a {
+                font-size: 10px;
+                line-height: 14px;
+                padding: 12px 14px;
+                margin: 0 8px 8px 0;
+            }
+        }
+
+        .projects__content {
+            .projects__content__item {
+                height: calc(339px + (420 - 339) * ((100vw - 320px)/ (480 - 320)));
+            }
+        }
+    }
+}
