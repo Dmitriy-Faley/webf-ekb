@@ -285,9 +285,14 @@
     //column-gap: 40px;
 
     .team__item {
+      display: none;
       margin-bottom: 40px;
       width: 23%;
       //width: 20rem;
+
+      &:nth-child(-n+4){
+        display: block;
+      }
 
       img {
         width: 320px;
@@ -315,6 +320,10 @@
 
   .team__content {
     padding-top: 0 !important;
+
+    .team__item{
+      display: block;
+    }
   }
 }
 

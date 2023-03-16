@@ -33,18 +33,11 @@ get_header();
   <div class="container">
     <div class="aboutus__content">
       <div class="aboutus__text">
-        <h2 class="title">Студия «Веб Фокус»: приспособим Интернет под потребности клиента!</h2>
+        <h2 class="title"><?php the_field('zagolovok_o_kompanii'); ?></h2>
         <div class="aboutus__text">
-          <p>Веб-студия «Веб Фокус» обеспечит заметное присутствие в поисковой выдаче даже нестандартному бизнесу. Наша
-            компания – сообщество профессионалов, которых по-настоящему увлекает Интернет, вдохновляет его потенциал. В
-            Екатеринбурге сложно найти исполнителя лучше!</p>
-          <p>Не стоим на месте. В Глобальной сети ситуация слишком переменчива, чтобы позволить почивать на лаврах. Что
-            актуально сегодня – завтра становится невостребованным. Следим за нововведениями, адаптируем под потребности
-            клиента и используем так, что КПД близится к максимальной отметке.</p>
-          <p>Маркетинговое агентство полного цикла – такая формулировка четко отражает нашу концепцию работы. Обеспечим
-            соприкосновение с целевой аудиторией во всех точках – от классической онлайн-рекламы до исправления
-            репутации.
-            Даже взыскательные заказчики в итоге остаются довольны. По-другому не умеем!</p>
+          <p><?php the_field('pervyj_abzacz_opisanie'); ?></p>
+          <p><?php the_field('vtoroj_abzacz_opisanie'); ?></p>
+          <p><?php the_field('tretij_abzacz_opisanie'); ?></p>
         </div>
       </div>
       <div class="aboutus__icons">
@@ -119,6 +112,7 @@ get_header();
 </section>
 
 
+<?php if( have_rows('sotrudniki', 60) ): ?>
 <section class="team">
   <div class="container">
     <h3 class="title">Наша команда сотрудников</h3>
@@ -126,30 +120,26 @@ get_header();
       помнят, как выглядели первые сайты Рунета. За плечами – обширная практика, что позволило сформировать собственный
       подход к воплощению проектов в жизнь.</p>
     <div class="team__content">
+
+    <?php while( have_rows('sotrudniki', 60) ): the_row(); 
+        // переменные
+        $imageSotrudnika = get_sub_field('kartinka_sotrudnika');
+        $fioSotrudnika = get_sub_field('fio_sotrudnika');
+        $dolznostSotrudnika = get_sub_field('dolzhnost_sotrudnika');
+    ?>
       <div class="team__item">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/img/team1.png" alt="team">
-        <p class="name">Имя Фамилия</p>
-        <p class="job">Должность в компании</p>
+          <img src="<?php echo $imageSotrudnika['url']; ?>" alt="<?php echo $imageSotrudnika['alt'] ?>" />
+          <p class="name"><?php echo $fioSotrudnika; ?></p>
+          <p class="job"><?php echo $dolznostSotrudnika; ?></p>
       </div>
-      <div class="team__item">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/img/team2.png" alt="team">
-        <p class="name">Имя Фамилия</p>
-        <p class="job">Должность в компании</p>
-      </div>
-      <div class="team__item">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/img/team3.png" alt="team">
-        <p class="name">Имя Фамилия</p>
-        <p class="job">Должность в компании</p>
-      </div>
-      <div class="team__item">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/img/team4.png" alt="team">
-        <p class="name">Имя Фамилия</p>
-        <p class="job">Должность в компании</p>
-      </div>
+
+    <?php endwhile; ?>
+
     </div>
     <a href="#ex1" rel="modal:open" class="button">Узнать больше</a>
   </div>
 </section>
+<?php endif; ?>
 
 
 <section class="strip">
@@ -173,35 +163,35 @@ get_header();
   </div>
 </section>
 
+<?php if( get_field('zagolovok_interesy_klienta') ): ?>
 <section class="interests">
   <div class="container">
-    <p class="title">Интересы клиента –<br>на первом месте!</p>
+    <p class="title"><?php the_field('zagolovok_interesy_klienta'); ?></p>
     <div class="interests__content">
       <div>
-        <p>Digital-агентство закрепится в отрасли только при условии, что потребности обратившегося будут в доминирующей
-          позиции. Наша задача – не сделать очередной сайт, а предложить такое решение, которое окажется рациональным в
-          конкретном случае.</p>
-        <p>При разработке и продвижении уходим от шаблонности. Важно добиться, чтобы продукт укладывался в общую
-          концепцию развиваемого бренда, соответствовал ожиданиям не только клиента, но и его целевой аудитории.
-          Добиться подобного не всегда легко, но нашим экспертам удается успешно решать любую поставленную задачу.
-          Секрет прост:</p>
+        <p><?php the_field('pervyj_abzacz_interesy'); ?></p>
+        <p><?php the_field('vtoroj_abzacz_interesy'); ?></p>
+        
+        <?php if( have_rows('spisok_interesov') ): ?>
         <ul>
-          <li>Каждый работает исключительно по профилю.</li>
-          <li>Пристальное внимание уделяется исследованию ниши.</li>
-          <li>В нашем активе присутствует масса собственных наработок.</li>
-          <li>Работаем на достижение конкретного результата, не делаем «на коленке».</li>
-          <li>Ресурс, группа в соцсети, отзывы и т.д. – часть единой системы, а не разрозненные объекты.</li>
+        <?php while( have_rows('spisok_interesov') ): the_row(); 
+          // переменные
+          $textSpiska = get_sub_field('tekst_spiska');
+        ?>
+          <li><?php echo $textSpiska; ?></li>
+        <?php endwhile; ?>
         </ul>
+        <?php endif; ?>
+
       </div>
       <div>
-        <p>Заказчик непременно получает желаемое. Уверены, что по итогам обращения подтвердите, что наше агентство
-          интернет-маркетинга отрабатывает каждый вложенный рубль. Справляемся там, где другие недоуменно разводят
-          руками. Опыт, профессионализм, увлеченность – три кита успеха онлайн.</p>
+        <p><?php the_field('tretij_abzacz_interesy'); ?></p>
         <a href="#ex1" rel="modal:open" class="button">Связаться с нами</a>
       </div>
     </div>
   </div>
 </section>
+<?php endif; ?>
 
 <div class="services">
   <div class="swiper-container">
