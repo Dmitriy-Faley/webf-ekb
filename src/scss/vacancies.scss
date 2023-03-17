@@ -1,0 +1,68 @@
+.vacancies {
+    padding-top: 100px;
+
+    .tabs {
+        .tabs__nav {
+            display: flex;
+            flex-wrap: wrap;
+            padding-bottom: 38px;
+
+            .tabs__btn {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                text-transform: uppercase;
+                text-align: center;
+                transition: all 0.2s ease-in;
+                padding: 12px 14px;
+                background: #F8F5D4;
+                border-radius: 50px;
+                margin-right: 12px;
+                margin-bottom: 12px;
+                cursor: pointer;
+
+                &:hover {
+                    background: #F0EBB1;
+                }
+
+                &:active {
+                    background: #0E0F11;
+                    color: #fff;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            .tabs__btn.tabs__btn_active {
+                background: #0E0F11;
+                color: #fff;
+                cursor: default;
+            }
+        }
+
+        .tabs__content {
+            .tabs__item {
+                background: #FFFFFF;
+                border-radius: 40px;
+                width: 100%;
+            }
+
+            .tabs__pane {
+                display: none;
+            }
+
+            .tabs__pane_show {
+                display: block;
+            }
+        }
+    }
+}
+
+
+
+.tabs__btn:not(.tabs__btn_active):hover,
+.tabs__btn:not(.tabs__btn_active):focus {
+    background-color: #eee;
+}

@@ -187,7 +187,8 @@ span::selection {
     margin: 0 auto;
 
     @media screen and (max-width: 1368px) {
-        max-width: 985px;
+        //max-width: 985px;
+        max-width: 995px;
     }
 
     @media screen and (max-width: $smDesktopWidth) {
