@@ -266,10 +266,17 @@ span::selection {
     //background-color: transparent !important;
 }
 
-#ex1 {
+#ex1,
+#response {
     background: #fff;
     border-radius: 40px;
     box-shadow: none;
+}
+
+#response {
+    .modal-content .form .form__button {
+        //padding-top: 3.125rem;
+    }
 }
 
 
@@ -302,8 +309,10 @@ span::selection {
                 margin-bottom: 3.125rem;
             }
 
+
             input[type="text"],
-            input[type="tel"] {
+            input[type="tel"],
+            input[type="email"] {
                 font-family: 'Inter', sans-serif;
                 font-weight: 500;
                 width: 100%;
@@ -323,6 +332,51 @@ span::selection {
                     &::placeholder {
                         color: transparent;
                     }
+                }
+            }
+
+            .input__wrapper {
+                width: 100%;
+                position: relative;
+                padding-top: 50px;
+
+                .input__label {
+                    color: #fff;
+                    padding-bottom: 13px;
+                }
+
+                .file_pretext {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    color: #DC7148;
+                    font-weight: 500;
+                    transition: all 0.2s ease;
+
+                    &::before {
+                        content: '';
+                        display: inline-block;
+                        background: url('/content/themes/gulp-theme/assets/img/icons/file.svg') center no-repeat;
+                        background-size: contain;
+                        width: 11px;
+                        height: 22px;
+                        margin-right: 8px;
+                    }
+
+                    &:hover {
+                        color: #0e0f11;
+                    }
+                }
+
+                input[type=file] {
+                    outline: 0;
+                    opacity: 0;
+                    pointer-events: none;
+                    user-select: none;
+                    position: absolute;
+                    width: 100%;
+                    left: 0;
+                    height: 65px;
                 }
             }
 
@@ -502,7 +556,8 @@ span::selection {
                 }
 
                 input[type="text"],
-                input[type="tel"] {
+                input[type="tel"],
+                input[type="email"] {
                     padding: 11px 17px;
                     width: 484px;
 
@@ -616,7 +671,8 @@ span::selection {
                 }
 
                 input[type="text"],
-                input[type="tel"] {
+                input[type="tel"],
+                input[type="email"] {
                     padding: 18px 24px 20px 24px;
                     width: 100%;
 
@@ -708,7 +764,8 @@ span::selection {
                 }
 
                 input[type="text"],
-                input[type="tel"] {
+                input[type="tel"],
+                input[type="email"] {
                     padding: 17px 20px 18px 20px;
                     font-size: 14px;
                     line-height: 20px;
@@ -716,6 +773,26 @@ span::selection {
                     &::placeholder {
                         font-size: 14px;
                         line-height: 20px;
+                    }
+                }
+
+                .input__wrapper {
+                    padding-top: 31px;
+
+                    .input__label {
+                        color: #fff;
+                        padding-bottom: 13px;
+                    }
+
+                    .file_pretext {
+                        font-size: 14px;
+                        line-height: 20px;
+
+                        &::before {
+                            width: 8px;
+                            height: 18px;
+                            margin-right: 10px;
+                        }
                     }
                 }
 

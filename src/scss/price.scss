@@ -1,0 +1,160 @@
+.prices {
+    .prices__tabs {
+        padding-top: 10px;
+
+        .tabs__nav {
+            display: flex;
+            flex-wrap: wrap;
+            padding-bottom: 60px;
+
+            .tabs__btn {
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 22px;
+                text-align: center;
+                transition: all 0.2s ease-in;
+                margin-right: 40px;
+                background: none;
+                cursor: pointer;
+
+                &:hover {
+                    color: #DC7148;
+                }
+
+                &:active {
+                    color: #DC7148;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            .tabs__btn_active {
+                color: #DC7148;
+                cursor: default;
+            }
+        }
+
+        .tabs__content {
+            .tabs__pane {
+                .tabs__pane__item {
+                    background: #fff;
+                    border-radius: 40px;
+                    padding: 14px 40px 15px 40px;
+
+                    &:not(:last-child) {
+                        margin-bottom: 20px;
+                    }
+                }
+
+                .tabs__pane__name {
+                    font-weight: 500;
+                    font-size: 24px;
+                    line-height: 29px;
+                    margin-right: 16px;
+
+
+                    img {
+                        transition: transform .2s, -webkit-transform .2s;
+                    }
+                }
+
+                .tabs__pane__info {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 24rem;
+
+                    .price {
+                        font-weight: 500;
+                        font-size: 24px;
+                        line-height: 29px;
+                        padding-right: 50px;
+                    }
+
+                    .button {
+                        background: #0E0F11;
+                        width: 11.25rem;
+                        color: #fff;
+                        font-size: 14px;
+                    }
+                }
+
+                a.toggle {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        color: #DC7148;
+                    }
+                }
+
+                a.active {
+                    .tabs__pane__name {
+                        color: #DC7148;
+
+                        img {
+                            transform: rotate(-180deg);
+                        }
+                    }
+
+                    .price {
+                        color: #DC7148;
+                    }
+                }
+            }
+
+            .inner {
+                overflow: hidden;
+                display: none;
+                width: 100%;
+                padding-top: 20px;
+
+                .inner__item {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-bottom: 20px;
+                    transition: all 0.2s ease;
+
+                    &:not(:last-child) {
+                        margin-bottom: 20px;
+                        border-bottom: 2px solid #F1F4F4;
+                    }
+
+                    .tabs__pane__info {
+                        .price {
+                            color: #ACAFB5;
+                        }
+                    }
+
+                    &:hover {
+                        .tabs__pane__name {
+                            color: #DC7148;
+                        }
+
+                        .tabs__pane__info {
+                            .price {
+                                color: #DC7148;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.tabs__pane {
+    display: none;
+}
+
+.tabs__pane_show {
+    display: block;
+}

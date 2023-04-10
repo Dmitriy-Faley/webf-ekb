@@ -7,7 +7,7 @@
         </a>
         <a href="tel:<?php the_field('telefon', 'option') ?>"><?php the_field('telefon', 'option') ?></a>
         <a href="mailto:<?php the_field('pochta', 'option') ?>"><?php the_field('pochta', 'option') ?></a>
-        <a href="#"><?php the_field('adres', 'option') ?></a>
+        <a href="https://yandex.by/maps/213/moscow/house/ulitsa_vertolyotchikov_7k1/Z04YfwNgS0cHQFtvfXtxcHpnbA==/?ll=37.940221%2C55.701648&z=17.15" target="_blank"><?php the_field('adres', 'option') ?></a>
       </div>
       <div class="footer__social">
         <div>

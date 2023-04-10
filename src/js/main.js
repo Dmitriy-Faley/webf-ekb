@@ -80,7 +80,7 @@ function app() {
 	function filter(category, items) {
 		items.forEach((item) => {
 			const isItemFiltered = !item.classList.contains(category);
-			const isShowAll = category.toLowerCase() === 'все'
+			const isShowAll = category.toLowerCase() === 'all'
 			if (isItemFiltered && !isShowAll) {
 				item.classList.add('anime');
 			} else {
@@ -122,6 +122,7 @@ app();
 
 
 
+
 $('.toggle').click(function (e) {
 	e.preventDefault();
 
@@ -144,7 +145,7 @@ $('.toggle').click(function (e) {
 
 
 
-(function ($) {
+/* (function ($) {
 
 	$.fn.iComputerSlide = function (options) {
 
@@ -184,4 +185,4 @@ $(function () {
 		btnClose: "Свернуть",
 		btnOpen: "Читать"
 	});
-});
+}); */
