@@ -136,6 +136,12 @@ $('.toggle').click(function (e) {
 		$this.parent().parent().find('li .inner').removeClass('show');
 		$(this).parent().parent().find('li .toggle').removeClass('active');
 		$this.parent().parent().find('li .inner').slideUp(350);
+
+		$this.parent().parent().find('.tabs__pane__item .inner').removeClass('show');
+		$(this).parent().parent().find('.tabs__pane__item .toggle').removeClass('active');
+		$this.parent().parent().find('.tabs__pane__item .inner').slideUp(350);
+
+
 		$this.next().toggleClass('show');
 		$(this).toggleClass('active');
 		$this.next().slideToggle(350);

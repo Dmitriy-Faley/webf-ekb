@@ -8,7 +8,7 @@ get_header();
 
 <section class="prices">
     <div class="container">
-        <h1 class="title">Цены</h1>
+        <h1 class="title"><?php the_title(); ?></h1>
         <div class="prices__tabs">
             <div class="tabs__nav">
                 <button class="tabs__btn tabs__btn_active">Разработка сайтов</button>
@@ -25,8 +25,6 @@ get_header();
                         <a class="toggle" href="javascript:void(0);">
                             <div class="tabs__pane__name">
                                 Cоздание сайтов “под ключ”
-                                <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/arrow-price.svg"
-                                    alt="icon:arrow">
                             </div>
                             <div class="tabs__pane__info">
                                 <p class="price">от 30 000 ₽</p>
@@ -79,12 +77,122 @@ get_header();
                     <div class="tabs__pane__item">
                         <a class="toggle" href="javascript:void(0);">
                             <div class="tabs__pane__name">
-                                Cоздание сайтов “под ключ”
-                                <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/arrow-price.svg"
-                                    alt="icon:arrow">
+                                Разработка программного модуля для сайта
                             </div>
                             <div class="tabs__pane__info">
-                                <p class="price">от 30 000 ₽</p>
+                                <p class="price">от 4 000 ₽</p>
+                                <button class="button">Подробнее</button>
+                            </div>
+                        </a>
+                        <div class="inner">
+                            <div class="inner__item">
+                                <div class="tabs__pane__name">
+                                    Лендинг пейдж (Landing Page)
+                                </div>
+                                <div class="tabs__pane__info">
+                                    <p class="price">от 4 000 ₽</p>
+                                </div>
+                            </div>
+                            <div class="inner__item">
+                                <div class="tabs__pane__name">
+                                    Лендинг пейдж (Landing Page)
+                                </div>
+                                <div class="tabs__pane__info">
+                                    <p class="price">от 4 000 ₽</p>
+                                </div>
+                            </div>
+                            <div class="inner__item">
+                                <div class="tabs__pane__name">
+                                    Лендинг пейдж (Landing Page)
+                                </div>
+                                <div class="tabs__pane__info">
+                                    <p class="price">от 4 000 ₽</p>
+                                </div>
+                            </div>
+                            <div class="inner__item">
+                                <div class="tabs__pane__name">
+                                    Лендинг пейдж (Landing Page)
+                                </div>
+                                <div class="tabs__pane__info">
+                                    <p class="price">от 4 000 ₽</p>
+                                </div>
+                            </div>
+                            <div class="inner__item">
+                                <div class="tabs__pane__name">
+                                    Лендинг пейдж (Landing Page)
+                                </div>
+                                <div class="tabs__pane__info">
+                                    <p class="price">от 4 000 ₽</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabs__pane__item">
+                        <a class="toggle" href="javascript:void(0);">
+                            <div class="tabs__pane__name">
+                                Готовые сайты
+                                <svg width="14" height="9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1l6 6 6-6" stroke="#0E0F11" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="tabs__pane__info">
+                                <p class="price">от 20 000 ₽</p>
+                                <button class="button">Подробнее</button>
+                            </div>
+                        </a>
+                        <div class="inner">
+                            <div class="inner__item">
+                                <div class="tabs__pane__name">
+                                    Лендинг пейдж (Landing Page)
+                                </div>
+                                <div class="tabs__pane__info">
+                                    <p class="price">от 4 000 ₽</p>
+                                </div>
+                            </div>
+                            <div class="inner__item">
+                                <div class="tabs__pane__name">
+                                    Лендинг пейдж (Landing Page)
+                                </div>
+                                <div class="tabs__pane__info">
+                                    <p class="price">от 4 000 ₽</p>
+                                </div>
+                            </div>
+                            <div class="inner__item">
+                                <div class="tabs__pane__name">
+                                    Лендинг пейдж (Landing Page)
+                                </div>
+                                <div class="tabs__pane__info">
+                                    <p class="price">от 4 000 ₽</p>
+                                </div>
+                            </div>
+                            <div class="inner__item">
+                                <div class="tabs__pane__name">
+                                    Лендинг пейдж (Landing Page)
+                                </div>
+                                <div class="tabs__pane__info">
+                                    <p class="price">от 4 000 ₽</p>
+                                </div>
+                            </div>
+                            <div class="inner__item">
+                                <div class="tabs__pane__name">
+                                    Лендинг пейдж (Landing Page)
+                                </div>
+                                <div class="tabs__pane__info">
+                                    <p class="price">от 4 000 ₽</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabs__pane__item">
+                        <a class="toggle" href="javascript:void(0);">
+                            <div class="tabs__pane__name">
+                                Лицензирование
+                                <svg width="14" height="9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1l6 6 6-6" stroke="#0E0F11" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="tabs__pane__info">
+                                <p class="price">от 10 000 ₽</p>
                                 <button class="button">Подробнее</button>
                             </div>
                         </a>
@@ -155,74 +263,6 @@ get_header();
     </div>
 </section>
 
-
-<!-- <section class="distribution">
-    <div class="container">
-        <h1 class="title">Цены</h1>
-        <div class="distribution__content">
-            <div class="distribution__content--info tabs">
-                <div class="tabs__nav">
-                    <button class="tabs__btn tabs__btn_active">Вкладка 1</button>
-                    <button class="tabs__btn">Вкладка 2</button>
-                    <button class="tabs__btn">Вкладка 3</button>
-                </div>
-                <div class="tabs__content">
-                    <div class="tabs__pane tabs__pane_show">
-                        <a class="toggle" href="javascript:void(0);">
-                            <div class="tabs__item__info">
-                                Cоздание сайтов “под ключ”
-                                <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/arrow-price.svg"
-                                    alt="icon:arrow">
-                            </div>
-                            <div>
-                                <p class="price">от 30 000 ₽</p>
-                                <button class="button">Подробнее</button>
-                            </div>
-                        </a>
-                        <div class="inner">
-                            <div class="inner__item">
-                                <p class="heading">Обязанности</p>
-
-                            </div>
-                            <div class="inner__item">
-                                <p class="heading">Обязанности</p>
-                                <ul>
-                                    <li>Создание современных лаконичных интерфейсов, понятных и удобных пользователю, а
-                                        также решающие бизнес-задачи компании;</li>
-                                    <li>Разработка концепции дизайна сайтов;</li>
-                                    <li>Отрисовка дизайна многостраничных сайтов, отрисовка иконок, подбор изображений,
-                                        шрифтов и т.д.;
-                                    </li>
-                                    <li>Написание статей для сайтов, текстов для лендингов и SEO-текстов
-                                    </li>
-                                    <li>Рерайт, корректура готовых материалов</li>
-                                </ul>
-                            </div>
-                            <div class="inner__item">
-                                <p class="heading">Обязанности</p>
-                                <ul>
-                                    <li>Создание современных лаконичных интерфейсов, понятных и удобных пользователю, а
-                                        также решающие бизнес-задачи компании;</li>
-                                    <li>Разработка концепции дизайна сайтов;</li>
-                                    <li>Отрисовка дизайна многостраничных сайтов, отрисовка иконок, подбор изображений,
-                                        шрифтов и т.д.;
-                                    </li>
-                                    <li>Написание статей для сайтов, текстов для лендингов и SEO-текстов
-                                    </li>
-                                    <li>Рерайт, корректура готовых материалов</li>
-                                </ul>
-                            </div>
-                            <a href="#response" rel="modal:open" class="button button-inner">Откликнуться</a>
-                        </div>
-                    </div>
-                    <div class="tabs__pane">
-                        dasd
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
 
 
 
