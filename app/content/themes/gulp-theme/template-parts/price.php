@@ -25,6 +25,9 @@ get_header();
                         <a class="toggle" href="javascript:void(0);">
                             <div class="tabs__pane__name">
                                 Cоздание сайтов “под ключ”
+                                <svg width="14" height="9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1l6 6 6-6" stroke="#0E0F11" stroke-width="2" stroke-linecap="round" />
+                                </svg>
                             </div>
                             <div class="tabs__pane__info">
                                 <p class="price">от 30 000 ₽</p>
@@ -78,6 +81,9 @@ get_header();
                         <a class="toggle" href="javascript:void(0);">
                             <div class="tabs__pane__name">
                                 Разработка программного модуля для сайта
+                                <svg width="14" height="9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1l6 6 6-6" stroke="#0E0F11" stroke-width="2" stroke-linecap="round" />
+                                </svg>
                             </div>
                             <div class="tabs__pane__info">
                                 <p class="price">от 4 000 ₽</p>

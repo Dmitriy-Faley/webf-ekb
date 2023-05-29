@@ -9,17 +9,19 @@ get_header();
 <?php if( have_rows('vakansii') ): ?>
 <section class="distribution">
     <div class="container">
-        <h1 class="title"><?php the_title(); ?></h1><div class="distribution__content">
+        <h1 class="title"><?php the_title(); ?></h1>
+        <div class="distribution__content">
             <div class="distribution__content--info">
                 <div class="tabs__nav">
                     <button class="button-filter active" data-filter="all">Все</button>
                     <?php while (have_rows('vakansii')): the_row();  
                         $category = get_sub_field('kategoriya_vakansii');
                     ?>
-                    <button class="button-filter" data-filter="<?php echo $category; ?>"><?php echo $category; ?></button>
+                    <button class="button-filter"
+                        data-filter="<?php echo $category; ?>"><?php echo $category; ?></button>
                     <?php endwhile; ?>
                 </div>
-               
+
                 <ul class="accordion">
                     <?php while (have_rows('vakansii')): the_row();  
                         $category = get_sub_field('kategoriya_vakansii');
@@ -58,7 +60,7 @@ get_header();
                     <?php endwhile; ?>
                     <?php endwhile; ?>
                 </ul>
-               
+
             </div>
         </div>
     </div>
@@ -67,7 +69,7 @@ get_header();
 
 
 <!-- Modal HTML embedded directly into document -->
-<div div id="response" class="modal">
+<div div id="response" class="modal modal-vacancie">
     <div class="modal-content">
         <div class="modal-form">
             <!-- <form method="post" class="form">
@@ -104,6 +106,15 @@ get_header();
         $('input[name="file-137"]').change(function (e) {
             var fileName = e.target.files[0].name;
             $('.file_pretext').text(fileName);
+        });
+    });
+
+
+    document.querySelectorAll(".distribution__content .button").forEach(item => {
+        item.addEventListener('click', function () {
+            const wrap = item.closest('.question');
+            document.querySelector('.vacancie-title-name').textContent = wrap.querySelector('.distribution__content .name').textContent;
+            document.querySelector('.input-vacancie-name').value = wrap.querySelector('.distribution__content .name').textContent;
         });
     });
 </script>

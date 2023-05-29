@@ -245,6 +245,14 @@ span::selection {
     color: $default-color;
 }
 
+.vacancie-title-name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #ACAFB5;
+    padding-bottom: 30px;
+}
+
 .fixed {
     position: fixed;
     z-index: 99;
@@ -432,6 +440,12 @@ span::selection {
     }
 }
 
+.modal-vacancie {
+    .title {
+        padding-bottom: 30px;
+    }
+}
+
 .button_fix {
     position: fixed;
     bottom: 80px;
@@ -527,6 +541,12 @@ span::selection {
         padding-bottom: 30px;
     }
 
+    .vacancie-title-name {
+        font-size: 14px;
+        line-height: 17px;
+        padding-bottom: 42px;
+    }
+
     .button {
         font-size: 14px;
         width: 180px;
@@ -599,6 +619,12 @@ span::selection {
         }
     }
 
+    .modal-vacancie {
+        .title {
+            padding-bottom: 20px !important;
+        }
+    }
+
     .wheel {
         width: 54.3px;
         height: 54.3px;
@@ -625,6 +651,12 @@ span::selection {
         width: 654px;
         width: calc(100% - 54px);
         padding-bottom: 40px;
+    }
+
+    .vacancie-title-name {
+        font-size: 16px;
+        line-height: 19px;
+        padding-bottom: 60px;
     }
 
     .button {
@@ -702,6 +734,7 @@ span::selection {
             }
         }
     }
+
 }
 
 /* 320 - 480 px */
@@ -710,6 +743,11 @@ span::selection {
         font-size: 1.5rem;
         line-height: 29px;
         width: 288px;
+        padding-bottom: 30px;
+    }
+
+    .vacancie-title-name{
+        text-align: center;
         padding-bottom: 30px;
     }
 
@@ -816,6 +854,12 @@ span::selection {
             right: 14px !important;
             width: 14.57px !important;
             height: 14.38px !important;
+        }
+    }
+
+    .modal-vacancie {
+        .title {
+            padding-bottom: 8px !important;
         }
     }
 }

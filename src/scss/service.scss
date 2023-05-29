@@ -1,0 +1,35 @@
+.header-service {
+    padding-top: 100px;
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .header-service__info {
+        .short__description {
+            width: 52.5rem;
+
+            p {
+                padding-bottom: 20px;
+            }
+
+            .button {
+                background: #0E0F11;
+                color: #fff;
+                margin-top: 20px;
+            }
+        }
+    }
+
+    .header-service__price {
+        font-weight: 600;
+        font-size: 36px;
+        line-height: 43px;
+        background: #FFFFFF;
+        border-radius: 100px;
+        padding: 11px 30px 13px 30px;
+    }
+}
