@@ -160,7 +160,7 @@ Version: 1.0
 	margin-left: 8px;
 }
 
-.header-menu__ul > li:nth-last-child(-n+3) > a::after{
+.header-menu__ul>li:nth-last-child(-n+3)>a::after {
 	display: none !important;
 }
 
@@ -216,15 +216,9 @@ Version: 1.0
 	transition: all 0.2s ease;
 }
 
+.current-menu-ancestor>a,
+.current-menu-parent>a,
 .current_page_item>a {
-	/* background: radial-gradient(
-		100% 1024% at 100% 100%,
-		#b57efe 0%,
-		#68c5fe 76.04%,
-		#7ab6ff 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent; */
 	color: #dc7148 !important;
 }
 

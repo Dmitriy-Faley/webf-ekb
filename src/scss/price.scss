@@ -63,6 +63,8 @@
 
                     svg {
                         margin-left: 16px;
+                        width: 14px;
+                        height: 9px;
                     }
                 }
 
@@ -141,7 +143,7 @@
                 display: none;
                 width: 100%;
                 padding-top: 20px;
-                padding-bottom: 5px;
+                padding-bottom: 15px;
 
                 .inner__item {
                     display: flex;
@@ -373,11 +375,12 @@
                         font-size: 14px;
                         line-height: 17px;
                         width: auto;
-                        padding-right: 20px;
+                        padding-right: 15px;
 
                         svg {
-                            /* width: 7px;
-                            height: 3px; */
+                            height: 5px;
+                            width: auto;
+                            margin-left: 0;
                         }
                     }
 
@@ -410,5 +413,11 @@
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .prices .prices__tabs .tabs__content .tabs__pane .tabs__pane__name svg{
+        margin-left: 5px;
     }
 }
