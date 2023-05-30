@@ -13,7 +13,7 @@ get_header();
                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/BMW-logo.svg" alt="parners:icon">
             </div>
             <div class="icons__item">
-                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/audi.svg" alt="parners:icon">
+                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/audi.png" alt="parners:icon">
             </div>
             <div class="icons__item">
                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/volkswagen_logo.svg" alt="parners:icon">
@@ -22,7 +22,7 @@ get_header();
                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/motor.svg" alt="parners:icon">
             </div>
             <div class="icons__item">
-                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/adidas.svg" alt="parners:icon">
+                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/adidas.png" alt="parners:icon">
             </div>
             <div class="icons__item">
                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/bosch.svg" alt="parners:icon">
@@ -37,22 +37,22 @@ get_header();
                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/hp.svg" alt="parners:icon">
             </div>
             <div class="icons__item">
-                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/jysk.svg" alt="parners:icon">
+                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/jysk.png" alt="parners:icon">
             </div>
             <div class="icons__item">
                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/nvidia.svg" alt="parners:icon">
             </div>
             <div class="icons__item">
-                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/pandora.svg" alt="parners:icon">
+                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/pandora.png" alt="parners:icon">
             </div>
             <div class="icons__item">
                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/vs.svg" alt="parners:icon">
             </div>
             <div class="icons__item">
-                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/xerox.svg" alt="parners:icon">
+                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/xerox.png" alt="parners:icon">
             </div>
             <div class="icons__item">
-                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/mango.svg" alt="parners:icon">
+                <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/mango.png" alt="parners:icon">
             </div>
             <div class="icons__item">
                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/partners/starbucks.svg" alt="parners:icon">

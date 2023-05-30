@@ -136,7 +136,7 @@
                         padding: 11px 0;
                         margin: 0 auto;
 
-                        &:hover{
+                        &:hover {
                             background: #F0EBB1;
                             color: #0E0F11;
                         }
@@ -177,23 +177,23 @@
                             }
                         }
                     }
+                }
 
-                    .button-inner {
-                        display: none;
-                        background: #0E0F11;
-                        //width: 11.25rem;
-                        color: #fff;
-                        font-size: 14px;
-                        padding: 18px 53px 20px 53px;
-                        margin-top: 26px;
-                    }
+                .button-inner {
+                    display: none;
+                    background: #0E0F11;
+                    //width: 11.25rem;
+                    color: #fff;
+                    font-size: 14px;
+                    padding: 18px 53px 20px 53px;
+                    margin-top: 26px;
                 }
             }
         }
     }
 }
 
-.input-vacancie-name{
+.input-vacancie-name {
     display: none;
 }
 
@@ -339,10 +339,10 @@
                             padding-bottom: 12px;
                         }
                     }
+                }
 
-                    .button-inner {
-                        display: block;
-                    }
+                .button-inner {
+                    display: block;
                 }
             }
         }
@@ -434,12 +434,12 @@
                             }
                         }
                     }
+                }
 
-                    .button-inner {
-                        margin: 0 auto;
-                        font-size: 16px;
-                        padding: 16px 0 17px 0;
-                    }
+                .button-inner {
+                    margin: 24px auto 0;
+                    font-size: 16px;
+                    padding: 16px 0 17px 0;
                 }
             }
         }

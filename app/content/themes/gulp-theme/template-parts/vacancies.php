@@ -54,8 +54,9 @@ get_header();
                                 <?php echo $listDetailDesk; ?>
                             </div>
                             <?php endwhile; ?>
-                            <a href="#response" rel="modal:open" class="button button-inner">Откликнуться</a>
+                            <!-- <a href="#response" rel="modal:open" class="button button-inner">Откликнуться</a> -->
                         </div>
+                        <a href="#response" rel="modal:open" class="button button-inner">Откликнуться</a>
                     </li>
                     <?php endwhile; ?>
                     <?php endwhile; ?>
