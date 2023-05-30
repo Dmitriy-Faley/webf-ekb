@@ -746,7 +746,7 @@ span::selection {
         padding-bottom: 30px;
     }
 
-    .vacancie-title-name{
+    .vacancie-title-name {
         text-align: center;
         padding-bottom: 30px;
     }
@@ -858,6 +858,8 @@ span::selection {
     }
 
     .modal-vacancie {
+        border-radius: 20px !important;
+
         .title {
             padding-bottom: 8px !important;
         }
