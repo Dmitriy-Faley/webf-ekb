@@ -1,0 +1,12 @@
+// Fonts here
+// see more: https://github.com/vedees/webpack-template/blob/master/README.md#import-js-files
+
+
+//@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Nerko+One&display=swap');
+
+@font-face {
+    font-family: 'Neutral Face';
+    src: url("/content/themes/gulp-theme/assets/fonts/Neutral/NEUTRALFACE-BOLD.OTF");
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,423 @@
+.prices {
+    padding-top: 100px;
+
+    .prices__tabs {
+        padding-top: 10px;
+
+        .tabs__nav {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding-bottom: 56px;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .tabs__btn {
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 22px;
+                white-space: nowrap;
+                text-align: center;
+                transition: all 0.2s ease-in;
+                padding: 0;
+                background: none;
+                cursor: pointer;
+
+                &:hover {
+                    color: #DC7148;
+                }
+
+                &:active {
+                    color: #DC7148;
+                }
+
+                &:not(:last-child) {
+                    margin-right: 40px;
+                }
+            }
+
+            .tabs__btn_active {
+                color: #DC7148;
+                cursor: default;
+            }
+        }
+
+        .tabs__content {
+            .tabs__pane {
+                .tabs__pane__item {
+                    background: #fff;
+                    border-radius: 40px;
+                    padding: 14px 40px 15px 40px;
+
+                    &:not(:last-child) {
+                        margin-bottom: 20px;
+                    }
+                }
+
+                .tabs__pane__name {
+                    font-weight: 500;
+                    font-size: 24px;
+                    line-height: 29px;
+
+                    svg {
+                        margin-left: 16px;
+                        width: 14px;
+                        height: 9px;
+                    }
+                }
+
+                .tabs__pane__info {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 25.5rem;
+
+                    .price {
+                        font-weight: 500;
+                        font-size: 24px;
+                        line-height: 29px;
+                        //padding-right: 50px;
+                    }
+
+                    .button {
+                        background: #0E0F11;
+                        color: #fff;
+                        font-size: 16px;
+                        line-height: 22px;
+
+                        &:hover {
+                            background: #FDD0BF;
+                            color: #0E0F11;
+                        }
+                    }
+                }
+
+                a.toggle {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        color: #DC7148;
+
+                        .tabs__pane__name {
+                            svg {
+                                path {
+                                    transition: all 0.2s ease;
+                                    stroke: #DC7148;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                a.active {
+                    .tabs__pane__name {
+                        color: #DC7148;
+
+                        &::after {
+                            transform: rotate(-180deg);
+                        }
+
+                        svg {
+                            transform: rotate(-180deg);
+
+                            path {
+                                stroke: #DC7148;
+                            }
+                        }
+                    }
+
+                    .price {
+                        color: #DC7148;
+                    }
+                }
+            }
+
+            .inner {
+                overflow: hidden;
+                display: none;
+                width: 100%;
+                padding-top: 20px;
+                padding-bottom: 15px;
+
+                .inner__item {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    transition: all 0.2s ease;
+                    cursor: default;
+
+                    &:not(:last-child) {
+                        margin-bottom: 20px;
+                        padding-bottom: 20px;
+                        border-bottom: 2px solid #F1F4F4;
+                    }
+
+                    .tabs__pane__info {
+                        .price {
+                            color: #ACAFB5;
+                        }
+                    }
+
+                    &:hover {
+                        .tabs__pane__name {
+                            color: #DC7148;
+                        }
+
+                        .tabs__pane__info {
+                            .price {
+                                color: #DC7148;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.tabs__pane {
+    display: none;
+}
+
+.tabs__pane_show {
+    display: block;
+}
+
+
+@media screen and (max-width: 1368px) {
+    .prices {
+        padding-top: 55px;
+
+        .prices__tabs {
+            padding-top: 5px;
+
+            .tabs__nav {
+                padding-bottom: 41.5px;
+
+                .tabs__btn {
+                    font-size: 14px;
+                    line-height: 17px;
+
+                    &:not(:last-child) {
+                        margin-right: 28px;
+                    }
+                }
+            }
+
+            .tabs__content {
+                .tabs__pane {
+                    .tabs__pane__item {
+                        border-radius: 28.4583px;
+                        padding: 12px 28px 12px 28px;
+
+                        &:not(:last-child) {
+                            margin-bottom: 15px;
+                        }
+                    }
+
+                    .tabs__pane__name {
+                        font-size: 17.075px;
+                        line-height: 20px;
+
+                        svg {
+                            margin-left: 12px;
+                        }
+                    }
+
+                    .tabs__pane__info {
+                        width: 18rem;
+
+                        .price {
+                            font-size: 17.075px;
+                            line-height: 20px;
+                        }
+
+                        .button {
+                            font-size: 11.3833px;
+                            line-height: 16px;
+                            width: 155px;
+                        }
+                    }
+                }
+
+                .inner {
+                    padding-top: 15px;
+                    padding-bottom: 8px;
+
+                    .inner__item {
+                        &:not(:last-child) {
+                            margin-bottom: 15px;
+                            padding-bottom: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .prices {
+        padding-top: 70px;
+
+        .prices__tabs {
+            padding-top: 0;
+
+            .tabs__nav {
+                padding-bottom: 50px;
+
+                .tabs__btn {
+                    font-size: 18px;
+                    line-height: 22px;
+
+                    &:not(:last-child) {
+                        margin-right: 40px;
+                    }
+                }
+            }
+
+            .tabs__content {
+                .tabs__pane {
+                    .tabs__pane__item {
+                        border-radius: 40px;
+                        padding: 30px;
+
+                        &:not(:last-child) {
+                            margin-bottom: 20px;
+                        }
+                    }
+
+                    .tabs__pane__name {
+                        font-size: 24px;
+                        line-height: 29px;
+                        width: 28.125rem;
+
+                        svg {
+                            margin-left: 12px;
+                        }
+                    }
+
+                    .tabs__pane__info {
+                        width: 10rem;
+
+                        .price {
+                            font-size: 24px;
+                            line-height: 29px;
+                            white-space: nowrap;
+                        }
+
+                        .button {
+                            display: none;
+                        }
+                    }
+                }
+
+                .inner {
+                    padding-top: 57px;
+                    padding-bottom: 0;
+
+                    .inner__item {
+                        &:not(:last-child) {
+                            margin-bottom: 20px;
+                            padding-bottom: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .prices {
+        padding-top: 30px;
+
+        .prices__tabs {
+            padding-top: 0;
+
+            .tabs__nav {
+                padding-bottom: 30px;
+
+                .tabs__btn {
+                    font-size: 14px;
+                    line-height: 17px;
+
+                    &:not(:last-child) {
+                        margin-right: 30px;
+                    }
+                }
+            }
+
+            .tabs__content {
+                .tabs__pane {
+                    a.toggle {
+                        align-items: flex-start;
+                    }
+
+                    .tabs__pane__item {
+                        border-radius: 20px;
+                        padding: 15px;
+
+                        &:not(:last-child) {
+                            margin-bottom: 15px;
+                        }
+                    }
+
+                    .tabs__pane__name {
+                        font-size: 14px;
+                        line-height: 17px;
+                        width: auto;
+                        padding-right: 15px;
+
+                        svg {
+                            height: 5px;
+                            width: auto;
+                            margin-left: 0;
+                        }
+                    }
+
+                    .tabs__pane__info {
+                        width: auto;
+
+                        .price {
+                            font-size: 14px;
+                            line-height: 17px;
+                        }
+
+                        .button {
+                            display: none;
+                        }
+                    }
+                }
+
+                .inner {
+                    padding-top: 20px;
+                    padding-bottom: 0;
+
+                    .inner__item {
+                        align-items: flex-start;
+
+                        &:not(:last-child) {
+                            margin-bottom: 15px;
+                            padding-bottom: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .prices .prices__tabs .tabs__content .tabs__pane .tabs__pane__name svg{
+        margin-left: 5px;
+    }
+}

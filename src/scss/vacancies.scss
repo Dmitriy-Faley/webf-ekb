@@ -1,0 +1,447 @@
+.anime {
+    transform: scale(0);
+    opacity: 0;
+    display: none !important;
+}
+
+.hide {
+    animation-name: hide;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes hide {
+    0% {
+        visibility: visible;
+        height: 200px;
+    }
+
+    100% {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        margin: 0;
+        font-size: 0;
+        margin: 0;
+    }
+}
+
+
+
+
+.distribution {
+    padding-top: 100px;
+    overflow: hidden;
+
+    .distribution__content--info {
+
+        .tabs__nav {
+            display: flex;
+            flex-wrap: wrap;
+            padding-bottom: 38px;
+
+            .button-filter {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                text-transform: uppercase;
+                text-align: center;
+                transition: all 0.2s ease-in;
+                padding: 12px 14px;
+                background: #F8F5D4;
+                border-radius: 50px;
+                margin-right: 12px;
+                margin-bottom: 12px;
+                cursor: pointer;
+
+                &:hover {
+                    background: #F0EBB1;
+                }
+
+                &:active {
+                    background: #0E0F11;
+                    color: #fff;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            .button-filter.active {
+                background: #0E0F11;
+                color: #fff;
+                cursor: default;
+            }
+        }
+
+        .accordion {
+            .question {
+                background: #FFFFFF;
+                border-radius: 40px;
+                width: 100%;
+                padding: 40px;
+
+                &:not(:last-child) {
+                    margin-bottom: 2.5rem;
+                }
+
+                a.toggle {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    //padding: 40px;
+                    transition: all 0.3s ease;
+
+                    .tabs__item__info {
+                        width: 52.5rem;
+
+                        .data {
+                            color: #ACAFB5;
+                            font-weight: 500;
+                            line-height: 19px;
+                            padding-bottom: 12px;
+                        }
+
+                        .name {
+                            font-weight: 600;
+                            font-size: 36px;
+                            line-height: 43px;
+                            color: #DC7148;
+                            padding-bottom: 12px;
+                        }
+
+                        .price {
+                            font-weight: 600;
+                            font-size: 24px;
+                            line-height: 29px;
+                            color: #0E0F11;
+                            padding-bottom: 20px;
+                        }
+
+                        .desk {
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 21px;
+                            //padding-bottom: 20px;
+                        }
+                    }
+
+                    .button {
+                        background: #0E0F11;
+                        width: 11.25rem;
+                        color: #fff;
+                        font-size: 14px;
+                        padding: 11px 0;
+                        margin: 0 auto;
+
+                        &:hover {
+                            background: #F0EBB1;
+                            color: #0E0F11;
+                        }
+                    }
+                }
+
+                a.active {
+                    align-items: flex-start;
+                }
+
+                .inner {
+                    overflow: hidden;
+                    display: none;
+                    width: 52.5rem;
+                    padding-top: 20px;
+
+                    .inner__item {
+                        &:not(:last-child) {
+                            padding-bottom: 20px;
+                        }
+
+                        .heading {
+                            font-weight: 600;
+                            font-size: 14px;
+                            line-height: 21px;
+                            padding-bottom: 12px;
+                        }
+
+                        ul {
+                            list-style-type: disc;
+                            padding: 0 0 0 20px;
+
+                            li {
+                                list-style-type: disc;
+                                font-weight: 400;
+                                font-size: 14px;
+                                line-height: 21px;
+                            }
+                        }
+                    }
+                }
+
+                .button-inner {
+                    display: none;
+                    background: #0E0F11;
+                    //width: 11.25rem;
+                    color: #fff;
+                    font-size: 14px;
+                    padding: 18px 53px 20px 53px;
+                    margin-top: 26px;
+                }
+            }
+        }
+    }
+}
+
+.input-vacancie-name {
+    display: none;
+}
+
+
+@media screen and (max-width: 1368px) {
+    .distribution {
+        padding-top: 55px;
+
+        .distribution__content--info {
+            .tabs__nav {
+                padding-bottom: 25.8px;
+
+                .button-filter {
+                    font-size: 9.96042px;
+                    line-height: 14px;
+                    padding: 8.54px 9.96px;
+                    margin: 0 8.54px 8.54px 0;
+                }
+            }
+
+            .accordion {
+                .question {
+                    padding: 28px;
+                    border-radius: 28.4583px;
+
+                    &:not(:last-child) {
+                        margin-bottom: 1.75rem;
+                    }
+
+                    a.toggle {
+                        align-items: flex-start;
+
+                        .tabs__item__info {
+                            width: 37.351rem;
+
+                            .data {
+                                font-size: 12px;
+                                line-height: 14px;
+                                padding-bottom: 8px;
+                            }
+
+                            .name {
+                                font-size: 25.6125px;
+                                line-height: 32px;
+                                padding-bottom: 8px;
+                            }
+
+                            .price {
+                                font-size: 17.075px;
+                                line-height: 20px;
+                                padding-bottom: 15px;
+                            }
+                        }
+                    }
+
+                    .inner {
+                        padding-top: 14px;
+                        width: 37.351rem;
+
+                        .inner__item {
+                            &:not(:last-child) {
+                                padding-bottom: 14px;
+                            }
+
+                            .heading {
+                                padding-bottom: 8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .distribution {
+        padding-top: 70px;
+
+        .title {
+            padding-bottom: 30px;
+        }
+
+        .distribution__content--info {
+            .tabs__nav {
+                padding-bottom: 18px;
+
+                .button-filter {
+                    font-size: 14px;
+                    line-height: 20px;
+                    padding: 12px 14px;
+                    margin: 0 12px 12px 0
+                }
+            }
+
+            .accordion .question {
+                padding: 40px;
+
+                &:not(:last-child) {
+                    margin-bottom: 2.5rem;
+                }
+
+                a.toggle {
+                    flex-direction: column;
+
+                    .tabs__item__info {
+                        width: 100%;
+
+                        .data {
+                            font-size: 16px;
+                            line-height: 19px;
+                            padding-bottom: 12px;
+                        }
+
+                        .name {
+                            font-size: 36px;
+                            line-height: 43px;
+                            padding-bottom: 12px;
+                        }
+
+                        .price {
+                            font-size: 24px;
+                            line-height: 29px;
+                            padding-bottom: 20px;
+                        }
+                    }
+
+                    .button {
+                        display: none;
+                    }
+                }
+
+                .inner {
+                    padding-top: 20px;
+                    width: 100%;
+
+                    .inner__item {
+                        &:not(:last-child) {
+                            padding-bottom: 20px;
+                        }
+
+                        .heading {
+                            padding-bottom: 12px;
+                        }
+                    }
+                }
+
+                .button-inner {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {}
+
+@media screen and (max-width: 480px) {
+    .distribution {
+        padding-top: 30px;
+
+        .title {
+            padding-bottom: 30px;
+        }
+
+        .distribution__content--info {
+            .tabs__nav {
+                padding-bottom: 22px;
+
+                .button-filter {
+                    font-size: 10px;
+                    line-height: 14px;
+                    margin: 0 8px 8px 0
+                }
+            }
+
+            .accordion .question {
+                padding: 15px;
+                border-radius: 20px;
+
+                &:not(:last-child) {
+                    margin-bottom: 1.25rem;
+                }
+
+                a.toggle {
+                    flex-direction: column;
+
+                    .tabs__item__info {
+                        width: 100%;
+
+                        .data {
+                            font-size: 14px;
+                            line-height: 17px;
+                            padding-bottom: 8px;
+                        }
+
+                        .name {
+                            font-size: 20px;
+                            line-height: 24px;
+                            padding-bottom: 8px;
+                        }
+
+                        .price {
+                            font-size: 16px;
+                            line-height: 19px;
+                            padding-bottom: 12px;
+                        }
+
+                        .desk {
+                            font-size: 12px;
+                            line-height: 18px;
+                        }
+                    }
+
+                    .button {
+                        display: none;
+                    }
+                }
+
+                .inner {
+                    padding-top: 15px;
+
+                    .inner__item {
+                        &:not(:last-child) {
+                            padding-bottom: 15px;
+                        }
+
+                        .heading {
+                            padding-bottom: 15px;
+                        }
+
+                        ul {
+                            padding: 0 0 0 15px;
+
+                            li {
+                                font-size: 12px;
+                                line-height: 18px;
+                            }
+                        }
+                    }
+                }
+
+                .button-inner {
+                    margin: 24px auto 0;
+                    font-size: 16px;
+                    padding: 16px 0 17px 0;
+                }
+            }
+        }
+    }
+}
