@@ -113,18 +113,25 @@
 
 	<script>
 
-		const menuItemForStyles = document.querySelectorAll("a");
+		const nodeList = document.getElementsByTagName("a");
+		const menuItemForStyles = [...nodeList];
 		const closeButton = document.querySelector(".closeMenu");
 		const header = document.querySelector(".header");
 		const headerMenu = document.querySelector(".header-menu__ul>li>ul");
 
-		console.log(menuItemForStyles);
+		headerMenu.style.height = '712px';
+		menuItemForStyles.forEach((el, e) => {
+			el.addEventListener('mouseover', () => {
+				if(el.innerHTML === 'Создание сайтов «под ключ»') {
+					console.log('yep')
+					headerMenu.style.height = '1102px';
+				} else {
+					// headerMenu.style.height = '712px';
+				}
+			});
+		})
+		
 		if (document.documentElement.clientWidth > 1e3) {
-
-			menuItemForStyles.forEach((el, e) => {
-				console.log(el[e].innerText)
-
-			})
 
 			function openSecondLevelMenu(e) {
 				e.addEventListener("mouseover", l => {
