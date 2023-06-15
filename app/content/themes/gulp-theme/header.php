@@ -62,51 +62,34 @@
 
 					<span class="closeMenu"></span>
 				</nav>
+				<nav class="block-mobile-menu">
+					<?php
+						wp_nav_menu( [
+							'menu'            => '', 
+							'container'       => false, 
+							'container_class' => '', 
+							'container_id'    => '',
+							'menu_class'      => 'block-mobile-menu', 
+							'menu_id'         => '',
+							'echo'            => true,
+							'theme_location'  => 'button_menu',
+							'fallback_cb'     => 'wp_page_menu',
+							'before'          => '',
+							'after'           => '',
+							'link_before'     => '',
+							'link_after'      => '',
+							'items_wrap'      => '<ul id="%1$s" class="mobile-menu__ul">%3$s</ul>',
+							'depth'           => 0,
+							'walker'          => '',
+						]);
+					?>
+				</nav>
 				<div class="header__phone">
 					<a href="tel:<?php the_field('telefon', 'option') ?>"><?php the_field('telefon', 'option') ?></a>
 				</div>
 			</div>
 		</div>
 	</header>
-
-
-	<div class="block-mobile-menu">
-		<?php
-			wp_nav_menu( [
-				'menu'            => '', 
-				'container'       => false, 
-				'container_class' => '', 
-				'container_id'    => '',
-				'menu_class'      => 'block-mobile-menu', 
-				'menu_id'         => '',
-				'echo'            => true,
-					'theme_location'  => 'button_menu',
-				'fallback_cb'     => 'wp_page_menu',
-				'before'          => '',
-				'after'           => '',
-				'link_before'     => '',
-				'link_after'      => '',
-				'items_wrap'      => '<ul id="%1$s" class="mobile-menu__ul">%3$s</ul>',
-				'depth'           => 0,
-				'walker'          => '',
-			]);
-		?>
-
-		<ul class="mobile-menu__ul">
-			<li><a href="https://web-f.ru/kejsy/">Портфолио</a></li>
-			<li><a href="https://web-f.ru/ceny/">Цены</a></li>
-			<li><a href="https://web-f.ru/kontakty/">Контакты</a></li>
-			<li><a href="https://web-f.ru/blog/">Блог</a></li>
-		</ul>
-		<ul class="mobile-menu__ul">
-			<li><a href="https://t.me/Web_Focus">
-				<img src="https://web-f.ru/wp-content/uploads/2022/04/telegtam-header.svg"
-						class="contact-link-icon" alt="icon: telegram">Telegram</a></li>
-			<li><a href="https://wa.me/79851938242"> <img
-						src="https://web-f.ru/wp-content/uploads/2022/04/whatsapp-header.svg" class="contact-link-icon"
-						alt="icon: whatsapp">WhatsApp</a></li>
-		</ul>
-	</div>
 
 	<main>
 
@@ -119,12 +102,28 @@
 		const header = document.querySelector(".header");
 		const headerMenu = document.querySelector(".header-menu__ul>li>ul");
 
-		headerMenu.style.height = '712px';
+		if(window.clientWidth >= 1369) {
+			headerMenu.style.height = '712px';
+		} else if (window.clientWidth <= 1368) {
+			headerMenu.style.height = '512px';
+		} else if (window.clientWidth <= 768) {
+			headerMenu.style.height = '1133px';
+		} else if (window.clientWidth <= 320) {
+			headerMenu.style.height = '568px'; 
+		}
 		menuItemForStyles.forEach((el, e) => {
 			el.addEventListener('mouseover', () => {
 				if(el.innerHTML === 'Создание сайтов «под ключ»') {
 					console.log('yep')
-					headerMenu.style.height = '1102px';
+					if(window.clientWidth >= 1369) {
+						headerMenu.style.height = '1102px';
+					} else if (window.clientWidth <= 1368) {
+						headerMenu.style.height = '900px';
+					} else if (window.clientWidth <= 768) {
+						headerMenu.style.height = '1565px';
+					} else if (window.clientWidth <= 320) {
+						headerMenu.style.height = '1317px '; 
+					}
 				} else {
 					// headerMenu.style.height = '712px';
 				}
