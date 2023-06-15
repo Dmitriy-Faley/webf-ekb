@@ -112,22 +112,38 @@
 
 
 	<script>
+
+		const menuItemForStyles = document.querySelectorAll("a");
+		const closeButton = document.querySelector(".closeMenu");
+		const header = document.querySelector(".header");
+		const headerMenu = document.querySelector(".header-menu__ul>li>ul");
+
+		console.log(menuItemForStyles);
 		if (document.documentElement.clientWidth > 1e3) {
+
+			menuItemForStyles.forEach((el, e) => {
+				console.log(el[e].innerText)
+
+			})
+
 			function openSecondLevelMenu(e) {
 				e.addEventListener("mouseover", l => {
-					document.querySelector(".closeMenu").style.display = "block", document.querySelector(".header").classList
-						.add("active_header"), closeMenu(e.closest("ul")), l.target.closest("li>a").classList.add("activeLi"), l
-						.target.closest("li").querySelector("ul") && (l.target.closest("li").querySelector("ul").classList.add(
-							"activeUl"), openThirdLevelMenu())
+					closeButton.style.display = "block", 
+					header.classList.add("active_header"), 
+					closeMenu(e.closest("ul")), 
+					l.target.closest("li>a").classList.add("activeLi"), 
+					l.target.closest("li").querySelector("ul") && (l.target.closest("li").querySelector("ul").classList.add("activeUl"), 
+					openThirdLevelMenu())
 				})
 			}
 
 			function openThirdLevelMenu() {
 				document.querySelectorAll(".activeUl>li>a").forEach(e => {
 					e.addEventListener("mouseover", e => {
-						closeMenu(document.querySelector(".activeUl")), e.target.classList.add("activeLi"), e.target.closest(
-							"li").querySelector("ul") && (e.target.closest("li").querySelector("ul").classList.add(
-							"activeUl"), hoverLastLinks(e.target.closest("li").querySelector("ul")))
+						closeMenu(document.querySelector(".activeUl")), 
+						e.target.classList.add("activeLi"), 
+						e.target.closest("li").querySelector("ul") && (e.target.closest("li").querySelector("ul").classList.add("activeUl"), 
+						hoverLastLinks(e.target.closest("li").querySelector("ul")))
 					})
 				})
 			}
@@ -151,11 +167,11 @@
 			}
 			document.querySelectorAll(".main-header-menu").forEach(e => {
 					e.querySelector("ul") && e.querySelector("ul").classList.add("header-menu__ul")
-				}), document.querySelector(".closeMenu").onclick = (() => {
+				}), closeButton.onclick = (() => {
 					closeMenu(document.querySelector(".activeUl")), closeMenu(document.querySelector(".header-menu__ul")),
-						document.querySelector(".closeMenu").style.display = "none", document.querySelector(".header").classList
+						closeButton.style.display = "none", header.classList
 						.remove("active_header")
-				}), document.querySelector(".closeMenu").style.display = "none", document.querySelector(".header").classList
+				}), closeButton.style.display = "none", header.classList
 				.remove("active_header"), document.querySelectorAll(".header-menu__ul>li>a").forEach(e => {
 					openSecondLevelMenu(e)
 				})
@@ -184,12 +200,12 @@
 			}), document.querySelector(".menu__but-open").onclick = (() => {
 				document.querySelector(".menu__but-open").classList.remove("activeBut"), document.querySelector(
 						".menu__but-close").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
-					.add("activeMenu"), document.querySelector(".header").classList
+					.add("activeMenu"), header.classList
 						.add("active_header")
 			}), document.querySelector(".menu__but-close").onclick = (() => {
 				document.querySelector(".menu__but-close").classList.remove("activeBut"), document.querySelector(
 						".menu__but-open").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
-					.remove("activeMenu"), document.querySelector(".header").classList
+					.remove("activeMenu"), header.classList
 						.remove("active_header")
 			}), document.querySelectorAll(".mobile-menu__ul li").forEach(e => {
 				if (e.querySelector("ul")) {

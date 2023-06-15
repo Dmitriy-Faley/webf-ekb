@@ -89,7 +89,8 @@ Version: 1.0
 
 .header-menu__ul>li>ul {
 	width: 100%;
-	min-height: 721px;
+	height: 721px;
+	max-height: max-content;
 	position: absolute;
 	left: 0;
 	top: 100%;
@@ -178,7 +179,7 @@ Version: 1.0
 	font-weight: 500;
 	font-size: 24px;
 	line-height: 29px;
-	color: rgb(247, 0, 255);
+	color: #0E0F11;
 }
 
 .menu-item-has-children>.sub-menu>.menu-item-has-children>.sub-menu>.menu-item-has-children>a::after {
@@ -199,7 +200,7 @@ Version: 1.0
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 24px;
-	color: rgb(0, 255, 21);
+	color: #0E0F11;
 }
 
 .menu-item-has-children>.sub-menu>.menu-item-has-children>.sub-menu>.menu-item-has-children:hover .sub-menu {
