@@ -108,13 +108,10 @@
 		const closeMobileButton = document.querySelector(".menu__but-close");
 		const secondLevel = document.querySelector(".block-mobile-menu>ul>li>ul");
 		const firstLevelArrow = document.getElementsByTagName("a");
-		const currentLi = document.querySelectorAll(".current-menu-ancestor");
 		const secondLevelArrow = document.querySelectorAll(".mobile-menu__ul>li>ul>li>a");
 		const menuMobile = document.querySelector(".block-mobile-menu");
 
 		const firstArrows = [...firstLevelArrow];
-		const listItem = [...currentLi];
-		console.log(currentLi);
 
 		if(window.clientWidth >= 1369) {
 			headerMenu.style.height = '712px';
@@ -154,7 +151,6 @@
 		})
 		
 		if (document.documentElement.clientWidth > 1e3) {
-
 			function openSecondLevelMenu(e) {
 				e.addEventListener("mouseover", l => {
 					closeButton.style.display = "block", 
@@ -230,6 +226,7 @@
 
 			firstArrows.forEach(el => {
 				el.addEventListener('click', (e) => {
+					e.preventDefault();
 					if(el.innerHTML === "Услуги" ||el.innerHTML === "О компании") {
 						console.log('h')
 						secondLevel.classList.toggle('activeMobileUl');
