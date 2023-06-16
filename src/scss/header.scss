@@ -119,9 +119,6 @@ $purple-color : #F1DDF2;
       }
     }
 
-    .sub-menu:first-child {
-      height: fit-content;
-    }
 
     .header__list {
       .topmenu {
@@ -515,6 +512,68 @@ $purple-color : #F1DDF2;
           line-height: 28px;
         }
       }
+
+
+      .sub-menu {
+
+        li {
+          margin-bottom: 40px;
+          padding: 0;
+          color: #0E0F11;
+  
+          a {
+            color: #0E0F11;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 120%;
+            margin-bottom: 0;
+            padding: 0;
+          }
+  
+          a.activeLi {
+            color: #DC7148;
+          }
+  
+          .sub-menu {
+            max-width: 565px;
+  
+            li {
+              margin:  0 0 20px;
+  
+              a {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 120%; 
+                color: #0E0F11;
+              }
+  
+              a.activeLi {
+                color: #DC7148;
+              }
+  
+              .sub-menu{
+  
+                li {
+                  margin-bottom: 8px;
+                  color: #0E0F11;
+  
+                  a {
+                    min-width: 260px;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 150%;
+                    color: #ACAFB5;
+                  }
+  
+                  a.activeLi {
+                    color: #DC7148;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -526,6 +585,74 @@ $purple-color : #F1DDF2;
     .header__menu {
       .menu__but-open {
         width: 31px;
+      }
+
+      .mobile-menu__ul {
+        width: 100%;
+      }
+
+      .sub-menu {
+        width: 150%;
+
+        li {
+          width: 100%;
+          margin-bottom: 20px;
+          padding: 0;
+          color: #0E0F11;
+  
+          a {
+            width: 182px;
+            color: #0E0F11;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 120%;
+            margin-bottom: 0;
+            padding: 0;
+          }
+  
+          a.activeLi {
+            color: #DC7148;
+          }
+  
+          .sub-menu {
+            max-width: 565px;
+  
+            li {
+              margin:  0 0 20px;
+  
+              a {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 120%;
+                color: #0E0F11;
+              }
+  
+              a.activeLi {
+                color: #DC7148;
+              }
+  
+              .sub-menu{
+  
+                li {
+                  margin-bottom: 8px;
+                  color: #0E0F11;
+  
+                  a {
+                    min-width: 260px;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 150%;
+                    color: #ACAFB5;
+                  }
+  
+                  a.activeLi {
+                    color: #DC7148;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
 
       .menu__but-open span,

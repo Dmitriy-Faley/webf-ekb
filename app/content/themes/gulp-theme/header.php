@@ -102,15 +102,30 @@
 		const header = document.querySelector(".header");
 		const headerMenu = document.querySelector(".header-menu__ul>li>ul");
 
+
+		const mobilHeaderMenu = document.querySelector(".mobile-menu__ul>li>ul");
+		const openMobileMenu = document.querySelector(".menu__but-open");
+		const closeMobileButton = document.querySelector(".menu__but-close");
+		const secondLevel = document.querySelector(".block-mobile-menu>ul>li>ul");
+		const firstLevelArrow = document.getElementsByTagName("a");
+		const currentLi = document.querySelectorAll(".current-menu-ancestor");
+		const secondLevelArrow = document.querySelectorAll(".mobile-menu__ul>li>ul>li>a");
+		const menuMobile = document.querySelector(".block-mobile-menu");
+
+		const firstArrows = [...firstLevelArrow];
+		const listItem = [...currentLi];
+		console.log(currentLi);
+
 		if(window.clientWidth >= 1369) {
 			headerMenu.style.height = '712px';
 		} else if (window.clientWidth <= 1368) {
 			headerMenu.style.height = '512px';
 		} else if (window.clientWidth <= 768) {
-			headerMenu.style.height = '1133px';
+			mobilHeaderMenu.style.height = '1133px';
 		} else if (window.clientWidth <= 320) {
-			headerMenu.style.height = '568px'; 
+			mobilHeaderMenu.style.height = '100vh'; 
 		}
+
 		menuItemForStyles.forEach((el, e) => {
 			el.addEventListener('mouseover', () => {
 				if(el.innerHTML === 'Создание сайтов «под ключ»') {
@@ -120,12 +135,20 @@
 					} else if (window.clientWidth <= 1368) {
 						headerMenu.style.height = '900px';
 					} else if (window.clientWidth <= 768) {
-						headerMenu.style.height = '1565px';
+						mobilHeaderMenu.style.height = '1565px';
 					} else if (window.clientWidth <= 320) {
-						headerMenu.style.height = '1317px '; 
+						mobilHeaderMenu.style.height = '1317px '; 
 					}
 				} else {
-					// headerMenu.style.height = '712px';
+					if(window.clientWidth >= 1369) {
+						headerMenu.style.height = '712px';
+					} else if (window.clientWidth <= 1368) {
+						headerMenu.style.height = '512px';
+					} else if (window.clientWidth <= 768) {
+						mobilHeaderMenu.style.height = '1133px';
+					} else if (window.clientWidth <= 320) {
+						mobilHeaderMenu.style.height = '100vh'; 
+					}
 				}
 			});
 		})
@@ -182,42 +205,75 @@
 					openSecondLevelMenu(e)
 				})
 		} else {
-			function openMobileMenu() {
-				let e;
-				document.addEventListener("click", l => {
-					if (l.target == e) return closeMobileMenu(l.target.closest("ul")), openMobileMenu();
-					e = l.target, closeMobileMenu(l.target.closest("ul")), l.target.closest("li") && (l.target.closest("li")
-						.classList.add("activeMobileLI"), l.target.closest("li").querySelector("a").classList.add(
-							"activeMobileLI"), l.target.closest("li").querySelector("ul") && l.target.closest("li").querySelector(
-							"ul").classList.add("activeMobileUl"))
-				})
-			}
+			openMobileMenu.addEventListener('click', (e) => {
+				menuMobile.classList.add('activeMenu');
 
-			function closeMobileMenu(e) {
-				e && (e.querySelectorAll("li>a").forEach(e => {
-					e.classList.contains("activeMobileLI") && (e.closest("li").classList.remove("activeMobileLI"), e.classList
-						.remove("activeMobileLI"))
-				}), e.querySelectorAll("li>ul").forEach(e => {
-					e.classList.contains("activeMobileUl") && e.classList.remove("activeMobileUl")
-				}))
-			}
-			document.querySelectorAll(".block-mobile-menu").forEach(e => {
-				e.querySelector("ul") && e.querySelector("ul").classList.add("mobile-menu__ul")
-			}), document.querySelector(".menu__but-open").onclick = (() => {
-				document.querySelector(".menu__but-open").classList.remove("activeBut"), document.querySelector(
-						".menu__but-close").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
-					.add("activeMenu"), header.classList
-						.add("active_header")
-			}), document.querySelector(".menu__but-close").onclick = (() => {
-				document.querySelector(".menu__but-close").classList.remove("activeBut"), document.querySelector(
-						".menu__but-open").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
-					.remove("activeMenu"), header.classList
-						.remove("active_header")
-			}), document.querySelectorAll(".mobile-menu__ul li").forEach(e => {
-				if (e.querySelector("ul")) {
-					let l = document.createElement("span");
-					l.classList.add("mobileArrow"), e.append(l)
+				if(menuMobile.classList.contains('activeMenu')) {
+					openMobileMenu.style.display = 'none';
+					closeMobileButton.style.display = 'block';
+					menuMobile.style.transition = 'all 0.7s ease';
+					document.querySelector(".header").style.backgroundColor = '#FFFFFF';
+					document.querySelector(".header").style.transition = '';
 				}
-			}), openMobileMenu()
+			})
+
+			closeMobileButton.addEventListener('click', (e) => {
+				menuMobile.classList.remove('activeMenu');
+
+				if(!menuMobile.classList.contains('activeMenu')) {
+					openMobileMenu.style.display = 'block';
+					closeMobileButton.style.display = 'none';
+					document.querySelector(".header").style.backgroundColor = '';
+					document.querySelector(".header").style.transition = '';
+				}
+			})
+
+			firstArrows.forEach(el => {
+				el.addEventListener('click', (e) => {
+					if(el.innerHTML === "Услуги" ||el.innerHTML === "О компании") {
+						console.log('h')
+						secondLevel.classList.toggle('activeMobileUl');
+						el.classList.toggle('activeMobilA');
+					}
+				})
+			})
+
+			// function openMobileMenu() {
+			// 	let e;
+			// 	document.addEventListener("click", l => {
+			// 		if (l.target == e) return closeMobileMenu(l.target.closest("ul")), openMobileMenu();
+			// 		e = l.target, closeMobileMenu(l.target.closest("ul")), l.target.closest("li") && (l.target.closest("li")
+			// 			.classList.add("activeMobileLI"), l.target.closest("li").querySelector("a").classList.add(
+			// 				"activeMobileLI"), l.target.closest("li").querySelector("ul") && l.target.closest("li").querySelector(
+			// 				"ul").classList.add("activeMobileUl"))
+			// 	})
+			// }
+
+			// function closeMobileMenu(e) {
+			// 	e && (e.querySelectorAll("li>a").forEach(e => {
+			// 		e.classList.contains("activeMobileLI") && (e.closest("li").classList.remove("activeMobileLI"), e.classList
+			// 			.remove("activeMobileLI"))
+			// 	}), e.querySelectorAll("li>ul").forEach(e => {
+			// 		e.classList.contains("activeMobileUl") && e.classList.remove("activeMobileUl")
+			// 	}))
+			// }
+			// document.querySelectorAll(".block-mobile-menu").forEach(e => {
+			// 	e.querySelector("ul") && e.querySelector("ul").classList.add("mobile-menu__ul")
+			// }), document.querySelector(".menu__but-open").onclick = (() => {
+			// 	document.querySelector(".menu__but-open").classList.remove("activeBut"), document.querySelector(
+			// 			".menu__but-close").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
+			// 		.add("activeMenu"), header.classList
+			// 			.add("active_header")
+			// }), document.querySelector(".menu__but-close").onclick = (() => {
+			// 	document.querySelector(".menu__but-close").classList.remove("activeBut"), document.querySelector(
+			// 			".menu__but-open").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
+			// 		.remove("activeMenu"), header.classList
+			// 			.remove("active_header")
+			// }), document.querySelectorAll(".mobile-menu__ul li").forEach(e => {
+			// 	if (e.querySelector("ul")) {
+			// 		let l = document.createElement("span");
+			// 		l.classList.add("mobileArrow"), e.append(l)
+			// 	}
+			// }), openMobileMenu()
 		}
 	</script>
