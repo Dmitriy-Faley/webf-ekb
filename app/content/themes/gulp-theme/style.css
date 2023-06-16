@@ -408,8 +408,7 @@ Version: 1.0
 	}
 	
 	.mobile-menu__ul li>a.activeMobileLI {
-		/* color: #dc7148; */
-		color: #0E0F11;
+		color: #dc7148;
 	}
 	
 	.mobile-menu__ul li>a.activeMobileLI::after {

@@ -117,10 +117,6 @@
 			headerMenu.style.height = '712px';
 		} else if (window.clientWidth <= 1368) {
 			headerMenu.style.height = '512px';
-		} else if (window.clientWidth <= 768) {
-			mobilHeaderMenu.style.height = '1133px';
-		} else if (window.clientWidth <= 320) {
-			mobilHeaderMenu.style.height = '100vh'; 
 		}
 
 		menuItemForStyles.forEach((el, e) => {
@@ -131,21 +127,14 @@
 						headerMenu.style.height = '1102px';
 					} else if (window.clientWidth <= 1368) {
 						headerMenu.style.height = '900px';
-					} else if (window.clientWidth <= 768) {
-						mobilHeaderMenu.style.height = '1565px';
-					} else if (window.clientWidth <= 320) {
-						mobilHeaderMenu.style.height = '1317px '; 
-					}
+					} 
 				} else {
-					if(window.clientWidth >= 1369) {
-						headerMenu.style.height = '712px';
-					} else if (window.clientWidth <= 1368) {
-						headerMenu.style.height = '512px';
-					} else if (window.clientWidth <= 768) {
-						mobilHeaderMenu.style.height = '1133px';
-					} else if (window.clientWidth <= 320) {
-						mobilHeaderMenu.style.height = '100vh'; 
-					}
+					// if(window.clientWidth >= 1369) {
+					// 	headerMenu.style.height = '712px';
+					// } else if (window.clientWidth <= 1368) {
+					// 	headerMenu.style.height = '512px';
+					// } 
+					
 				}
 			});
 		})
