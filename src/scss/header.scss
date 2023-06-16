@@ -515,9 +515,11 @@ $purple-color : #F1DDF2;
 
 
       .sub-menu {
+        padding: 40px 0 0;
 
         li {
-          margin-bottom: 40px;
+          margin: 0;
+          margin-bottom: 24px;
           padding: 0;
           color: #0E0F11;
   
@@ -593,10 +595,12 @@ $purple-color : #F1DDF2;
 
       .sub-menu {
         width: 150%;
+        padding: 20px 0 0;
 
         li {
           width: 100%;
           margin-bottom: 20px;
+          margin-left: 16px;
           padding: 0;
           color: #0E0F11;
   

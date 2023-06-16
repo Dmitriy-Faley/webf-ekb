@@ -200,7 +200,7 @@
 				.remove("active_header"), document.querySelectorAll(".header-menu__ul>li>a").forEach(e => {
 					openSecondLevelMenu(e)
 				})
-		} else {
+		} else if(window.innerWidth <= 768 && window.innerWidth >=320) {
 			openMobileMenu.addEventListener('click', (e) => {
 				menuMobile.classList.add('activeMenu');
 
@@ -233,6 +233,10 @@
 						el.classList.toggle('activeMobilA');
 					}
 				})
+			})
+
+			window.addEventListener('click', (e) => {
+				console.log(e.target);
 			})
 
 			// function openMobileMenu() {

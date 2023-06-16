@@ -338,6 +338,20 @@ Version: 1.0
 		margin: 7px 0;
 		margin-left: 16px;
 	}
+
+	.mobile-menu__ul>li>a.activeMobilA {
+		margin-left: 58px;
+		padding-left: 0;
+		color:#dc7148;
+	}
+
+	.mobile-menu__ul>li>a.activeMobilA::after {
+		content: "";
+		display: inline-block;
+		background: url("/content/themes/gulp-theme/assets/img/icons/mobile-big-active.svg");
+		margin: 7px 0;
+		margin-left: -178px;
+	}
 	
 	.mobile-menu__ul>li:nth-last-child(-n+3)>a::after {
 		display: none !important;
