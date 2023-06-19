@@ -18,12 +18,16 @@ $purple-color : #F1DDF2;
     position: relative;
 
     .menu__but-open {
-      //display: none;
+      display: none;
       position: relative;
       width: 50px;
       z-index: 99;
       transition: all 0.3s ease-in-out;
       margin-left: 29px;
+    }
+
+    .closeMenu {
+      display: none;
     }
 
     .menu__but-open span,
@@ -115,9 +119,9 @@ $purple-color : #F1DDF2;
         }
       }
 
-      li.current-menu-item, li.current_page_item {
-        color: #DC7148;
-      }
+      // li.current-menu-item, li.current_page_item {
+      //   color: #DC7148;
+      // }
     }
 
 
@@ -206,34 +210,6 @@ $purple-color : #F1DDF2;
 
   .one .submenu {
     display: none;
-  }
-
-  .one ul li {
-    .arrow {
-      position: relative;
-      vertical-align: middle;
-      display: inline-block;
-      transform: rotate(0deg);
-      transition: transform .2s;
-      margin-left: 6px;
-    }
-
-    &:hover {
-      .submenu {
-        display: inline-block;
-
-        li a:hover {
-          background: #6D85FF;
-          color: $default-color;
-        }
-      }
-
-      .arrow {
-        transform: rotate(-180deg);
-        filter: grayscale(1);
-      }
-    }
-
   }
 }
 

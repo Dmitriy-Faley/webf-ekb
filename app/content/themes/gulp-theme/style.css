@@ -57,11 +57,6 @@ Version: 1.0
 
 
 /*New Header Menu for PK*/
-
-.menu__but-open {
-	display: none;
-}
-
 .block-mobile-menu {
 	display: none;
 }
@@ -233,13 +228,6 @@ Version: 1.0
 	padding-top: 20px;
 }
 
-.menu-item-has-children>.sub-menu>.menu-item-has-children>.sub-menu>.menu-item-has-children>.sub-menu a {
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 20px;
-	color: #0E0F11;
-}
-
 .menu-item-has-children>.sub-menu>.menu-item-has-children>.sub-menu>.menu-item-has-children:hover .sub-menu {
 	display: block;
 }
@@ -253,11 +241,6 @@ Version: 1.0
 	color: #dc7148;
 	transition: all 0.2s ease;
 }
-
-/* .main-header-menu .current-menu-ancestor>a,
-.main-header-menu .current-menu-parent>a {
-	color: #dc7148 !important;
-} */
 
 .closeMenu {
 	position: absolute;
@@ -675,6 +658,7 @@ Version: 1.0
 	
 	.mobile-menu__ul>li>ul>li>ul>li {
 		padding: 4px;
+		color: #ACAFB5;
 	}
 	
 	.mobile-menu__ul li>.mobileArrow {
