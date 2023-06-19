@@ -84,16 +84,32 @@ Version: 1.0
 
 .header-menu__ul a {
 	text-decoration: none;
-	color: #000;
+	color: #0E0F11;
+}
+
+.header-menu__ul a.no-switch {
+	pointer-events: none;
 }
 
 .header-menu__ul li {
 	list-style-type: none;
+	cursor: pointer;
+}
+
+.header-menu__ul li>a {
+	color: #0E0F11;
+}
+
+.header-menu__ul li:hover>a {
+	color: #dc7148;
+}
+
+.header-menu__ul li.activeLi>a {
+	color:#dc7148;
 }
 
 .header-menu__ul>li>a {
 	box-sizing: border-box;
-	color: #000;
 	text-decoration: none;
 	transition: all 0.2s ease;
 	font-size: 16px;
@@ -137,7 +153,7 @@ Version: 1.0
 .header-menu__ul>li>ul>li>ul {
 	position: absolute;
 	top: 80px;
-	left: 45%;
+	left: 53%;
 	z-index: 5;
 }
 
@@ -171,18 +187,29 @@ Version: 1.0
 	margin-left: 8px;
 }
 
+.header-menu__ul>li>a.activeLi::after {
+	background: url("/content/themes/gulp-theme/assets/img/icons/active-header-arrow.svg");
+	background-repeat: no-repeat;
+}
+
 .header-menu__ul>li:nth-last-child(-n+3)>a::after {
 	display: none !important;
 }
 
-.menu-item-has-children>a::after {
+.header-menu__ul>li>ul>li>a::after {
 	content: "";
 	display: inline-block;
 	background: url("/content/themes/gulp-theme/assets/img/icons/arrow-sub-menu.svg");
 	background-repeat: no-repeat;
 	width: 42px;
 	height: 12px;
+	margin: 7px 0;
 	margin-left: 30px;
+}
+
+.header-menu__ul>li>ul>li>a.activeLi::after {
+	background: url("/content/themes/gulp-theme/assets/img/icons/pc-active-sub-arrow.svg");
+	background-repeat: no-repeat;
 }
 
 .menu-item-has-children>.sub-menu>.menu-item-has-children>.sub-menu>li>a {
@@ -192,7 +219,7 @@ Version: 1.0
 	color: #0E0F11;
 }
 
-/* .menu-item-has-children>.sub-menu>.menu-item-has-children>.sub-menu>.menu-item-has-children>a::after {
+.header-menu__ul>li>ul>li>ul>li>a::after {
 	content: "";
 	display: inline-block;
 	background: url("/content/themes/gulp-theme/assets/img/icons/arrow-sub-sub-menu.svg");
@@ -200,7 +227,12 @@ Version: 1.0
 	width: 14px;
 	height: 12px;
 	margin-left: 16px;
-} */
+}
+
+.header-menu__ul>li>ul>li>ul>li>a.activeLi::after {
+	background: url("/content/themes/gulp-theme/assets/img/icons/pc-active-sub-sub-arrow.svg");
+	background-repeat: no-repeat;
+}
 
 .menu-item-has-children>.sub-menu>.menu-item-has-children>.sub-menu>.menu-item-has-children>.sub-menu {
 	padding-top: 20px;
@@ -227,10 +259,10 @@ Version: 1.0
 	transition: all 0.2s ease;
 }
 
-.main-header-menu .current-menu-ancestor>a,
+/* .main-header-menu .current-menu-ancestor>a,
 .main-header-menu .current-menu-parent>a {
 	color: #dc7148 !important;
-}
+} */
 
 .closeMenu {
 	position: absolute;

@@ -98,11 +98,16 @@
 
 		const nodeList = document.getElementsByTagName("a");
 		const menuItemForStyles = [...nodeList];
+
+		//Laptop & PC
 		const closeButton = document.querySelector(".closeMenu");
 		const header = document.querySelector(".header");
 		const headerMenu = document.querySelector(".header-menu__ul>li>ul");
+		const subArrow = document.querySelectorAll(".mobile-menu__ul>li>ul>li>ul>li>a");
 
+		const subLinks = [...subArrow];
 
+		//Tablet & Mobile
 		const mobilHeaderMenu = document.querySelector(".mobile-menu__ul>li>ul");
 		const openMobileMenu = document.querySelector(".menu__but-open");
 		const closeMobileButton = document.querySelector(".menu__but-close");
@@ -126,28 +131,10 @@
 		} else if (window.clientWidth <= 1368) {
 			headerMenu.style.height = '512px';
 		}
-
-		menuItemForStyles.forEach((el, e) => {
-			el.addEventListener('mouseover', () => {
-				if(el.innerHTML === 'Создание сайтов «под ключ»') {
-					console.log('yep')
-					if(window.clientWidth >= 1369) {
-						headerMenu.style.height = '1102px';
-					} else if (window.clientWidth <= 1368) {
-						headerMenu.style.height = '900px';
-					} 
-				} else {
-					// if(window.clientWidth >= 1369) {
-					// 	headerMenu.style.height = '712px';
-					// } else if (window.clientWidth <= 1368) {
-					// 	headerMenu.style.height = '512px';
-					// } 
-					
-				}
-			});
-		})
 		
 		if (document.documentElement.clientWidth > 1e3) {
+			closeButton.style.display = 'none';
+
 			function openSecondLevelMenu(e) {
 				e.addEventListener("mouseover", l => {
 					closeButton.style.display = "block", 
@@ -157,6 +144,7 @@
 					l.target.closest("li").querySelector("ul") && (l.target.closest("li").querySelector("ul").classList.add("activeUl"), 
 					openThirdLevelMenu())
 				})
+				closeButton.style.display = 'none';
 			}
 
 			function openThirdLevelMenu() {
@@ -165,7 +153,7 @@
 						closeMenu(document.querySelector(".activeUl")), 
 						e.target.classList.add("activeLi"), 
 						e.target.closest("li").querySelector("ul") && (e.target.closest("li").querySelector("ul").classList.add("activeUl"), 
-						hoverLastLinks(e.target.closest("li").querySelector("ul")))
+						hoverLastLinks(e.target.closest("li").querySelector("ul")));
 					})
 				})
 			}
@@ -183,7 +171,11 @@
 					l.addEventListener("mouseover", l => {
 						e.querySelectorAll("li>a").forEach(e => {
 							e.classList.contains("activeLi") && e.classList.remove("activeLi")
-						}), l.target.classList.add("activeLi")
+						}), l.target.classList.add("activeLi");
+							headerMenu.style.height = '1102px';
+					})
+					l.addEventListener("mouseleave", l => {
+							headerMenu.style.height = '712px';
 					})
 				})
 			}
@@ -197,6 +189,18 @@
 				.remove("active_header"), document.querySelectorAll(".header-menu__ul>li>a").forEach(e => {
 					openSecondLevelMenu(e)
 				})
+
+			subLinks.forEach(el => {
+				el.addEventListener('click', (e) => {
+					e.preventDefault();
+					el.classList.add('no-switch');
+					if(window.clientWidth >= 1369) {
+						headerMenu.style.height = '1102px';
+					} else if (window.clientWidth <= 1368) {
+						headerMenu.style.height = '900px';
+					} 
+				})
+			})
 		} else if(window.innerWidth <= 768 && window.innerWidth >=320) {
 			openMobileMenu.addEventListener('click', (e) => {
 				menuMobile.classList.add('activeMenu');
@@ -259,43 +263,5 @@
 			window.addEventListener('click', (e) => {
 				console.log(e.target);
 			})
-
-			// function openMobileMenu() {
-			// 	let e;
-			// 	document.addEventListener("click", l => {
-			// 		if (l.target == e) return closeMobileMenu(l.target.closest("ul")), openMobileMenu();
-			// 		e = l.target, closeMobileMenu(l.target.closest("ul")), l.target.closest("li") && (l.target.closest("li")
-			// 			.classList.add("activeMobileLI"), l.target.closest("li").querySelector("a").classList.add(
-			// 				"activeMobileLI"), l.target.closest("li").querySelector("ul") && l.target.closest("li").querySelector(
-			// 				"ul").classList.add("activeMobileUl"))
-			// 	})
-			// }
-
-			// function closeMobileMenu(e) {
-			// 	e && (e.querySelectorAll("li>a").forEach(e => {
-			// 		e.classList.contains("activeMobileLI") && (e.closest("li").classList.remove("activeMobileLI"), e.classList
-			// 			.remove("activeMobileLI"))
-			// 	}), e.querySelectorAll("li>ul").forEach(e => {
-			// 		e.classList.contains("activeMobileUl") && e.classList.remove("activeMobileUl")
-			// 	}))
-			// }
-			// document.querySelectorAll(".block-mobile-menu").forEach(e => {
-			// 	e.querySelector("ul") && e.querySelector("ul").classList.add("mobile-menu__ul")
-			// }), document.querySelector(".menu__but-open").onclick = (() => {
-			// 	document.querySelector(".menu__but-open").classList.remove("activeBut"), document.querySelector(
-			// 			".menu__but-close").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
-			// 		.add("activeMenu"), header.classList
-			// 			.add("active_header")
-			// }), document.querySelector(".menu__but-close").onclick = (() => {
-			// 	document.querySelector(".menu__but-close").classList.remove("activeBut"), document.querySelector(
-			// 			".menu__but-open").classList.add("activeBut"), document.querySelector(".block-mobile-menu").classList
-			// 		.remove("activeMenu"), header.classList
-			// 			.remove("active_header")
-			// }), document.querySelectorAll(".mobile-menu__ul li").forEach(e => {
-			// 	if (e.querySelector("ul")) {
-			// 		let l = document.createElement("span");
-			// 		l.classList.add("mobileArrow"), e.append(l)
-			// 	}
-			// }), openMobileMenu()
 		}
 	</script>
