@@ -107,11 +107,19 @@
 		const openMobileMenu = document.querySelector(".menu__but-open");
 		const closeMobileButton = document.querySelector(".menu__but-close");
 		const secondLevel = document.querySelector(".block-mobile-menu>ul>li>ul");
+		const thirdLevel = document.querySelector(".mobile-menu__ul>li>ul>li>ul");
+		const fourthLevel = document.querySelector(".mobile-menu__ul>li>ul>li>ul>li>ul");
+		const subSecondLevel = document.querySelectorAll(".block-mobile-menu>ul>li>ul")[1];
 		const firstLevelArrow = document.getElementsByTagName("a");
 		const secondLevelArrow = document.querySelectorAll(".mobile-menu__ul>li>ul>li>a");
+		const thirdLevelArrow = document.querySelectorAll(".mobile-menu__ul>li>ul>li>ul>li>a");
 		const menuMobile = document.querySelector(".block-mobile-menu");
 
 		const firstArrows = [...firstLevelArrow];
+		const secondArrows = [...secondLevelArrow];
+		const thirdArrows = [...thirdLevelArrow];
+
+		console.log(fourthLevel);
 
 		if(window.clientWidth >= 1369) {
 			headerMenu.style.height = '712px';
@@ -196,7 +204,7 @@
 				if(menuMobile.classList.contains('activeMenu')) {
 					openMobileMenu.style.display = 'none';
 					closeMobileButton.style.display = 'block';
-					menuMobile.style.transition = 'all 0.7s ease';
+					menuMobile.style.transition = 'all 0.7s';
 					document.querySelector(".header").style.backgroundColor = '#FFFFFF';
 					document.querySelector(".header").style.transition = '';
 				}
@@ -216,10 +224,34 @@
 			firstArrows.forEach(el => {
 				el.addEventListener('click', (e) => {
 					e.preventDefault();
-					if(el.innerHTML === "Услуги" ||el.innerHTML === "О компании") {
-						console.log('h')
+					if(el.innerHTML === "Услуги") {
 						secondLevel.classList.toggle('activeMobileUl');
 						el.classList.toggle('activeMobilA');
+					}
+
+					if(el.innerHTML === "О компании") {
+						subSecondLevel.classList.toggle('activeMobileUl');
+						el.classList.toggle('activeMobilALarge');
+					}
+				})
+			});
+
+			secondArrows.forEach(el => {
+				el.addEventListener('click', (e) => {
+					thirdLevel.classList.toggle('activeMobileUl');
+					el.classList.toggle('activeMobilA');
+				})
+			});
+
+			thirdArrows.forEach(el => {
+				el.addEventListener('click', (e) => {
+					fourthLevel.classList.toggle('activeMobileUl');
+					el.classList.toggle('activeMobilA');
+
+					if(!fourthLevel.classList.contains('activeMobileUl')) {
+						fourthLevel.style.display = 'none';
+					} else {
+						fourthLevel.style.display = 'block';
 					}
 				})
 			})

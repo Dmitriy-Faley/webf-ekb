@@ -9,6 +9,7 @@ $purple-color : #F1DDF2;
   position: relative;
   padding-top: 50px;
   padding-bottom: 51px;
+  transition: none;
 
   .header__menu {
     display: flex;
@@ -513,7 +514,6 @@ $purple-color : #F1DDF2;
         }
       }
 
-
       .sub-menu {
         padding: 40px 0 0;
 
@@ -524,7 +524,6 @@ $purple-color : #F1DDF2;
           color: #0E0F11;
   
           a {
-            color: #0E0F11;
             font-weight: 600;
             font-size: 24px;
             line-height: 120%;
@@ -532,11 +531,12 @@ $purple-color : #F1DDF2;
             padding: 0;
           }
   
-          a.activeLi {
+          a.activeMobilA {
             color: #DC7148;
           }
   
           .sub-menu {
+            padding: 30px 0 0;
             max-width: 565px;
   
             li {
@@ -545,16 +545,18 @@ $purple-color : #F1DDF2;
               a {
                 font-weight: 500;
                 font-size: 16px;
-                line-height: 120%; 
-                color: #0E0F11;
+                line-height: 20px; 
               }
-  
-              a.activeLi {
-                color: #DC7148;
+    
+              a.activeMobilA {
+                color:  #0E0F11;
+                text-decoration: underline;
               }
-  
-              .sub-menu{
-  
+
+              .sub-menu {
+                padding: 20px 0 0;
+                margin: 0;
+
                 li {
                   margin-bottom: 8px;
                   color: #0E0F11;
@@ -565,10 +567,6 @@ $purple-color : #F1DDF2;
                     font-size: 16px;
                     line-height: 150%;
                     color: #ACAFB5;
-                  }
-  
-                  a.activeLi {
-                    color: #DC7148;
                   }
                 }
               }
@@ -620,6 +618,7 @@ $purple-color : #F1DDF2;
   
           .sub-menu {
             max-width: 565px;
+            padding: 20px 0 0;
   
             li {
               margin:  0 0 20px;
@@ -638,7 +637,7 @@ $purple-color : #F1DDF2;
               .sub-menu{
   
                 li {
-                  margin-bottom: 8px;
+                  margin-bottom: 12px;
                   color: #0E0F11;
   
                   a {
