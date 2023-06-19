@@ -103,9 +103,6 @@
 		const closeButton = document.querySelector(".closeMenu");
 		const header = document.querySelector(".header");
 		const headerMenu = document.querySelector(".header-menu__ul>li>ul");
-		const subArrow = document.querySelectorAll(".mobile-menu__ul>li>ul>li>ul>li>a");
-
-		const subLinks = [...subArrow];
 
 		//Tablet & Mobile
 		const mobilHeaderMenu = document.querySelector(".mobile-menu__ul>li>ul");
@@ -124,7 +121,9 @@
 		const secondArrows = [...secondLevelArrow];
 		const thirdArrows = [...thirdLevelArrow];
 
-		console.log(fourthLevel);
+		// window.addEventListener('mouseover', (e) => {
+		// 	console.log(e.target);
+		// })
 
 		if(window.clientWidth >= 1369) {
 			headerMenu.style.height = '712px';
@@ -142,9 +141,8 @@
 					closeMenu(e.closest("ul")), 
 					l.target.closest("li>a").classList.add("activeLi"), 
 					l.target.closest("li").querySelector("ul") && (l.target.closest("li").querySelector("ul").classList.add("activeUl"), 
-					openThirdLevelMenu())
+					openThirdLevelMenu());
 				})
-				closeButton.style.display = 'none';
 			}
 
 			function openThirdLevelMenu() {
@@ -190,15 +188,11 @@
 					openSecondLevelMenu(e)
 				})
 
-			subLinks.forEach(el => {
-				el.addEventListener('click', (e) => {
-					e.preventDefault();
-					el.classList.add('no-switch');
-					if(window.clientWidth >= 1369) {
-						headerMenu.style.height = '1102px';
-					} else if (window.clientWidth <= 1368) {
-						headerMenu.style.height = '900px';
-					} 
+			menuItemForStyles.forEach(el => {
+				el.addEventListener('mouseover', (e) => {
+					if(el.innerHTML === "Портфолио" || el.innerHTML === "Контакты" || el.innerHTML === "Блог") {
+						closeButton.style.display = 'none';
+					}
 				})
 			})
 		} else if(window.innerWidth <= 768 && window.innerWidth >=320) {
@@ -258,10 +252,6 @@
 						fourthLevel.style.display = 'block';
 					}
 				})
-			})
-
-			window.addEventListener('click', (e) => {
-				console.log(e.target);
 			})
 		}
 	</script>
