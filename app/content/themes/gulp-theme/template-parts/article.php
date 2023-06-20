@@ -37,16 +37,16 @@ get_header();
                             <img src="/content/themes/gulp-theme/assets/img/icons/send-icon.svg" alt="send">
                             <ul>
                                 <li>
-                                    <img src="" alt="twitter">
+                                    <img src="/content/themes/gulp-theme/assets/img/icons/twitt-icon.svg" alt="twitter">
                                 </li>
                                 <li>
-                                    <img src="" alt="linkedIn">
+                                    <img src="/content/themes/gulp-theme/assets/img/icons/linked-icon.svg" alt="linkedIn">
                                 </li>
                                 <li>
-                                    <img src="" alt="telegram">
+                                    <img src="/content/themes/gulp-theme/assets/img/icons/telegram-icon.svg" alt="telegram">
                                 </li>
                                 <li>
-                                    <img src="" alt="link">
+                                    <img src="/content/themes/gulp-theme/assets/img/icons/link-icon.svg" alt="link">
                                 </li>
                             </ul>
                         </div>
