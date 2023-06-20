@@ -1,6 +1,7 @@
 <?php
 /**
 *Template name: Шаблон статьи
+*Template Post Type: post
 */
 get_header();
 ?>
@@ -8,21 +9,23 @@ get_header();
 <section class="article">
         <div class="article__content">
             <div class="article__img">
-                <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article1.png" alt="shopify">
+                <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article-img.png" alt="shopify">
             </div>
             <div class="article__content-wrapper">
                 <div class="content-table">
                     <h3>Содержание</h3>
-                    <a href="#one">Быстрая и простая настройка и использование</a>
-                    <a href="#two">Никаких забот с техникой</a>
-                    <a href="#three">Безопасность и надежность</a>
-                    <a href="#four">Круглосуточная поддержка клиентов</a>
-                    <a href="#five">Готовность к мобильным устройствам</a>
-                    <a href="#six">Настраиваемый</a>
-                    <a href="#seven">Для этого есть приложение</a>
-                    <a href="#eight">Инструменты для SEO и маркетинга</a>
-                    <a href="#nine">Восстановление брошенной корзины</a>
-                    <a href="#ten">Собственный платежный шлюз</a>
+                    <ul>
+                        <li class="active"><a href="#one">Быстрая и простая настройка и использование</a></li>
+                        <li><a href="#two">Никаких забот с техникой</a></li>
+                        <li><a href="#three">Безопасность и надежность</a></li>
+                        <li><a href="#four">Круглосуточная поддержка клиентов</a></li>
+                        <li><a href="#five">Готовность к мобильным устройствам</a></li>
+                        <li><a href="#six">Настраиваемый</a></li>
+                        <li><a href="#seven">Для этого есть приложение</a></li>
+                        <li><a href="#eight">Инструменты для SEO и маркетинга</a></li>
+                        <li><a href="#nine">Восстановление брошенной корзины</a></li>
+                        <li><a href="#ten">Собственный платежный шлюз</a></li>
+                    </ul>
                 </div>
                 <div class="content-area">
                     <div class="area__header">
@@ -31,7 +34,7 @@ get_header();
                             <a href="#">Разработка</a>
                         </div>
                         <div class="content-area__send">
-                            <img src="" alt="send">
+                            <img src="/content/themes/gulp-theme/assets/img/icons/send-icon.svg" alt="send">
                             <ul>
                                 <li>
                                     <img src="" alt="twitter">
@@ -53,14 +56,14 @@ get_header();
                         <div class="time">Время прочтения: 3 минуты</div>
                     </div>
                     <div class="content-area__author">
-                        <img src="" alt="author">
+                        <img src="/content/themes/gulp-theme/assets/img/icons/author-icon.svg" alt="author">
                         <p>от Имя Фамилия, должность в компании Веб Фокус</p>
                     </div>
                     <div class="content-area__text">
                         <h1>Преимущества Shopify — 10 причин полюбить его</h1>
                         <div id="one" class="text-block">
                             <h3>Быстрая и простая настройка и использование</h3>
-                            <p>Shopify предлагает простой способ быстро запустить интернет-магазин без суеты вокругсерверов и затрат на разработку, которые могут быть понесены при использовании саморазмещающихся платформ, таких как Magento. Интерфейс администратора чист, удобен и интуитивно понятен, поскольку все функции логически структурированы. На сайте Shopify вы также можете найти обширную документацию и видеоруководства. Все, что вам действительно нужно, — это продукт, который вы хотите продать.</p>
+                            <p><span>Shopify</span> предлагает простой способ быстро запустить интернет-магазин без суеты вокругсерверов и затрат на разработку, которые могут быть понесены при использовании саморазмещающихся платформ, таких как Magento. Интерфейс администратора чист, удобен и интуитивно понятен, поскольку все функции логически структурированы. На сайте Shopify вы также можете найти обширную документацию и видеоруководства. Все, что вам действительно нужно, — это продукт, который вы хотите продать.</p>
                         </div>
                         <div id="two" class="text-block">
                             <h3>Никаких забот с техникой</h3>
@@ -118,7 +121,7 @@ get_header();
                     </a>
                 </div>
                 <div class="item__data">
-                    <div class="data__teg">
+                    <div class="data__tag">
                         <span>Статьи</span>
                         <span>Разработка</span>
                     </div>
@@ -136,7 +139,7 @@ get_header();
                     </a>
                 </div>
                 <div class="item__data">
-                    <div class="data__teg">
+                    <div class="data__tag">
                         <span>Статьи</span>
                         <span>SMM</span>
                     </div>
@@ -154,7 +157,7 @@ get_header();
                     </a>
                 </div>
                 <div class="item__data">
-                    <div class="data__teg">
+                    <div class="data__tag">
                         <span>Статьи</span>
                         <span>дизайн</span>
                     </div>
