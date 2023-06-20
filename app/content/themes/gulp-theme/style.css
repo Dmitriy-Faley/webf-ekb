@@ -355,7 +355,7 @@ Version: 1.0
 	}
 	
 	.mobile-menu__ul>li>a::after {
-		content: "";
+		content:"";
 		display: inline-block;
 		background: url("/content/themes/gulp-theme/assets/img/icons/mobile-menu-arrows.svg");
 		background-repeat: no-repeat;

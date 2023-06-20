@@ -123,7 +123,8 @@
 		const secondArrows = [...secondLevelArrow];
 		const thirdArrows = [...thirdLevelArrow];
 
-		console.log(subSecondLevel)
+		let count = 0;
+
 
 		//open and close menu
 		if(window.clientWidth >= 1369) {
@@ -222,7 +223,11 @@
 
 			firstArrows.forEach(el => {
 				el.addEventListener('click', (e) => {
-					e.preventDefault();
+					if(count <= 1) {
+						e.preventDefault();
+					} else {
+						return true;
+					}
 					if(el.innerHTML === "Услуги") {
 						secondLevel.classList.toggle('activeMobileUl');
 						el.classList.toggle('activeMobilA');
@@ -230,6 +235,7 @@
 					}
 
 					if(el.innerHTML === "О компании") {
+						count += 2;
 						subSecondLevel.classList.toggle('activeMobileUl');
 						el.classList.toggle('activeMobilALarge');
 						openSub.classList.toggle('sub-open');
@@ -237,15 +243,31 @@
 				})
 			});
 
+			count = 0;
 			secondArrows.forEach(el => {
 				el.addEventListener('click', (e) => {
+					if(count <= 1) {
+						e.preventDefault();
+					} else {
+						return true;
+					}
+
+					count +=2;
 					thirdLevel.classList.toggle('activeMobileUl');
 					el.classList.toggle('activeMobilA');
 				})
+				count = 0;
 			});
 
 			thirdArrows.forEach(el => {
 				el.addEventListener('click', (e) => {
+					if(count <= 1) {
+						e.preventDefault();
+					} else {
+						return true;
+					}
+
+					count +=2;
 					fourthLevel.classList.toggle('activeMobileUl');
 					el.classList.toggle('activeMobilA');
 					document.querySelector(".block-mobile-menu").style.height = '2050px';
@@ -254,6 +276,7 @@
 					} else {
 						fourthLevel.style.display = 'block';
 					}
+					count = 0;
 				})
 			})
 
