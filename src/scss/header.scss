@@ -339,27 +339,6 @@ $purple-color : #F1DDF2;
 
 }
 
-
-
-.overlay {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, .575);
-}
-
-.overlay_active {
-  display: block;
-}
-
-.locked {
-  overflow: hidden;
-}
-
 @media screen and (max-width: 1368px) {
   .header {
     padding-top: 36px;
@@ -517,6 +496,8 @@ $purple-color : #F1DDF2;
   
             li {
               margin:  0 0 20px;
+              font-size: 16px;
+              line-height: 120%;
   
               a {
                 font-weight: 500;

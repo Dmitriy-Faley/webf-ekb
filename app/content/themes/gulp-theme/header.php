@@ -111,20 +111,21 @@
 		const secondLevel = document.querySelector(".block-mobile-menu>ul>li>ul");
 		const thirdLevel = document.querySelector(".mobile-menu__ul>li>ul>li>ul");
 		const fourthLevel = document.querySelector(".mobile-menu__ul>li>ul>li>ul>li>ul");
-		const subSecondLevel = document.querySelectorAll(".block-mobile-menu>ul>li>ul")[1];
+		const subSecondLevel = document.querySelectorAll(".mobile-menu__ul .sub-menu")[6];
 		const firstLevelArrow = document.getElementsByTagName("a");
 		const secondLevelArrow = document.querySelectorAll(".mobile-menu__ul>li>ul>li>a");
 		const thirdLevelArrow = document.querySelectorAll(".mobile-menu__ul>li>ul>li>ul>li>a");
 		const menuMobile = document.querySelector(".block-mobile-menu");
 
+		const openSub = document.querySelector(".mobile-menu__ul");
+
 		const firstArrows = [...firstLevelArrow];
 		const secondArrows = [...secondLevelArrow];
 		const thirdArrows = [...thirdLevelArrow];
 
-		// window.addEventListener('mouseover', (e) => {
-		// 	console.log(e.target);
-		// })
+		console.log(subSecondLevel)
 
+		//open and close menu
 		if(window.clientWidth >= 1369) {
 			headerMenu.style.height = '712px';
 		} else if (window.clientWidth <= 1368) {
@@ -225,11 +226,13 @@
 					if(el.innerHTML === "Услуги") {
 						secondLevel.classList.toggle('activeMobileUl');
 						el.classList.toggle('activeMobilA');
+						openSub.classList.toggle('open');
 					}
 
 					if(el.innerHTML === "О компании") {
 						subSecondLevel.classList.toggle('activeMobileUl');
 						el.classList.toggle('activeMobilALarge');
+						openSub.classList.toggle('sub-open');
 					}
 				})
 			});
@@ -245,7 +248,7 @@
 				el.addEventListener('click', (e) => {
 					fourthLevel.classList.toggle('activeMobileUl');
 					el.classList.toggle('activeMobilA');
-
+					document.querySelector(".block-mobile-menu").style.height = '2050px';
 					if(!fourthLevel.classList.contains('activeMobileUl')) {
 						fourthLevel.style.display = 'none';
 					} else {
@@ -253,5 +256,9 @@
 					}
 				})
 			})
+
+			// переключение в меню телефона и планшета
+
+
 		}
 	</script>

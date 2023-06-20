@@ -320,6 +320,22 @@ Version: 1.0
 	.block-mobile-menu.activeMenu {
 		display: block;
 	}
+
+	.mobile-menu__ul.open>li {
+		display: none;
+	}
+
+	.mobile-menu__ul.sub-open>li {
+		display: none;
+	}
+
+	.mobile-menu__ul.open>li:first-child {
+		display: block;
+	}
+
+	.mobile-menu__ul.sub-open>li:nth-child(2) {
+		display: block;
+	}
 	
 	.mobile-menu__ul li {
 		margin: 0 30px;
