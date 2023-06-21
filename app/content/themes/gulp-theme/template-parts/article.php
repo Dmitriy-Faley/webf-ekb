@@ -15,16 +15,16 @@ get_header();
                 <div class="content-table">
                     <h3>Содержание</h3>
                     <ul>
-                        <li class="active"><a href="#one">Быстрая и простая настройка и использование</a></li>
-                        <li><a href="#two">Никаких забот с техникой</a></li>
-                        <li><a href="#three">Безопасность и надежность</a></li>
-                        <li><a href="#four">Круглосуточная поддержка клиентов</a></li>
-                        <li><a href="#five">Готовность к мобильным устройствам</a></li>
-                        <li><a href="#six">Настраиваемый</a></li>
-                        <li><a href="#seven">Для этого есть приложение</a></li>
-                        <li><a href="#eight">Инструменты для SEO и маркетинга</a></li>
-                        <li><a href="#nine">Восстановление брошенной корзины</a></li>
-                        <li><a href="#ten">Собственный платежный шлюз</a></li>
+                        <li class="table-item active"><a href="#one">Быстрая и простая настройка и использование</a></li>
+                        <li class="table-item"><a href="#two">Никаких забот с техникой</a></li>
+                        <li class="table-item"><a href="#three">Безопасность и надежность</a></li>
+                        <li class="table-item"><a href="#four">Круглосуточная поддержка клиентов</a></li>
+                        <li class="table-item"><a href="#five">Готовность к мобильным устройствам</a></li>
+                        <li class="table-item"><a href="#six">Настраиваемый</a></li>
+                        <li class="table-item"><a href="#seven">Для этого есть приложение</a></li>
+                        <li class="table-item"><a href="#eight">Инструменты для SEO и маркетинга</a></li>
+                        <li class="table-item"><a href="#nine">Восстановление брошенной корзины</a></li>
+                        <li class="table-item"><a href="#ten">Собственный платежный шлюз</a></li>
                     </ul>
                 </div>
                 <div class="content-area">
@@ -57,7 +57,7 @@ get_header();
                     </div>
                     <div class="content-area__author">
                         <img src="/content/themes/gulp-theme/assets/img/icons/author-icon.svg" alt="author">
-                        <p>от Имя Фамилия, должность в компании Веб Фокус</p>
+                        <p>от Имя Фамилия, должность в компании <span>Веб Фокус</span></p>
                     </div>
                     <div class="content-area__text">
                         <h1>Преимущества Shopify — 10 причин полюбить его</h1>
@@ -175,5 +175,15 @@ get_header();
 
 
 <script>
+    const links = document.querySelectorAll('.table-item');
 
+    links.forEach(el => {
+        el.addEventListener('click', (e) => {
+            links.forEach(item => {
+                item.classList.remove('active');
+            })
+            el.classList.add('active');
+        })
+    })
+    console.log(links)
 </script>
