@@ -9,7 +9,7 @@ get_header();
 <section class="article">
         <div class="article__content">
             <div class="article__img">
-                <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article-img.png" alt="shopify">
+                <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article1.png" alt="shopify">
             </div>
             <div class="article__content-wrapper">
                 <div class="content-table">
