@@ -3,6 +3,15 @@
     transition: all .5s linear;
 }
 
+@keyframes showLinks {
+    0% {
+        margin-bottom: 0;
+    }
+    100% {
+        margin-bottom: 30px;
+    }
+}
+
 .article {
     .article__content {
         width: 1400px;
@@ -81,21 +90,6 @@
                             top: 0;
                         }
                     }
-
-                    // li:first-child.active {
-                    //     padding-left: 14px;
-                    //     a::before {
-                    //         content: '';
-                    //         display: inline-block;
-                    //         position: absolute;
-                    //         background: url("/content/themes/gulp-theme/assets/img/icons/active-marker.svg");
-                    //         background-repeat: no-repeat;
-                    //         width: 4px;
-                    //         height: 100%;
-                    //         margin: 1px 0;
-                    //         margin-left: -14px;
-                    //     }
-                    // }
                 }
             }
 
@@ -150,15 +144,33 @@
                         }
 
                         ul {
-                            display: none;
                             position: absolute;
                             margin: 20px 12px 0;
 
 
                             li {
+                                opacity: 0;
+                                margin-bottom: 30px;
                                 width: 18px;
                                 height: 18px;
-                                margin-bottom: 30px;
+                                transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+                                transform: translateX(15px);
+
+                                img {
+                                    width: 18px;
+                                    height: 18px;
+                                    object-fit: contain;
+                                }
+                            }
+                        }
+
+                        ul.active {
+                            li {
+                                opacity: 1;
+                                width: 18px;
+                                height: 18px;
+                                transition: all .3s ease;
+                                transform: translateX(0);
 
                                 img {
                                     width: 18px;
