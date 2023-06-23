@@ -554,7 +554,7 @@ lwptoc-light .lwptoc_items A:visited {
             .article__content-wrapper {
                 display: flex;
                 width: 100%;
-                margin: 69px 31px 0 27px;
+                margin: 52px 31px 0 27px;
                 flex-wrap: nowrap;
     
                 .content-table {
@@ -574,12 +574,12 @@ lwptoc-light .lwptoc_items A:visited {
                     }
     
                     .lwptoc_items {
-                        width: 306px;
+                        width: 217px;
     
                         .lwptoc_item {
                             cursor: pointer;
                             position: relative;
-                            line-height: 21px;
+                            line-height: 18px;
                             margin: 0;
                             margin-bottom: 16px;
     
@@ -589,7 +589,7 @@ lwptoc-light .lwptoc_items A:visited {
                                 span {
                                     max-width: 306px;
                                     font-weight: 400;
-                                    font-size: 14px;
+                                    font-size: 12px;
                                     line-height: 150%;
                                     color: #0E0F11;
                                     margin: 0;
@@ -694,7 +694,7 @@ lwptoc-light .lwptoc_items A:visited {
                     .content-area__text {
                         margin-bottom: 106px;
 
-                        h1 {
+                        .h1 {
                             width: 455px;
                             font-size: 34px;
                             line-height: 41px;
@@ -705,7 +705,7 @@ lwptoc-light .lwptoc_items A:visited {
                             width: 455px;
                             margin-bottom: 49px;
     
-                            h3 {
+                            h2 {
                                 font-size: 17px;
                                 line-height: 21px;
                             }
@@ -889,7 +889,7 @@ lwptoc-light .lwptoc_items A:visited {
     
             .article__content-wrapper {
                 width: 100%;
-                margin: 60px 31px 0 27px;
+                margin: 42px 31px 0 27px;
     
                 .content-table {
                     display: none;
@@ -972,7 +972,7 @@ lwptoc-light .lwptoc_items A:visited {
                         margin-bottom: 80px;
                         margin-left: 14px;
 
-                        h1 {
+                        .h1 {
                             width: 628px;
                             font-size: 48px;
                             line-height: 58px;
@@ -983,7 +983,7 @@ lwptoc-light .lwptoc_items A:visited {
                             width: 628px;
                             margin-bottom: 50px;
     
-                            h3 {
+                            h2 {
                                 font-size: 26px;
                                 line-height: 31px;
                             }
@@ -1176,7 +1176,7 @@ lwptoc-light .lwptoc_items A:visited {
     
             .article__content-wrapper {
                 width: 100%;
-                margin: 26px 15px 0;
+                margin: 10px 15px 0;
     
                 .content-table {
                     display: none;
@@ -1274,7 +1274,7 @@ lwptoc-light .lwptoc_items A:visited {
                         margin-bottom: 60px;
                         margin-left: 0;
 
-                        h1 {
+                        .h1 {
                             width: 256px;
                             font-size: 24px;
                             line-height: 29px;
@@ -1285,7 +1285,7 @@ lwptoc-light .lwptoc_items A:visited {
                             width: 258px;
                             margin-bottom: 40px;
     
-                            h3 {
+                            h2 {
                                 font-size: 20px;
                                 line-height: 24px;
                             }
