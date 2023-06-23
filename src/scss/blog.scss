@@ -1,3 +1,11 @@
+.message {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 120%;
+    color: #0E0F11;
+    margin: 20px auto;
+}
+
 .blog {
     padding-top: 99px;
 
@@ -72,6 +80,10 @@
     .projects__content .projects__content__item.active_cards {
         display: flex !important;
     }
+
+    .projects__content .projects__content__item.hidden {
+        display: none !important;
+    }
 }
 
 @media screen and (max-width: 1368px) {
@@ -107,6 +119,10 @@
                     }
                 }
             }
+        }
+
+        .projects__content .projects__content__item.hidden {
+            display: none !important;
         }
     }
 }
@@ -147,6 +163,10 @@
                     }
                 }
             }
+        }
+
+        .projects__content .projects__content__item.hidden {
+            display: none;
         }
     }
 }
@@ -192,6 +212,10 @@
                     }
                 }
             }
+        }
+
+        .projects__content .projects__content__item.hidden {
+            display: none;
         }
     }
 }

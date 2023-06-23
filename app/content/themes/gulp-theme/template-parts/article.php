@@ -9,7 +9,7 @@ get_header();
 <section class="article">
         <div class="article__content">
             <div class="article__img">
-                <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article1.png" alt="shopify">
+                <?php the_post_thumbnail(); ?>
             </div>
             <div class="article__content-wrapper">
                 <div class="content-table">
@@ -18,8 +18,13 @@ get_header();
                 <div class="content-area">
                     <div class="area__header">
                         <div class="content-area__tags">
-                            <a href="#">Статьи</a>
-                            <a href="#">Разработка</a>
+                            <?php 
+                                $posttags = get_the_tags();
+                                if ( $posttags ) {
+                                    echo '<a href="#">' . $posttags[1]->name . '</a> 
+                                          <a href="#">' . $posttags[0]->name .'</a>';
+                                }
+                            ?>
                         </div>
                         <div class="content-area__send">
                             <div class="send">
@@ -51,7 +56,7 @@ get_header();
                     </div>
                     <div class="content-area__info">
                         <div class="date"><?php echo get_the_date()?></div>
-                        <div class="time">Время прочтения: <?php the_field('data_i_vremya'); ?></div>
+                        <div class="time">Время прочтения: <?php echo gp_read_time(); ?> минут</div>
                     </div>
 
                     <?php
@@ -67,7 +72,7 @@ get_header();
 
                     <div class="content-area__author">
                         <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/author-icon.svg" alt="author">
-                        <p>от <?php the_author(); ?>, должность в компании <span>Веб Фокус</span></p>
+                        <p>от <?php the_author(); ?>, <?php the_author_meta('user_description'); ?></p>
                     </div>
                     <div class="content-area__text">
                         <h1 class="h1"><?php the_title(); ?></h1>
