@@ -13,7 +13,7 @@ get_header();
             </div>
             <div class="article__content-wrapper">
                 <div class="content-table">
-                    <?php the_field('soderzhanie'); ?>
+                    <?php echo do_shortcode('[lwptoc]') ?>
                 </div>
                 <div class="content-area">
                     <div class="area__header">
@@ -50,17 +50,28 @@ get_header();
                         </div>
                     </div>
                     <div class="content-area__info">
-                        <!-- <div class="date">1 день назад</div> -->
                         <div class="date"><?php echo get_the_date()?></div>
                         <div class="time">Время прочтения: <?php the_field('data_i_vremya'); ?></div>
                     </div>
+
+                    <?php
+                        foreach ($posts as $post) {
+                            setup_postdata($post);
+                        ?>
+
+                        
+                        <?php
+                        }
+                        wp_reset_postdata();
+                    ?>
+
                     <div class="content-area__author">
                         <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/author-icon.svg" alt="author">
-                        <p>от <?php the_field('avtor'); ?>, должность в компании <span>Веб Фокус</span></p>
+                        <p>от <?php the_author(); ?>, должность в компании <span>Веб Фокус</span></p>
                     </div>
                     <div class="content-area__text">
-                        <?php the_field('zagolovok_stati'); ?>
-                        <?php the_field('razdely_stati'); ?>
+                        <h1 class="h1"><?php the_title(); ?></h1>
+                        <?php the_content(); ?>
                     </div>
                 </div>
             </div>
@@ -133,7 +144,7 @@ get_header();
 
 <script>
     //active class for article-headers
-    const headers = document.querySelectorAll('.content-table>ul>li');
+    const headers = document.querySelectorAll('.lwptoc_item');
 
     headers.forEach(el => {
         el.addEventListener('click', (e) => {
@@ -165,16 +176,16 @@ get_header();
 
     //copy the link
 
-    const a = document.querySelector('.link');
-    const link = a.href;
-
-    function copyURI(evt) {
-        evt.preventDefault();
-        navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
-            console.log(evt.target.getAttribute('href'));
-        }, () => {
-            throw new Error('failed to copy');
-        });    
-}
+    window.addEventListener("load", function () {
+    document.querySelector('.link').onclick = () => {
+        window.event.preventDefault();
+        let copytext = document.createElement('input');
+        copytext.value = window.location.href;
+        document.body.appendChild(copytext);
+        copytext.select();
+        document.execCommand('copy');
+        document.body.removeChild(copytext);
+    }
+});  
 
 </script>

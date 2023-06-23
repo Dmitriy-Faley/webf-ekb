@@ -3,6 +3,61 @@
     transition: all .5s linear;
 }
 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    text-decoration: none;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+html {
+	height: 100%;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.lwptoc-notInherit .lwptoc_i DIV A:hover {
+    border-bottom: none;
+}
+
+lwptoc-light .lwptoc_items A:visited {
+    color: #0E0F11;
+}
+
 @keyframes showLinks {
     0% {
         margin-bottom: 0;
@@ -37,13 +92,18 @@
         .article__content-wrapper {
             display: flex;
             width: 100%;
-            margin: 97px 20px 0 40px;
+            margin: 80px 20px 0 40px;
             flex-wrap: nowrap;
 
             .content-table {
                 margin-right: 94px;
 
-                h3 {
+                .lwptoc_i {
+                    background-color: #fff;
+                    padding: 0;
+                }
+
+                .lwptoc_header {
                     font-weight: 600;
                     font-size: 25.6125px;
                     line-height: 120%;
@@ -51,30 +111,31 @@
                     margin-bottom: 20px;
                 }
 
-                ul {
+                .lwptoc_items {
                     width: 306px;
 
-                    li {
+                    .lwptoc_item {
                         cursor: pointer;
                         position: relative;
+                        line-height: 21px;
+                        margin: 0;
                         margin-bottom: 16px;
-                        height: 21px;
 
                         a {
-                            max-width: 306px;
-                            font-weight: 400;
-                            font-size: 14px;
-                            line-height: 21px;
-                            color: #0E0F11;
-                            margin: 0;
+                            border-bottom: none !important;
+
+                            span {
+                                max-width: 306px;
+                                font-weight: 400;
+                                font-size: 14px;
+                                line-height: 21px;
+                                color: #0E0F11;
+                                margin: 0;
+                            }
                         }
                     }
 
-                    li:first-child {
-                        height: 42px;
-                    }
-
-                    li.active {
+                    .lwptoc_item.active {
                         padding-left: 14px;
                         
                         a::before {
@@ -98,6 +159,7 @@
                     display: flex;
                     width: 920px;
                     justify-content: space-between;
+                    margin-top: 17px;
 
                     .content-area__tags {
                         display: flex;
@@ -219,8 +281,9 @@
                 }
 
                 .content-area__text {
-                    margin-bottom: 106px;
-                    h1 {
+                    margin-bottom: 152px;
+
+                    .h1 {
                         width: 640px;
                         font-weight: 600;
                         font-size: 48px;
@@ -233,7 +296,7 @@
                         width: 639px;
                         margin-bottom: 70px;
 
-                        h3 {
+                        h2 {
                             font-weight: 600;
                             font-size: 24px;
                             line-height: 120%;
@@ -497,34 +560,57 @@
                 .content-table {
                     margin-right: 65px;
     
-                    h3 {
-                        font-size: 18px;
-                        line-height: 21px;
-                        margin-bottom: 14px;
+                    .lwptoc_i {
+                        background-color: #fff;
+                        padding: 0;
                     }
     
-                    ul {
-                        width: 220px;
+                    .lwptoc_header {
+                        font-weight: 600;
+                        font-size: 18px;
+                        line-height: 120%;
+                        color: #0E0F11;
+                        margin-bottom: 20px;
+                    }
     
-                        li {
-                            height: fit-content;
-                            margin-bottom: 2px;
-                            padding: 0;
+                    .lwptoc_items {
+                        width: 306px;
+    
+                        .lwptoc_item {
                             cursor: pointer;
+                            position: relative;
+                            line-height: 21px;
+                            margin: 0;
+                            margin-bottom: 16px;
     
                             a {
-                                max-width: 218px;
-                                height: 34px;
-                                font-size: 12px;
-                                line-height: 18px;
+                                border-bottom: none !important;
+    
+                                span {
+                                    max-width: 306px;
+                                    font-weight: 400;
+                                    font-size: 14px;
+                                    line-height: 150%;
+                                    color: #0E0F11;
+                                    margin: 0;
+                                }
                             }
                         }
     
-                        li.active {
-                            padding-left: 8px;
-
+                        .lwptoc_item.active {
+                            padding-left: 14px;
+                            
                             a::before {
-                                margin-left: -8px;
+                                content: '';
+                                display: inline-block;
+                                position: absolute;
+                                background: url("/content/themes/gulp-theme/assets/img/icons/active-marker.svg");
+                                background-repeat: no-repeat;
+                                width: 4px;
+                                height: 100%;
+                                border-radius: 71px;
+                                margin: 3px 0 0 -14px;
+                                top: 0;
                             }
                         }
                     }
