@@ -192,3 +192,14 @@ $(function () {
 		btnOpen: "Читать"
 	});
 }); */
+
+/*фильтрация статей*/ 
+
+var cat_id = window.location;
+var nav_btns = $('.blog__tags li');
+$.each(nav_btns, function () { 
+  var mayThis = $(this);
+  if ($(this).data('link') == cat_id) {
+	$(mayThis).trigger('click');
+  }
+});

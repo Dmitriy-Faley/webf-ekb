@@ -435,15 +435,68 @@ function submenu_get_children_ids( $id, $items ) {
 
 // расчет времени чтения статьи
 if ( ! function_exists( 'gp_read_time' ) ) {
-	function gp_read_time() {
-	$text = get_the_content( '' );
-	$words = str_word_count( strip_tags( $text ), 0, 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ' );
-	if ( !empty( $words ) ) {
-	$time_in_minutes = ceil( $words / 200 );
-	return $time_in_minutes;
-	}
-	return false;
-	}
+		function gp_read_time() {
+			$text = get_the_content( '' );
+			$words = str_word_count( strip_tags( $text ), 0, 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ' );
+			if ( !empty( $words ) ) {
+				$time_in_minutes = ceil( $words / 200 );
+				return $time_in_minutes;
+			}
+			return false;
+		}
 	}
 
 if ( function_exists( 'add_theme_support' ) ) add_theme_support( 'post-thumbnails' );
+
+
+
+//ajax загрузка постов по категориям
+
+
+add_action('wp_ajax_load_posts_from_category_by_ajax', 'load_posts_from_category_by_ajax');
+add_action('wp_ajax_nopriv_load_posts_from_category_by_ajax', 'load_posts_from_category_by_ajax');
+
+function load_posts_from_category_by_ajax()
+{
+    check_ajax_referer('ajax-blog-load-more', 'security');
+    $catID = $_POST['id'];
+    $args = array(
+        'cat' => $catID,
+        'post_status' => 'publish',
+        'paged' => 1,
+        'posts_per_page' => 6
+    );
+    $blog_posts = new WP_Query($args);
+    $max_pages = $blog_posts->max_num_pages;
+    echo '<ul data-id="' . $catID . '" data-max_pages="' . $max_pages . '">';
+    if ($blog_posts->have_posts()) {
+        while ($blog_posts->have_posts()) {
+            $blog_posts->the_post(); ?>
+            <div class="projects__content__item">
+				<div>
+					<a href="<?php the_permalink(); ?>" class="item__img">
+						<?php the_post_thumbnail(); ?>
+					</a>
+				</div>
+				<div class="item__data">
+					<div class="data__teg">
+							<?php $post_categories = get_the_category($blog_posts->the_post->ID);
+							foreach ($post_categories as $post_category) {
+								echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
+							}; ?>
+					</div>
+					<div class="data__info">
+						<a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
+						<p class="desk"><?php echo get_the_date()?></p>
+					</div>
+				</div>
+			</div>
+        <?php };
+    };
+    if ($blog_posts->have_posts() == false) {
+        echo '<p>Извините, нет записей, соответствуюших Вашему запросу.</p>';
+    };
+    echo '</ul>';
+    wp_reset_postdata();
+    die();
+};

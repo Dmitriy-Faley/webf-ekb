@@ -8,17 +8,18 @@ get_header();
 <section class="projects blog">
     <div class="container">
         <h1 class="title blog__title"><?php the_title(); ?></h1>
-        <div class="blog__tegs">
-            <a href="#" class="active" data-filter="all">Все</a>
-            <a href="#" data-filter="article">Статьи</a>
-            <a href="#" data-filter="news">новости</a>
-            <a href="#">разработка</a>
-            <a href="#">SMM</a>
-            <a href="#">Дизайн</a>
-            <a href="#">КОПИРАЙТИНГ</a>
-            <a href="#">МАРКЕТИНГ</a>
-            <a href="#">SEO</a>
-            <a href="#">PPC</a>
+        <div class="blog__tags">
+            <ul class="tag__list">
+                <?php
+                    $category_all = get_category(10);
+                    echo '<li href="#"data-id="' . intval($category_all->term_id) . '"  data-link="' . get_category_link($category_all->term_id) .' "><a class="list-item active">Все</a></li>';
+                    $categories = get_categories(array('hide_empty' => 0, 'hierarchical' => 1, 'child_of' => '10'));
+                    foreach ($categories as $category) {
+                        echo '<li href="#" data-id="' . intval($category->term_id) . '"  data-link="' . get_category_link($category->term_id) . '"><a class="list-item">' . $category->cat_name . '</a></li>';
+                ?>
+
+                <?php };?>
+            </ul>
         </div>
         <div class="projects__content">
 
@@ -26,9 +27,9 @@ get_header();
             // запрос
             $wpb_all_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1)); ?>
             <?php if ( $wpb_all_query->have_posts() ) : ?>
-            <ul>
+            <ul class="project-list">
                 <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
-                    <div class="projects__content__item article news">
+                    <div class="projects__content__item">
                         <div>
                             <a href="<?php the_permalink(); ?>" class="item__img">
                                 <?php the_post_thumbnail(); ?>
@@ -36,13 +37,10 @@ get_header();
                         </div>
                         <div class="item__data">
                             <div class="data__teg">
-                                <?php 
-                                    $posttags = get_the_tags();
-                                    if ( $posttags ) {
-                                        echo '<span>' . $posttags[1]->name . '</span> 
-                                              <span>' . $posttags[0]->name .'</span>';
-                                    }
-                                ?>
+                                   <?php $post_categories = get_the_category($blog_posts->the_post->ID);
+                                   foreach ($post_categories as $post_category) {
+                                       echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
+                                    }; ?>
                             </div>
                             <div class="data__info">
                                 <a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
@@ -79,96 +77,70 @@ get_header();
         });
     });
 
-    const links = [...document.querySelectorAll(".blog__tegs a")];
-    const postsTag = [...document.querySelectorAll(".data__teg span")];
-    const cards = [...document.querySelectorAll(".projects__content__item")];
-    const wrap = document.querySelector(".projects__content");
+    jQuery(document).ready(function ($) {
+  var cat_id = window.location;
+  var paged = 1;
+  var top_block = $(".blog .container h1").offset().top;
+ 
+  $(".list-item").on("click", function (e) {
+    var id = $(this).data("id");
+    var mayThis = $(this);
+    $(".project-list")
+      .empty()
+    var data = {
+      action: "load_posts_from_category_by_ajax",
+    //   security: blog.security,
+      id: id,
+      beforeSend: function (xhr) {},
+    };
+    $(mayThis).addClass("active");
+    $(".nav__button").not(mayThis).removeClass("active");
+    setTimeout(load_posts_from_category, 1000);
+    function load_posts_from_category() {
+      $.post(blog.ajaxurl, data, function (response) {
+        if ($.trim(response) != "") {
+          $(".blog__list").replaceWith(response);
+          paged = 1;
+          if (document.documentElement.clientWidth < 1025) {
+            $(".share__btn").on("click", function () {
+              $(this).parent().toggleClass("active");
+            });
+            $(".blog__item .nav__toggle").on("click", function () {
+              $(this).parent().toggleClass("active");
+            });
+          }
+          if (document.documentElement.clientWidth > 1025) {
+            $(".share__toggle").on("mouseenter", function () {
+              $(this).addClass("active");
+            });
+            $(".share__toggle").on("mouseleave", function () {
+              $(this).removeClass("active");
+            });
+          }
+        }
+      });
+    }
+    $(".list-item").not(mayThis).removeClass("active");
+    setTimeout(load_posts_from_category, 1000);
+    function load_posts_from_category() {
+      $.post(blog.ajaxurl, data, function (response) {
+        if ($.trim(response) != "") {
+          $(".tag__list").replaceWith(response);
+          paged = 1;
+        }
+      });
+    }
+  });
 
-    // links.forEach(el => {
-    //     el.addEventListener('click', (e) => {
-    //         links.forEach(el => {
-    //             el.classList.remove('active');
-    //         })
 
-    //         e.target.classList.add('active');
-
-    //         postsTag.forEach(item => {
-    //             let result = getParent(
-    //                     item,
-    //                     '.projects__content__item'
-    //                 );
-
-    //             if(el.innerHTML.toLowerCase() === item.innerHTML.toLowerCase()) {
-    //                 result.classList.remove('hidden');
-    //             } else {
-    //                 result.classList.add('hidden');
-    //             }
-
-    //             if(el.innerHTML.toLowerCase() === 'все') {
-    //                 result.classList.remove('hidden');
-    //             }
-    //         })
-    //     });
-
-    //     function getParent(elem, parentSelector) {
-    //         let parents = document.querySelectorAll(parentSelector);
-            
-    //         for (let i = 0; i < parents.length; i++) {
-    //             let parent = parents[i];
-                
-    //             if (parent.contains(elem)) {
-    //             return parent;
-    //             }
-    //         }
-            
-    //         return null;
-    //         }
-
-    // })
-
-    function app() {
-	let buttons = document.querySelectorAll('.blog__tegs a');
-	const cards = document.querySelectorAll('.projects__content__item');
-
-	function filter(category, items) {
-		items.forEach((item) => {
-			const isItemFiltered = !item.classList.contains(category);
-			const isShowAll = category.toLowerCase() === 'all'
-			if (isItemFiltered && !isShowAll) {
-				item.classList.add('anime');
-			} else {
-				item.classList.remove('hide');
-				item.classList.remove('anime');
-			}
-		})
-	}
-
-	buttons.forEach((button) => {
-		button.addEventListener('click', () => {
-			const currentCategory = button.dataset.filter.trim().replace(' ', '');
-			filter(currentCategory, cards);
-		})
-	})
-
-	cards.forEach((card) => {
-		card.ontransitionend = function () {
-			if (card.classList.contains('anime')) {
-				card.classList.add('hide');
-			}
-		}
-	})
-
-	// Add active class to the current button (highlight it)
-	//var header = document.getElementById("myDIV");
-	var btns = document.getElementsByClassName("button-filter");
-	for (var i = 0; i < btns.length; i++) {
-		btns[i].addEventListener("click", function () {
-			var current = document.getElementsByClassName("active");
-			current[0].className = current[0].className.replace(" active", "");
-			this.className += " active";
-		});
-	}
-}
-
-app();
+  var nav_btns = $('.list-item');
+  $.each(nav_btns, function () { 
+    var mayThis = $(this);
+    if ($(this).data('link') == cat_id) {
+      $(mayThis).trigger('click');
+    }
+  });
+});
 </script>
+
+//TODO: найти "блок" и вывести карточки
