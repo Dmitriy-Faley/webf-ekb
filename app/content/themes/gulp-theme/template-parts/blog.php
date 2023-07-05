@@ -12,10 +12,10 @@ get_header();
             <ul class="tag__list">
                 <?php
                     $category_all = get_category(10);
-                    echo '<li href="#"data-id="' . intval($category_all->term_id) . '"  data-link="' . get_category_link($category_all->term_id) .' "><a class="list-item active">Все</a></li>';
+                    echo '<li href="#"><a class="active vse" data-id="' . intval($category_all->term_id) . '"  data-link="' . get_category_link($category_all->term_id) . '">Все</a></li>';
                     $categories = get_categories(array('hide_empty' => 0, 'hierarchical' => 1, 'child_of' => '10'));
                     foreach ($categories as $category) {
-                        echo '<li href="#" data-id="' . intval($category->term_id) . '"  data-link="' . get_category_link($category->term_id) . '"><a class="list-item">' . $category->cat_name . '</a></li>';
+                        echo '<li href="#"><a class="' . $category->slug . '" data-id="' . intval($category->term_id) . '"  data-link="' . get_category_link($category->term_id) . '">' . $category->cat_name . '</a></li>';
                 ?>
 
                 <?php };?>
@@ -27,9 +27,12 @@ get_header();
             // запрос
             $wpb_all_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1)); ?>
             <?php if ( $wpb_all_query->have_posts() ) : ?>
-            <ul class="project-list">
+            <ul>
                 <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
-                    <div class="projects__content__item">
+                    <div class="projects__content__item <?php $post_categories = get_the_category($blog_posts->the_post->ID);
+                                   foreach ($post_categories as $post_category) {
+                                      echo ' '. $post_category->slug.' ';
+                                    }; ?>">
                         <div>
                             <a href="<?php the_permalink(); ?>" class="item__img">
                                 <?php the_post_thumbnail(); ?>
@@ -77,70 +80,30 @@ get_header();
         });
     });
 
-    jQuery(document).ready(function ($) {
-  var cat_id = window.location;
-  var paged = 1;
-  var top_block = $(".blog .container h1").offset().top;
- 
-  $(".list-item").on("click", function (e) {
-    var id = $(this).data("id");
-    var mayThis = $(this);
-    $(".project-list")
-      .empty()
-    var data = {
-      action: "load_posts_from_category_by_ajax",
-    //   security: blog.security,
-      id: id,
-      beforeSend: function (xhr) {},
-    };
-    $(mayThis).addClass("active");
-    $(".nav__button").not(mayThis).removeClass("active");
-    setTimeout(load_posts_from_category, 1000);
-    function load_posts_from_category() {
-      $.post(blog.ajaxurl, data, function (response) {
-        if ($.trim(response) != "") {
-          $(".blog__list").replaceWith(response);
-          paged = 1;
-          if (document.documentElement.clientWidth < 1025) {
-            $(".share__btn").on("click", function () {
-              $(this).parent().toggleClass("active");
-            });
-            $(".blog__item .nav__toggle").on("click", function () {
-              $(this).parent().toggleClass("active");
-            });
-          }
-          if (document.documentElement.clientWidth > 1025) {
-            $(".share__toggle").on("mouseenter", function () {
-              $(this).addClass("active");
-            });
-            $(".share__toggle").on("mouseleave", function () {
-              $(this).removeClass("active");
-            });
-          }
-        }
-      });
-    }
-    $(".list-item").not(mayThis).removeClass("active");
-    setTimeout(load_posts_from_category, 1000);
-    function load_posts_from_category() {
-      $.post(blog.ajaxurl, data, function (response) {
-        if ($.trim(response) != "") {
-          $(".tag__list").replaceWith(response);
-          paged = 1;
-        }
-      });
-    }
-  });
+    const links = [...document.querySelectorAll(".blog__tags a")];
+    const postsTags = [...document.querySelectorAll(".data__teg span")];
+    const cards = [...document.querySelectorAll(".projects__content__item")];
 
+    links.forEach(el => {
+        el.addEventListener('click', (e) => {
+            links.forEach(el => {
+                el.classList.remove('active');
+            })
 
-  var nav_btns = $('.list-item');
-  $.each(nav_btns, function () { 
-    var mayThis = $(this);
-    if ($(this).data('link') == cat_id) {
-      $(mayThis).trigger('click');
-    }
-  });
-});
+            e.target.classList.add('active');
+        cards.forEach(card => {
+                postsTags.forEach(itemTag => {
+                    if(card.classList.contains(el.classList[0])) {
+                        console.log('e')
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                    if(el.classList.contains('vse')) {
+                    card.classList.remove('hidden');
+                }
+                });
+            })
+        });
+    });
 </script>
-
-//TODO: найти "блок" и вывести карточки

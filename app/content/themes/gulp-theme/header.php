@@ -54,7 +54,7 @@
 						'before'          => '',
 						'after'           => '',
 						'link_before'     => '',
-						'link_after'      => '',
+						'link_after'      => '<span></span>',
 						'items_wrap'      => '<ul id="%1$s" class="header-menu__ul">%3$s</ul>',
 						'depth'           => 0,
 						'walker'          => '',
@@ -77,7 +77,7 @@
 							'before'          => '',
 							'after'           => '',
 							'link_before'     => '',
-							'link_after'      => '',
+							'link_after'      => '<span></span>',
 							'items_wrap'      => '<ul id="%1$s" class="mobile-menu__ul">%3$s</ul>',
 							'depth'           => 0,
 							'walker'          => '',
@@ -112,9 +112,9 @@
 		const thirdLevel = document.querySelector(".mobile-menu__ul>li>ul>li>ul");
 		const fourthLevel = document.querySelector(".mobile-menu__ul>li>ul>li>ul>li>ul");
 		const subSecondLevel = document.querySelectorAll(".mobile-menu__ul .sub-menu")[6];
-		const firstLevelArrow = document.getElementsByTagName("a");
-		const secondLevelArrow = document.querySelectorAll(".mobile-menu__ul>li>ul>li>a");
-		const thirdLevelArrow = document.querySelectorAll(".mobile-menu__ul>li>ul>li>ul>li>a");
+		const firstLevelArrow = document.querySelectorAll(".mobile-menu__ul>li>a>span");
+		const secondLevelArrow = document.querySelectorAll(".mobile-menu__ul>li>ul>li>a>span");
+		const thirdLevelArrow = document.querySelectorAll(".mobile-menu__ul>li>ul>li>ul>li>a>span");
 		const menuMobile = document.querySelector(".block-mobile-menu");
 
 		const openSub = document.querySelector(".mobile-menu__ul");
@@ -123,6 +123,7 @@
 		const secondArrows = [...secondLevelArrow];
 		const thirdArrows = [...thirdLevelArrow];
 
+		console.log(firstArrows)
 		let count = 0;
 
 
@@ -223,60 +224,39 @@
 
 			firstArrows.forEach(el => {
 				el.addEventListener('click', (e) => {
-					if(count <= 1) {
-						e.preventDefault();
-					} else {
-						return true;
-					}
-					if(el.innerHTML === "Услуги") {
+					e.preventDefault();
+					if(el.parentNode.innerHTML === "О компании<span></span>") {
 						secondLevel.classList.toggle('activeMobileUl');
-						el.classList.toggle('activeMobilA');
+						subSecondLevel.classList.toggle('activeMobileUl');
+						el.parentNode.classList.toggle('activeMobilALarge');
+						openSub.classList.toggle('sub-open');
+					} else {
+						secondLevel.classList.toggle('activeMobileUl');
+						el.parentNode.classList.toggle('activeMobilA');
 						openSub.classList.toggle('open');
 					}
-
-					if(el.innerHTML === "О компании") {
-						count += 2;
-						subSecondLevel.classList.toggle('activeMobileUl');
-						el.classList.toggle('activeMobilALarge');
-						openSub.classList.toggle('sub-open');
-					}
 				})
 			});
 
-			count = 0;
 			secondArrows.forEach(el => {
 				el.addEventListener('click', (e) => {
-					if(count <= 1) {
-						e.preventDefault();
-					} else {
-						return true;
-					}
-
-					count +=2;
+					e.preventDefault();
 					thirdLevel.classList.toggle('activeMobileUl');
-					el.classList.toggle('activeMobilA');
+					el.parentNode.classList.toggle('activeMobilA');
 				})
-				count = 0;
 			});
-
+ 
 			thirdArrows.forEach(el => {
 				el.addEventListener('click', (e) => {
-					if(count <= 1) {
-						e.preventDefault();
-					} else {
-						return true;
-					}
-
-					count +=2;
+					e.preventDefault();
 					fourthLevel.classList.toggle('activeMobileUl');
-					el.classList.toggle('activeMobilA');
+					el.parentNode.classList.toggle('activeMobilA');
 					document.querySelector(".block-mobile-menu").style.height = '2050px';
 					if(!fourthLevel.classList.contains('activeMobileUl')) {
 						fourthLevel.style.display = 'none';
 					} else {
 						fourthLevel.style.display = 'block';
 					}
-					count = 0;
 				})
 			})
 		}
