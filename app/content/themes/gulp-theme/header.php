@@ -235,6 +235,10 @@
 						el.parentNode.classList.toggle('activeMobilA');
 						openSub.classList.toggle('open');
 					}
+
+					if(e.target.elementName === "a") {
+						return true;
+					}
 				})
 			});
 
@@ -243,6 +247,10 @@
 					e.preventDefault();
 					thirdLevel.classList.toggle('activeMobileUl');
 					el.parentNode.classList.toggle('activeMobilA');
+
+					if(e.target.elementName === "a") {
+						return true;
+					}
 				})
 			});
  
@@ -257,9 +265,12 @@
 					} else {
 						fourthLevel.style.display = 'block';
 					}
+
+					if(e.target.elementName === "a") {
+						return true;
+					}
 				})
 			})
 		}
+		//TODO: настроить скролл и спросить про сохранение перехода в меню!
 	</script>
-
-	//TODO: доделать переключения по стрелкам и настроить скролл!
