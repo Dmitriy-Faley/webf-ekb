@@ -98,11 +98,16 @@
 
 		const nodeList = document.getElementsByTagName("a");
 		const menuItemForStyles = [...nodeList];
+		const body = document.body;
 
 		//Laptop & PC
 		const closeButton = document.querySelector(".closeMenu");
 		const header = document.querySelector(".header");
 		const headerMenu = document.querySelector(".header-menu__ul>li>ul");
+		const arrows = [...document.querySelectorAll(".main-header-menu>ul>li>ul>li>a>span")];
+		const subArrows = [...document.querySelectorAll(".main-header-menu>ul>li>ul>li>ul>li>a>span")];
+		const subMenu = document.querySelector(".main-header-menu>ul>li>ul>li>ul");
+		const subSubMenu = document.querySelector(".main-header-menu>ul>li>ul>li>ul>li>ul");
 
 		//Tablet & Mobile
 		const mobilHeaderMenu = document.querySelector(".mobile-menu__ul>li>ul");
@@ -180,6 +185,20 @@
 					})
 				})
 			}
+
+			subSubMenu.addEventListener('mouseover', (e) => {
+				subSubMenu.classList.add('activeUl');
+				if(subSubMenu.classList.contains('activeUl')) {
+					headerMenu.style.height = '1102px';
+					subArrows[0].classList.add('activeSpan');
+				} else {
+					headerMenu.style.height = '712px';
+				}
+			});
+			subSubMenu.addEventListener('mouseleave', (e) => {
+				subSubMenu.classList.remove('activeUl');
+			});
+
 			document.querySelectorAll(".main-header-menu").forEach(e => {
 					e.querySelector("ul") && e.querySelector("ul").classList.add("header-menu__ul")
 				}), closeButton.onclick = (() => {
@@ -198,9 +217,32 @@
 					}
 				})
 			})
+
+			function activeSpan(arr) {
+				arr.forEach(el => {
+					el.addEventListener('mouseover', (e) => {
+						el.classList.add('activeSpan');
+						el.parentNode.classList.add('activeSpan');
+					})
+					el.addEventListener('mouseleave', (e) => {
+						el.classList.remove('activeSpan');
+						el.parentNode.classList.remove('activeSpan');
+					})
+
+					if(subSubMenu.classList.contains('activeUl')) {
+						el.classList.add('activeSpan');
+						el.parentNode.classList.add('activeSpan');
+					}
+				})
+			}
+			activeSpan(arrows);
+			activeSpan(subArrows);
+
 		} else if(window.innerWidth <= 768 && window.innerWidth >=320) {
 			openMobileMenu.addEventListener('click', (e) => {
 				menuMobile.classList.add('activeMenu');
+				body.style.overflow = 'hidden';
+				menuMobile.style.overflow = 'auto';
 
 				if(menuMobile.classList.contains('activeMenu')) {
 					openMobileMenu.style.display = 'none';
@@ -213,6 +255,8 @@
 
 			closeMobileButton.addEventListener('click', (e) => {
 				menuMobile.classList.remove('activeMenu');
+				body.style.overflow = '';
+				menuMobile.style.overflow = '';
 
 				if(!menuMobile.classList.contains('activeMenu')) {
 					openMobileMenu.style.display = 'block';

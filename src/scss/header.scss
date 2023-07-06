@@ -92,7 +92,7 @@ $purple-color : #F1DDF2;
               color: #0E0F11;
             }
 
-            a.activeLi {
+            a.activeLi, a.activeSpan  {
               color: #DC7148;
             }
 
@@ -110,7 +110,7 @@ $purple-color : #F1DDF2;
                   color: #0E0F11;
                 }
 
-                a.activeLi {
+                a.activeLi, a.activeSpan {
                   color: #DC7148;
                 }
               }
@@ -118,10 +118,6 @@ $purple-color : #F1DDF2;
           }
         }
       }
-
-      // li.current-menu-item, li.current_page_item {
-      //   color: #DC7148;
-      // }
     }
 
 
@@ -382,7 +378,7 @@ $purple-color : #F1DDF2;
             padding: 0;
           }
   
-          a.activeLi {
+          a.activeLi , a.activeSpan {
             color: #DC7148;
           }
   
@@ -399,7 +395,7 @@ $purple-color : #F1DDF2;
                 color: #0E0F11;
               }
   
-              a.activeLi {
+              a.activeLi , a.activeSpan {
                 color: #DC7148;
               }
   
@@ -417,7 +413,7 @@ $purple-color : #F1DDF2;
                     color: #0E0F11;
                   }
   
-                  a.activeLi {
+                  a.activeLi , a.activeSpan {
                     color: #DC7148;
                   }
                 }
