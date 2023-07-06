@@ -1,3 +1,31 @@
+.anime {
+    transform: scale(0);
+    opacity: 0;
+    display: none !important;
+}
+
+.hide {
+    animation-name: hide;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes hide {
+    0% {
+        visibility: visible;
+        height: 200px;
+    }
+
+    100% {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        margin: 0;
+        font-size: 0;
+        margin: 0;
+    }
+}
+
 .message {
     font-weight: 600;
     font-size: 1rem;
@@ -59,6 +87,7 @@
 
     .projects__content .projects__content__item {
         display: none !important;
+        animation: bounce-in .5s reverse ease-in both;
 
         &:nth-child(-n+9) {
             display: flex !important;
@@ -83,11 +112,12 @@
     }
 
     .projects__content .projects__content__item.active_cards {
+        animation: bounce-in .5s reverse ease-in both;
         display: flex !important;
     }
 
     .projects__content .projects__content__item.hidden {
-        display: none !important;
+        animation: bounce-in .5s ease-out both;
     }
 }
 
@@ -119,6 +149,7 @@
 
         .projects__content {
             .projects__content__item {
+                animation: bounce-in .5s reverse ease-in both;
                 border-radius: 28.5px;
 
                 .item__data {
@@ -132,8 +163,8 @@
             }
         }
 
-        .projects__content .projects__content__item.hidden {
-            display: none !important;
+        .projects__content .projects__content__item {
+            animation: bounce-in .5s ease-out both;
         }
     }
 }
@@ -161,7 +192,7 @@
 
         .projects__content {
             .projects__content__item {
-
+                animation: bounce-in .5s reverse ease-in both;ы
                 .item__data {
                     .data__teg {
                         padding-bottom: 26px !important;
@@ -182,7 +213,7 @@
         }
 
         .projects__content .projects__content__item.hidden {
-            display: none;
+            animation: bounce-in .5s ease-out both;
         }
     }
 }
@@ -211,6 +242,7 @@
 
         .projects__content {
             .projects__content__item {
+                animation: bounce-in .5s reverse ease-in both;
                 height: calc(339px + (420 - 339) * ((100vw - 320px)/ (480 - 320)));
 
                 .item__data {
@@ -236,7 +268,7 @@
         }
 
         .projects__content .projects__content__item.hidden {
-            display: none;
+            animation: bounce-in .5s ease-out both;
         }
     }
 }

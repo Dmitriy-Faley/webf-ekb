@@ -94,16 +94,20 @@ get_header();
         cards.forEach(card => {
                 postsTags.forEach(itemTag => {
                     if(card.classList.contains(el.classList[0])) {
-                        console.log('e')
-                        card.classList.remove('hidden');
+                        card.classList.remove('hide');
+                        card.classList.remove('anime');
                     } else {
-                        card.classList.add('hidden');
+                        card.classList.add('anime');
+                        card.classList.remove('hide');
                     }
                     if(el.classList.contains('vse')) {
-                    card.classList.remove('hidden');
+                        card.classList.remove('hide');
+                        card.classList.remove('anime');
                 }
                 });
             })
         });
     });
+
+    //TODO: доработать исчезновение
 </script>
