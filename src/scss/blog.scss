@@ -85,6 +85,10 @@
         }
     }
 
+    .card-list {
+        height: fit-content;
+    }
+
     .projects__content .projects__content__item {
         display: none !important;
         animation: bounce-in .5s reverse ease-in both;

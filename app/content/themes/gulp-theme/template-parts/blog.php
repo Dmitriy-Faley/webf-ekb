@@ -27,7 +27,7 @@ get_header();
             // запрос
             $wpb_all_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1)); ?>
             <?php if ( $wpb_all_query->have_posts() ) : ?>
-            <ul>
+            <ul class="card-list">
                 <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
                     <div class="projects__content__item <?php $post_categories = get_the_category($blog_posts->the_post->ID);
                                    foreach ($post_categories as $post_category) {
@@ -83,6 +83,9 @@ get_header();
     const links = [...document.querySelectorAll(".blog__tags a")];
     const postsTags = [...document.querySelectorAll(".data__teg span")];
     const cards = [...document.querySelectorAll(".projects__content__item")];
+    const listOfCards = document.querySelector(".card-list");
+    const height = listOfCards.style.height;
+    console.log(listOfCards);
 
     links.forEach(el => {
         el.addEventListener('click', (e) => {
@@ -98,7 +101,7 @@ get_header();
                         card.classList.remove('anime');
                     } else {
                         card.classList.add('anime');
-                        card.classList.remove('hide');
+                        card.classList.add('hide');
                     }
                     if(el.classList.contains('vse')) {
                         card.classList.remove('hide');
@@ -108,6 +111,4 @@ get_header();
             })
         });
     });
-
-    //TODO: доработать исчезновение
 </script>
