@@ -25,6 +25,19 @@ get_header();
 
 <section class="subservices">
     <div class="container">
+        <?php
+            function true_get_nav_menu_children_items( $parent_id, $nav_menu_items, $dpth = true ) {
+                $dochernie = array();
+                foreach ( (array) $nav_menu_items as $nav_item ) {
+                    if ( $nav_item->menu_item_parent == $parent_id ) {
+                        $dochernie[] = $nav_item;
+                    }
+                }
+                return $dochernie;
+            } 
+            $title = get_the_title();
+            // echo true_get_nav_menu_children_items('menu-item-9', wp_get_nav_menu_items($title));  
+        ?>
         <ul class="subservices__links">
             <li><a href="#">Создание сайта «под ключ»</a></li>
             <li><a href="#">Разработка программного модуля для сайта</a></li>

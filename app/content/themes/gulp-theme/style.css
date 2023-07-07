@@ -53,6 +53,10 @@ Version: 1.0
 	}
 }
 
+li.current_page_item>a {
+	color: #dc7148;
+}
+
 /*End*/
 
 
@@ -91,7 +95,7 @@ Version: 1.0
 	color: #0E0F11;
 }
 
-.header-menu__ul li:hover>a {
+.header-menu__ul li:hover>a, .header-menu__ul li.current_page_item  {
 	color: #dc7148;
 }
 

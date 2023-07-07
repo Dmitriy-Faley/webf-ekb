@@ -127,8 +127,7 @@
 		const firstArrows = [...firstLevelArrow];
 		const secondArrows = [...secondLevelArrow];
 		const thirdArrows = [...thirdLevelArrow];
-
-		console.log(firstArrows)
+		
 		let count = 0;
 
 
@@ -190,7 +189,7 @@
 				subSubMenu.classList.add('activeUl');
 				if(subSubMenu.classList.contains('activeUl')) {
 					headerMenu.style.height = '1102px';
-					subArrows[0].classList.add('activeSpan');
+					subSubMenu.classList.add('noClose');
 				} else {
 					headerMenu.style.height = '712px';
 				}
@@ -225,14 +224,14 @@
 						el.parentNode.classList.add('activeSpan');
 					})
 					el.addEventListener('mouseleave', (e) => {
-						el.classList.remove('activeSpan');
-						el.parentNode.classList.remove('activeSpan');
+						if(subSubMenu.classList.contains('noClose') || subSubMenu.classList.contains('activeUl')) {
+							el.classList.add('activeSpan');
+							el.parentNode.classList.add('activeSpan');
+						} else {
+							el.classList.remove('activeSpan');
+							el.parentNode.classList.remove('activeSpan');
+						}
 					})
-
-					if(subSubMenu.classList.contains('activeUl')) {
-						el.classList.add('activeSpan');
-						el.parentNode.classList.add('activeSpan');
-					}
 				})
 			}
 			activeSpan(arrows);
