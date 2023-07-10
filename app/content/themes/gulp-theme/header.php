@@ -108,6 +108,7 @@
 		const subArrows = [...document.querySelectorAll(".main-header-menu>ul>li>ul>li>ul>li>a>span")];
 		const subMenu = document.querySelector(".main-header-menu>ul>li>ul>li>ul");
 		const subSubMenu = document.querySelector(".main-header-menu>ul>li>ul>li>ul>li>ul");
+		const subSubElements = [...document.querySelectorAll(".main-header-menu>ul>li>ul>li>ul>li>ul>li")];
 
 		//Tablet & Mobile
 		const mobilHeaderMenu = document.querySelector(".mobile-menu__ul>li>ul");
@@ -127,7 +128,7 @@
 		const firstArrows = [...firstLevelArrow];
 		const secondArrows = [...secondLevelArrow];
 		const thirdArrows = [...thirdLevelArrow];
-		
+
 		let count = 0;
 
 
@@ -187,15 +188,27 @@
 
 			subSubMenu.addEventListener('mouseover', (e) => {
 				subSubMenu.classList.add('activeUl');
+
 				if(subSubMenu.classList.contains('activeUl')) {
 					headerMenu.style.height = '1102px';
-					subSubMenu.classList.add('noClose');
 				} else {
 					headerMenu.style.height = '712px';
 				}
 			});
 			subSubMenu.addEventListener('mouseleave', (e) => {
 				subSubMenu.classList.remove('activeUl');
+			});
+
+			subSubElements.forEach(el => {
+				el.addEventListener('mouseover', (e) => {
+					const parent = el.parentNode;
+					parent.parentNode.classList.add('activeSub');
+				});
+
+				el.addEventListener('mouseleave', (e) => {
+					const parent = el.parentNode;
+					parent.parentNode.classList.remove('activeSub');
+				});
 			});
 
 			document.querySelectorAll(".main-header-menu").forEach(e => {
@@ -224,13 +237,10 @@
 						el.parentNode.classList.add('activeSpan');
 					})
 					el.addEventListener('mouseleave', (e) => {
-						if(subSubMenu.classList.contains('noClose') || subSubMenu.classList.contains('activeUl')) {
-							el.classList.add('activeSpan');
-							el.parentNode.classList.add('activeSpan');
-						} else {
-							el.classList.remove('activeSpan');
-							el.parentNode.classList.remove('activeSpan');
-						}
+						el.classList.remove('activeSpan');
+						el.classList.remove('activeLi');
+						el.parentNode.classList.remove('activeLi');
+						el.parentNode.classList.remove('activeSpan');
 					})
 				})
 			}

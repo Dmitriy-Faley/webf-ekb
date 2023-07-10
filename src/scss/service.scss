@@ -210,7 +210,7 @@
     }
 }
 
-@media screen and (max-width: 1368px) and (min-width: 880px) {
+@media screen and (max-width: 1368px) and (min-width: 869px) {
     .header-service {
         padding-top: 55px;
 
@@ -387,7 +387,7 @@
     }
 }
 
-@media screen and (max-width: 768px) and (min-width: 460px) {
+@media screen and (max-width: 868px) and (min-width: 460px) {
     .header-service {
         padding-top: 70px;
     
@@ -721,26 +721,26 @@
     .service-content__client {
         margin-top: 80px;
 
-    h2 {
-        font-weight: 600;
-        font-size: 24px;
-        padding-bottom: 0;
-        margin-bottom: 30px;
-        line-height: 28px;
-    }
+        h2 {
+            font-weight: 600;
+            font-size: 24px;
+            padding-bottom: 0;
+            margin-bottom: 30px;
+            line-height: 28px;
+        }
 
-    p {
-        color: #0E0F11;
-        width: 288px;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 21px;
-        padding-bottom: 15px;
-    }
+        p {
+            color: #0E0F11;
+            width: 288px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 21px;
+            padding-bottom: 15px;
+        }
 
-    p:last-child {
-        padding-bottom: 0;
-        margin-bottom: 80px;
-    }
+        p:last-child {
+            padding-bottom: 0;
+            margin-bottom: 80px;
+        }
     }
 }

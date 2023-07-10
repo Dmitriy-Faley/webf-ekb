@@ -1,9 +1,9 @@
-// Main color
-$default-color : #0E0F11;
-$second-color : #ffffff;
-$pink-color : #FDD0BF;
-$yellow-color : #F8F5D4;
-$purple-color : #F1DDF2;
+.header__menu .sub-menu li.current-menu-item a,
+.header__menu .sub-menu li.current_page_item a, 
+.header-menu__ul>li.current-menu-ancestor a,
+.header-menu__ul>li.current-menu-parent a {
+  color: #DC7148;
+}
 
 .header {
   position: relative;
@@ -37,7 +37,6 @@ $purple-color : #F1DDF2;
       top: 0;
       left: 0;
       margin-top: -2px;
-      //margin-left: -10px;
       width: 50px;
       height: 3px;
       background: #0E0F11;
@@ -64,15 +63,13 @@ $purple-color : #F1DDF2;
       li {
         margin-bottom: 40px;
         padding: 0;
-        color: #0E0F11;
-
         a {
-          color: #0E0F11;
           font-weight: 600;
           font-size: 36px;
           line-height: 120%;
           margin-bottom: 0;
           padding: 0;
+          color: #0E0F11;
         }
 
         a.activeLi {
@@ -100,7 +97,6 @@ $purple-color : #F1DDF2;
 
               li {
                 margin-bottom: 8px;
-                color: #0E0F11;
 
                 a {
                   min-width: 260px;
@@ -114,9 +110,19 @@ $purple-color : #F1DDF2;
                   color: #DC7148;
                 }
               }
+              li.current_page_item , li.current-menu-item{
+                color: #DC7148;
+              }
             }
           }
+          li.current_page_item , li.current-menu-item{
+            color: #DC7148;
+          }
         }
+      }
+
+      li.current_page_item , li.current-menu-item{
+          color: #DC7148;
       }
     }
 
@@ -196,10 +202,6 @@ $purple-color : #F1DDF2;
         font-size: 20px;
         line-height: 28px;
         transition: all 0.2s ease;
-
-        &:hover {
-          color: $default-color;
-        }
       }
     }
   }
@@ -252,7 +254,6 @@ $purple-color : #F1DDF2;
 
       a {
         display: block;
-        color: $second-color;
       }
     }
   }
@@ -367,10 +368,8 @@ $purple-color : #F1DDF2;
         li {
           margin-bottom: 40px;
           padding: 0;
-          color: #0E0F11;
   
           a {
-            color: #0E0F11;
             font-weight: 600;
             font-size: 26px;
             line-height: 31px;
@@ -392,7 +391,6 @@ $purple-color : #F1DDF2;
                 font-weight: 500;
                 font-size: 17px;
                 line-height: 21px;
-                color: #0E0F11;
               }
   
               a.activeLi , a.activeSpan {
@@ -403,14 +401,12 @@ $purple-color : #F1DDF2;
   
                 li {
                   margin-bottom: 8px;
-                  color: #0E0F11;
   
                   a {
                     min-width: 260px;
                     font-weight: 400;
                     font-size: 14px;
                     line-height: 150%;
-                    color: #0E0F11;
                   }
   
                   a.activeLi , a.activeSpan {
@@ -472,7 +468,6 @@ $purple-color : #F1DDF2;
           margin: 0;
           margin-bottom: 24px;
           padding: 0;
-          color: #0E0F11;
   
           a {
             font-weight: 600;
@@ -512,7 +507,6 @@ $purple-color : #F1DDF2;
 
                 li {
                   margin-bottom: 8px;
-                  color: #0E0F11;
   
                   a {
                     min-width: 260px;
@@ -553,11 +547,9 @@ $purple-color : #F1DDF2;
           margin-bottom: 20px;
           margin-left: 16px;
           padding: 0;
-          color: #0E0F11;
   
           a {
             width: 182px;
-            color: #0E0F11;
             font-weight: 600;
             font-size: 16px;
             line-height: 120%;
@@ -580,7 +572,6 @@ $purple-color : #F1DDF2;
                 font-weight: 500;
                 font-size: 14px;
                 line-height: 120%;
-                color: #0E0F11;
               }
   
               a.activeLi {
@@ -591,7 +582,6 @@ $purple-color : #F1DDF2;
   
                 li {
                   margin-bottom: 12px;
-                  color: #0E0F11;
   
                   a {
                     min-width: 260px;
