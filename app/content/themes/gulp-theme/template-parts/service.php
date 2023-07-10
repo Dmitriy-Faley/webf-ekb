@@ -26,15 +26,15 @@ get_header();
 <section class="subservices">
     <div class="container">
         <?php 
-        /*
+            /*
             $parent_title = the_title(); // получаем title родительского пункта меню
             $args = array(
             'menu_class'=>'', // класс меню
-            'theme_location' => 'top_menu', // название меню
+            'theme_location' => 'button_menu', // название меню
             'submenu' => $parent_title // переменная с title родительского пункта
             );
             wp_nav_menu($args);
-                    */
+            */
         ?>
         <ul class="subservices__links">
             <li><a href="#">Создание сайта «под ключ»</a></li>
