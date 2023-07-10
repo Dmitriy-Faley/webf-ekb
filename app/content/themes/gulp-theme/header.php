@@ -222,12 +222,17 @@
 					openSecondLevelMenu(e)
 				})
 
-			menuItemForStyles.forEach(el => {
-				el.addEventListener('mouseover', (e) => {
-					if(el.innerHTML === "Портфолио" || el.innerHTML === "Контакты" || el.innerHTML === "Блог") {
-						closeButton.style.display = 'none';
-					}
-				})
+			window.addEventListener('mouseover', (e) => {
+				if(e.target.innerHTML === "Портфолио<span></span>" || e.target.innerHTML === "Контакты<span></span>" || e.target.innerHTML === "Блог<span></span>") {
+					closeButton.style.display = 'none';
+					header.classList.remove('active_header');
+				}
+			})
+			window.addEventListener('mouseleave', (e) => {
+				if(e.target.innerHTML === "Портфолио<span></span>" || e.target.innerHTML === "Контакты<span></span>" || e.target.innerHTML === "Блог<span></span>") {
+					closeButton.style.display = 'none';
+					header.classList.remove('active_header');
+				}
 			})
 
 			function activeSpan(arr) {
