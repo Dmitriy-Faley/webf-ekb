@@ -335,6 +335,41 @@ lwptoc-light .lwptoc_items A:visited {
             margin-bottom: 50px;
         }
 
+        .projects__content .projects__content__item {
+        display: none !important;
+        animation: bounce-in .5s reverse ease-in both;
+
+        &:nth-child(-n+9) {
+            display: flex !important;
+        }
+
+        .item__data {
+            .data__teg {
+                span {
+                    background: #F8F5D4 !important;
+
+                    &:hover{
+                        background: #F0EBB1 !important;
+                    }
+                }
+            }
+
+            .data__info .desk {
+                font-size: 16px !important;
+                line-height: 19px !important;
+            }
+        }
+    }
+
+    .projects__content .projects__content__item.active_cards {
+        animation: bounce-in .5s reverse ease-in both;
+        display: flex !important;
+    }
+
+    .projects__content .projects__content__item.hidden {
+        animation: bounce-in .5s ease-out both;
+    }
+
         .projects__content {
             .projects__content__item {
                 width: 1400px;

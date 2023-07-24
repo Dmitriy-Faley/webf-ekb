@@ -58,10 +58,21 @@
 .subservices {
     padding-top: 150px;
 
+    .menu-button_menu-container {
+        
+        .sub-menu {
+                display: none;
+            }
+    }
+
     .subservices__links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 36px;
+
+        #menu-button_menu-2 {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap: 36px;
+        }
 
         li {
             width: 320px;

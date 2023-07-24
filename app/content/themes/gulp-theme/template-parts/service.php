@@ -25,25 +25,16 @@ get_header();
 
 <section class="subservices">
     <div class="container">
-        <?php 
-            /*
-            $parent_title = the_title(); // получаем title родительского пункта меню
-            $args = array(
-            'menu_class'=>'', // класс меню
-            'theme_location' => 'button_menu', // название меню
-            'submenu' => $parent_title // переменная с title родительского пункта
-            );
-            wp_nav_menu($args);
-            */
-        ?>
         <ul class="subservices__links">
-            <li><a href="#">Создание сайта «под ключ»</a></li>
-            <li><a href="#">Разработка программного модуля для сайта</a></li>
-            <li><a href="#">Готовые сайты</a></li>
-            <li><a href="#">Лицензирование</a></li>
-            <li><a href="#">Технологии</a></li>
-            <li><a href="#">Аутсорсинг</a></li>
-            <li><a href="#">Аутстаффинг</a></li>
+            <?php 
+                add_filter('wp_nav_menu_objects', 'wp_nav_menu_objects_filter', 10, 2);
+
+                //Вывод отфильтрованного меню (со всеми дочерними)
+                $args = array(
+                    'menu' => 'button_menu',
+                );
+                wp_nav_menu($args);
+            ?>
         </ul>
     </div>
 </section>

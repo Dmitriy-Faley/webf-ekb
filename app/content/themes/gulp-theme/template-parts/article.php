@@ -86,60 +86,44 @@ get_header();
     <div class="article__content">
         <?php the_field('chitat_dalshe'); ?>
         <div class="projects__content">
-            <div class="projects__content__item">
-                <div>
-                    <a href="#" class="item__img">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article1.png"
-                            alt="projects">
-                    </a>
-                </div>
-                <div class="item__data">
-                    <div class="data__tag">
-                        <span>Статьи</span>
-                        <span>Разработка</span>
+        <?php
+            // запрос
+            $wpb_all_query = new WP_Query(array(
+                'post_type'=>'post', 
+                'post_status'=>'publish', 
+                'posts_per_page'=>3, 
+                'order' => 'DESC')); 
+            ?>
+
+            <?php if ( $wpb_all_query->have_posts() ) : ?>
+            <ul class="card-list">
+                <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
+                    <div class="projects__content__item <?php $post_categories = get_the_category($blog_posts->the_post->ID);
+                                        foreach ($post_categories as $post_category) {
+                                            echo ' '. $post_category->slug.' ';
+                                            }; ?>">
+                        <div>
+                        <a href="<?php the_permalink(); ?>" class="item__img">
+                                        <?php the_post_thumbnail(); ?>
+                                    </a>
+                        </div>
+                        <div class="item__data">
+                            <div class="data__tag">
+                                    <?php $post_categories = get_the_category($blog_posts->the_post->ID);
+                                        foreach ($post_categories as $post_category) {
+                                            echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
+                                        }; ?>
+                            </div>
+                            <div class="data__info">
+                            <a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
+                                        <p class="desk"><?php echo get_the_date()?></p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="data__info">
-                        <a href="#" class="title">Преимущества Shopify — 10 причин полюбить его</a>
-                        <p class="desk">1 день назад</p>
-                    </div>
-                </div>
-            </div>
-            <div class="projects__content__item">
-                <div>
-                    <a href="#" class="item__img">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article2.png"
-                            alt="projects">
-                    </a>
-                </div>
-                <div class="item__data">
-                    <div class="data__tag">
-                        <span>Статьи</span>
-                        <span>SMM</span>
-                    </div>
-                    <div class="data__info">
-                        <a href="#" class="title">Одноклассники: как оформить группы?</a>
-                        <p class="desk">2 дня назад</p>
-                    </div>
-                </div>
-            </div>
-            <div class="projects__content__item">
-                <div>
-                    <a href="#" class="item__img">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/articles/article3.png"
-                            alt="projects">
-                    </a>
-                </div>
-                <div class="item__data">
-                    <div class="data__tag">
-                        <span>Статьи</span>
-                        <span>дизайн</span>
-                    </div>
-                    <div class="data__info">
-                        <a href="#" class="title">Что такое дизайн-системы и для чего они нужны?</a>
-                        <p class="desk">3 октября 2022</p>
-                    </div>
-                </div>
-            </div>
+            <?php endwhile; ?>
+            </ul>
+                <?php wp_reset_postdata(); ?>
+                <?php endif; ?>
         </div>
         <button class="button button-more" id="blogs-more">Все статьи</button>
     </div>
@@ -164,6 +148,8 @@ get_header();
     const sendButton = document.querySelector('.send');
     const linksList = document.querySelector('.content-area__send ul');
 
+    const moreButton = document.querySelector('#blogs-more');
+
     sendButton.addEventListener('click', (e) => {
         linksList.classList.toggle('active');
     })
@@ -182,15 +168,20 @@ get_header();
     //copy the link
 
     window.addEventListener("load", function () {
-    document.querySelector('.link').onclick = () => {
-        window.event.preventDefault();
-        let copytext = document.createElement('input');
-        copytext.value = window.location.href;
-        document.body.appendChild(copytext);
-        copytext.select();
-        document.execCommand('copy');
-        document.body.removeChild(copytext);
-    }
-});  
+        document.querySelector('.link').onclick = () => {
+            window.event.preventDefault();
+            let copytext = document.createElement('input');
+            copytext.value = window.location.href;
+            document.body.appendChild(copytext);
+            copytext.select();
+            document.execCommand('copy');
+            document.body.removeChild(copytext);
+        }
+    });  
+
+    moreButton.addEventListener('click', (e) => {
+        console.log(e.target);
+        document.querySelector('#menu-item-46 a').click();
+    })
 
 </script>

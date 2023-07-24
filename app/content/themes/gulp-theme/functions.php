@@ -501,28 +501,33 @@ function load_posts_from_category_by_ajax()
     die();
 };
 
+/**
+ * Filters the sorted list of menu item objects before generating the menu's HTML.
+ *
+ * @param array $sorted_menu_items The menu items, sorted by each menu item's menu order.
+ * @param stdClass $args An object containing wp_nav_menu() arguments.
+ *
+ * @return array
+ */
 
-add_filter( 'wp_nav_menu_objects', 'submenu', 0, 3);
-function submenu( $items, $args ) {
-    if ( empty( $args->submenu ) ) {
-        return $items;
+// фильтр который оставит только подпункты определенного меню с ID=37
+function wp_nav_menu_objects_filter($sorted_menu_items, $args)
+{
+    if ('button_menu' !== $args->menu) {
+        return $sorted_menu_items;
     }
-    $ids = wp_filter_object_list( $items, array( 'title' => $args->submenu ), 'and', 'ID' );
-    $parent_id = array_pop( $ids );
-    $children  = submenu_get_children( $parent_id, $items );
- 
-    foreach ( $items as $key => $item ) {
-        if ( ! in_array( $item->ID, $children ) ) {
-            unset( $items[$key] );
+
+    $items        = array();
+    $parents       = array();
+    $parents[]     = 9; //ID пункта нашего меню чьё подменю надо вывести.
+
+    foreach ($sorted_menu_items as $item) {
+        if (in_array(intval($item->menu_item_parent), $parents, true)) {
+            $items[] = $item;
+            $parents[] = $item->ID;
+            continue;
         }
     }
+
     return $items;
-}
- 
-function submenu_get_children( $id, $items ) {
-    $ids = wp_filter_object_list( $items, array( 'menu_item_parent' => $id ), 'and', 'ID' );
-    foreach ( $ids as $id ) {
-        $ids = array_merge( $ids, submenu_get_children( $id, $items ) );
-    }
-    return $ids;
 }
