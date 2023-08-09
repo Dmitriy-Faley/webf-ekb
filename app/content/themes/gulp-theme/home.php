@@ -492,7 +492,7 @@ get_header();
                 <?php wp_reset_postdata(); ?>
                 <?php endif; ?>
     </div>
-    <a href="#" class="button">Все статьи</a>
+    <a href="/blog" class="button">Все статьи</a>
   </div>
 </section>
 

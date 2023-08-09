@@ -24,6 +24,7 @@
         height: 0;
         font-size: 0;
         margin: 0;
+        display: none;
     }
 }
 
@@ -92,11 +93,11 @@
     }
 
     .projects__content .projects__content__item {
-        display: none !important;
+        display: none;
         animation: bounce-in .5s reverse ease-in both;
 
         &:nth-child(-n+9) {
-            display: flex !important;
+            display: flex;
         }
 
         .item__data {

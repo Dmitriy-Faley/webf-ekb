@@ -335,7 +335,6 @@
 		
 		window.addEventListener('click', (e) => {
 			let target = e.target;
-			console.log(target)
 			if(headerMenu.classList.contains('activeUl') && target !== headerMenu) {
 				closeButton.click();
 			}
