@@ -180,7 +180,6 @@ get_header();
     });  
 
     moreButton.addEventListener('click', (e) => {
-        console.log(e.target);
         document.querySelector('#menu-item-46 a').click();
     })
 

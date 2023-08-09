@@ -152,6 +152,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 <script>
+  const scroll = document.querySelector('.swiper-container');
   var swiper = new Swiper(".services__content", {
     slidesPerView: 5,
     spaceBetween: 10,
@@ -180,6 +181,11 @@
       }
     }
   });
+
+
+  swiper.on('slideChange', (e) => {
+    scroll.scrollIntoView();
+  })
 </script>
 
 

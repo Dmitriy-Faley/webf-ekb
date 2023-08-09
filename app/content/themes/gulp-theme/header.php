@@ -104,6 +104,8 @@
 		const closeButton = document.querySelector(".closeMenu");
 		const header = document.querySelector(".header");
 		const headerMenu = document.querySelector(".header-menu__ul>li>ul");
+		const activeMenus = document.querySelectorAll('.activeUl');
+		const main = document.querySelector('main');
 		const arrows = [...document.querySelectorAll(".main-header-menu>ul>li>ul>li>a>span")];
 		const subArrows = [...document.querySelectorAll(".main-header-menu>ul>li>ul>li>ul>li>a>span")];
 		const subMenu = document.querySelector(".main-header-menu>ul>li>ul>li>ul");
@@ -330,5 +332,12 @@
 				})
 			})
 		}
-		//TODO: настроить сохранение перехода в меню!
+		
+		window.addEventListener('click', (e) => {
+			let target = e.target;
+			console.log(target)
+			if(headerMenu.classList.contains('activeUl') && target !== headerMenu) {
+				closeButton.click();
+			}
+		})
 	</script>

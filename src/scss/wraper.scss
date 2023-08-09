@@ -1830,6 +1830,7 @@
 .swiper-wrapper {
   display: flex;
   align-items: flex-end;
+  
 }
 
 .swiper-slide {
@@ -1837,6 +1838,10 @@
   align-items: flex-end;
   width: auto;
   margin-right: 8px;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 35px 0 40px 0;
 
   img {
     max-width: 780px;
