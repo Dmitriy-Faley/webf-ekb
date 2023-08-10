@@ -1,5 +1,7 @@
 .anime {
     transform: scale(0);
+    margin: 0;
+    padding: 0;
     opacity: 0;
     height: 0;
     transform-origin: center;
@@ -85,11 +87,6 @@
 
         &:nth-child(-n+9) {
             display: flex;
-        }
-
-        .item__data {
-
-            .data__info .desk {}
         }
     }
 

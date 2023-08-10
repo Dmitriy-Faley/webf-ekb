@@ -113,6 +113,11 @@ get_header();
                     } else {
                         card.classList.add('anime');
                         card.classList.add('hide');
+                        if(card.classList.contains('anime') || card.classList.contains('hide')) {
+                            card.style.display = 'none';
+                        } else {
+                            return;
+                        }
                     }
                     if(el.classList.contains('vse')) {
                         card.classList.remove('hide');
