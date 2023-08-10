@@ -123,7 +123,7 @@ app();
 
 
 
-$('.toggle').click(function (e) {
+$('.toggle').onclick(function (e) {
 	e.preventDefault();
 
 	var $this = $(this);
