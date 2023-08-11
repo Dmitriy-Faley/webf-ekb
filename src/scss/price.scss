@@ -118,9 +118,9 @@
                     .tabs__pane__name {
                         color: #DC7148;
 
-                        &::after {
-                            transform: rotate(-180deg);
-                        }
+                        // &::after {
+                        //     transform: rotate(-180deg);
+                        // }
 
                         svg {
                             transform: rotate(-180deg);

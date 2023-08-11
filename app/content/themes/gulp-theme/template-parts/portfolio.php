@@ -43,7 +43,7 @@ get_header();
                     <div class="projects__content__item <?php $post_categories = get_the_terms(get_the_ID(), "portfoliocat");
                                    foreach ($post_categories as $post_category) {
                                       echo ' '. $post_category->slug.' ';
-                                    }; ?>">
+                                    }; ?>" style="position: static;">
                         <div>
                             <a href="<?php the_permalink(); ?>" class="item__img">
                                 <?php the_post_thumbnail(); ?>
@@ -109,20 +109,23 @@ get_header();
                 postsTags.forEach(itemTag => {
                     if(card.classList.contains(el.classList[0])) {
                         card.classList.remove('hide');
-                        card.classList.remove('anime');
+                        card.classList.remove('anima');
+                        card.style.position = 'static';
                     } else {
-                        card.classList.add('anime');
+                        card.classList.add('anima');
                         card.classList.add('hide');
-                        if(card.classList.contains('anime') || card.classList.contains('hide')) {
-                            card.style.display = 'none';
-                        } else {
-                            return;
-                        }
                     }
                     if(el.classList.contains('vse')) {
                         card.classList.remove('hide');
-                        card.classList.remove('anime');
-                }
+                        card.classList.remove('anima');
+                        card.style.position = 'static !important';
+                    }
+
+                    if(card.classList.contains('anima')) {
+                        card.style.position = 'absolute';
+                    } else {
+                        card.style.position = 'static';
+                    }
                 });
             })
         });

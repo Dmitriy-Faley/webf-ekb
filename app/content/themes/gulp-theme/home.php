@@ -56,59 +56,53 @@ get_header();
     <h3 class="title">Недавние проекты нашей компании<img
         src="<?php echo get_template_directory_uri() ?>/assets/img/icons/fire-title.svg" alt="fire"></h3>
     <div class="projects__content">
-      <div class="projects__content__item">
-        <div>
-          <a href="#" class="item__img">
-            <img src="<?php echo get_template_directory_uri() ?>/assets/img/projects/project1.png" alt="projects">
-          </a>
-        </div>
-        <div class="item__data">
-          <div class="data__teg">
-            <span>Ui/UX Дизайн</span>
-            <span>Разработка сайта</span>
-          </div>
-          <div class="data__info">
-            <a href="#" class="title">Название проекта</a>
-            <p class="desk">Сфера проекта</p>
-          </div>
-        </div>
-      </div>
-      <div class="projects__content__item">
-        <div>
-          <a href="#" class="item__img">
-            <img src="<?php echo get_template_directory_uri() ?>/assets/img/projects/project2.png" alt="projects">
-          </a>
-        </div>
-        <div class="item__data">
-          <div class="data__teg">
-            <span>Ui/UX Дизайн</span>
-            <span>Разработка сайта</span>
-          </div>
-          <div class="data__info">
-            <a href="#" class="title">Название проекта</a>
-            <p class="desk">Сфера проекта</p>
-          </div>
-        </div>
-      </div>
-      <div class="projects__content__item">
-        <div>
-          <a href="#" class="item__img">
-            <img src="<?php echo get_template_directory_uri() ?>/assets/img/projects/project3.png" alt="projects">
-          </a>
-        </div>
-        <div class="item__data">
-          <div class="data__teg">
-            <span>Ui/UX Дизайн</span>
-            <span>Разработка сайта</span>
-          </div>
-          <div class="data__info">
-            <a href="#" class="title">Название проекта</a>
-            <p class="desk">Сфера проекта</p>
-          </div>
-        </div>
-      </div>
+    <?php
+            // запрос
+            $wpb_all_query = new WP_Query(array(
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'portfoliocat',
+                        'field'    => 'id',
+                        'terms'    => '27'
+                    )
+                ),
+                'post_type'=>'portfolio', 
+                'post_status'=>'publish', 
+                'posts_per_page'=>-1
+    )); ?>
+            <?php if ( $wpb_all_query->have_posts() ) : ?>
+            <ul class="card-list">
+                <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
+                    <div class="projects__content__item <?php $post_categories = get_the_terms(get_the_ID(), "portfoliocat");
+                                   foreach ($post_categories as $post_category) {
+                                      echo ' '. $post_category->slug.' ';
+                                    }; ?>">
+                        <div>
+                            <a href="<?php the_permalink(); ?>" class="item__img">
+                                <?php the_post_thumbnail(); ?>
+                            </a>
+                        </div>
+                        <div class="item__data">
+                            <div class="data__teg">
+                                   <?php $post_categories = get_the_terms(get_the_ID(), "portfoliocat");
+                                   foreach ($post_categories as $post_category) {
+                                       echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
+                                    }; ?>
+                            </div>
+                            <div class="data__info">
+                                <a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
+                                <p class="desk">Сфера проекта</p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            </ul>
+                <?php wp_reset_postdata(); ?>
+            <?php else : ?>
+                <p><?php _e( 'Извините, нет кейсов, соответствуюших Вашему запросу.' ); ?></p>
+            <?php endif; ?>
     </div>
-    <a href="#" class="button">Все проекты</a>
+    <a href="/portfolio" class="button">Все проекты</a>
   </div>
 </section>
 
@@ -204,96 +198,36 @@ get_header();
           <p class="subtitle">Заказчик должен все получить в одном месте! Исповедуем только такой подход.
             Рекламно-маркетинговое агентство «Веб Фокус» охватывает все диджитал-направления:</p>
         </div>
-        <div class="swiper-wrapper container">
-          <div class="swiper-slide">
-            <div class="services__item">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-              <p class="name">Cоздание сайтов</p>
-              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
-                не
-                меньше, а то и больше прибыли, чем другие подразделения</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="services__item">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-              <p class="name">Cоздание сайтов</p>
-              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
-                не
-                меньше, а то и больше прибыли, чем другие подразделения</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="services__item">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-              <p class="name">Cоздание сайтов</p>
-              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
-                не
-                меньше, а то и больше прибыли, чем другие подразделения</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="services__item">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-              <p class="name">Cоздание сайтов</p>
-              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
-                не
-                меньше, а то и больше прибыли, чем другие подразделения</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="services__item">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-              <p class="name">Cоздание сайтов</p>
-              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
-                не
-                меньше, а то и больше прибыли, чем другие подразделения</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="services__item">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-              <p class="name">Cоздание сайтов</p>
-              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
-                не
-                меньше, а то и больше прибыли, чем другие подразделения</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="services__item">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-              <p class="name">Cоздание сайтов</p>
-              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
-                не
-                меньше, а то и больше прибыли, чем другие подразделения</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="services__item">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-              <p class="name">Cоздание сайтов</p>
-              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
-                не
-                меньше, а то и больше прибыли, чем другие подразделения</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="services__item">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-              <p class="name">Cоздание сайтов</p>
-              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
-                не
-                меньше, а то и больше прибыли, чем другие подразделения</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="services__item">
-              <img src="<?php echo get_template_directory_uri() ?>/assets/img/serv1.svg" alt="serv">
-              <p class="name">Cоздание сайтов</p>
-              <p class="desk">Не ненужный бонус, а реально работающий инструмент. Виртуальный офис, который приносит
-                не
-                меньше, а то и больше прибыли, чем другие подразделения</p>
-            </div>
+        <div class="slider-wrapper">
+          <?php
+              // запрос
+              $wpb_all_query = get_pages( [
+                'sort_order'   => 'ASC',
+                'sort_column'  => 'post_title',
+                'hierarchical' => 1,
+                'exclude'      => '',
+                'include'      => '',
+                'meta_key'     => '',
+                'meta_value'   => '',
+                'authors'      => '',
+                'child_of'     => 172,
+                'parent'       => 172,
+                'exclude_tree' => '',
+                'number'       => '',
+                'offset'       => 0,
+                'post_type'    => 'page',
+                'post_status'  => 'publish',
+              ] ); ?>
+          <div class="swiper-wrapper container">
+            <?php foreach( $wpb_all_query as $post ){ ?>
+                <div class="swiper-slide">
+                  <div class="services__item">
+                    <?php the_post_thumbnail(); ?>
+                    <p class="name"><?php the_title(); ?></p>
+                    <p class="desk"><?php echo get_bloginfo( 'description' )?></p>
+                  </div>
+                </div>
+              <?php } ?>
           </div>
         </div>
 

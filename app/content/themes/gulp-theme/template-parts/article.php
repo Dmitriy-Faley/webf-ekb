@@ -9,7 +9,7 @@ get_header();
 <section class="article">
         <div class="article__content">
             <div class="article__img">
-                <?php the_post_thumbnail(); ?>
+                <?php the_post_thumbnail('full'); ?>
             </div>
             <div class="article__content-wrapper">
                 <div class="content-table">

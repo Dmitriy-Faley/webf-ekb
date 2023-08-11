@@ -98,20 +98,21 @@ get_header();
                 postsTags.forEach(itemTag => {
                     if(card.classList.contains(el.classList[0])) {
                         card.classList.remove('hide');
-                        card.classList.remove('anime');
+                        card.classList.remove('anima');
                     } else {
-                        card.classList.add('anime');
+                        card.classList.add('anima');
                         card.classList.add('hide');
-                        if(card.classList.contains('anime') || card.classList.contains('hide')) {
-                            card.style.display = 'none';
-                        } else {
-                            return;
-                        }
                     }
                     if(el.classList.contains('vse')) {
                         card.classList.remove('hide');
-                        card.classList.remove('anime');
-                }
+                        card.classList.remove('anima');
+                    }
+
+                    if(card.classList.contains('anima')) {
+                        card.style.position = 'absolute';
+                    } else {
+                        card.style.position = 'static';
+                    }
                 });
             })
         });

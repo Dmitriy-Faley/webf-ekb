@@ -104,8 +104,8 @@
 		const closeButton = document.querySelector(".closeMenu");
 		const header = document.querySelector(".header");
 		const headerMenu = document.querySelector(".header-menu__ul>li>ul");
-		const activeMenus = document.querySelectorAll('.activeUl');
-		const main = document.querySelector('main');
+		const headerMenuTwo = document.querySelectorAll(".header-menu__ul>li")[1];
+		const menuTwo = headerMenuTwo.querySelector("ul");
 		const arrows = [...document.querySelectorAll(".main-header-menu>ul>li>ul>li>a>span")];
 		const subArrows = [...document.querySelectorAll(".main-header-menu>ul>li>ul>li>ul>li>a>span")];
 		const subMenu = document.querySelector(".main-header-menu>ul>li>ul>li>ul");
@@ -336,6 +336,9 @@
 		window.addEventListener('click', (e) => {
 			let target = e.target;
 			if(headerMenu.classList.contains('activeUl') && target !== headerMenu) {
+				closeButton.click();
+			}
+			if(menuTwo.classList.contains('activeUl') && target !== menuTwo) {
 				closeButton.click();
 			}
 		})
