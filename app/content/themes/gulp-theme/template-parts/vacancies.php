@@ -34,7 +34,7 @@ get_header();
                         $shortDesk = get_sub_field('kratkoe_opisanie');
                         //category = get_sub_field('kategoriya_vakansii');
                     ?>
-                    <li class="question card <?php echo $category; ?>">
+                    <li class="tabs__pane__item question card <?php echo $category; ?>">
                         <a class="toggle" href="javascript:void(0);">
                             <div class="tabs__item__info">
                                 <p class="data"><?php echo $opyt; ?></p>

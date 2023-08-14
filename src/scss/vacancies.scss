@@ -26,6 +26,9 @@
     }
 }
 
+.tabs__pane__item:not(.accordion__item_show) .inner {
+    display: none;
+  }
 
 .distribution {
     padding-top: 100px;
@@ -123,6 +126,7 @@
                             font-weight: 400;
                             line-height: 21px;
                             //padding-bottom: 20px;
+                            color: #0E0F11 !important;
                         }
                     }
 
@@ -146,12 +150,9 @@
                 }
 
                 .inner {
-                    overflow: hidden;
-                    display: none;
-                    width: 52.5rem;
-                    padding-top: 20px;
 
                     .inner__item {
+                        margin-top: 20px;
                         &:not(:last-child) {
                             padding-bottom: 20px;
                         }

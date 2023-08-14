@@ -1,3 +1,22 @@
+.accordion__item_show .toggle .tabs__pane__name svg,
+.accordion__item_slidedown .tabs__pane__name svg {
+  transform: rotate(-180deg);
+}
+
+.accordion__item_show .toggle {
+    color: #DC7148;
+}
+
+.accordion__item_show .toggle .tabs__pane__name svg path{
+    transition: all 0.2s ease;
+    stroke: #DC7148;
+}
+
+.tabs__pane__item:not(.accordion__item_show) .inner {
+    display: none;
+  }
+
+
 .prices {
     padding-top: 100px;
 
@@ -118,9 +137,9 @@
                     .tabs__pane__name {
                         color: #DC7148;
 
-                        // &::after {
-                        //     transform: rotate(-180deg);
-                        // }
+                        &::after {
+                            transform: rotate(-180deg);
+                        }
 
                         svg {
                             transform: rotate(-180deg);
@@ -138,18 +157,14 @@
             }
 
             .inner {
-                overflow: hidden;
-                display: none;
-                width: 100%;
-                padding-top: 20px;
-                padding-bottom: 15px;
 
                 .inner__item {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    transition: all 0.2s ease;
                     cursor: default;
+                    margin-top: 20px;
+                    margin-bottom: 15px;
 
                     &:not(:last-child) {
                         margin-bottom: 20px;
