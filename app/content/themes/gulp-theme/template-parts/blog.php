@@ -25,11 +25,20 @@ get_header();
 
         <?php
             // запрос
-            $wpb_all_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1)); ?>
+
+            $category = get_queried_object();
+            $current_cat_id = $category->term_id;
+
+            $wpb_all_query = new WP_Query(array(
+                'posts_per_page' => 2,
+                'post_type' => 'post',
+                'cat' => $category->term_id,
+                'number' => 2,
+                )); ?>
             <?php if ( $wpb_all_query->have_posts() ) : ?>
             <ul class="card-list">
                 <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
-                    <div class="projects__content__item <?php $post_categories = get_the_category($blog_posts->the_post->ID);
+                    <div class="projects__content__item <?php $post_categories = get_the_category($wpb_all_query->the_post->ID);
                                    foreach ($post_categories as $post_category) {
                                       echo ' '. $post_category->slug.' ';
                                     }; ?>">
@@ -40,7 +49,7 @@ get_header();
                         </div>
                         <div class="item__data">
                             <div class="data__teg">
-                                   <?php $post_categories = get_the_category($blog_posts->the_post->ID);
+                                   <?php $post_categories = get_the_category($wpb_all_query->the_post->ID);
                                    foreach ($post_categories as $post_category) {
                                        echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
                                     }; ?>
@@ -52,13 +61,21 @@ get_header();
                         </div>
                     </div>
                 <?php endwhile; ?>
-            </ul>
                 <?php wp_reset_postdata(); ?>
+                <?php if ($wpb_all_query->max_num_pages > -1) :  ?>
+                    <button class="button button-more loadMorePosts" id="blogs-more">Показать еще</button>
+                    <div class="page-info-ajax" style="display:none;">
+                        <p class="ajaxurl"><?php echo site_url() ?>/wp-admin/admin-ajax.php</p>
+                        <p class="true_posts"><?php echo serialize($wpb_all_query->query_vars); ?></p>
+                        <p class="current_page"><?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?></p>
+                        <p class="max_pages"><?php echo $wpb_all_query->max_num_pages; ?></p>
+                    </div>
+                <?php endif; ?>
+            </ul>
             <?php else : ?>
                 <p><?php _e( 'Извините, нет записей, соответствуюших Вашему запросу.' ); ?></p>
             <?php endif; ?>
         </div>
-        <button class="button button-more" id="blogs-more">Показать еще</button>
     </div>
 </section>
 
@@ -67,25 +84,11 @@ get_header();
 
 
 <script>
-    $(document).ready(function () {
-        let colvoHelpfulItem = document.querySelectorAll('.blog .projects__content .projects__content__item').length;
-
-        if (colvoHelpfulItem <= 9) {
-            $('#blogs-more').addClass('hidden');
-        }
-
-        $('#blogs-more').on('click', function () {
-            $('.blog .projects__content .projects__content__item').addClass('active_cards');
-            $(this).addClass('hidden');
-        });
-    });
-
     const links = [...document.querySelectorAll(".blog__tags a")];
     const postsTags = [...document.querySelectorAll(".data__teg span")];
     const cards = [...document.querySelectorAll(".projects__content__item")];
     const listOfCards = document.querySelector(".card-list");
     const height = listOfCards.style.height;
-    console.log(listOfCards);
 
     links.forEach(el => {
         el.addEventListener('click', (e) => {

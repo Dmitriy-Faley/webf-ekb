@@ -291,3 +291,9 @@ $.each(nav_btns, function () {
 	$(mayThis).trigger('click');
   }
 });
+
+
+
+
+
+//Ajax
