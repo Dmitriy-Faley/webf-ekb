@@ -11,259 +11,58 @@ get_header();
         <h1 class="title"><?php the_title(); ?></h1>
         <div class="prices__tabs">
             <div class="tabs__nav">
-                <button class="tabs__btn tabs__btn_active">Разработка сайтов</button>
-                <button class="tabs__btn">SEO</button>
-                <button class="tabs__btn">SMM</button>
-                <button class="tabs__btn">PPC</button>
-                <button class="tabs__btn">Брендинг и дизайн</button>
-                <button class="tabs__btn">Разработка приложений</button>
-                <button class="tabs__btn">Прочие услуги</button>
+                <?php while (have_rows('czeny')): the_row();  
+                            $category = get_sub_field('kategoriya');
+                ?>
+                <?php while (have_rows('kategoriya')): the_row();  
+                            $category = get_sub_field('nazvanie_kategorii');
+                ?>
+                <button class="tabs__btn"><?php echo $category; ?></button>
+                <?php endwhile; ?>
+                <?php endwhile; ?>
             </div>
             <div class="tabs__content">
+                <?php while (have_rows('czeny')): the_row();  
+                    ?>
+                    <?php while (have_rows('kategoriya')): the_row();  
+                    ?>
+                    <?php while (have_rows('vneshnij_spisok')): the_row();  
+                                $outer_name = get_sub_field('zagolovok_vneshnego_spiska');
+                                $outer_price = get_sub_field('czena_vneshnego_spiska');
+                    ?>
                 <div class="tabs__pane tabs__pane_show">
                     <div class="tabs__pane__item">
                         <a class="toggle" href="javascript:void(0);">
                             <div class="tabs__pane__name">
-                                Cоздание сайтов “под ключ”
+                                <?php echo $outer_name; ?>
                                 <svg viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 1l6 6 6-6" stroke="#0E0F11" stroke-width="2" stroke-linecap="round" />
                                 </svg>
                             </div>
                             <div class="tabs__pane__info">
-                                <p class="price">от 30 000 ₽</p>
+                                <p class="price">от <?php echo $outer_price; ?> ₽</p>
                                 <button class="button">Подробнее</button>
                             </div>
                         </a>
                         <div class="inner">
+                            <?php while (have_rows('vnutrennij_spisok')): the_row();  
+                                        $inner_name = get_sub_field('zagolovok_vnutrennego_spiska');
+                                        $inner_price = get_sub_field('czena_vnutrennego_spiska');
+                            ?>
                             <div class="inner__item">
                                 <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
+                                    <?php echo $inner_name; ?>
                                 </div>
                                 <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
+                                    <p class="price">от <?php echo $inner_price; ?></p>
                                 </div>
                             </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
+                            <?php endwhile; ?>
                         </div>
                     </div>
-                    <div class="tabs__pane__item">
-                        <a class="toggle" href="javascript:void(0);">
-                            <div class="tabs__pane__name">
-                                Разработка программного модуля для сайта
-                                <svg viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 1l6 6 6-6" stroke="#0E0F11" stroke-width="2" stroke-linecap="round" />
-                                </svg>
-                            </div>
-                            <div class="tabs__pane__info">
-                                <p class="price">от 4 000 ₽</p>
-                                <button class="button">Подробнее</button>
-                            </div>
-                        </a>
-                        <div class="inner">
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tabs__pane__item">
-                        <a class="toggle" href="javascript:void(0);">
-                            <div class="tabs__pane__name">
-                                Готовые сайты
-                                <svg viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 1l6 6 6-6" stroke="#0E0F11" stroke-width="2" stroke-linecap="round" />
-                                </svg>
-                            </div>
-                            <div class="tabs__pane__info">
-                                <p class="price">от 20 000 ₽</p>
-                                <button class="button">Подробнее</button>
-                            </div>
-                        </a>
-                        <div class="inner">
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tabs__pane__item">
-                        <a class="toggle" href="javascript:void(0);">
-                            <div class="tabs__pane__name">
-                                Лицензирование
-                                <svg viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 1l6 6 6-6" stroke="#0E0F11" stroke-width="2" stroke-linecap="round" />
-                                </svg>
-                            </div>
-                            <div class="tabs__pane__info">
-                                <p class="price">от 10 000 ₽</p>
-                                <button class="button">Подробнее</button>
-                            </div>
-                        </a>
-                        <div class="inner">
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                            <div class="inner__item">
-                                <div class="tabs__pane__name">
-                                    Лендинг пейдж (Landing Page)
-                                </div>
-                                <div class="tabs__pane__info">
-                                    <p class="price">от 4 000 ₽</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tabs__pane">
-                    Содержимое 2...
-                </div>
-                <div class="tabs__pane">
-                    Содержимое3
-                </div>
-                <div class="tabs__pane">
-                    Содержимое 4
-                </div>
-                <div class="tabs__pane">
-                    Содержимое 5
-                </div>
-                <div class="tabs__pane">
-                    Содержимое 6
-                </div>
-                <div class="tabs__pane">
-                    Содержимое 7
-                </div>
+                <?php endwhile; ?>
+                <?php endwhile; ?>
+                <?php endwhile; ?>
             </div>
         </div>
     </div>
