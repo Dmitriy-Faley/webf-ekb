@@ -448,59 +448,6 @@ if ( ! function_exists( 'gp_read_time' ) ) {
 
 if ( function_exists( 'add_theme_support' ) ) add_theme_support( 'post-thumbnails' );
 
-
-
-//ajax загрузка постов по категориям
-
-
-add_action('wp_ajax_load_posts_from_category_by_ajax', 'load_posts_from_category_by_ajax');
-add_action('wp_ajax_nopriv_load_posts_from_category_by_ajax', 'load_posts_from_category_by_ajax');
-
-function load_posts_from_category_by_ajax()
-{
-    check_ajax_referer('ajax-blog-load-more', 'security');
-    $catID = $_POST['id'];
-    $args = array(
-        'cat' => $catID,
-        'post_status' => 'publish',
-        'paged' => 1,
-        'posts_per_page' => 6
-    );
-    $blog_posts = new WP_Query($args);
-    $max_pages = $blog_posts->max_num_pages;
-    echo '<ul data-id="' . $catID . '" data-max_pages="' . $max_pages . '">';
-    if ($blog_posts->have_posts()) {
-        while ($blog_posts->have_posts()) {
-            $blog_posts->the_post(); ?>
-            <div class="projects__content__item">
-				<div>
-					<a href="<?php the_permalink(); ?>" class="item__img">
-						<?php the_post_thumbnail(); ?>
-					</a>
-				</div>
-				<div class="item__data">
-					<div class="data__teg">
-							<?php $post_categories = get_the_category($blog_posts->the_post->ID);
-							foreach ($post_categories as $post_category) {
-								echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
-							}; ?>
-					</div>
-					<div class="data__info">
-						<a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
-						<p class="desk"><?php echo get_the_date()?></p>
-					</div>
-				</div>
-			</div>
-        <?php };
-    };
-    if ($blog_posts->have_posts() == false) {
-        echo '<p>Извините, нет записей, соответствуюших Вашему запросу.</p>';
-    };
-    echo '</ul>';
-    wp_reset_postdata();
-    die();
-};
-
 /**
  * Filters the sorted list of menu item objects before generating the menu's HTML.
  *
@@ -629,25 +576,21 @@ function portfolio_permalink( $permalink, $post ){
 
 //AJAX-подгрузка постов
 
-function true_load_posts()
+add_action("wp_ajax_load_more", "load_posts");
+add_action("wp_ajax_nopriv_load_more", "load_posts");
+function load_posts()
 {
+    $args = json_decode(stripslashes($_POST["query"]), true);
+    $args["paged"] = $_POST["page"] + 1;
+	$args["posts_per_page"] = 9;
+	$args["post_type"] = 'post';
 
-	$args = unserialize(stripslashes($_POST['query']));
-	$args['paged'] = $_POST['page'] + 1; // следующая страница
-	$args['post_status'] = 'publish';
+    $wpb_all_query = new WP_Query($args);
+    $html = '';
 
+    if ($wpb_all_query->have_posts()) : while ($wpb_all_query->have_posts()) : $wpb_all_query->the_post();
 
-	// обычно лучше использовать WP_Query, но не здесь
-	// query_posts( $args ); с богом 
-	// если посты есть залупонька
-
-	// Цикл WordPress
-	$wpb_all_query = new query_posts($args);
-	if ($wpb_all_query->have_posts()) {
-
-		while ($wpb_all_query->have_posts()) {
-			$wpb_all_query->the_post();
-            ?>
+			?>
 			<div class="projects__content__item <?php $post_categories = get_the_category($wpb_all_query->the_post->ID);
                                    foreach ($post_categories as $post_category) {
                                       echo ' '. $post_category->slug.' ';
@@ -670,31 +613,67 @@ function true_load_posts()
                             </div>
                         </div>
                     </div>
-            <?php
+		<?php 
 
-		}
-	}
-	wp_reset_postdata();
-	die();
+        endwhile;
+    endif;
+
+    wp_reset_postdata();
+    die($html);
 }
 
+//AJAX-подгрузка портфолио
 
-add_action('wp_ajax_loadPosts', 'true_load_posts');
-add_action('wp_ajax_nopriv_loadPosts', 'true_load_posts');
+add_action("wp_ajax_load_more__portf", "load_portf");
+add_action("wp_ajax_nopriv_load_more__portf", "load_portf");
+function load_portf()
+{
+    $args = json_decode(stripslashes($_POST["query"]), true);
+    $args["paged"] = $_POST["page"] + 1;
+	$args["posts_per_page"] = 3;
+	$args["post_type"] = 'portfolio';
+	$args["tax_query"] = array(
+		array(
+			'taxonomy' => 'portfoliocat',
+			'field'    => 'id',
+			'terms'    => '27'
+		)
+	);
 
-get_template_part('ajax-php/loadposts.php'); 
- 
-// add_action('wp_ajax_loadmore', 'true_loadmore');
-// add_action('wp_ajax_nopriv_loadmore', 'true_loadmore');
-// function true_loadmore()
-// {
-//     $paged = !empty($_POST['paged']) ? $_POST['paged'] : 1;
-//     $paged++;
-//     $args = array('posts_per_page' => 9, 'paged' => $paged, 'cat' => 30);
-//     query_posts($args);
- 
-//     while (have_posts()) : the_post();
 
-//     endwhile;
-//     die;
-// }
+    $wpb_all_query = new WP_Query($args);
+    $html = '';
+
+    if ($wpb_all_query->have_posts()) : while ($wpb_all_query->have_posts()) : $wpb_all_query->the_post();
+
+			?>
+			<div class="projects__content__item <?php $post_categories = get_the_category($wpb_all_query->the_post->ID);
+                                   foreach ($post_categories as $post_category) {
+                                      echo ' '. $post_category->slug.' ';
+                                    }; ?>">
+                        <div>
+                            <a href="<?php the_permalink(); ?>" class="item__img">
+                                <?php the_post_thumbnail(); ?>
+                            </a>
+                        </div>
+                        <div class="item__data">
+                            <div class="data__teg">
+                                   <?php $post_categories = get_the_category($wpb_all_query->the_post->ID);
+                                   foreach ($post_categories as $post_category) {
+                                       echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
+                                    }; ?>
+                            </div>
+                            <div class="data__info">
+                                <a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
+                                <p class="desk"><?php echo get_the_date()?></p>
+                            </div>
+                        </div>
+                    </div>
+		<?php 
+
+        endwhile;
+    endif;
+
+    wp_reset_postdata();
+    die($html);
+}

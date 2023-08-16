@@ -30,7 +30,7 @@ function scripts() {
 		//"node_modules/swiper/swiper-bundle.js",
 		//"node_modules/swiper/swiper-bundle.esm.js",
 		"src/js/main.js",
-		"src/js/ajax-loader/moreloader.js",
+		"src/js/ajax-load-more.js",
 	])
 		.pipe(concat("main.min.js"))
 		.pipe(uglify())

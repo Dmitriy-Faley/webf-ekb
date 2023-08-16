@@ -30,10 +30,10 @@ get_header();
             $current_cat_id = $category->term_id;
 
             $wpb_all_query = new WP_Query(array(
-                'posts_per_page' => 2,
+                'posts_per_page' => 9,
                 'post_type' => 'post',
                 'cat' => $category->term_id,
-                'number' => 2,
+                'number' => 9,
                 )); ?>
             <?php if ( $wpb_all_query->have_posts() ) : ?>
             <ul class="card-list">
@@ -62,19 +62,23 @@ get_header();
                     </div>
                 <?php endwhile; ?>
                 <?php wp_reset_postdata(); ?>
-                <?php if ($wpb_all_query->max_num_pages > -1) :  ?>
-                    <button class="button button-more loadMorePosts" id="blogs-more">Показать еще</button>
-                    <div class="page-info-ajax" style="display:none;">
-                        <p class="ajaxurl"><?php echo site_url() ?>/wp-admin/admin-ajax.php</p>
-                        <p class="true_posts"><?php echo serialize($wpb_all_query->query_vars); ?></p>
-                        <p class="current_page"><?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?></p>
-                        <p class="max_pages"><?php echo $wpb_all_query->max_num_pages; ?></p>
-                    </div>
-                <?php endif; ?>
             </ul>
             <?php else : ?>
                 <p><?php _e( 'Извините, нет записей, соответствуюших Вашему запросу.' ); ?></p>
             <?php endif; ?>
+            <?php // AJAX загрузка постов
+                    if ($wpb_all_query->max_num_pages > 1) { ?>
+                        <button 
+                            type="button"
+                            id="blogs-more"
+                            class="button button-more"
+                            data-param-posts='<?= json_encode($wpb_all_query->query_vars); ?>' 
+                            data-max-pages="<?= $wpb_all_query->max_num_pages; ?>"
+                            data-tpl="blog"
+                        >
+                            Показать ещё
+                        </button>
+                    <?php } ?>
         </div>
     </div>
 </section>
@@ -84,6 +88,7 @@ get_header();
 
 
 <script>
+    let current_page = 1;
     const links = [...document.querySelectorAll(".blog__tags a")];
     const postsTags = [...document.querySelectorAll(".data__teg span")];
     const cards = [...document.querySelectorAll(".projects__content__item")];
@@ -106,6 +111,7 @@ get_header();
                         card.classList.add('anima');
                         card.classList.add('hide');
                     }
+
                     if(el.classList.contains('vse')) {
                         card.classList.remove('hide');
                         card.classList.remove('anima');

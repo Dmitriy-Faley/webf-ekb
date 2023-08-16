@@ -68,8 +68,20 @@ get_header();
             <?php else : ?>
                 <p><?php _e( 'Извините, нет кейсов, соответствуюших Вашему запросу.' ); ?></p>
             <?php endif; ?>
+            <?php // AJAX загрузка постов
+                    if ($wpb_all_query->max_num_pages > 1) { ?>
+                        <button 
+                            type="button"
+                            id="portfolio-more"
+                            class="button button-more"
+                            data-param-posts='<?= json_encode($wpb_all_query->query_vars); ?>' 
+                            data-max-pages="<?= $wpb_all_query->max_num_pages; ?>"
+                            data-tpl="blog"
+                        >
+                            Показать ещё
+                        </button>
+                        <?php } ?>
         </div>
-        <button class="button button-more" id="portfolio-more">Показать еще</button>
     </div>
 </section>
 
@@ -78,25 +90,10 @@ get_header();
 
 
 <script>
-    $(document).ready(function () {
-        let colvoHelpfulItem = document.querySelectorAll('.portfolio .projects__content .projects__content__item').length;
-
-        if (colvoHelpfulItem <= 9) {
-            $('#portfolio-more').addClass('hidden');
-        }
-
-        $('#portfolio-more').on('click', function () {
-            $('.portfolio .projects__content .projects__content__item').addClass('active_cards');
-            $(this).addClass('hidden');
-        });
-    });
-
+    let current_page = 1;
     const links = [...document.querySelectorAll(".portfolio__tags a")];
     const postsTags = [...document.querySelectorAll(".data__teg span")];
     const cards = [...document.querySelectorAll(".projects__content__item")];
-    const listOfCards = document.querySelector(".card-list");
-    const height = listOfCards.style.height;
-    console.log(listOfCards);
 
     links.forEach(el => {
         el.addEventListener('click', (e) => {
