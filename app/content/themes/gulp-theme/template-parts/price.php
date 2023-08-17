@@ -16,21 +16,22 @@ get_header();
                 ?>
                 <?php while (have_rows('kategoriya')): the_row();  
                             $category = get_sub_field('nazvanie_kategorii');
+                            $numberOfCategory = get_sub_field('nomer_kategorii');
                 ?>
-                <button class="tabs__btn"><?php echo $category; ?></button>
+                <button class="tabs__btn" data-index="<?php echo $numberOfCategory; ?>"><?php echo $category; ?></button>
                 <?php endwhile; ?>
                 <?php endwhile; ?>
             </div>
             <div class="tabs__content">
-                <?php while (have_rows('czeny')): the_row();  
-                    ?>
-                    <?php while (have_rows('kategoriya')): the_row();  
-                    ?>
-                    <?php while (have_rows('vneshnij_spisok')): the_row();  
-                                $outer_name = get_sub_field('zagolovok_vneshnego_spiska');
-                                $outer_price = get_sub_field('czena_vneshnego_spiska');
-                    ?>
-                <div class="tabs__pane tabs__pane_show">
+                <?php while (have_rows('czeny')): the_row();?>
+                 <?php while (have_rows('kategoriya')): the_row();  
+                            $rownumber = get_sub_field('nomer_kategorii');
+                        ?>
+                <div class="tabs__pane" data-row="<?php echo $rownumber; ?>">
+                        <?php while (have_rows('vneshnij_spisok')): the_row();  
+                                    $outer_name = get_sub_field('zagolovok_vneshnego_spiska');
+                                    $outer_price = get_sub_field('czena_vneshnego_spiska');
+                        ?>
                     <div class="tabs__pane__item">
                         <a class="toggle" href="javascript:void(0);">
                             <div class="tabs__pane__name">
@@ -60,10 +61,10 @@ get_header();
                             <?php endwhile; ?>
                         </div>
                     </div>
-                <?php endwhile; ?>
-                <?php endwhile; ?>
-                <?php endwhile; ?>
+                    <?php endwhile; ?>
             </div>
+            <?php endwhile; ?>
+            <?php endwhile; ?>
         </div>
     </div>
 </section>
@@ -130,6 +131,14 @@ get_header();
     elTab.addEventListener('tab.itc.change', (e) => {
         const index = elTab.querySelector('.tabs__btn_active').dataset.index;
         localStorage.setItem('tabs-index', index);
+    })
+
+
+
+    window.addEventListener('DOMContentLoaded', (e) => {
+        const filterItem = document.querySelectorAll('.tabs__btn');
+
+        filterItem[0].classList.add('tabs__btn_active');
     })
 </script>
 

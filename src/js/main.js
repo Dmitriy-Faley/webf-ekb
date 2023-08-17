@@ -231,9 +231,14 @@ class ItcAccordion {
 	}
   }
 
-  new ItcAccordion(document.querySelector('.tabs__pane_show'), {
-	alwaysOpen: false
-  });
+
+  
+  document.querySelectorAll('.tabs__pane').forEach(tab => {
+	console.log(tab)
+	new ItcAccordion(tab, {
+		alwaysOpen: false
+	  });
+  })
 
   new ItcAccordion(document.querySelector('.accordion'), {
 	alwaysOpen: false
