@@ -3,7 +3,6 @@
 /**
  *
  * @package templates/default
- *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
@@ -36,14 +35,6 @@ $paramsManager = PrmMng::getInstance();
         let step1Form = $('#s1-input-form');
 
         DUPX.beforeUnloadCheck(true);
-
-        DUPX.getManaualArchiveOpt = function ()
-        {
-            $("html, body").animate({scrollTop: $(document).height()}, 1500);
-            $("div[data-target='#s1-area-adv-opts']").find('i.fa').removeClass('fa-plus-square').addClass('fa-minus-square');
-            $('#s1-area-adv-opts').show(1000);
-            $('#' + archiveEngineInputId).val('manual').focus();
-        };
 
         DUPX.onSafeModeSwitch = function ()
         {

@@ -161,7 +161,7 @@
       sticky: false,
       minimumVelocity: 5.50
     },
-    mousewheel: true,
+    // mousewheel: true,
 
     breakpoints: {
       // when window width is >= 320px

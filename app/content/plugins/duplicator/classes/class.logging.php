@@ -10,6 +10,7 @@ if (!defined('DUPLICATOR_VERSION')) {
 
 /**
  * Helper Class for logging
+ *
  * @package Duplicator\classes
  */
 abstract class Dup_ErrorBehavior
@@ -86,10 +87,10 @@ class DUP_Log
 
     /**
      *  General information send to the package log if opened
-     *  @param string $msg  The message to log
      *
      *  REPLACE TO DEBUG: Memory consumption as script runs
      *  $results = DUP_Util::byteSize(memory_get_peak_usage(true)) . "\t" . $msg;
+     *
      *  @fwrite(self::$logFileHandle, "{$results} \n");
      *
      *  @param string $msg  The message to log
@@ -271,10 +272,10 @@ class DUP_Log
 
     /**
      *  Called when an error is detected and no further processing should occur
+     *
      * @param string $msg The message to log
      * @param string $detail Additional details to help resolve the issue if possible
      * @param int $behavior
-     * @throws Exception
      */
     public static function error($msg, $detail = '', $behavior = Dup_ErrorBehavior::Quit)
     {
@@ -312,7 +313,9 @@ class DUP_Log
 
     /**
      * The current stack trace of a PHP call
+     *
      * @param $stacktrace The current debug stack
+     *
      * @return string
      */
     public static function getStack($stacktrace)
@@ -335,7 +338,7 @@ class DUP_Log
     {
         $log_filepath = self::GetTraceFilepath();
 
-        if (@filesize($log_filepath) > DUPLICATOR_MAX_LOG_SIZE) {
+        if (@file_exists($log_filepath) && @filesize($log_filepath) > DUPLICATOR_MAX_LOG_SIZE) {
             $backup_log_filepath = self::GetBackupTraceFilepath();
 
             if (file_exists($backup_log_filepath)) {
@@ -415,10 +418,11 @@ class DUP_Handler
     /**
      * Error handler
      *
-     * @param  integer $errno   Error level
-     * @param  string  $errstr  Error message
-     * @param  string  $errfile Error file
-     * @param  integer $errline Error line
+     * @param integer $errno   Error level
+     * @param string  $errstr  Error message
+     * @param string  $errfile Error file
+     * @param integer $errline Error line
+     *
      * @return void
      */
     public static function error($errno, $errstr, $errfile, $errline)

@@ -93,6 +93,19 @@
 
 	<main>
 
+	<script>
+		<?php if(is_front_page()) { ?>
+
+		const noClass = document.querySelectorAll(".header-menu__ul>li");
+
+		noClass.forEach(el => {
+			el.classList.remove('current-menu-ancestor');
+			el.classList.remove('current-menu-parent');
+		})
+		<?php } ?>
+	</script>
+
+
 
 	<script>
 
@@ -152,11 +165,15 @@
 					l.target.closest("li>a").classList.add("activeLi"), 
 					l.target.closest("li").querySelector("ul") && (l.target.closest("li").querySelector("ul").classList.add("activeUl"), 
 					openThirdLevelMenu());
+					if(l.target.innerHTML === 'Портфолио<span></span>' || l.target.innerHTML === 'Контакты<span></span>' || l.target.innerHTML === 'Блог<span></span>') {
+						l.target.classList.remove("activeLi");
+					}
 				})
 			}
 
 			function openThirdLevelMenu() {
 				document.querySelectorAll(".activeUl>li>a").forEach(e => {
+					e.parentNode.classList.add('activeLi')
 					e.addEventListener("mouseover", e => {
 						closeMenu(document.querySelector(".activeUl")), 
 						e.target.classList.add("activeLi"), 
@@ -242,12 +259,17 @@
 					el.addEventListener('mouseover', (e) => {
 						el.classList.add('activeSpan');
 						el.parentNode.classList.add('activeSpan');
+						console.log('d')
 					})
+				})
+
+				arr.forEach(el => {
 					el.addEventListener('mouseleave', (e) => {
 						el.classList.remove('activeSpan');
 						el.classList.remove('activeLi');
 						el.parentNode.classList.remove('activeLi');
 						el.parentNode.classList.remove('activeSpan');
+						console.log('s')
 					})
 				})
 			}

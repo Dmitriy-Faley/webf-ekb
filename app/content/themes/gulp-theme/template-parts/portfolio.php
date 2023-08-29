@@ -12,9 +12,9 @@ get_header();
         <div class="portfolio__tags">
             <ul class="keys__list">
                 <?php
-                    $category_all = get_category(27, "portfoliocat");
+                    $category_all = get_category(28, "keyscat");
                     echo '<li href="#"><a class="active vse" data-id="' . intval($category_all->term_id) . '"  data-link="' . get_category_link($category_all->term_id) . '">Все</a></li>';
-                    $categories = get_categories(array('taxonomy' => 'portfoliocat', 'hide_empty' => 0, 'hierarchical' => 1, 'child_of' => '27'));
+                    $categories = get_categories(array('taxonomy' => 'keyscat', 'hide_empty' => 0, 'hierarchical' => 1, 'child_of' => '28'));
                     foreach ($categories as $category) {
                         echo '<li href="#"><a class="' . $category->slug . '" data-id="' . intval($category->term_id) . '"  data-link="' . get_category_link($category->term_id) . '">' . $category->cat_name . '</a></li>';
                 ?>
@@ -28,19 +28,19 @@ get_header();
             $wpb_all_query = new WP_Query(array(
                 'tax_query' => array(
                     array(
-                        'taxonomy' => 'portfoliocat',
+                        'taxonomy' => 'keyscat',
                         'field'    => 'id',
-                        'terms'    => '27'
+                        'terms'    => '28'
                     )
                 ),
-                'post_type'=>'portfolio', 
+                'post_type'=>'keys', 
                 'post_status'=>'publish', 
                 'posts_per_page'=>-1
     )); ?>
             <?php if ( $wpb_all_query->have_posts() ) : ?>
             <ul class="card-list">
                 <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
-                    <div class="projects__content__item <?php $post_categories = get_the_terms(get_the_ID(), "portfoliocat");
+                    <div class="projects__content__item <?php $post_categories = get_the_terms(get_the_ID(), "keyscat");
                                    foreach ($post_categories as $post_category) {
                                       echo ' '. $post_category->slug.' ';
                                     }; ?>" style="position: static;">
@@ -51,7 +51,7 @@ get_header();
                         </div>
                         <div class="item__data">
                             <div class="data__teg">
-                                   <?php $post_categories = get_the_terms(get_the_ID(), "portfoliocat");
+                                   <?php $post_categories = get_the_terms(get_the_ID(), "keyscat");
                                    foreach ($post_categories as $post_category) {
                                        echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
                                     }; ?>

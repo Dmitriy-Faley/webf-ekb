@@ -482,15 +482,15 @@ function wp_nav_menu_objects_filter($sorted_menu_items, $args)
 
 //регистрация портфолио 
 
-add_action( 'init', 'register_portfolio_post_type' );
+add_action( 'init', 'register_keys_post_type' );
 
 // Отфильтруем ЧПУ произвольного типа
-add_filter( 'post_type_link', 'portfolio_permalink', 1, 2 );
+add_filter( 'post_type_link', 'keys_permalink', 1, 2 );
 
-function register_portfolio_post_type() {
+function register_keys_post_type() {
 
-	// Раздел вопроса - portfoliocat
-	register_taxonomy( 'portfoliocat', [ 'portfolio' ], [
+	// Раздел вопроса - keyscat
+	register_taxonomy( 'keyscat', [ 'keys' ], [
 		'label'                 => 'Раздел портфолио', // определяется параметром $labels->name
 		'labels'                => array(
 			'name'              => 'Разделы портфолио',
@@ -511,12 +511,12 @@ function register_portfolio_post_type() {
 		'show_ui'               => true, // равен аргументу public
 		'show_tagcloud'         => false, // равен аргументу show_ui
 		'hierarchical'          => true,
-		'rewrite'               => array('slug'=>'portfolio', 'hierarchical'=>false, 'with_front'=>false, 'feed'=>false ),
+		'rewrite'               => array('slug'=>'keys', 'hierarchical'=>false, 'with_front'=>false, 'feed'=>false ),
 		'show_admin_column'     => true, // Позволить или нет авто-создание колонки таксономии в таблице ассоциированного типа записи. (с версии 3.5)
 	] );
 
-	// тип записи - вопросы - portfolio
-	register_post_type( 'portfolio', [
+	// тип записи - вопросы - keys
+	register_post_type( 'keys', [
 		'labels'             => array(
 			'name'               => 'Портфолио', // Основное название типа записи
 			'singular_name'      => 'Кейс', // отдельное название записи типа Book
@@ -542,34 +542,34 @@ function register_portfolio_post_type() {
 		'capability_type'     => 'post',
 		'map_meta_cap'        => true,
 		'hierarchical'        => false,
-		'rewrite'             => array( 'slug'=>'portfolio/%portfoliocat%', 'with_front'=>false, 'pages'=>false, 'feeds'=>false, 'feed'=>false ),
-		'has_archive'         => 'portfolio',
+		'rewrite'             => array( 'slug'=>'keys/%keyscat%', 'with_front'=>false, 'pages'=>false, 'feeds'=>false, 'feed'=>false ),
+		'has_archive'         => 'keys',
 		'query_var'           => true,
-		'supports'            => array( 'title', 'editor' ),
-		'taxonomies'          => array( 'portfoliocat' ),
+		'supports'            => array( 'title', 'editor' , 'thumbnail'),
+		'taxonomies'          => array( 'keyscat' ),
 	] );
 
 }
 
-function portfolio_permalink( $permalink, $post ){
+function keys_permalink( $permalink, $post ){
 
-	// выходим если это не наш тип записи: без холдера %portfoliocat%
-	if( strpos( $permalink, '%portfoliocat%' ) === false ){
+	// выходим если это не наш тип записи: без холдера %keyscat%
+	if( strpos( $permalink, '%keyscat%' ) === false ){
 		return $permalink;
 	}
 
 	// Получаем элементы таксы
-	$terms = get_the_terms( $post, 'portfoliocat' );
+	$terms = get_the_terms( $post, 'keyscat' );
 	// если есть элемент заменим холдер
 	if( ! is_wp_error( $terms ) && !empty( $terms ) && is_object( $terms[0] ) ){
 		$term_slug = array_pop( $terms )->slug;
 	}
 	// элемента нет, а должен быть...
 	else {
-		$term_slug = 'no-portfoliocat';
+		$term_slug = 'no-keyscat';
 	}
 
-	return str_replace( '%portfoliocat%', $term_slug, $permalink );
+	return str_replace( '%keyscat%', $term_slug, $permalink );
 }
 
 
@@ -631,10 +631,10 @@ function load_portf()
     $args = json_decode(stripslashes($_POST["query"]), true);
     $args["paged"] = $_POST["page"] + 1;
 	$args["posts_per_page"] = 3;
-	$args["post_type"] = 'portfolio';
+	$args["post_type"] = 'keys';
 	$args["tax_query"] = array(
 		array(
-			'taxonomy' => 'portfoliocat',
+			'taxonomy' => 'keyscat',
 			'field'    => 'id',
 			'terms'    => '27'
 		)

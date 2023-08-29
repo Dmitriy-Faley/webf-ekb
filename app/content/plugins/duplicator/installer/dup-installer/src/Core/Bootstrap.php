@@ -3,9 +3,8 @@
 /**
  * Interface that collects the functions of initial duplicator Bootstrap
  *
- * @package Duplicator
+ * @package   Duplicator
  * @copyright (c) 2021, Snapcreek LLC
- *
  */
 
 namespace Duplicator\Installer\Core;
@@ -118,7 +117,7 @@ class Bootstrap
      */
     public static function phpIni()
     {
-        /** Absolute path to the Installer directory. - necessary for php protection */
+        /* Absolute path to the Installer directory. - necessary for php protection */
         if (!defined('KB_IN_BYTES')) {
             define('KB_IN_BYTES', 1024);
         }
@@ -204,7 +203,6 @@ class Bootstrap
         require_once(DUPX_INIT . '/classes/config/class.constants.php');
         require_once(DUPX_INIT . '/classes/config/class.conf.utils.php');
         require_once(DUPX_INIT . '/classes/class.installer.state.php');
-        require_once(DUPX_INIT . '/classes/tests/class.test.wordpress.exec.php');
         require_once(DUPX_INIT . '/ctrls/classes/class.ctrl.ajax.php');
         require_once(DUPX_INIT . '/ctrls/classes/class.ctrl.params.php');
         require_once(DUPX_INIT . '/ctrls/ctrl.base.php');
