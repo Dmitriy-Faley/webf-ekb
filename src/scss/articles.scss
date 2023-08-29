@@ -1191,14 +1191,15 @@ lwptoc-light .lwptoc_items A:visited {
 @media screen and (max-width: 480px) and (min-width: 320px){
     .article {
         .article__content {
-            width: 288px;
+            width: 100%;
             border-radius: 20px;
             margin: -10px auto 80px;
     
             .article__img {
-                width: 258px;
+                width: 100%;
                 height: 148px;
-                margin: 0 15px;
+                padding: 0 15px;
+                margin: 0;
     
                 img {
                     width: 100%;
@@ -1218,8 +1219,9 @@ lwptoc-light .lwptoc_items A:visited {
                 }
     
                 .content-area {
+                    width: 100% ;
                     .area__header {
-                        width: 258px;
+                        width: 100%;
     
                         .content-area__tags {
                             display: flex;
@@ -1237,6 +1239,7 @@ lwptoc-light .lwptoc_items A:visited {
                         }
     
                         .content-area__send {
+                            margin-right: 30px;
                             img {
                                 width: 38px;
                                 height: 38px;
@@ -1308,16 +1311,17 @@ lwptoc-light .lwptoc_items A:visited {
                     .content-area__text {
                         margin-bottom: 60px;
                         margin-left: 0;
+                        padding: 0 30px 0 0;
 
                         .h1 {
-                            width: 256px;
+                            width: 100%;
                             font-size: 24px;
                             line-height: 29px;
                             margin-bottom: 30px;
                         }
     
                         .text-block {
-                            width: 258px;
+                            width: 100%;
                             margin-bottom: 40px;
     
                             h2 {
@@ -1340,7 +1344,7 @@ lwptoc-light .lwptoc_items A:visited {
     
     .article__more {
         .article__content {
-            width: 288px;
+            width: 100%;
             margin: 0 auto;
     
             h2 {
@@ -1352,19 +1356,20 @@ lwptoc-light .lwptoc_items A:visited {
             .projects__content {
                 margin-bottom: 0;
                 .projects__content__item {
-                    width: 288px;
-                    height: 339px;
+                    width: 100%;
+                    height: auto;
                     display: flex;
                     flex-direction: column;
                     margin-bottom: 20px;
                     border-radius: 20px;
                     
                     div {
-                        width: 258px;
+                        width: 100%;
                         height: 148px;
-                        margin: 15px;
+                        margin: 15px 0;
                         margin-bottom: 12px;
                         border-radius: 15px;
+                        padding: 0 15px;
                         a.item__img {
                             width: 100%;
                             height: 100%;
@@ -1380,10 +1385,12 @@ lwptoc-light .lwptoc_items A:visited {
                     .item__data {
                         margin-left: 0;
                         margin-top: 0;
+                        margin-bottom: 0px;
+                        padding: 0;
     
                         .data__tag {
                             height: 44px;
-                            margin: 0 15px 26px;
+                            margin: 0;
                             margin-bottom: 35px;
                     
                             span {
@@ -1403,34 +1410,33 @@ lwptoc-light .lwptoc_items A:visited {
                                 width: 258px;
                                 font-size: 20px;
                                 line-height: 24px;
-                                margin-left: 15px;
                                 padding-bottom: 4px;
+                                margin-left: 0;
                             }
     
     
                             p.desk {
                                 font-size: 14px;
                                 line-height: 17px;
-                                margin-left: 15px;
-                                margin-bottom: 15px;
+                                margin-left: 0;
                             }
                         }
                     }  
                 }
                 .projects__content__item:nth-child(2) {
-                    width: 288px;
-                    height: 339px;
+                    width: 100%;
+                    height: auto;
                     display: flex;
                     flex-direction: column;
                     margin-bottom: 20px;
                     border-radius: 20px;
-                    
+
                     div {
-                        width: 258px;
+                        width: 100%;
                         height: 148px;
-                        margin: 15px;
-                        margin-bottom: 12px;
+                        margin: 15px 0;
                         border-radius: 15px;
+                        padding: 0 15px;
                         a.item__img {
                             width: 100%;
                             height: 100%;
@@ -1446,11 +1452,12 @@ lwptoc-light .lwptoc_items A:visited {
                     .item__data {
                         margin-left: 0;
                         margin-top: 0;
+                        padding: 0;
+                        margin-bottom: 0px;
     
                         .data__tag {
-                            flex-wrap: wrap;
                             height: 44px;
-                            margin: 0 15px 26px;
+                            margin: 0;
                             margin-bottom: 35px;
                     
                             span {
@@ -1470,33 +1477,34 @@ lwptoc-light .lwptoc_items A:visited {
                                 width: 258px;
                                 font-size: 20px;
                                 line-height: 24px;
-                                margin-left: 15px;
                                 padding-bottom: 4px;
+                                margin-left: 0;
                             }
     
     
                             p.desk {
                                 font-size: 14px;
                                 line-height: 17px;
-                                margin-left: 15px;
-                                margin-bottom: 15px;
+                                margin-left: 0;
                             }
                         }
-                    } 
+                    }  
                 }
 
                 .projects__content__item:last-child {
-                    width: 288px;
-                    height: 339px;
+                    width: 100%;
+                    height: auto;
+                    display: flex;
                     flex-direction: column;
                     margin-bottom: 20px;
                     border-radius: 20px;
-                    
+
                     div {
-                        width: 258px;
+                        width: 100%;
                         height: 148px;
-                        margin: 15px;
-                        margin-bottom: 12px;
+                        margin: 15px 0;
+                        border-radius: 15px;
+                        padding: 0 15px;
                         a.item__img {
                             width: 100%;
                             height: 100%;
@@ -1512,12 +1520,13 @@ lwptoc-light .lwptoc_items A:visited {
                     .item__data {
                         margin-left: 0;
                         margin-top: 0;
+                        margin-bottom: 0px;
+                        padding: 0;
     
                         .data__tag {
-                            flex-wrap: wrap;
                             height: 44px;
-                            margin: 0 15px 18px;
-                            margin-bottom: 12px;
+                            margin: 0;
+                            margin-bottom: 35px;
                     
                             span {
                                 font-size: 10px;
@@ -1525,7 +1534,7 @@ lwptoc-light .lwptoc_items A:visited {
                                 padding: 12px 14px;
                                 border-radius: 50px;
                                 margin-right: 8px;
-                                margin-bottom: 18px;
+                                margin-bottom: 42px;
                             }
                         }
     
@@ -1536,19 +1545,19 @@ lwptoc-light .lwptoc_items A:visited {
                                 width: 258px;
                                 font-size: 20px;
                                 line-height: 24px;
-                                margin-left: 15px;
                                 padding-bottom: 4px;
+                                margin-left: 0;
                             }
     
     
                             p.desk {
                                 font-size: 14px;
                                 line-height: 17px;
-                                margin-left: 15px;
-                                margin-bottom: 15px;
+                                margin-left: 0;
+                                margin-bottom: 0;
                             }
                         }
-                    } 
+                    }  
                 }
             }
     

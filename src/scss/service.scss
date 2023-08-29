@@ -140,6 +140,10 @@
                     color: #DC7148;
                     text-decoration: underline;
                 }
+
+                a:hover {
+                    color: #0E0F11;
+                }
             }
         }
     }
@@ -577,11 +581,9 @@
                 line-height: 29px;
             }
             .short__description {
-                width: 228px;
-                max-width: 288px;
+                width: 100%;
     
                 p {
-                    width: 290px;
                     font-size: 14px;
                     padding-bottom: 15px;
                     line-height: 21px;
@@ -669,23 +671,23 @@
             }
     
             p {
-                width: 288.5px;
+                width: 100%;
                 font-size: 14px;
                 line-height: 21px;
                 margin-bottom: 15px;
             }
     
             ul {
-                width: 288px;
+                width: 100%;
                 margin-left: 22px;
                 overflow: hidden;
                 list-style: disc !important;
     
                 li {
-                    width: 266px;
                     font-size: 14px;
                     line-height: 21px;
                     margin-bottom: 15px;
+                    margin-right: 16px;
                 }
 
                 li::marker {
@@ -705,7 +707,7 @@
     
         p {
             color: #0E0F11;
-            width: 288.5px;
+            width: 100%;
             font-weight: 400;
             font-size: 14px;
             line-height: 21px;
@@ -728,7 +730,8 @@
         }
     
         ol {
-            width: 288px;
+            width: 100%;
+            margin-right: 16px;
     
             li {
                 margin-bottom: 40px;
@@ -742,6 +745,7 @@
                     font-weight: 400;
                     font-size: 14px;
                     line-height: 21px;
+                    width: 100%;
                 }
             }
     
@@ -764,11 +768,11 @@
 
         p {
             color: #0E0F11;
-            width: 288px;
             font-weight: 400;
             font-size: 14px;
             line-height: 21px;
             padding-bottom: 15px;
+            width: 100%;
         }
 
         p:last-child {

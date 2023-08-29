@@ -7,6 +7,7 @@ get_header();
 ?>
 
 <section class="article">
+    <div class="container">
         <div class="article__content">
             <div class="article__img">
                 <?php the_post_thumbnail('full'); ?>
@@ -19,7 +20,7 @@ get_header();
                     <div class="area__header">
                         <div class="content-area__tags">
                             <?php 
-                                $posttags = get_the_tags();
+                                $posttags = get_the_category($wpb_all_query->the_post->ID);
                                 if ( $posttags ) {
                                     echo '<a href="#">' . $posttags[1]->name . '</a> 
                                           <a href="#">' . $posttags[0]->name .'</a>';
@@ -81,51 +82,54 @@ get_header();
                 </div>
             </div>
         </div>
+    </div>
 </section>
 <section class="article__more">
-    <div class="article__content">
-        <?php the_field('chitat_dalshe'); ?>
-        <div class="projects__content">
-        <?php
-            // запрос
-            $wpb_all_query = new WP_Query(array(
-                'post_type'=>'post', 
-                'post_status'=>'publish', 
-                'posts_per_page'=>3, 
-                'order' => 'DESC')); 
-            ?>
+    <div class="container">
+        <div class="article__content">
+            <?php the_field('chitat_dalshe'); ?>
+            <div class="projects__content">
+            <?php
+                // запрос
+                $wpb_all_query = new WP_Query(array(
+                    'post_type'=>'post', 
+                    'post_status'=>'publish', 
+                    'posts_per_page'=>3, 
+                    'order' => 'DESC')); 
+                ?>
 
-            <?php if ( $wpb_all_query->have_posts() ) : ?>
-            <ul class="card-list">
-                <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
-                    <div class="projects__content__item <?php $post_categories = get_the_category($blog_posts->the_post->ID);
-                                        foreach ($post_categories as $post_category) {
-                                            echo ' '. $post_category->slug.' ';
-                                            }; ?>">
-                        <div>
-                        <a href="<?php the_permalink(); ?>" class="item__img">
-                                        <?php the_post_thumbnail(); ?>
-                                    </a>
-                        </div>
-                        <div class="item__data">
-                            <div class="data__tag">
-                                    <?php $post_categories = get_the_category($blog_posts->the_post->ID);
-                                        foreach ($post_categories as $post_category) {
-                                            echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
-                                        }; ?>
+                <?php if ( $wpb_all_query->have_posts() ) : ?>
+                <ul class="card-list">
+                    <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
+                        <div class="projects__content__item <?php $post_categories = get_the_category($blog_posts->the_post->ID);
+                                            foreach ($post_categories as $post_category) {
+                                                echo ' '. $post_category->slug.' ';
+                                                }; ?>">
+                            <div>
+                            <a href="<?php the_permalink(); ?>" class="item__img">
+                                            <?php the_post_thumbnail(); ?>
+                                        </a>
                             </div>
-                            <div class="data__info">
-                            <a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
-                                        <p class="desk"><?php echo get_the_date()?></p>
+                            <div class="item__data">
+                                <div class="data__tag">
+                                        <?php $post_categories = get_the_category($blog_posts->the_post->ID);
+                                            foreach ($post_categories as $post_category) {
+                                                echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
+                                            }; ?>
+                                </div>
+                                <div class="data__info">
+                                <a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
+                                            <p class="desk"><?php echo get_the_date()?></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-            <?php endwhile; ?>
-            </ul>
-                <?php wp_reset_postdata(); ?>
-                <?php endif; ?>
+                <?php endwhile; ?>
+                </ul>
+                    <?php wp_reset_postdata(); ?>
+                    <?php endif; ?>
+            </div>
+            <button class="button button-more" id="blogs-more">Все статьи</button>
         </div>
-        <button class="button button-more" id="blogs-more">Все статьи</button>
     </div>
 </section>
 <?php get_footer(); ?>
