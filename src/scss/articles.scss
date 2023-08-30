@@ -373,7 +373,7 @@ lwptoc-light .lwptoc_items A:visited {
         .projects__content {
             .projects__content__item {
                 width: 1400px;
-                height: 380px;
+                height: auto;
                 display: flex;
                 background-color: #fff;
                 margin-bottom: 40px;
@@ -382,12 +382,14 @@ lwptoc-light .lwptoc_items A:visited {
                 
                 div {
                     width: 520px;
-                    height: 300px;
+                    height: auto;
                     margin: 40px;
+                    border-radius: 30px;
                     a.item__img {
                         width: 100%;
                         height: 100%;
                         img {
+                            border-radius: 30px;
                             object-fit: cover;
                         }
                     }
@@ -464,7 +466,7 @@ lwptoc-light .lwptoc_items A:visited {
             }
             .projects__content__item:nth-child(2) {
                 width: 1400px;
-                height: 380px;
+                height: auto;
                 display: flex;
                 background-color: #fff;
                 margin-bottom: 40px;
@@ -473,12 +475,14 @@ lwptoc-light .lwptoc_items A:visited {
                 
                 div {
                     width: 520px;
-                    height: 300px;
+                    height: auto;
                     margin: 40px;
+                    border-radius: 30px;
                     a.item__img {
                         width: 100%;
                         height: 100%;
                         img {
+                            border-radius: 30px;
                             object-fit: cover;
                         }
                     }
@@ -774,18 +778,19 @@ lwptoc-light .lwptoc_items A:visited {
                     height: 270px;
                     display: flex;
                     margin-bottom: 28px;
-                    border: none;
                     border-radius: 28px;
                     
                     div {
                         width: 370px;
-                        height: 213px;
+                        height: auto;
                         margin: 29px;
                         a.item__img {
                             width: 100%;
                             height: 100%;
                             img {
+                                border-radius: 21px;
                                 object-fit: cover;
+                                height: 213px;
                             }
                         }
                     }
@@ -794,9 +799,11 @@ lwptoc-light .lwptoc_items A:visited {
                         margin-left: 0;
     
                         .data__tag {
+                            display: flex;
+                            flex-wrap: wrap;
                             height: 44px;
                             margin: 0;
-                            margin-bottom: 85px;
+                            margin-bottom: 116px;
                     
                             span {
                                 height: fit-content;
@@ -839,13 +846,15 @@ lwptoc-light .lwptoc_items A:visited {
                     
                     div {
                         width: 370px;
-                        height: 213px;
+                        height: auto;
                         margin: 29px;
                         a.item__img {
                             width: 100%;
                             height: 100%;
                             img {
+                                border-radius: 21px;
                                 object-fit: cover;
+                                height: 213px;
                             }
                         }
                     }
@@ -1037,7 +1046,7 @@ lwptoc-light .lwptoc_items A:visited {
     
     .article__more {
         .article__content {
-            width: 708px;
+            width: 100%;
             margin: 0 auto;
     
             h2 {
@@ -1050,15 +1059,15 @@ lwptoc-light .lwptoc_items A:visited {
                 margin-bottom: 60px;
 
                 .projects__content__item {
-                    width: 708px;
-                    height: 649px;
+                    width: 100%;
+                    height: auto;
                     flex-direction: column;
                     margin-bottom: 40px;
                     border-radius: 40px;
                     
                     div {
                         width: 628px;
-                        height: 362px;
+                        height: auto;
                         margin: 40px;
                         margin-bottom: 20px;
                         a.item__img {
@@ -1115,7 +1124,7 @@ lwptoc-light .lwptoc_items A:visited {
                 }
                 .projects__content__item:nth-child(2) {
                     width: 708px;
-                    height: 649px;
+                    height: auto;
                     display: flex;
                     flex-direction: column;
                     margin-bottom: 40px;
@@ -1124,7 +1133,7 @@ lwptoc-light .lwptoc_items A:visited {
                     
                     div {
                         width: 628px;
-                        height: 362px;
+                        height: auto;
                         margin: 40px;
                         margin-bottom: 20px;
                         a.item__img {

@@ -29,7 +29,7 @@ get_header();
             <?php 
                 add_filter('wp_nav_menu_objects', 'wp_nav_menu_objects_filter', 10, 2);
 
-                //Вывод отфильтрованного меню (со всеми дочерними)
+                //Вывод отфильтрованного меню (со всеми дочерними - скрываем стилями)
                 $args = array(
                     'menu' => 'button_menu',
                 );
@@ -62,3 +62,12 @@ get_header();
     </div>
 </section>
 <?php get_footer(); ?>
+
+<script>
+    const parent = document.querySelector('.subservices__links');
+    const section = document.querySelector('.subservices');
+
+    if(parent.childNodes.length != 0) {
+        section.style.display = 'none';
+    }
+</script>

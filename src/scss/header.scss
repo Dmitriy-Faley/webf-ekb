@@ -433,11 +433,11 @@
   }
 }
 
-@media screen and (max-width: 960px) {}
 
 @media screen and (max-width: 768px) {
   .header {
     padding-top: 30px;
+    width: 100%;
 
     .header__menu {
 
@@ -528,6 +528,7 @@
 @media screen and (max-width: 480px) {
   .header {
     padding-top: 18px;
+    width: 100%;
 
     .header__menu {
       .menu__but-open {
@@ -536,6 +537,7 @@
 
       .mobile-menu__ul {
         width: 100%;
+        overflow-x: hidden;
       }
 
       .sub-menu {

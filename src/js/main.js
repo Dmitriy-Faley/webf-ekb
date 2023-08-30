@@ -48,14 +48,18 @@ var brands_title = $(".strip .text");
 $(window).on("scroll", function (event) {
 	current = $(window).scrollTop();
 
-	brands_title_top = brands_title.offset().top;
-	brands_title_diff = current - brands_title_top + 100;
-	brands_title_newPosition =
-		(get_vw() - brands_title.outerWidth()) / 2 + brands_title_diff;
+	if(brands_title.offset() !== 'undefined') {
+		brands_title_top = brands_title.offset().top;
+		brands_title_diff = current - brands_title_top + 100;
+		brands_title_newPosition =
+			(get_vw() - brands_title.outerWidth()) / 2 + brands_title_diff;
 
-	brands_title.stop().css({
-		left: brands_title_newPosition + "px",
-	});
+		brands_title.stop().css({
+			left: brands_title_newPosition + "px",
+		});
+	} else {
+		return;
+	}
 }); 
 
 var service = $(".swiper-wrapper");

@@ -280,7 +280,9 @@
 			openMobileMenu.addEventListener('click', (e) => {
 				menuMobile.classList.add('activeMenu');
 				body.style.overflow = 'hidden';
-				menuMobile.style.overflow = 'auto';
+				menuMobile.style.overflowY = 'auto';
+				menuMobile.style.overflowX = 'hidden';
+				
 
 				if(menuMobile.classList.contains('activeMenu')) {
 					openMobileMenu.style.display = 'none';
@@ -294,7 +296,7 @@
 			closeMobileButton.addEventListener('click', (e) => {
 				menuMobile.classList.remove('activeMenu');
 				body.style.overflow = '';
-				menuMobile.style.overflow = '';
+				menuMobile.style.overflowX = 'hidden';
 
 				if(!menuMobile.classList.contains('activeMenu')) {
 					openMobileMenu.style.display = 'block';
@@ -341,7 +343,6 @@
 					e.preventDefault();
 					fourthLevel.classList.toggle('activeMobileUl');
 					el.parentNode.classList.toggle('activeMobilA');
-					document.querySelector(".block-mobile-menu").style.height = '2050px';
 					if(!fourthLevel.classList.contains('activeMobileUl')) {
 						fourthLevel.style.display = 'none';
 					} else {
