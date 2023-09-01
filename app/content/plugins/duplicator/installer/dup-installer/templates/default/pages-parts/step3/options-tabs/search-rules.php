@@ -3,12 +3,13 @@
 /**
  *
  * @package templates/default
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
 use Duplicator\Installer\Core\Params\PrmMng;
-use Duplicator\Installer\Utils\InstallerUpsell;
+use Duplicator\Installer\Utils\Utils;
 
 $paramsManager = PrmMng::getInstance();
 if (DUPX_InstallerState::isRestoreBackup()) {
@@ -29,7 +30,7 @@ if (DUPX_InstallerState::isRestoreBackup()) {
         data-tooltip-title="Upgrade Features"
         data-tooltip="<?php echo DUPX_U::esc_attr(
             '<p>Enhance the install experiance with custom search and replace features.</p>' .
-            InstallerUpsell::getCampaignTooltipHTML(array('utm_medium' => 'installer', 'utm_content' => "Custom Search and Replace"))
+            Utils::getCampainUrlHtml('free_inst_replaceopts')
         ); ?>">*
     </sup>
 </div>
@@ -41,7 +42,6 @@ if (DUPX_InstallerState::isRestoreBackup()) {
 <div class="hdr-sub3 margin-top-2">Database Scan Options</div>
 <div  class="dupx-opts">
     <?php
-    $paramsManager->getHtmlFormParam(PrmMng::PARAM_SKIP_PATH_REPLACE);
     $paramsManager->getHtmlFormParam(PrmMng::PARAM_EMAIL_REPLACE);
     $paramsManager->getHtmlFormParam(PrmMng::PARAM_FULL_SEARCH);
     $paramsManager->getHtmlFormParam(PrmMng::PARAM_POSTGUID);

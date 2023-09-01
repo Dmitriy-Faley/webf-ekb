@@ -4,10 +4,10 @@
  * Various Static Utility methods for working with the installer
  *
  * Standard: PSR-2
- *
  * @link http://www.php-fig.org/psr/psr-2 Full Documentation
  *
  * @package SC\DUPX\U
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
@@ -67,8 +67,8 @@ class DUPX_U
      *
      * @param string $subFolderName full path
      * @param boolean $deleteSubFolder if true delete subFolder after moved all
-     *
      * @return boolean
+     *
      */
     public static function moveUpfromSubFolder($subFolderName, $deleteSubFolder = false)
     {
@@ -240,7 +240,7 @@ class DUPX_U
      * @param mixed number $end     The final time in the sequence to measure
      * @param mixed number $start   The start time in the sequence to measure
      *
-     * @return string   The time elapsed from $start to $end
+     * @return  string   The time elapsed from $start to $end
      */
     public static function elapsedTime($end, $start)
     {
@@ -266,7 +266,7 @@ class DUPX_U
      *
      * @see elapsedTime
      *
-     * @return string   A float in the form "msec sec", where sec is the number of seconds since the Unix epoch
+     * @return  string   A float in the form "msec sec", where sec is the number of seconds since the Unix epoch
      */
     public static function getMicrotime()
     {
@@ -276,9 +276,9 @@ class DUPX_U
     /**
      *  Gets the size of a variable in memory
      *
-     *  @param string $var     A valid PHP variable
+     *  @param $var     A valid PHP variable
      *
-     *  @return int    The amount of memory the variable has consumed
+     *  @returns int    The amount of memory the variable has consumed
      */
     public static function getVarSize($var)
     {
@@ -337,10 +337,8 @@ class DUPX_U
             // The 'G' modifier is available since PHP 5.1.0
             case 'g':
                 $val *= 1024;
-                // no break
             case 'm':
                 $val *= 1024;
-                // no break
             case 'k':
                 $val *= 1024;
                 break;
@@ -397,7 +395,6 @@ class DUPX_U
 
     /**
      * Checks if ssl is enabled
-     *
      * @return bool
      */
     public static function is_ssl()
@@ -418,12 +415,12 @@ class DUPX_U
 
     /**
      * @param $url string The URL whichs domain you want to get
-     *
      * @return string The domain part of the given URL
      *                  www.myurl.co.uk     => myurl.co.uk
      *                  www.google.com      => google.com
      *                  my.test.myurl.co.uk => myurl.co.uk
      *                  www.myurl.localweb  => myurl.localweb
+     *
      */
     public static function getDomain($url)
     {
@@ -445,7 +442,6 @@ class DUPX_U
      *
      * @param string $oldSubUrl
      * @param string $oldMainUrl
-     *
      * @return string
      */
     public static function getDefaultURL($oldSubUrl, $oldMainUrl)
@@ -502,7 +498,6 @@ class DUPX_U
      * Get default chunk size in byte
      *
      * @param int $min_chunk_size Min minimum chunk size in bytes
-     *
      * @return int An integer chunk size  byte value.
      */
     public static function get_default_chunk_size_in_byte($min_chunk_size = '')
@@ -530,7 +525,6 @@ class DUPX_U
      * Converts a shorthand byte value to an integer byte value.
      *
      * @param string $value A (PHP ini) byte value, either shorthand or ordinary.
-     *
      * @return int An integer byte value.
      */
     private static function get_bytes_from_shorthand($value)
@@ -558,7 +552,6 @@ class DUPX_U
      * Get default chunk size in KB
      *
      * @param int $min_chunk_size Min minimum chunk size in bytes
-     *
      * @return int An integer chunk size KB value.
      */
     public static function get_default_chunk_size_in_kb($min_chunk_size = '')
@@ -577,7 +570,6 @@ class DUPX_U
      * Not used now, but for future use
      *
      * @param int $min_chunk_size Min minimum chunk size in bytes
-     *
      * @return int An integer chunk size MB value.
      */
     public static function get_default_chunk_size_in_mb($min_chunk_size = '')
@@ -595,14 +587,14 @@ class DUPX_U
     /**
      * Escaping for HTML blocks.
      *
-     * @param string $text
      *
+     * @param string $text
      * @return string
      */
     public static function esc_html($text)
     {
         $safe_text = SnapJson::checkInvalidUTF8($text);
-        $safe_text = self::wp_specialchars($safe_text, ENT_QUOTES);
+        $safe_text = self::_wp_specialchars($safe_text, ENT_QUOTES);
         /**
          * Filters a string cleaned and escaped for output in HTML.
          *
@@ -622,14 +614,14 @@ class DUPX_U
      * (in a tag attribute, for example onclick="..."). Note that the strings have to
      * be in single quotes. The {@see 'js_escape'} filter is also applied here.
      *
-     * @param string $text The text to be escaped.
      *
+     * @param string $text The text to be escaped.
      * @return string Escaped text.
      */
     public static function esc_js($text)
     {
         $safe_text = SnapJson::checkInvalidUTF8($text);
-        $safe_text = self::wp_specialchars($safe_text, ENT_COMPAT);
+        $safe_text = self::_wp_specialchars($safe_text, ENT_COMPAT);
         $safe_text = preg_replace('/&#(x)?0*(?(1)27|39);?/i', "'", stripslashes($safe_text));
         $safe_text = str_replace("\r", '', $safe_text);
         $safe_text = str_replace("\n", '\\n', addslashes($safe_text));
@@ -649,13 +641,12 @@ class DUPX_U
      * Escaping for HTML attributes.
      *
      * @param string $text
-     *
      * @return string
      */
     public static function esc_attr($text)
     {
         $safe_text = SnapJson::checkInvalidUTF8($text);
-        $safe_text = self::wp_specialchars($safe_text, ENT_QUOTES);
+        $safe_text = self::_wp_specialchars($safe_text, ENT_QUOTES);
         /**
          * Filters a string cleaned and escaped for output in an HTML attribute.
          *
@@ -672,7 +663,6 @@ class DUPX_U
      * Escaping for textarea values.
      *
      * @param string $text
-     *
      * @return string
      */
     public static function esc_textarea($text)
@@ -691,10 +681,9 @@ class DUPX_U
      * Escape an HTML tag name.
      *
      * @param string $tag_name
-     *
      * @return string
      */
-    public function tag_escape($tag_name)
+    function tag_escape($tag_name)
     {
         $safe_tag = strtolower(preg_replace('/[^a-zA-Z0-9_:]/', '', $tag_name));
         /**
@@ -726,10 +715,9 @@ class DUPX_U
      *                                   Default is ENT_NOQUOTES.
      * @param string     $charset        Optional. The character encoding of the string. Default is false.
      * @param bool       $double_encode  Optional. Whether to encode existing html entities. Default is false.
-     *
      * @return string The encoded text with HTML entities.
      */
-    public static function wp_specialchars($string, $quote_style = ENT_NOQUOTES, $charset = false, $double_encode = false)
+    public static function _wp_specialchars($string, $quote_style = ENT_NOQUOTES, $charset = false, $double_encode = false)
     {
         $string = (string) $string;
         if (0 === strlen($string)) {
@@ -800,7 +788,6 @@ class DUPX_U
      *                                converting single quotes if set to 'single',
      *                                double if set to 'double' or both if otherwise set.
      *                                Default is ENT_NOQUOTES.
-     *
      * @return string The decoded text without HTML entities.
      */
     public static function wp_specialchars_decode($string, $quote_style = ENT_NOQUOTES)
@@ -855,16 +842,14 @@ class DUPX_U
      * Repeats the replacement operation until it no longer replaces anything so as to remove "nested" values
      * e.g. $subject = '%0%0%0DDD', $search ='%0D', $result ='' rather than the '%0%0DD' that
      * str_replace would return
-     *
      * @access private
      *
      * @param string|array $search  The value being searched for, otherwise known as the needle.
      *                              An array may be used to designate multiple needles.
      * @param string       $subject The string being searched and replaced on, otherwise known as the haystack.
-     *
      * @return string The string with the replaced svalues.
      */
-    private static function deep_replace($search, $subject)
+    private static function _deep_replace($search, $subject)
     {
         $subject = (string) $subject;
         $count   = 1;
@@ -882,7 +867,6 @@ class DUPX_U
      * `AT&amp;T`, `&#00058;` to `&#58;`, `&#XYZZY;` to `&amp;#XYZZY;` and so on.
      *
      * @param string $string Content to normalize entities
-     *
      * @return string Content with normalized entities
      */
     public static function wp_kses_normalize_entities($string)
@@ -905,7 +889,6 @@ class DUPX_U
      * @global array $allowedentitynames
      *
      * @param array $matches preg_replace_callback() matches array
-     *
      * @return string Correctly encoded entity
      */
     public static function wp_kses_named_entities($matches)
@@ -967,7 +950,6 @@ class DUPX_U
      * Helper function to determine if a Unicode value is valid.
      *
      * @param int $i Unicode value
-     *
      * @return bool True if the value was a valid Unicode number
      */
     public static function wp_valid_unicode($i)
@@ -987,7 +969,6 @@ class DUPX_U
      * @access private
      *
      * @param array $matches preg_replace_callback() matches array
-     *
      * @return string Correctly encoded entity
      */
     public static function wp_kses_normalize_entities2($matches)
@@ -1016,7 +997,6 @@ class DUPX_U
      * @access private
      *
      * @param array $matches preg_replace_callback() matches array
-     *
      * @return string Correctly encoded entity
      */
     public static function wp_kses_normalize_entities3($matches)
@@ -1068,7 +1048,6 @@ class DUPX_U
      * @param array  $protocols Optional. An array of acceptable protocols.
      *                          Defaults to return value of wp_allowed_protocols()
      * @param string $_context  Private. Use esc_url_raw() for database usage.
-     *
      * @return string The cleaned $url after the {@see 'clean_url'} filter is applied.
      */
     public static function esc_url($url, $protocols = null, $_context = 'display')
@@ -1086,7 +1065,7 @@ class DUPX_U
 
         if (0 !== stripos($url, 'mailto:')) {
             $strip = array('%0d', '%0a', '%0D', '%0A');
-            $url   = self::deep_replace($strip, $url);
+            $url   = self::_deep_replace($strip, $url);
         }
 
         $url = str_replace(';//', '://', $url);
@@ -1153,6 +1132,15 @@ class DUPX_U
             }
         }
 
+        /**
+         * Filters a string cleaned and escaped for output as a URL.
+         *
+         * @since 2.3.0
+         *
+         * @param string $good_protocol_url The cleaned URL to be returned.
+         * @param string $original_url      The URL prior to cleaning.
+         * @param string $_context          If 'display', replace ampersands and single quotes only.
+         */
         return $good_protocol_url;
     }
 
@@ -1163,7 +1151,6 @@ class DUPX_U
      *
      * @param string $string
      * @param array $options Set 'slash_zero' => 'keep' when '\0' is allowed. Default is 'remove'.
-     *
      * @return string
      */
     public static function wp_kses_no_null($string, $options = null)
@@ -1190,7 +1177,6 @@ class DUPX_U
      *
      * @param string $string            Content to filter bad protocols from
      * @param array  $allowed_protocols Allowed protocols to keep
-     *
      * @return string Filtered content
      */
     public static function wp_kses_bad_protocol($string, $allowed_protocols)
@@ -1216,7 +1202,6 @@ class DUPX_U
      *
      * @param string $string            Content to check for bad protocols
      * @param string $allowed_protocols Allowed protocols
-     *
      * @return string Sanitized content
      */
     public static function wp_kses_bad_protocol_once($string, $allowed_protocols, $count = 1)
@@ -1248,13 +1233,12 @@ class DUPX_U
      * need them in the URL protocol whitelisting system anyway.
      *
      * @param string $string Content to change entities
-     *
      * @return string Content after decoded entities
      */
     public static function wp_kses_decode_entities($string)
     {
-        $string = preg_replace_callback('/&#([0-9]+);/', array(__CLASS__, 'wp_kses_decode_entities_chr'), $string);
-        $string = preg_replace_callback('/&#[Xx]([0-9A-Fa-f]+);/', array(__CLASS__, 'wp_kses_decode_entities_chr_hexdec'), $string);
+        $string = preg_replace_callback('/&#([0-9]+);/', array(__CLASS__, '_wp_kses_decode_entities_chr'), $string);
+        $string = preg_replace_callback('/&#[Xx]([0-9A-Fa-f]+);/', array(__CLASS__, '_wp_kses_decode_entities_chr_hexdec'), $string);
         return $string;
     }
 
@@ -1262,10 +1246,9 @@ class DUPX_U
      * Regex callback for wp_kses_decode_entities()
      *
      * @param array $match preg match
-     *
      * @return string
      */
-    public static function wp_kses_decode_entities_chr($match)
+    public static function _wp_kses_decode_entities_chr($match)
     {
         return chr($match[1]);
     }
@@ -1274,10 +1257,9 @@ class DUPX_U
      * Regex callback for wp_kses_decode_entities()
      *
      * @param array $match preg match
-     *
      * @return string
      */
-    public static function wp_kses_decode_entities_chr_hexdec($match)
+    public static function _wp_kses_decode_entities_chr_hexdec($match)
     {
         return chr(hexdec($match[1]));
     }
@@ -1286,11 +1268,12 @@ class DUPX_U
      * Callback for wp_kses_bad_protocol_once() regular expression.
      *
      * This function processes URL protocols, checks to see if they're in the
-     * white-list or not, and returns different data depending on the answer
+     * white-list or not, and returns different data depending on the answer.
+     *
+     * @access private
      *
      * @param string $string            URI scheme to check against the whitelist
      * @param string $allowed_protocols Allowed protocols
-     *
      * @return string Sanitized content
      */
     public static function wp_kses_bad_protocol_once2($string, $allowed_protocols)
@@ -1319,7 +1302,6 @@ class DUPX_U
      *
      * @param string $url       The URL to be cleaned.
      * @param array  $protocols An array of acceptable protocols.
-     *
      * @return string The cleaned URL.
      */
     public static function esc_url_raw($url, $protocols = null)
@@ -1333,8 +1315,7 @@ class DUPX_U
      * Creates/deletes the maintenance file to enable/disable maintenance mode.
      *
      * @param bool $enable True to enable maintenance mode, false to disable.
-     *
-     * @return void
+     * @throws Exception
      */
     public static function maintenanceMode($enable = false)
     {
@@ -1376,9 +1357,8 @@ class DUPX_U
     /**
      * Check if string is base64 encoded
      *
-     * @param string $str
-     *
-     * @return boolean|string return false if isn't base64 string or decoded string
+     * @param type $str
+     * @return boolean|str return false if isn't base64 string or decoded string
      */
     public static function is_base64($str)
     {
@@ -1404,7 +1384,6 @@ class DUPX_U
     /**
      *
      * @param array $matches
-     *
      * @return string
      */
     public static function encodeUtf8CharFromRegexMatch($matches)
@@ -1425,7 +1404,6 @@ class DUPX_U
      *
      * @param string $str input string
      * @param bool $addQuote if true add " before and after string
-     *
      * @return string
      */
     public static function getEscapedGenericString($str, $addQuote = true)

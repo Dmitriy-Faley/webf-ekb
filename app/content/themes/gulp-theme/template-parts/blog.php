@@ -38,7 +38,7 @@ get_header();
             <?php if ( $wpb_all_query->have_posts() ) : ?>
             <ul class="card-list">
                 <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
-                    <div class="projects__content__item <?php $post_categories = get_the_category($wpb_all_query->the_post->ID);
+                    <div class="projects__content__item <?php $post_categories = get_the_category($wpb_all_query->the_post);
                                    foreach ($post_categories as $post_category) {
                                       echo ' '. $post_category->slug.' ';
                                     }; ?>">
@@ -49,7 +49,7 @@ get_header();
                         </div>
                         <div class="item__data">
                             <div class="data__teg">
-                                   <?php $post_categories = get_the_category($wpb_all_query->the_post->ID);
+                                   <?php $post_categories = get_the_category($wpb_all_query->the_post);
                                    foreach ($post_categories as $post_category) {
                                        echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
                                     }; ?>

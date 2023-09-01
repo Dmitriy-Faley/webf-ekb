@@ -195,7 +195,6 @@ function wpcf7_contact_form_tag_func( $atts, $content = null, $code = '' ) {
 				'title' => '',
 				'html_id' => '',
 				'html_name' => '',
-				'html_title' => '',
 				'html_class' => '',
 				'output' => 'form',
 			),
@@ -225,15 +224,7 @@ function wpcf7_contact_form_tag_func( $atts, $content = null, $code = '' ) {
 		);
 	}
 
-	$callback = function ( $contact_form, $atts ) {
-		return $contact_form->form_html( $atts );
-	};
-
-	return wpcf7_switch_locale(
-		$contact_form->locale(),
-		$callback,
-		$contact_form, $atts
-	);
+	return $contact_form->form_html( $atts );
 }
 
 

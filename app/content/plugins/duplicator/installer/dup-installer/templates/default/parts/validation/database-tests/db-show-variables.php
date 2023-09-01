@@ -3,6 +3,7 @@
 /**
  *
  * @package templates/default
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
@@ -30,7 +31,7 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
     "SHOW VARIABLES" when called from PHP.  <br/><br/>
 
     Additional FAQ resources for this issue can be found here:<br/>
-    <a href="<?php echo DUPX_Constants::FAQ_URL; ?>digital-ocean-digitalocean-com" target="_blank">
+    <a href="https://snapcreek.com/duplicator/docs/faqs-tech/#faq-host-specific-011-q#faq-host-specific-011-q" target="_blank">
         Digital Ocean --  digitalocean.com
     </a>
 </p>

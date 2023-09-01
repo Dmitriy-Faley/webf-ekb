@@ -2,8 +2,9 @@
 
 /**
  *
- * @package   Duplicator
+ * @package Duplicator
  * @copyright (c) 2021, Snapcreek LLC
+ *
  */
 
 namespace Duplicator\Libs\DupArchive\Processors;
@@ -247,7 +248,6 @@ class DupArchiveFileProcessor
 
         if (!$moreGlobstoProcess) {
             self::setFileMode($expandState, $destFilepath);
-            self::setFileTimes($expandState, $destFilepath);
             DupArchiveUtil::tlog('No more globs to process');
 
             $expandState->fileWriteCount++;
@@ -300,25 +300,6 @@ class DupArchiveFileProcessor
             return;
         }
         return SnapIO::chmod($filePath, $expandState->fileModeOverride);
-    }
-
-    /**
-     * Set original file times if enabled
-     *
-     * @param DupArchiveExpandState $expandState dup expand state
-     * @param string                $filePath    File path
-     *
-     * @return bool true if success, false otherwise
-     */
-    protected static function setFileTimes(DupArchiveExpandState $expandState, $filePath)
-    {
-        if (!$expandState->keepFileTime) {
-            return true;
-        }
-        if (!file_exists($filePath)) {
-            return false;
-        }
-        return touch($filePath, $expandState->currentFileHeader->mtime);
     }
 
     /**

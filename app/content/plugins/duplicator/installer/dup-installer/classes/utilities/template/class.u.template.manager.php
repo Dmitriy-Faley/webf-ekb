@@ -4,16 +4,14 @@
  * Search and reaplace manager
  *
  * Standard: PSR-2
- *
  * @link http://www.php-fig.org/psr/psr-2 Full Documentation
  *
  * @package SC\DUPX\U
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
-
 require_once(DUPX_INIT . '/classes/utilities/template/class.u.template.item.php');
-
 final class DUPX_Template
 {
     const TEMPLATE_ADVANCED        = 'default';
@@ -21,13 +19,21 @@ final class DUPX_Template
     const TEMPLATE_IMPORT_BASE     = 'import-base';
     const TEMPLATE_IMPORT_ADVANCED = 'import-advanced';
 
-    /** @var DUPX_Template */
+    /**
+     *
+     * @var DUPX_Template
+     */
     private static $instance = null;
-    /** @var DUPX_TemplateItem[] */
+    /**
+     *
+     * @var DUPX_TemplateItem[]
+     */
     private $templates = array();
-    /** @var string */
+    /**
+     *
+     * @var string
+     */
     private $currentTemplate = null;
-
     /**
      *
      * @return DUPX_Template
@@ -51,8 +57,8 @@ final class DUPX_Template
     /**
      *
      * @param string $name
-     *
      * @return boolean
+     * @throws Exception
      */
     public function setTemplate($name)
     {
@@ -67,10 +73,10 @@ final class DUPX_Template
     /**
      *
      * @param string $name
-     * @param string $mainFolder
+     * @param srring $mainFolder
      * @param string $parentName
-     *
      * @return boolean
+     * @throws Exception
      */
     public function addTemplate($name, $mainFolder, $parentName = null)
     {

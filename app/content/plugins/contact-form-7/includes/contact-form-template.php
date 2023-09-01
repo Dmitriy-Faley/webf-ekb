@@ -22,10 +22,10 @@ class WPCF7_ContactFormTemplate {
 		$template = sprintf(
 			'
 <label> %2$s
-    [text* your-name autocomplete:name] </label>
+    [text* your-name] </label>
 
 <label> %3$s
-    [email* your-email autocomplete:email] </label>
+    [email* your-email] </label>
 
 <label> %4$s
     [text* your-subject] </label>

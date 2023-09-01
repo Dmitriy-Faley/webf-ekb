@@ -2,9 +2,9 @@
 Contributors: SergeyBiryukov, mihdan, karevn, webvitaly, kaggdesign
 Tags: cyrillic, belorussian, ukrainian, bulgarian, macedonian, georgian, kazakh, latin, l10n, russian, cyr-to-lat, cyr2lat, rustolat, slugs, translations, transliteration
 Requires at least: 5.1
-Tested up to: 6.3
-Stable tag: 6.0.3
-Requires PHP: 7.0.0
+Tested up to: 6.0
+Stable tag: 5.3.0
+Requires PHP: 5.6.20
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,7 +15,7 @@ Convert Non-Latin characters in post, page and term slugs to Latin characters.
 Converts Cyrillic characters in post, page and term slugs to Latin characters. Useful for creating human-readable URLs.
 
 = Features =
-* The only plugin with fully editable transliteration table. Allows to add/remove and edit pairs like 'Я' => 'Ya', or even 'Пиво' => 'Beer'
+* The only plugin with fully editable transliteration table. Allows add/remove and edit pairs like 'Я' => 'Ya', or even 'Пиво' => 'Beer'
 * Converts any number of existing post, page and term slugs in background processes
 * Saves existing post and page permalinks integrity
 * Performs transliteration of attachment file names
@@ -139,33 +139,6 @@ function my_ctl_pre_sanitize_filename( $result, $filename ) {
 add_filter( 'ctl_pre_sanitize_filename', 10, 2 );
 `
 
-= How can I allow the plugin to work on the frontend? =
-
-Add similar code to your theme's `functions.php` file:
-
-`
-/**
- * Filter status allowed Cyr To Lat plugin to work.
- *
- * @param bool $allowed
- *
- * @return bool
- */
-function my_ctl_allow( bool $allowed ): bool {
-	$uri = isset( $_SERVER['REQUEST_URI'] ) ?
-		sanitize_url( wp_unslash( $_SERVER['REQUEST_URI'] ) ) :
-		'';
-
-	if ( 0 === strpos( $uri, '/divi-comments' ) ) {
-		return true;
-	}
-
-	return $allowed;
-}
-
-add_filter( 'ctl_allow', 'my_ctl_allow' );
-`
-
 = How can I limit post types for background conversion? =
 
 Add similar code to your theme's `functions.php` file:
@@ -220,45 +193,6 @@ Yes you can!
 * Join in on our [Telegram Group](https://t.me/cyr2lat)
 
 == Changelog ==
-
-= 6.0.3 (29.07.2023) =
-* Fixed fatal error with Jetpack sync.
-
-= 6.0.2 (26.07.2023) =
-* Fixed fatal error in admin_footer_text().
-
-= 6.0.1 (26.07.2023) =
-* Fixed fatal error on System Info page with empty options.
-
-= 6.0.0 (26.07.2023) =
-* Dropped support of PHP 5.6. Minimum required PHP version is 7.0 now.
-* Tested with WordPress 6.3.
-* Tested with WooCommerce 7.9.
-* Added System Info tab.
-* Added filter 'ctl_allow'
-* Fixed console error when saving table data.
-* Fixed current table setting on Tables page with WPML.
-
-= 5.5.3 (15.07.2023) =
-* Tested with WooCommerce 7.8.
-* Fixed deprecation error "strpos(): Passing null to parameter" appeared in debug.log.
-
-= 5.5.2 (31.03.2023) =
-* Fixed transliteration of tags with Polylang and WPML.
-
-= 5.5.1 (21.03.2023) =
-* Fixed transliteration of attributes on WC frontend.
-
-= 5.5.0 (18.03.2023) =
-* Tested with WordPress 6.2.
-* Tested with WooCommerce 7.5.
-* Improved performance of Tables settings page.
-* Fixed showing posts by tags on the frontend.
-* Fixed showing non-transliterated cyrillic tags on the backend.
-
-= 5.4.0 (15.12.2022) =
-* Tested with WordPress 6.1 and WooCommerce 7.2.
-* Added compatibility with WC High-Performance order storage (COT) feature.
 
 = 5.3.0 (23.05.2022) =
 * Tested with WordPress 6.0 and WooCommerce 6.5.
@@ -385,7 +319,7 @@ Yes you can!
 * Tables sorted by local alphabets
 
 = 4.3.2 (29.12.2019) =
-* Fixed problems with setting of max_input_vars on some hosting
+* Fixed problems with setting of max_input_vars on some hostings
 
 = 4.3.1 (27.12.2019) =
 * Added requirement to have max_input_vars >= 5000

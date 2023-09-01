@@ -14,9 +14,6 @@ abstract class DUP_Archive_Build_Mode
 
 class DUP_Settings
 {
-    const UNINSTALL_PACKAGE_OPTION_KEY  = 'duplicator_uninstall_package';
-    const UNINSTALL_SETTINGS_OPTION_KEY = 'duplicator_uninstall_settings';
-
     const OPT_SETTINGS                  = 'duplicator_settings';
     const INSTALLER_NAME_MODE_WITH_HASH = 'withhash';
     const INSTALLER_NAME_MODE_SIMPLE    = 'simple';
@@ -24,39 +21,28 @@ class DUP_Settings
     const STORAGE_POSITION_WP_CONTENT   = 'wpcont';
     const SSDIR_NAME_LEGACY             = 'wp-snapshots';
     const SSDIR_NAME_NEW                = 'backups-dup-lite';
-
-    protected static $Data      = array();
+    protected static $Data;
     protected static $ssDirPath = null;
     protected static $ssDirUrl  = null;
-
-    /**
+/**
      *  Class used to manage all the settings for the plugin
      */
     public static function init()
     {
-        static $initialized = null;
-        if ($initialized == null) {
-            $initialized = true; // Must be at the top of the function to prvent infinite loop
-            $defaults    = (array) self::GetAllDefaults();
-            $data        = (array) get_option(self::OPT_SETTINGS);
-            self::$Data  = array_merge($defaults, $data);
-            // when the plugin updated, this will be true
-            if (empty(self::$Data) || empty(self::$Data['version']) || version_compare(DUPLICATOR_VERSION, self::$Data['version'], '>')) {
-                self::SetDefaults();
-            }
+        self::$Data = get_option(self::OPT_SETTINGS);
+//when the plugin updated, this will be true
+        if (empty(self::$Data) || empty(self::$Data['version']) || version_compare(DUPLICATOR_VERSION, self::$Data['version'], '>')) {
+            self::SetDefaults();
         }
     }
 
     /**
      *  Find the setting value
-     *
      *  @param string $key  The name of the key to find
-     *
      *  @return string The value stored in the key returns null if key does not exist
      */
     public static function Get($key = '')
     {
-        self::init();
         $result = null;
         if (isset(self::$Data[$key])) {
             $result = self::$Data[$key];
@@ -71,14 +57,12 @@ class DUP_Settings
 
     /**
      *  Set the settings value in memory only
-     *
      *  @param string $key      The name of the key to find
      *  @param string $value        The value to set
      *  remarks:     The Save() method must be called to write the Settings object to the DB
      */
     public static function Set($key, $value)
     {
-        self::init();
         if (isset(self::$Data[$key])) {
             self::$Data[$key] = ($value == null) ? '' : $value;
         } elseif (!empty($key)) {
@@ -88,8 +72,6 @@ class DUP_Settings
 
     public static function setStoragePosition($newPosition)
     {
-        self::init();
-
         $legacyPath     = self::getSsdirPathLegacy();
         $wpContPath     = self::getSsdirPathWpCont();
         $oldStoragePost = self::Get('storage_position');
@@ -136,34 +118,25 @@ class DUP_Settings
 
     /**
      *  Saves all the setting values to the database
-     *
-     *  @return bool True if option value has changed, false if not or if update failed.
+     *  @return True if option value has changed, false if not or if update failed.
      */
     public static function Save()
     {
-        self::init();
-
-        update_option(self::UNINSTALL_PACKAGE_OPTION_KEY, self::$Data['uninstall_files']);
-        update_option(self::UNINSTALL_SETTINGS_OPTION_KEY, self::$Data['uninstall_settings']);
         return update_option(self::OPT_SETTINGS, self::$Data);
     }
 
     /**
      *  Deletes all the setting values to the database
-     *
-     *  @return bool true if option value has changed, false if not or if update failed.
+     *  @return True if option value has changed, false if not or if update failed.
      */
     public static function Delete()
     {
-        $defaults   = self::GetAllDefaults();
-        self::$Data = apply_filters('duplicator_defaults_settings', $defaults);
         return delete_option(self::OPT_SETTINGS);
     }
 
     /**
      *  Sets the defaults if they have not been set
-     *
-     *  @return bool True if option value has changed, false if not or if update failed.
+     *  @return True if option value has changed, false if not or if update failed.
      */
     public static function SetDefaults()
     {
@@ -187,27 +160,29 @@ class DUP_Settings
     {
         $default            = array();
         $default['version'] = DUPLICATOR_VERSION;
-        //Flag used to remove the wp_options value duplicator_settings which are all the settings in this class
+//Flag used to remove the wp_options value duplicator_settings which are all the settings in this class
         $default['uninstall_settings'] = isset(self::$Data['uninstall_settings']) ? self::$Data['uninstall_settings'] : true;
-        //Flag used to remove entire wp-snapshot directory
+//Flag used to remove entire wp-snapshot directory
         $default['uninstall_files'] = isset(self::$Data['uninstall_files']) ? self::$Data['uninstall_files'] : true;
-        //Flag used to show debug info
+//Flag used to remove all tables
+        $default['uninstall_tables'] = isset(self::$Data['uninstall_tables']) ? self::$Data['uninstall_tables'] : true;
+//Flag used to show debug info
         $default['package_debug'] = isset(self::$Data['package_debug']) ? self::$Data['package_debug'] : false;
-        //Flag used to enable mysqldump
+//Flag used to enable mysqldump
         $default['package_mysqldump'] = isset(self::$Data['package_mysqldump']) ? self::$Data['package_mysqldump'] : true;
-        //Optional mysqldump search path
+//Optional mysqldump search path
         $default['package_mysqldump_path'] = isset(self::$Data['package_mysqldump_path']) ? self::$Data['package_mysqldump_path'] : '';
-        //Optional mysql limit size
+//Optional mysql limit size
         $default['package_phpdump_qrylimit'] = isset(self::$Data['package_phpdump_qrylimit']) ? self::$Data['package_phpdump_qrylimit'] : "100";
-        //Optional mysqldump search path
+//Optional mysqldump search path
         $default['package_zip_flush'] = isset(self::$Data['package_zip_flush']) ? self::$Data['package_zip_flush'] : false;
-        //Optional mysqldump search path
+//Optional mysqldump search path
         $default['installer_name_mode'] = isset(self::$Data['installer_name_mode']) ? self::$Data['installer_name_mode'] : self::INSTALLER_NAME_MODE_SIMPLE;
-        // storage position
+// storage position
         $default['storage_position'] = isset(self::$Data['storage_position']) ? self::$Data['storage_position'] : self::STORAGE_POSITION_WP_CONTENT;
-        //Flag for .htaccess file
+//Flag for .htaccess file
         $default['storage_htaccess_off'] = isset(self::$Data['storage_htaccess_off']) ? self::$Data['storage_htaccess_off'] : false;
-        // Initial archive build mode
+// Initial archive build mode
         if (isset(self::$Data['archive_build_mode'])) {
             $default['archive_build_mode'] = self::$Data['archive_build_mode'];
         } else {

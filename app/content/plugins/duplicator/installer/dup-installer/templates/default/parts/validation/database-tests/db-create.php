@@ -3,6 +3,7 @@
 /**
  *
  * @package templates/default
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
@@ -69,7 +70,7 @@ $statusClass = $isOk ? 'green' : 'red';
         <li>Try using the <a href="javascript:void(0)" onclick="DUPX.togglePanels('cpanel')">'cPanel'</a> option.</li>
     <?php } ?>
     <li>
-        <a href="<?php echo DUPX_U::esc_attr(DUPX_Constants::FAQ_URL); ?>how-to-fix-database-connection-issues/" target="_help"
+        <a href="<?php echo DUPX_U::esc_attr(DUPX_Constants::FAQ_URL); ?>#faq-installer-100-q" target="_help"
            title="I'm running into issues with the Database what can I do?">
             [Additional FAQ Help]
         </a>

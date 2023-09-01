@@ -202,18 +202,13 @@ TOOL BAR:STEPS -->
 <?php wp_nonce_field('dup_form_opts', 'dup_form_opts_nonce_field', false); ?>
 
     <!--  PROGRESS BAR -->
-    <div id="dup-scan-progress-bar-wrapper">
-        <?php do_action('duplicator_scan_progress_header'); ?>
-        <div id="dup-progress-bar-area">
-            <div class="dup-progress-title"><i class="fas fa-circle-notch fa-spin"></i> <?php esc_html_e('Scanning Site', 'duplicator'); ?></div>
-            <div id="dup-progress-bar"></div>
-            <b><?php esc_html_e('Please Wait...', 'duplicator'); ?></b><br/><br/>
-            <i><?php esc_html_e('Keep this window open during the scan process.', 'duplicator'); ?></i><br/>
-            <i><?php esc_html_e('This can take several minutes.', 'duplicator'); ?></i><br/>
-        </div>
-        <?php do_action('duplicator_scan_progress_footer'); ?>
+    <div id="dup-progress-bar-area">
+        <div class="dup-progress-title"><i class="fas fa-circle-notch fa-spin"></i> <?php esc_html_e('Scanning Site', 'duplicator'); ?></div>
+        <div id="dup-progress-bar"></div>
+        <b><?php esc_html_e('Please Wait...', 'duplicator'); ?></b><br/><br/>
+        <i><?php esc_html_e('Keep this window open during the scan process.', 'duplicator'); ?></i><br/>
+        <i><?php esc_html_e('This can take several minutes.', 'duplicator'); ?></i><br/>
     </div>
-
 
     <!--  ERROR MESSAGE -->
     <div id="dup-msg-error" style="display:none">
@@ -307,7 +302,7 @@ jQuery(document).ready(function($)
                 } catch(err) {
                     console.error(err);
                     console.error('JSON parse failed for response data: ' + respData);
-                    $('#dup-scan-progress-bar-wrapper').hide();
+                    $('#dup-progress-bar-area').hide();
                     var status = xHr.status + ' -' + xHr.statusText;
                     $('#dup-msg-error-response-status').html(status)
                     $('#dup-msg-error-response-text').html(xHr.responseText);
@@ -318,7 +313,7 @@ jQuery(document).ready(function($)
                 Duplicator.Pack.loadScanData(data);
             },
             error: function(data) {
-                $('#dup-scan-progress-bar-wrapper').hide();
+                $('#dup-progress-bar-area').hide();
                 var status = data.status + ' -' + data.statusText;
                 $('#dup-msg-error-response-status').html(status)
                 $('#dup-msg-error-response-text').html(data.responseText);
@@ -331,7 +326,7 @@ jQuery(document).ready(function($)
     //Loads the scanner data results into the various sections of the screen
     Duplicator.Pack.loadScanData = function(data)
     {
-        $('#dup-scan-progress-bar-wrapper').hide();
+        $('#dup-progress-bar-area').hide();
 
         //ERROR: Data object is corrupt or empty return error
         if (data == undefined || data.RPT == undefined) {
@@ -411,7 +406,7 @@ jQuery(document).ready(function($)
     Duplicator.Pack.rescan = function()
     {
         $('#dup-msg-success,#dup-msg-error, #dup-confirm-area, .dup-button-footer').hide();
-        $('#dup-scan-progress-bar-wrapper').show();
+        $('#dup-progress-bar-area').show();
         Duplicator.Pack.runScanner();
     }
 
@@ -433,17 +428,8 @@ jQuery(document).ready(function($)
         html_msg += '<?php esc_html_e("3. This message will go away once the correct filters are applied.", 'duplicator') ?><br/><br/>';
 
         html_msg += '<?php esc_html_e("Common Issues:", 'duplicator') ?><ul>';
-        html_msg += '<li><?php esc_html_e(
-            "- On some budget hosts scanning over 30k files can lead to timeout/gateway issues. " .
-            "Consider scanning only your main WordPress site and avoid trying to backup other external directories.",
-            'duplicator'
-        ) ?></li>';
-        html_msg += '<li><?php esc_html_e(
-            "- Symbolic link recursion can cause timeouts. " .
-            "Ask your server admin if any are present in the scan path. " .
-            "If they are add the full path as a filter and try running the scan again.",
-            'duplicator'
-        ) ?></li>';
+        html_msg += '<li><?php esc_html_e("- On some budget hosts scanning over 30k files can lead to timeout/gateway issues. Consider scanning only your main WordPress site and avoid trying to backup other external directories.", 'duplicator') ?></li>';
+        html_msg += '<li><?php esc_html_e("- Symbolic link recursion can cause timeouts.  Ask your server admin if any are present in the scan path.  If they are add the full path as a filter and try running the scan again.", 'duplicator') ?></li>';
         html_msg += '</ul>';
         $('#dup-msg-error-response-status').html('Scan Path Error [<?php echo esc_js(duplicator_get_abs_path()); ?>]');
         $('#dup-msg-error-response-text').html(html_msg);

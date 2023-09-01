@@ -3,6 +3,7 @@
 /**
  *
  * @package templates/default
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
@@ -32,7 +33,7 @@ $nextStepPrams = array(
             }
             var formData = passForm.serializeForm();
 
-            DUPX.StandardJsonAjaxWrapper(
+            DUPX.StandarJsonAjaxWrapper(
                     secureAction,
                     secureToken,
                     formData,

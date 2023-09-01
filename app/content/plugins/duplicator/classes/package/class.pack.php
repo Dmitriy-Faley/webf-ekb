@@ -158,7 +158,6 @@ abstract class DUP_PackageFileType
  * Class used to store and process all Package logic
  *
  * Standard: PSR-2
- *
  * @link http://www.php-fig.org/psr/psr-2
  *
  * @package Duplicator\classes
@@ -168,9 +167,7 @@ class DUP_Package
     const OPT_ACTIVE = 'duplicator_package_active';
 
     //Properties
-
-    /** @var string */
-    public $Created = '';
+    public $Created;
     public $Version;
     public $VersionWP;
     public $VersionDB;
@@ -584,7 +581,7 @@ class DUP_Package
      *
      * @return bool
      */
-    public static function isPackageRunning()
+    public static function is_active_package_present()
     {
         $activePakcs = self::get_ids_by_status(array(
                 array('op' => '>=', 'status' => DUP_PackageStatus::CREATED),
@@ -603,7 +600,6 @@ class DUP_Package
      *                                  [ 'op' => '<' ,
      *                                    'status' =>  DUP_PackageStatus::COMPLETED ]
      *                              ]
-     *
      * @return string
      */
     protected static function statusContitionsToWhere($conditions = array())
@@ -753,6 +749,7 @@ class DUP_Package
     /**
      * count package with status condition
      *
+     * @global wpdb $wpdb
      * @param array $conditions es. [
      *                                  relation = 'AND',
      *                                  [ 'op' => '>=' ,
@@ -760,7 +757,6 @@ class DUP_Package
      *                                  [ 'op' => '<' ,
      *                                    'status' =>  DUP_PackageStatus::COMPLETED ]
      *                              ]
-     *
      * @return int
      */
     public static function count_by_status($conditions = array())
@@ -1118,7 +1114,6 @@ class DUP_Package
 
     /**
      * @param int $type
-     *
      * @return array
      */
     public function getPackageFileDownloadInfo($type)
@@ -1428,12 +1423,17 @@ class DUP_Package
             $name = sanitize_file_name($name);
             $name = substr(trim($name), 0, 40);
 
-            if (isset($post['filter-paths'])) {
-                $post_filter_paths = sanitize_text_field($post['filter-paths']);
-                $filter_dirs       = $this->Archive->parseDirectoryFilter($post_filter_paths);
-                $filter_files      = $this->Archive->parseFileFilter($post_filter_paths);
+            if (isset($post['filter-dirs'])) {
+                $post_filter_dirs = sanitize_text_field($post['filter-dirs']);
+                $filter_dirs      = $this->Archive->parseDirectoryFilter($post_filter_dirs);
             } else {
-                $filter_dirs  = '';
+                $filter_dirs = '';
+            }
+
+            if (isset($post['filter-files'])) {
+                $post_filter_files = sanitize_text_field($post['filter-files']);
+                $filter_files      = $this->Archive->parseFileFilter($post_filter_files);
+            } else {
                 $filter_files = '';
             }
 
@@ -1475,10 +1475,10 @@ class DUP_Package
             //ARCHIVE
             $this->Archive->Format       = 'ZIP';
             $this->Archive->FilterOn     = isset($post['filter-on']) ? 1 : 0;
-            $this->Archive->ExportOnlyDB = $post['auto-select-components'] === 'database' ? 1 : 0;
+            $this->Archive->ExportOnlyDB = isset($post['export-onlydb']) ? 1 : 0;
             $this->Archive->FilterDirs   = sanitize_textarea_field($filter_dirs);
             $this->Archive->FilterFiles  = sanitize_textarea_field($filter_files);
-            $this->Archive->FilterExts   = $filter_exts;
+            $this->Archive->FilterExts   = str_replace(array('.', ' '), '', $filter_exts);
             //INSTALLER
             $this->Installer->OptsDBHost      = sanitize_text_field($post['dbhost']);
             $this->Installer->OptsDBPort      = sanitize_text_field($post['dbport']);
@@ -1854,29 +1854,5 @@ class DUP_Package
         DUP_Log::Info($info);
 
         $info = null;
-    }
-
-    /**
-     * Return package life
-     *
-     * @param string $type can be hours,human,timestamp
-     *
-     * @return int|string package life in hours, timestamp or human readable format
-     */
-    public function getPackageLife($type = 'timestamp')
-    {
-        $created = strtotime($this->Created);
-        $current = strtotime(gmdate("Y-m-d H:i:s"));
-        $delta   = $current - $created;
-
-        switch ($type) {
-            case 'hours':
-                return max(0, floor($delta / 60 / 60));
-            case 'human':
-                return human_time_diff($created, $current);
-            case 'timestamp':
-            default:
-                return $delta;
-        }
     }
 }

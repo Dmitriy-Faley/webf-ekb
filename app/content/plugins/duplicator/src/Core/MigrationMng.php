@@ -2,6 +2,7 @@
 
 /**
  * Utility class managing th emigration data
+ *
  */
 
 namespace Duplicator\Core;
@@ -36,11 +37,6 @@ class MigrationMng
         'instFile' => array()
     );
 
-    /**
-     * Init
-     *
-     * @return void
-     */
     public static function init()
     {
         add_action('admin_init', array(__CLASS__, 'adminInit'));
@@ -55,11 +51,6 @@ class MigrationMng
         add_action(self::HOOK_FIRST_LOGIN_AFTER_INSTALL, array(__CLASS__, 'autoCleanFileAfterInstall'), 99999);
     }
 
-    /**
-     * Admin Init function
-     *
-     * @return void
-     */
     public static function adminInit()
     {
         if (self::isFirstLoginAfterInstall()) {
@@ -70,14 +61,20 @@ class MigrationMng
     }
 
     /**
-     * Admin Hook function
      *
-     * @return void
      */
     public static function wpAdminHook()
     {
         if (!DUP_CTRL_Tools::isToolPage()) {
-            wp_redirect(DUP_CTRL_Tools::getDiagnosticURL(false));
+            wp_redirect(
+                ControllersManager::getMenuLink(
+                    'duplicator-tools',
+                    'diagnostics',
+                    null,
+                    array(),
+                    false
+                )
+            );
             exit;
         }
     }
@@ -122,8 +119,7 @@ class MigrationMng
 
     /**
      *
-     * @param array $migrationData Migration data
-     *
+     * @param array $migrationData
      * @return void
      */
     public static function autoCleanFileAfterInstall($migrationData)
@@ -138,8 +134,7 @@ class MigrationMng
 
     /**
      *
-     * @param array $migrationData Migration data
-     *
+     * @param array $migrationData
      * @return void
      */
     public static function setDupSettingsAfterInstall($migrationData)
@@ -174,8 +169,7 @@ class MigrationMng
 
     /**
      *
-     * @param array $migrationData Migration data
-     *
+     * @param array $migrationData
      * @return void
      */
     public static function removeFirstLoginOption($migrationData)
@@ -187,8 +181,7 @@ class MigrationMng
      *
      * @staticvar array $migrationData
      *
-     * @param string|null $key Key to get from migration data
-     *
+     * @param string|null $key
      * @return mixed
      */
     public static function getMigrationData($key = null)
@@ -321,10 +314,7 @@ class MigrationMng
                 } else {
                     self::$migrationCleanupReport['instFile'][] = "<div class='success'>"
                         . '<i class="fa fa-exclamation-triangle red"></i> '
-                        . sprintf(
-                            __('Can\'t rename installer file <b>%s</b> with HASH, please remove it for security reasons', 'duplicator'),
-                            esc_html($fileName)
-                        )
+                        . sprintf(__('Can\'t rename installer file <b>%s</b> with HASH, please remove it for security reasons', 'duplicator'), esc_html($fileName))
                         . '</div>';
                 }
             }
@@ -333,9 +323,7 @@ class MigrationMng
 
     /**
      *
-     * @param array $migrationData Migration data
-     *
-     * @return void
+     * @param array $migrationData
      */
     public static function storeMigrationFiles($migrationData)
     {
@@ -359,7 +347,7 @@ class MigrationMng
                 } else {
                     self::$migrationCleanupReport['stored'] = "<div class='success'>"
                         . '<i class="fa fa-exclamation-triangle"></i> '
-                        . sprintf(__('Can\'t move %s to %s', 'duplicator'), esc_html($path), $ssdInstallerPath)
+                        . sprintf(__('Can\'t move %s to %s', 'duplicagtor'), esc_html($path), $ssdInstallerPath)
                         . '</div>';
                 }
             }
@@ -478,14 +466,14 @@ class MigrationMng
             )));
         }
 
-        $result = array_map(array('Duplicator\\Libs\\Snap\\SnapIO', 'safePathUntrailingslashit'), $result);
+        $result = array_map(array('\\Duplicator\\Libs\\Snap\\SnapIO', 'safePathUntrailingslashit'), $result);
         return array_unique($result);
     }
 
     /**
      * @param $path string Path to check
-     *
      * @return bool true if the file at current path is the installer file
+     * @throws Exception
      */
     public static function isInstallerFile($path)
     {
@@ -496,11 +484,6 @@ class MigrationMng
         return strpos(implode("", $last5Lines), "DUPLICATOR_INSTALLER_EOF") !== false;
     }
 
-    /**
-     * Clear all the installer files and directory
-     *
-     * @return array
-     */
     public static function cleanMigrationFiles()
     {
         $cleanList = self::checkInstallerFilesList();

@@ -11,15 +11,17 @@ add_action(
 		}
 
 		$assets = wp_parse_args( $assets, array(
+			'src' => wpcf7_plugin_url( 'includes/swv/js/index.js' ),
 			'dependencies' => array(),
 			'version' => WPCF7_VERSION,
+			'in_footer' => true,
 		) );
 
 		wp_register_script( 'swv',
-			wpcf7_plugin_url( 'includes/swv/js/index.js' ),
+			$assets['src'],
 			$assets['dependencies'],
 			$assets['version'],
-			true
+			$assets['in_footer']
 		);
 	},
 	10, 0

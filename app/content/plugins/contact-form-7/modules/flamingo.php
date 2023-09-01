@@ -63,6 +63,9 @@ function wpcf7_flamingo_submit( $contact_form, $result ) {
 		);
 	}
 
+	$akismet = isset( $submission->akismet )
+		? (array) $submission->akismet : null;
+
 	$timestamp = $submission->get_meta( 'timestamp' );
 
 	if ( $timestamp and $datetime = date_create( '@' . $timestamp ) ) {
@@ -122,7 +125,7 @@ function wpcf7_flamingo_submit( $contact_form, $result ) {
 		'from_email' => $email,
 		'fields' => $posted_data,
 		'meta' => $meta,
-		'akismet' => $submission->pull( 'akismet' ),
+		'akismet' => $akismet,
 		'spam' => ( 'spam' == $result['status'] ),
 		'consent' => $submission->collect_consent(),
 		'timestamp' => $timestamp,
@@ -133,7 +136,9 @@ function wpcf7_flamingo_submit( $contact_form, $result ) {
 		$args['spam_log'] = $submission->get_spam_log();
 	}
 
-	$args['recaptcha'] = $submission->pull( 'recaptcha' );
+	if ( isset( $submission->recaptcha ) ) {
+		$args['recaptcha'] = $submission->recaptcha;
+	}
 
 	$args = apply_filters( 'wpcf7_flamingo_inbound_message_parameters', $args );
 

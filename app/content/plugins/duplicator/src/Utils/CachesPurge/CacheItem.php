@@ -65,7 +65,6 @@ class CacheItem
      * overwrite default purged message
      *
      * @param string $message message if item have benn purged
-     *
      * @return void
      */
     public function setPurgedMessage($message)
@@ -77,7 +76,6 @@ class CacheItem
      * purge caches item
      *
      * @param string $message message if item have benn purged
-     *
      * @return bool
      */
     public function purge(&$message)

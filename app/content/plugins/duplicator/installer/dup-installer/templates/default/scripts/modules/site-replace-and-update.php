@@ -3,6 +3,7 @@
 /**
  *
  * @package templates/default
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
@@ -33,7 +34,7 @@ $paramsManager = PrmMng::getInstance();
 
         let retryAttemp = 0;
 
-        DUPX.StandardJsonAjaxWrapper(
+        DUPX.StandarJsonAjaxWrapper(
                 action,
                 token,
                 {},

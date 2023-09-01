@@ -384,8 +384,7 @@ jQuery(document).ready(function($)
 });
 
 jQuery(document).ready(function($) {
-    $('.duplicator-message .notice-dismiss, .duplicator-message .duplicator-notice-dismiss, .duplicator-message  .duplicator-notice-rate-now')
-    .on('click', function (event) {
+    $('.duplicator-message .notice-dismiss, .duplicator-message .duplicator-notice-dismiss, .duplicator-message  .duplicator-notice-rate-now').on('click', function (event) {
         if ('button button-primary duplicator-notice-rate-now' !== $(event.target).attr('class')) {
             event.preventDefault();
         }
@@ -400,10 +399,7 @@ jQuery(document).ready(function($) {
                 $wrapperElm.remove();
             });
         });
-    });
-
-    $('#screen-meta-links, #screen-meta').prependTo('#dup-meta-screen');
-    $('#screen-meta-links').show();
+    });   
 });
 
 </script>

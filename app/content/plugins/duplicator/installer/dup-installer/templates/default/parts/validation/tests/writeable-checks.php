@@ -3,6 +3,7 @@
 /**
  *
  * @package templates/default
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
@@ -115,14 +116,11 @@ use Duplicator\Installer\Core\Params\PrmMng;
         <a href="https://en.wikipedia.org/wiki/File-system_permissions" target="_blank">Here you can find general information about File-system permissions.</a>
     </li>
     <li>
-        Generally if the folders have write permissions but it is not possible to extract the PHP files, 
-        the cause could be an external security service like "Imunify 360".
-        If this is the case <a href="<?php echo DUPX_Constants::FAQ_URL; ?>how-to-fix-installer-archive-extraction-issues/" target="_blank">
-            deactivate the checks
-        </a> 
+        Generally if the folders have write permissions but it is not possible to extract the PHP files, the cause could be an external security service like "Imunify 360".
+        If this is the case <a href="https://snapcreek.com/duplicator/docs/faqs-tech/?1637185157400#faq-installer-105-q" target="_blank">deactivate the checks</a> 
         temporarily, and run the installation again.
     </li>
     <li>
-        Check <a href="<?php echo DUPX_Constants::FAQ_URL; ?>how-to-fix-installer-archive-extraction-issues/" target="_blank">our online documentation</a>
+        Check <a href="https://snapcreek.com/duplicator/docs/faqs-tech/?1637185157400#faq-installer-105-q" target="_blank">our online documentation</a>
     </li>
 </ul>

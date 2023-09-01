@@ -4,16 +4,18 @@
  * Cunking manager
  *
  * Standard: PSR-2
- *
  * @link http://www.php-fig.org/psr/psr-2 Full Documentation
  *
  * @package SC\DUPX\Chunk
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
 /**
+ *
  * Abstract class to split an single ajax requet in multiple requests
+ *
  */
 abstract class DUPX_ChunkingManager
 {
@@ -139,6 +141,7 @@ abstract class DUPX_ChunkingManager
     /**
      *
      * @return mixed
+     *
      */
     public function getLastPosition()
     {
@@ -188,7 +191,7 @@ abstract class DUPX_ChunkingManager
     }
 
     /**
-     * Get stored data key
+     *
      */
     abstract public function getStoredDataKey();
 

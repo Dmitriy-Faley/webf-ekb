@@ -1,23 +1,18 @@
-/* global acf, CyrToLatAcfFieldGroup */
-
 /**
  * ACF support.
  *
- * @param {window.jQuery} $        jQuery.
- * @param {Window}        window   Window.
- * @param {document}      document
- * @package
+ * @package cyr-to-lat
  */
-( function( $, window, document ) {
+( function( $, window, document, undefined ) {
 	'use strict';
 
-	const table = CyrToLatAcfFieldGroup.table;
-	const convert = function( str ) {
+	var table   = window.CyrToLatAcfFieldGroup.table;
+	var convert = function( str ) {
 		$.each(
 			table,
 			function( k, v ) {
-				const regex = new RegExp( k, 'g' );
-				str = str.replace( regex, v );
+				var regex = new RegExp( k, 'g' );
+				str       = str.replace( regex, v );
 			}
 		);
 		str = str.replace( /[^\w\d\-_]/g, '' );
@@ -27,8 +22,7 @@
 
 		return str;
 	};
-
-	acf.addFilter(
+	window.acf.addFilter(
 		'generate_field_object_name',
 		function( val ) {
 			return convert( val );
@@ -39,17 +33,19 @@
 		'change',
 		'.acf-field .field-name',
 		function() {
+			var $this = $( this );
+			var str   = '';
+
 			if ( $( this ).is( ':focus' ) ) {
 				return false;
-			}
+			} else {
+				str = $this.val();
+				str = convert( str );
 
-			const $this = $( this );
-			let str = $this.val();
-			str = convert( str );
-
-			if ( str !== $this.val() ) {
-				$this.val( str );
+				if ( str !== $this.val() ) {
+					$this.val( str );
+				}
 			}
 		}
 	);
-}( window.jQuery, window, document ) );
+} )( window.jQuery, window, document );

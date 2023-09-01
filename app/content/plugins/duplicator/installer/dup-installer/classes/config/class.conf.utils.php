@@ -1,24 +1,26 @@
 <?php
 
 /**
- * Standard: PSR-2
  *
+ * Standard: PSR-2
  * @link http://www.php-fig.org/psr/psr-2 Full Documentation
  *
  * @package SC\DUPX
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
 /**
  * In this class all the utility functions related to the wordpress configuration and the package are defined.
+ *
  */
 class DUPX_Conf_Utils
 {
     /**
      *
      * @staticvar null|bool $present
-     * @return    bool
+     * @return bool
      */
     public static function isConfArkPresent()
     {
@@ -32,7 +34,7 @@ class DUPX_Conf_Utils
     /**
      *
      * @staticvar bool $present
-     * @return    bool
+     * @return bool
      */
     public static function isManualExtractFilePresent()
     {
@@ -46,7 +48,7 @@ class DUPX_Conf_Utils
     /**
      *
      * @staticvar null|bool $enable
-     * @return    bool
+     * @return bool
      */
     public static function shellExecUnzipEnable()
     {
@@ -69,7 +71,7 @@ class DUPX_Conf_Utils
     /**
      *
      * @staticvar bool $exists
-     * @return    bool
+     * @return bool
      */
     public static function archiveExists()
     {
@@ -83,7 +85,7 @@ class DUPX_Conf_Utils
     /**
      *
      * @staticvar bool $arcSize
-     * @return    bool
+     * @return bool
      */
     public static function archiveSize()
     {

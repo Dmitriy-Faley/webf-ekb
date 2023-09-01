@@ -33,8 +33,8 @@ function duplicator_package_scan_shutdown()
  *  DUPLICATOR_PACKAGE_SCAN
  *  Returns a JSON scan report object which contains data about the system
  *
- *  @return  json   JSON report object
- *  @example to test: /wp-admin/admin-ajax.php?action=duplicator_package_scan
+ *  @return json   JSON report object
+ *  @example       to test: /wp-admin/admin-ajax.php?action=duplicator_package_scan
  */
 function duplicator_package_scan()
 {
@@ -189,7 +189,7 @@ function duplicator_duparchive_package_build()
         DUP_Log::Info('[CTRL DUP ARCIVE] COMPLETED PACKAGE STATUS: ' . $package->Status);
         if ($package->Status == DUP_PackageStatus::ERROR) {
             DUP_Log::Info('[CTRL DUP ARCIVE] ERROR');
-            $error_message = __('Error building DupArchive package', 'duplicator') . '<br/>';
+            $error_message = __('Error building DupArchive package') . '<br/>';
             foreach ($json['failures'] as $failure) {
                 $error_message .= implode(',', $failure->description);
             }
@@ -296,7 +296,7 @@ function duplicator_active_package_info()
             'html'           => '',
             'message'        => ''
         );
-        $result['active_package']['present'] = DUP_Package::isPackageRunning();
+        $result['active_package']['present'] = DUP_Package::is_active_package_present();
         if ($result['active_package']['present']) {
             $id      = DUP_Settings::Get('active_package_id');
             $package = DUP_Package::getByID($id);
@@ -322,7 +322,6 @@ function duplicator_active_package_info()
 
 /**
  * Controller for Tools
- *
  * @package Duplicator\ctrls
  */
 class DUP_CTRL_Package extends DUP_CTRL_Base
@@ -370,13 +369,11 @@ class DUP_CTRL_Package extends DUP_CTRL_Base
             //CONTROLLER LOGIC
             $package = DUP_Package::getActive();
             //DIRS
-            $dir_filters = ($package->Archive->FilterOn && strlen($package->Archive->FilterDirs) > 0)
-                ? $package->Archive->FilterDirs . ';' . $inputData['dir_paths'] : $inputData['dir_paths'];
+            $dir_filters = ($package->Archive->FilterOn) ? $package->Archive->FilterDirs . ';' . $inputData['dir_paths'] : $inputData['dir_paths'];
             $dir_filters = $package->Archive->parseDirectoryFilter($dir_filters);
             $changed     = $package->Archive->saveActiveItem($package, 'FilterDirs', $dir_filters);
             //FILES
-            $file_filters = ($package->Archive->FilterOn && strlen($package->Archive->FilterFiles) > 0)
-                ? $package->Archive->FilterFiles . ';' . $inputData['file_paths'] : $inputData['file_paths'];
+            $file_filters = ($package->Archive->FilterOn) ? $package->Archive->FilterFiles . ';' . $inputData['file_paths'] : $inputData['file_paths'];
             $file_filters = $package->Archive->parseFileFilter($file_filters);
             $changed      = $package->Archive->saveActiveItem($package, 'FilterFiles', $file_filters);
             if (!$package->Archive->FilterOn && !empty($package->Archive->FilterExts)) {

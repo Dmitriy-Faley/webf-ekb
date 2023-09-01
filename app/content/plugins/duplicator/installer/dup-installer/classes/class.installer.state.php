@@ -80,7 +80,6 @@ class DUPX_InstallerState
      *
      * @param bool $onlyIfUnknown // check se state only if is unknow state
      * @param bool $saveParams // if true update params
-     *
      * @return boolean
      */
     public function checkState($onlyIfUnknown = true, $saveParams = true)
@@ -153,8 +152,8 @@ class DUPX_InstallerState
     /**
      *
      * @param int $type
-     *
      * @return string
+     * @throws Exception
      */
     public static function installTypeToString($type = null)
     {
@@ -317,7 +316,6 @@ class DUPX_InstallerState
     /**
      *
      * @param int|array $type
-     *
      * @return bool
      */
     public static function instTypeAvaiable($type)
@@ -332,7 +330,6 @@ class DUPX_InstallerState
      * this function in case of an error returns an empty array but never generates exceptions
      *
      * @param string $overwriteData
-     *
      * @return array
      */
     protected function getAdminUsersOnOverwriteDatabase($overwriteData)
@@ -403,7 +400,6 @@ class DUPX_InstallerState
      * Returns the Duplicator Pro version if it exists, otherwise '0'
      *
      * @param $overwriteData
-     *
      * @return string
      */
     protected function getDuplicatorVersionOverwrite($overwriteData)
@@ -480,7 +476,6 @@ class DUPX_InstallerState
      * reset current mode
      *
      * @param boolean $saveParams
-     *
      * @return boolean
      */
     public function resetState($saveParams = true)
@@ -498,6 +493,7 @@ class DUPX_InstallerState
      * save current installer state
      *
      * @return bool
+     * @throws Exception if fail
      */
     public function save()
     {
@@ -545,9 +541,8 @@ class DUPX_InstallerState
     /**
      * isSameLocationOfArtiche
      *
-     * @param string $urlNew
-     * @param string $pathNew
-     *
+     * @param  string $urlNew
+     * @param  string $pathNew
      * @return bool
      */
     public static function urlAndPathAreSameOfArchive($urlNew, $pathNew)
@@ -579,7 +574,6 @@ class DUPX_InstallerState
         $paramsManager = PrmMng::getInstance();
 
         return array(
-            'time'                => time(),
             'installType'         => $paramsManager->getValue(PrmMng::PARAM_INST_TYPE),
             'restoreBackupMode'   => self::isRestoreBackup(),
             'recoveryMode'        => false,
@@ -601,14 +595,9 @@ class DUPX_InstallerState
      */
     public static function getAdminLogin()
     {
-        $paramsManager  = PrmMng::getInstance();
-        $archiveConfig  = \DUPX_ArchiveConfig::getInstance();
-        $adminUrl       = rtrim($paramsManager->getValue(PrmMng::PARAM_SITE_URL), "/");
-        $sourceAdminUrl = rtrim($archiveConfig->getRealValue("siteUrl"), "/");
-        $sourceLoginUrl = $archiveConfig->getRealValue("loginUrl");
-        $relLoginUrl    = substr($sourceLoginUrl, strlen($sourceAdminUrl));
-        $loginUrl       = $adminUrl . $relLoginUrl;
-        return $loginUrl;
+        $paramsManager = PrmMng::getInstance();
+        $adminUrl      = rtrim($paramsManager->getValue(PrmMng::PARAM_SITE_URL), "/");
+        return $adminUrl . '/wp-login.php';
     }
 
     /**
@@ -621,9 +610,8 @@ class DUPX_InstallerState
     }
 
     /**
-     * @param int|array $type  list of types to check
-     * @param int $typeToCheck if is null get param install time or check this
-     *
+     * @param  int|array $type  list of types to check
+     * @param  int $typeToCheck if is null get param install time or check this
      * @return bool
      */
     public static function isInstType($type, $typeToCheck = null)

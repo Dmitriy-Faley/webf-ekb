@@ -5,12 +5,12 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
  * Validate variables
  *
  * Standard: PSR-2
- *
  * @link http://www.php-fig.org/psr/psr-2
  *
- * @package    Duplicator
+ * @package Duplicator
  * @subpackage classes/utilities
- * @copyright  (c) 2017, Snapcreek LLC
+ * @copyright (c) 2017, Snapcreek LLC
+ *
  */
 // Exit if accessed directly
 if (!defined('DUPLICATOR_VERSION')) {
@@ -36,14 +36,13 @@ class DUP_Validator
     const FILTER_VALIDATE_FOLDER    = 'fdir';
     const FILTER_VALIDATE_FILE_EXT  = 'fext';
     const FILTER_VALIDATE_EMAIL     = 'email';
-    /**
+/**
      * @var array $errors [ ['key' => string field key,
      *                      'msg' => error message ] , [] ]
      */
     private $errors = array();
-
-    /**
-     * Class constructor
+/**
+     *
      */
     public function __construct()
     {
@@ -51,9 +50,7 @@ class DUP_Validator
     }
 
     /**
-     * Reset
      *
-     * @return void
      */
     public function reset()
     {
@@ -95,8 +92,7 @@ class DUP_Validator
      *
      * @param string $format printf format message where %s is the variable content default "%s\n"
      * @param bool $echo if false return string
-     *
-     * @return string
+     * @return void|string
      */
     public function getErrorsFormat($format = "%s\n", $echo = true)
     {
@@ -108,7 +104,6 @@ class DUP_Validator
 
         if ($echo) {
             ob_end_flush();
-            return '';
         } else {
             return ob_get_clean();
         }
@@ -138,7 +133,6 @@ class DUP_Validator
      * @param mixed $variable
      * @param int $filter
      * @param array $options
-     *
      * @return mixed
      */
     public function filter_var($variable, $filter = FILTER_DEFAULT, $options = array())
@@ -182,8 +176,8 @@ class DUP_Validator
      * @param mixed $variable
      * @param string $filter
      * @param array $options
-     *
-     * @return string
+     * @return type
+     * @throws Exception
      */
     public function filter_custom($variable, $filter, $options = array())
     {

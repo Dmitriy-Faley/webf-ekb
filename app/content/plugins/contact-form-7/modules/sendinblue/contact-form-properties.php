@@ -164,7 +164,9 @@ function wpcf7_sendinblue_editor_panels( $panels ) {
 						'type' => 'checkbox',
 						'name' => 'wpcf7-sendinblue[contact_lists][]',
 						'value' => $list['id'],
-						'checked' => in_array( $list['id'], $prop['contact_lists'] ),
+						'checked' => in_array( $list['id'], $prop['contact_lists'] )
+							? 'checked'
+							: '',
 					) ),
 					esc_html( $list['name'] )
 				);
@@ -244,7 +246,9 @@ function wpcf7_sendinblue_editor_panels( $panels ) {
 				'<option %1$s>%2$s</option>',
 				wpcf7_format_atts( array(
 					'value' => 0,
-					'selected' => 0 === $prop['email_template'],
+					'selected' => 0 === $prop['email_template']
+						? 'selected'
+						: '',
 				) ),
 				esc_html( __( '&mdash; Select &mdash;', 'contact-form-7' ) )
 			);
@@ -254,7 +258,9 @@ function wpcf7_sendinblue_editor_panels( $panels ) {
 					'<option %1$s>%2$s</option>',
 					wpcf7_format_atts( array(
 						'value' => $template['id'],
-						'selected' => $prop['email_template'] === $template['id'],
+						'selected' => $prop['email_template'] === $template['id']
+							? 'selected'
+							: '',
 					) ),
 					esc_html( $template['name'] )
 				);

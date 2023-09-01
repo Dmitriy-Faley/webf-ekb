@@ -1,10 +1,8 @@
 <?php
-
 /**
  * @copyright 2022 Snap Creek LLC
  * Class for all IO operations
  */
-
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 if (! defined('DUPLICATOR_VERSION')) {
     exit;

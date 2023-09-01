@@ -3,6 +3,7 @@
 /**
  *
  * @package templates/default
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
@@ -29,7 +30,7 @@ $subTitle             = '';
     switch ($testResult) {
         case DUPX_Validation_abstract_item::LV_FAIL:
             ?>
-            The Duplicator Installer is currently unable to verify the list of engines in the database.
+            It is impossible to verify the list of engines in the database.
             <?php
             break;
         case DUPX_Validation_abstract_item::LV_HARD_WARNING:

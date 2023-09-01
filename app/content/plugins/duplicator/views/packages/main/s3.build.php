@@ -1,8 +1,4 @@
 <?php
-
-use Duplicator\Utils\Upsell;
-use Duplicator\Views\EducationElements;
-
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 //Nonce Check
 if (!isset($_POST['dup_form_opts_nonce_field']) || !wp_verify_nonce(sanitize_text_field($_POST['dup_form_opts_nonce_field']), 'dup_form_opts')) {
@@ -16,13 +12,12 @@ $duparchive_build_nonce = wp_create_nonce('duplicator_duparchive_package_build')
 $active_package_present = true;
 
 //Help support Duplicator
-$atext0  = "<a target='_blank' href='" . esc_url(\Duplicator\Core\Notifications\Review::getReviewUrl()) . "'>";
+$atext0  = "<a target='_blank' href='https://wordpress.org/support/plugin/duplicator/reviews/?filter=5'>";
 $atext0 .= __('Help review the plugin', 'duplicator') . '!</a>';
 
 //Get even more power & features with Duplicator Pro
 $atext1  = __('Want more power?  Try', 'duplicator');
-$atext1 .= "&nbsp;<a target='_blank' href='" . DUPLICATOR_BLOG_URL . "features/";
-$atext1 .= "?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_build_more_power&utm_campaign=duplicator_pro'>";
+$atext1 .= "&nbsp;<a target='_blank' href='https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_build_more_power&utm_campaign=duplicator_pro'>";
 $atext1 .= __('Duplicator Pro', 'duplicator') . '</a>!';
 
 if (DUP_Settings::Get('installer_name_mode') == DUP_Settings::INSTALLER_NAME_MODE_SIMPLE) {
@@ -41,7 +36,7 @@ $rand_txt[0] = $atext0;
 
 <style>
     a#dup-create-new {margin-left:-5px}
-    div#dup-progress-area {text-align:center; max-width:800px; min-height:200px;  border:1px solid silver; border-radius:3px; margin:25px auto 50px auto;
+    div#dup-progress-area {text-align:center; max-width:800px; min-height:200px;  border:1px solid silver; border-radius:3px; margin:25px auto 10px auto;
                            padding:0px; box-shadow:0 8px 6px -6px #999;}
     div.dup-progress-title {font-size:22px;padding:5px 0 20px 0; font-weight:bold}
     div#dup-progress-area div.inner {padding:10px; line-height:22px}
@@ -71,8 +66,7 @@ $rand_txt[0] = $atext0;
     div.dup-button-footer {text-align:right; margin:20px 10px 0px 0px}
     button.button {font-size:16px !important; height:30px !important; font-weight:bold; padding:0px 10px 5px 10px !important; min-width:150px }
     span.dup-btn-size {font-size:11px;font-weight:normal}
-    p.get-pro {font-size:13px; color:#222; border-bottom:1px solid #eeeeee; padding-bottom: 10px; margin-bottom: 25px; font-style:italic}
-    p.get-pro.subscribed {border-top: 1px solid #eeeeee; border-bottom: 0; padding:5px 0 0 0; margin:0;}
+    p.get-pro {font-size:13px; color:#222; border-top:1px solid #eeeeee; padding:5px 0 0 0; margin:0; font-style:italic}
     div.dup-howto-exe {font-size:14px; font-weight:bold; margin:25px 0 40px 0;line-height:20px; color:#000; padding-top:10px;}
     div.dup-howto-exe-title {font-size:18px; margin:0 0 8px 0; color:#000}
     div.dup-howto-exe-title a {text-decoration:none; outline:none; box-shadow:none}
@@ -156,16 +150,12 @@ TOOL BAR:STEPS -->
 <?php wp_nonce_field('dup_form_opts', 'dup_form_opts_nonce_field', false); ?>
 
 <!--  PROGRESS BAR -->
-<div id="dup-build-progress-bar-wrapper">
-    <?php do_action('duplicator_build_progress_header'); ?>
-    <div id="dup-progress-bar-area">
-        <div class="dup-progress-title"><?php esc_html_e('Building Package', 'duplicator'); ?> <i class="fa fa-cog fa-spin"></i> <span id="dup-progress-percent">0%</span></div>
-        <div id="dup-progress-bar"></div>
-        <b><?php esc_html_e('Please Wait...', 'duplicator'); ?></b><br/><br/>
-        <i><?php esc_html_e('Keep this window open and do not close during the build process.', 'duplicator'); ?></i><br/>
-        <i><?php esc_html_e('This may take several minutes to complete.', 'duplicator'); ?></i><br/>
-    </div>
-    <?php do_action('duplicator_build_progress_footer'); ?>
+<div id="dup-progress-bar-area">
+    <div class="dup-progress-title"><?php esc_html_e('Building Package', 'duplicator'); ?> <i class="fa fa-cog fa-spin"></i> <span id="dup-progress-percent">0%</span></div>
+    <div id="dup-progress-bar"></div>
+    <b><?php esc_html_e('Please Wait...', 'duplicator'); ?></b><br/><br/>
+    <i><?php esc_html_e('Keep this window open and do not close during the build process.', 'duplicator'); ?></i><br/>
+    <i><?php esc_html_e('This may take several minutes to complete.', 'duplicator'); ?></i><br/>
 </div>
 
 <div id="dup-progress-area" class="dup-panel" style="display:none">
@@ -237,7 +227,7 @@ TOOL BAR:STEPS -->
                 esc_html_e('Notice:Duplicator Lite does not officially support WordPress multisite.', 'duplicator');
                 echo "<br/>";
                 esc_html_e('We strongly recommend upgrading to ', 'duplicator');
-                echo "&nbsp;<i><a href='" . esc_url(Upsell::getCampaignUrl('package-build-complete', 'Multisite Get Pro')) . "' target='_blank'>[" . esc_html__('Duplicator Pro', 'duplicator') . "]</a></i>.";
+                echo "&nbsp;<i><a href='https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=free_is_mu_warn6&utm_campaign=duplicator_pro' target='_blank'>[" . esc_html__('Duplicator Pro', 'duplicator') . "]</a></i>.";
                 echo '</div>';
             }
             ?>
@@ -255,12 +245,7 @@ TOOL BAR:STEPS -->
 
                             <!-- CLASSIC -->
                             <i class="far fa-save fa-sm fa-fw"></i>
-                            <?php
-                                $url  = DUPLICATOR_DOCS_URL . 'classic-install/';
-                                $url .= '?utm_source=duplicator_free&utm_medium=wordpress_plugin';
-                                $url .= '&utm_content=package_built_install_help1_bwording1&utm_campaign=duplicator_free';
-                            ?>
-                            <a href="<?php echo esc_attr($url); ?>" target="_blank">
+                            <a href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_built_install_help1_bwording2&utm_campaign=duplicator_free#quick-040-q" target="_blank">
                                 <?php esc_html_e('Install to Empty Directory ', 'duplicator'); ?>
                             </a>
                             <sup class="modes">
@@ -276,12 +261,7 @@ TOOL BAR:STEPS -->
 
                             <!-- OVERWRITE -->
                             <i class="far fa-window-close fa-sm fa-fw"></i>
-                            <?php
-                                $url  = DUPLICATOR_DOCS_URL . 'overwrite-install/';
-                                $url .= '?utm_source=duplicator_free&utm_medium=wordpress_plugin';
-                                $url .= '&utm_content=package_built_install_help2_bwording2&utm_campaign=duplicator_free';
-                            ?>
-                            <a href="<?php echo esc_attr($url); ?>" target="_blank">
+                            <a href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_built_install_help2_bwording2&utm_campaign=duplicator_free#quick-043-q" target="_blank">
                                 <?php esc_html_e('Overwrite Site', 'duplicator'); ?>
                             </a>
                             <sup class="modes">
@@ -295,12 +275,7 @@ TOOL BAR:STEPS -->
 
                             <!-- IMPORT -->
                             <i class="fas fa-arrow-alt-circle-down fa-sm fa-fw"></i>
-                            <?php
-                                $url  = DUPLICATOR_DOCS_URL . 'import-install/';
-                                $url .= '?utm_source=duplicator_free&utm_medium=wordpress_plugin';
-                                $url .= '&utm_content=package_built_install_help3_bwording1&utm_campaign=duplicator_free';
-                            ?>
-                            <a href="<?php echo esc_attr($url); ?>" target="_blank">
+                            <a href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_built_install_help3_bwording2&utm_campaign=duplicator_free#quick-045-q" target="_blank">
                                 <?php esc_html_e('Import Archive and Overwrite Site', 'duplicator'); ?>
                             </a>
                             <sup class="modes">
@@ -314,10 +289,9 @@ TOOL BAR:STEPS -->
                 </div>
             </div>
 
-            <p class="get-pro<?php echo EducationElements::userIsSubscribed() ? ' subscribed' : ''; ?>">
+            <p class="get-pro">
                 <?php echo $rand_txt[array_rand($rand_txt, 1)]; ?>
             </p>
-            <?php do_action('duplicator_build_success_footer'); ?>
         </div>
 
         <!--  =========================
@@ -346,10 +320,10 @@ TOOL BAR:STEPS -->
                             . 'below 500MB or try the other options mentioned below.  Alternatively, you may want to consider',
                             'duplicator'
                         ); ?>
-                        <a href="<?php echo esc_url(Upsell::getCampaignUrl('package-build-complete', 'Build Failed Get Pro')); ?>" target="_blank">
+                        <a href="https://snapcreek.com/duplicator/?utm_source=duplicator_free&amp;utm_medium=wordpress_plugin&amp;utm_content=build_interrupt&amp;utm_campaign=duplicator_pro" target="_blank">
                             Duplicator Pro,
                         </a>
-                        <?php esc_html_e(' which is capable of migrating sites much larger than 500MB.', 'duplicator'); ?>
+                        <?php esc_html_e(' which is capable of migrating sites much larger than 500MB.'); ?>
                     </div><br/>
 
                     <b><i class="far fa-file-alt fa-sm"></i> <?php esc_html_e('Overview', 'duplicator'); ?></b><br/>
@@ -366,9 +340,7 @@ TOOL BAR:STEPS -->
                     <small style="font-style:italic">
                         <?php esc_html_e('Note:The DupArchive engine will generate an archive.daf file. This file is very similar to a .zip except that it can only be extracted by the '
                             . 'installer.php file or the', 'duplicator'); ?>
-                        <a href="<?php echo DUPLICATOR_DOCS_URL; ?>how-to-work-with-daf-files-and-the-duparchive-extraction-tool" target="_blank">
-                            <?php esc_html_e('commandline extraction tool', 'duplicator'); ?>
-                        </a>.
+                        <a href="https://snapcreek.com/duplicator/docs/faqs-tech/#faq-trouble-052-q" target="_blank"><?php esc_html_e('commandline extraction tool'); ?></a>.
                     </small>
                 </div>
             </div>
@@ -400,7 +372,7 @@ TOOL BAR:STEPS -->
                         <?php
                         printf(
                             '<b><i class="fa fa-folder-o"></i> %s %s</b> <br/> %s',
-                            esc_html__('Build Folder:', 'duplicator'),
+                            esc_html__('Build Folder:'),
                             DUP_Settings::getSsdirTmpPath(),
                             __("On some servers the build will continue to run in the background. To validate if a build is still running; open the 'tmp' folder above and see "
                                 . "if the archive file is growing in size or check the main packages screen to see if the package completed. If it is not then your server "
@@ -433,11 +405,8 @@ TOOL BAR:STEPS -->
                             <?php esc_html_e('Complete the package build and follow the ', 'duplicator'); ?>
                             <?php
                             printf(
-                                '%s "<a href="%s" target="faq">%s</a>".',
+                                '%s "<a href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=host_interupt_2partlink2&utm_campaign=build_issues#quick-060-q" target="faq">%s</a>".',
                                 '',
-                                DUPLICATOR_BLOG_URL . 'knowledge-base-article-categories/quick-start/' .
-                                '?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=' .
-                                'host_interupt_2partlink2&utm_campaign=build_issues#quick-060-q',
                                 esc_html__('Quick Start Two-Part Install Instructions', 'duplicator')
                             );
                             ?>
@@ -468,7 +437,7 @@ TOOL BAR:STEPS -->
                                                 ?><br/><br/>
 
                     <div style="text-align:center; margin:10px; font-size:16px; font-weight:bold">
-                        <a href="<?php echo DUPLICATOR_DOCS_URL; ?>how-to-handle-server-timeout-issues/" target="_blank">
+                        <a href="https://snapcreek.com/duplicator/docs/faqs-tech/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=host_interupt_diagnosebtn&utm_campaign=build_issues#faq-trouble-100-q" target="_blank">
                             [<?php esc_html_e('Diagnose Server Setup', 'duplicator'); ?>]
                         </a>
                     </div>
@@ -545,12 +514,12 @@ TOOL BAR:STEPS -->
             <br/><br/>
 
         </div>
+
+
     </div>
 </div>
 </form>
-<div id="build-success-footer-cta" style="display: none;">
-    <?php EducationElements::displayCalloutCTA(); ?>
-</div>
+
 <script>
 jQuery(document).ready(function ($) {
 
@@ -587,7 +556,7 @@ jQuery(document).ready(function ($) {
                 } catch(err) {
                     console.error(err);
                     console.error('JSON parse failed for response data:' + respData);
-                    $('#dup-build-progress-bar-wrapper').hide();
+                    $('#dup-progress-bar-area').hide();
                     $('#dup-progress-area, #dup-msg-error').show(200);
                     var status = xHr.status + ' -' + data.statusText;
                     var response = (xHr.responseText != undefined && xHr.responseText.trim().length > 1)
@@ -608,7 +577,7 @@ jQuery(document).ready(function ($) {
 
             },
             error:function (xHr) {
-                $('#dup-build-progress-bar-wrapper').hide();
+                $('#dup-progress-bar-area').hide();
                 $('#dup-progress-area, #dup-msg-error').show(200);
                 var status = xHr.status + ' -' + data.statusText;
                 var response = (xHr.responseText != undefined && xHr.responseText.trim().length > 1)
@@ -786,9 +755,8 @@ jQuery(document).ready(function ($) {
             hash:pack.Hash
         };
 
-        $('#dup-build-progress-bar-wrapper').hide();
+        $('#dup-progress-bar-area').hide();
         $('#dup-progress-area, #dup-msg-success').show(300);
-        $('#build-success-footer-cta').show();
 
         $('#dup-btn-archive-size').append('&nbsp; (' + data.archiveSize + ')')
         $('#data-name-hash').text(pack.NameHash || 'error read');
@@ -835,7 +803,7 @@ jQuery(document).ready(function ($) {
     };
 
     Duplicator.Pack.DupArchiveProcessingFailed = function (errorText) {
-        $('#dup-build-progress-bar-wrapper').hide();
+        $('#dup-progress-bar-area').hide();
         $('#dup-progress-area, #dup-msg-error').show(200);
         $('#dup-msg-error-response-text span.data').html(errorText);
         $('#dup-pack-build-err-info').trigger('click');

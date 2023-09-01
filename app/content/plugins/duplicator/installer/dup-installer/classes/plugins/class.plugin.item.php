@@ -4,10 +4,10 @@
  * plugin item descriptor
  *
  * Standard: PSR-2
- *
  * @link http://www.php-fig.org/psr/psr-2 Full Documentation
  *
  * @package SC\DUPX\U
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
@@ -17,7 +17,7 @@ use Duplicator\Installer\Core\Params\PrmMng;
 use Duplicator\Libs\Snap\SnapUtil;
 
 /**
- * Plugin Item
+ *
  */
 class DUPX_Plugin_item
 {
@@ -26,8 +26,7 @@ class DUPX_Plugin_item
     const STATUS_NETWORK_ACTIVE = 'network-active';
     const STATUS_DROP_INS       = 'drop-ins';
     const STATUS_MUST_USE       = 'must-use';
-
-    /**
+/**
      *
      * @var string
      */
@@ -48,8 +47,7 @@ class DUPX_Plugin_item
         'deactivateMessage' => null,
         'activateAction'    => false
     );
-
-    /**
+/**
      *
      * @param array $data
      *
@@ -121,7 +119,6 @@ class DUPX_Plugin_item
      * is true if all active status are false
      *
      * @param int $subsite    // if -1 it checks that at least one site exists in which it is active in the netowrk
-     *
      * @return boolean
      */
     public function isInactive($subsite = -1)
@@ -158,8 +155,8 @@ class DUPX_Plugin_item
      * set activate action true if the plugin is active or if deactivateAction is enabled
      *
      * @param int $subsite              // current subsite id
-     * @param bool $networkCheck        // if true check only on network or check by subsite id
-     * @param bool $forceActivation     // if true skip all pluginstati check and set activation action
+     * @param type $networkCheck        // if true check only on network or check by subsite id
+     * @param type $forceActivation     // if true skip all pluginstati check and set activation action
      *
      * @return bool     // return activateAction
      */
@@ -199,7 +196,6 @@ class DUPX_Plugin_item
      * @param string $shortMsg
      * @param string $longMsg
      * @param boolean $networkCheck // if true check if is active only on network
-     *
      * @return boolean      // return deactivaeAction status
      */
     public function setDeactivateAction($subsite = -1, $shortMsg = null, $longMsg = null, $networkCheck = false)
@@ -278,7 +274,7 @@ class DUPX_Plugin_item
     }
 
     /**
-     * @return mixed
+     *
      */
     public function deactivate()
     {
@@ -334,7 +330,6 @@ class DUPX_Plugin_item
     /**
      *
      * @param int $subsiteId
-     *
      * @return string
      */
     public function getOrgiStatus($subsiteId)
@@ -355,8 +350,8 @@ class DUPX_Plugin_item
     /**
      *
      * @param string $status
-     *
      * @return string
+     * @throws Exception
      */
     public static function getStatusLabel($status)
     {
@@ -382,7 +377,6 @@ class DUPX_Plugin_item
      * Calls the uninstall hook, if it is available.
      *
      * @param string $plugin Path to the main plugin file from plugins directory.
-     *
      * @return true True if a plugin's uninstall.php file has been found and included.
      */
     public function uninstall()
@@ -400,7 +394,6 @@ class DUPX_Plugin_item
             $uninstallable_plugins = (array) get_option('uninstall_plugins');
         /**
                      * Fires in uninstall_plugin() immediately before the plugin is uninstalled.
-         *
                      * @param string $plugin                Path to the main plugin file from plugins directory.
                      * @param array  $uninstallable_plugins Uninstallable plugins.
                      */
@@ -518,8 +511,8 @@ class DUPX_Plugin_item
     /**
      *
      * @param string $key
-     *
      * @return mixed
+     * @throws Exception
      */
     public function __get($key)
     {
@@ -534,8 +527,8 @@ class DUPX_Plugin_item
      *
      * @param string $key
      * @param mixed $value
-     *
      * @return mixed
+     * @throws Exception
      */
     public function __set($key, $value)
     {
@@ -551,7 +544,6 @@ class DUPX_Plugin_item
     /**
      *
      * @param string $key
-     *
      * @return boolean
      */
     public function __isset($key)

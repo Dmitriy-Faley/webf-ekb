@@ -3,15 +3,14 @@
 /**
  *
  * @package templates/default
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
 use Duplicator\Installer\Core\Params\PrmMng;
 
-/**
- * Variables
- *
+/** Variables
  * @var int $tableCount
  */
 $paramsManager = PrmMng::getInstance();

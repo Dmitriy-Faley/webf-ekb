@@ -5,10 +5,10 @@
  * for .htaccess, web.config and user.ini
  *
  * Standard: PSR-2
- *
  * @link http://www.php-fig.org/psr/psr-2 Full Documentation
  *
  * @package SC\DUPX\Crypt
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
@@ -17,14 +17,15 @@ use Duplicator\Installer\Core\Bootstrap;
 
 /**
  * Package related functions
+ *
  */
 final class DUPX_Package
 {
     /**
      *
      * @staticvar bool|string $packageHash
-     * @return    bool|string false if fail
-     * @throws    Exception
+     * @return bool|string false if fail
+     * @throws Exception
      */
     public static function getPackageHash()
     {
@@ -40,7 +41,7 @@ final class DUPX_Package
     /**
      *
      * @staticvar string $fileHash
-     * @return    string
+     * @return string
      */
     public static function getArchiveFileHash()
     {
@@ -56,8 +57,8 @@ final class DUPX_Package
     /**
      *
      * @staticvar string $archivePath
-     * @return    bool|string false if fail
-     * @throws    Exception
+     * @return bool|string false if fail
+     * @throws Exception
      */
     public static function getPackageArchivePath()
     {
@@ -97,7 +98,7 @@ final class DUPX_Package
     /**
      *
      * @staticvar type $path
-     * @return    string
+     * @return string
      */
     public static function getWpconfigSamplePath()
     {
@@ -121,7 +122,7 @@ final class DUPX_Package
     /**
      *
      * @staticvar string $path
-     * @return    string
+     * @return string
      */
     public static function getSqlFilePath()
     {
@@ -135,7 +136,7 @@ final class DUPX_Package
     /**
      *
      * @staticvar string $dirsPath
-     * @return    string
+     * @return string
      */
     public static function getDirsListPath()
     {
@@ -149,7 +150,7 @@ final class DUPX_Package
     /**
      *
      * @staticvar string $dirsPath
-     * @return    string
+     * @return string
      */
     public static function getFilesListPath()
     {
@@ -163,7 +164,7 @@ final class DUPX_Package
     /**
      *
      * @staticvar string $path
-     * @return    string
+     * @return string
      */
     public static function getScanJsonPath()
     {
@@ -186,8 +187,8 @@ final class DUPX_Package
     /**
      *
      * @param callable $callback
-     *
      * @return boolean
+     * @throws Exception
      */
     public static function foreachDirCallback($callback)
     {
@@ -216,8 +217,8 @@ final class DUPX_Package
     /**
      *
      * @param callable $callback
-     *
      * @return boolean
+     * @throws Exception
      */
     public static function foreachFileCallback($callback)
     {

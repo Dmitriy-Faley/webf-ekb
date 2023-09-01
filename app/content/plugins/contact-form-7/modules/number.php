@@ -41,7 +41,10 @@ function wpcf7_number_form_tag_handler( $tag ) {
 	$atts['min'] = $tag->get_option( 'min', 'signed_num', true );
 	$atts['max'] = $tag->get_option( 'max', 'signed_num', true );
 	$atts['step'] = $tag->get_option( 'step', 'num', true );
-	$atts['readonly'] = $tag->has_option( 'readonly' );
+
+	if ( $tag->has_option( 'readonly' ) ) {
+		$atts['readonly'] = 'readonly';
+	}
 
 	if ( $tag->is_required() ) {
 		$atts['aria-required'] = 'true';
@@ -88,7 +91,12 @@ function wpcf7_number_form_tag_handler( $tag ) {
 		}
 	}
 
-	$atts['type'] = $tag->basetype;
+	if ( wpcf7_support_html5() ) {
+		$atts['type'] = $tag->basetype;
+	} else {
+		$atts['type'] = 'text';
+	}
+
 	$atts['name'] = $tag->name;
 
 	$html = sprintf(

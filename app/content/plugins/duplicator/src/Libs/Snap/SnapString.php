@@ -2,8 +2,9 @@
 
 /**
  *
- * @package   Duplicator
- * @copyright (c) 2022, Snap Creek LLC
+ * @package Duplicator
+ * @copyright (c) 2021, Snapcreek LLC
+ *
  */
 
 namespace Duplicator\Libs\Snap;
@@ -86,9 +87,9 @@ class SnapString
     /**
      * Implode array key values to a string
      *
-     * @param string  $glue   separator
-     * @param mixed[] $pieces array fo implode
-     * @param string  $format format
+     * @param string $glue   separator
+     * @param array  $pieces array fo implode
+     * @param string $format format
      *
      * @return string
      */
@@ -134,53 +135,5 @@ class SnapString
     public static function isHTML($string)
     {
         return ($string != strip_tags($string));
-    }
-
-    /**
-     * Safe way to get number of characters
-     *
-     * @param ?string $string input string
-     *
-     * @return int
-     */
-    public static function stringLength($string)
-    {
-        if (!isset($string) || $string == "") { // null == "" is also true
-            return 0;
-        }
-        return strlen($string);
-    }
-
-    /**
-     * Returns case insensitive duplicates
-     *
-     * @param string[] $strings The array of strings to check for duplicates
-     *
-     * @return array<string[]>
-     */
-    public static function getCaseInsesitiveDuplicates($strings)
-    {
-        $duplicates = array();
-        for ($i = 0; $i < count($strings) - 1; $i++) {
-            $key = strtolower($strings[$i]);
-
-            //already found all instances so don't check again
-            if (isset($duplicates[$key])) {
-                continue;
-            }
-
-            for ($j = $i + 1; $j < count($strings); $j++) {
-                if ($strings[$i] !== $strings[$j] && $key === strtolower($strings[$j])) {
-                    $duplicates[$key][] = $strings[$j];
-                }
-            }
-
-            //duplicates were found, add the comparing string to list
-            if (isset($duplicates[$key])) {
-                $duplicates[$key][] = $strings[$i];
-            }
-        }
-
-        return $duplicates;
     }
 }

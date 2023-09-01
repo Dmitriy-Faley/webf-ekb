@@ -3,12 +3,13 @@
 /**
  *
  * @package templates/default
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
 use Duplicator\Installer\Core\Params\PrmMng;
-use Duplicator\Installer\Utils\InstallerUpsell;
+use Duplicator\Installer\Utils\Utils;
 
 $paramsManager = PrmMng::getInstance();
 ?>
@@ -22,7 +23,7 @@ $paramsManager = PrmMng::getInstance();
         data-tooltip-title="Upgrade Features"
         data-tooltip="<?php echo DUPX_U::esc_attr(
             '<p>Quickly and easily edit all your WordPress wp-config.php settings directly from the installer with Duplicator Pro</p>' .
-            InstallerUpsell::getCampaignTooltipHTML(array('utm_medium' => 'installer', 'utm_content' => "WP-Config File Setup"))
+            Utils::getCampainUrlHtml('wpconfig')
         ); ?>"
         aria-expanded="false">*
     </sup>

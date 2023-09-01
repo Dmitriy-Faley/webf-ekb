@@ -3,8 +3,9 @@
 /**
  * Class that collects the functions of initial checks on the requirements to run the plugin
  *
- * @package   Duplicator
+ * @package Duplicator
  * @copyright (c) 2021, Snapcreek LLC
+ *
  */
 
 namespace Duplicator\Installer\Core\Addons;
@@ -147,7 +148,7 @@ final class InstAddonsManager
 
                 if (strcasecmp($elem, $info['filename']) === 0) {
                     $addonMainFile  = $checkDir . $elem . '/' . $addonElem;
-                    $addonMainClass = 'Duplicator\\Installer\\Addons\\' . $info['filename'] . '\\' . $info['filename'];
+                    $addonMainClass = '\\Duplicator\\Installer\\Addons\\' . $info['filename'] . '\\' . $info['filename'];
                     break;
                 }
             }
@@ -157,7 +158,7 @@ final class InstAddonsManager
             }
 
             try {
-                if (!is_subclass_of($addonMainClass, 'Duplicator\\Installer\\Core\\Addons\\InstAbstractAddonCore')) {
+                if (!is_subclass_of($addonMainClass, '\\Duplicator\\Installer\\Core\\Addons\\InstAbstractAddonCore')) {
                     continue;
                 }
             } catch (\Exception $e) {

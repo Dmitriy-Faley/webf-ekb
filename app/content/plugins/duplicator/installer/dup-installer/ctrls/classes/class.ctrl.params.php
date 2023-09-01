@@ -4,10 +4,10 @@
  * Controller params manager
  *
  * Standard: PSR-2
- *
  * @link http://www.php-fig.org/psr/psr-2 Full Documentation
  *
  * @package SC\DUPX\U
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
@@ -65,26 +65,6 @@ final class DUPX_Ctrl_Params
 
         $paramsManager->save();
         return self::$paramsValidated;
-    }
-
-    /**
-     * Set param email
-     *
-     * @return bool
-     */
-    public static function setParamEmail()
-    {
-        Log::info('CTRL PARAM EMAIL', Log::LV_DETAILED);
-
-        PrmMng::getInstance()->setValueFromInput(PrmMng::PARAM_SUBSCRIBE_EMAIL, ParamForm::INPUT_REQUEST);
-        $resposne = DUPX_HTTP::post(DUPX_Constants::URL_SUBSCRIBE, array(
-            'email' => PrmMng::getInstance()->getValue(PrmMng::PARAM_SUBSCRIBE_EMAIL)
-        ));
-
-        Log::infoObject('response', $resposne);
-
-        PrmMng::getInstance()->save();
-        return true;
     }
 
     /**
@@ -345,7 +325,6 @@ final class DUPX_Ctrl_Params
         $readParamsList = array(
             PrmMng::PARAM_EMAIL_REPLACE,
             PrmMng::PARAM_FULL_SEARCH,
-            PrmMng::PARAM_SKIP_PATH_REPLACE,
             PrmMng::PARAM_POSTGUID,
             PrmMng::PARAM_MAX_SERIALIZE_CHECK,
             PrmMng::PARAM_PLUGINS,

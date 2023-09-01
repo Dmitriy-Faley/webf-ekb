@@ -16,6 +16,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'save') {
 
     DUP_Settings::Set('uninstall_settings', isset($_POST['uninstall_settings']) ? "1" : "0");
     DUP_Settings::Set('uninstall_files', isset($_POST['uninstall_files']) ? "1" : "0");
+    DUP_Settings::Set('uninstall_tables', isset($_POST['uninstall_tables']) ? "1" : "0");
 
     DUP_Settings::Set('wpfront_integrate', isset($_POST['wpfront_integrate']) ? "1" : "0");
     DUP_Settings::Set('package_debug', isset($_POST['package_debug']) ? "1" : "0");
@@ -53,6 +54,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'save') {
 $trace_log_enabled      = DUP_Settings::Get('trace_log_enabled');
 $uninstall_settings     = DUP_Settings::Get('uninstall_settings');
 $uninstall_files        = DUP_Settings::Get('uninstall_files');
+$uninstall_tables       = DUP_Settings::Get('uninstall_tables');
 $wpfront_integrate      = DUP_Settings::Get('wpfront_integrate');
 $wpfront_ready          = apply_filters('wpfront_user_role_editor_duplicator_integration_ready', false);
 $package_debug          = DUP_Settings::Get('package_debug');
@@ -86,7 +88,10 @@ $unhook_third_party_css = DUP_Settings::Get('unhook_third_party_css');
             <th scope="row"><label><?php esc_html_e("Version", 'duplicator'); ?></label></th>
             <td>
                 <?php
-                    echo DUPLICATOR_VERSION;
+                    echo DUPLICATOR_VERSION . ' &nbsp; ';
+                    echo (stristr(DUPLICATOR_VERSION, 'rc'))
+                        ? "<span style='color:red'>["  . DUPLICATOR_VERSION_BUILD . "]</span>"
+                        : "<span style='color:gray'>[" . DUPLICATOR_VERSION_BUILD . "]</span>";
                 ?>
             </td>
         </tr>
@@ -123,7 +128,7 @@ $unhook_third_party_css = DUP_Settings::Get('unhook_third_party_css');
                 <label for="trace_log_enabled"><?php esc_html_e("Enabled", 'duplicator') ?> </label><br/>
                 <p class="description">
                     <?php
-                    esc_html_e('Turns on detailed operation logging. Logging will occur in both PHP error and local trace logs.', 'duplicator');
+                    esc_html_e('Turns on detailed operation logging. Logging will occur in both PHP error and local trace logs.');
                     echo ('<br/>');
                     esc_html_e('WARNING: Only turn on this setting when asked to by support as tracing will impact performance.', 'duplicator');
                     ?>
@@ -202,6 +207,31 @@ $unhook_third_party_css = DUP_Settings::Get('unhook_third_party_css');
                 </p>
             </td>
         </tr>
+        <tr>
+            <th scope="row"><label><?php esc_html_e("Custom Roles", 'duplicator'); ?></label></th>
+            <td>
+                <input type="checkbox" name="wpfront_integrate" id="wpfront_integrate" <?php echo ($wpfront_integrate) ? 'checked="checked"' : ''; ?> <?php echo $wpfront_ready ? '' : 'disabled'; ?> />
+                <label for="wpfront_integrate"><?php esc_html_e("Enable User Role Editor Plugin Integration", 'duplicator'); ?></label>
+                <p class="description">
+                    <?php
+                    printf(
+                        '%s <a href="https://wordpress.org/plugins/wpfront-user-role-editor/" target="_blank">%s</a> %s'
+                        . ' <a href="https://wpfront.com/user-role-editor-pro/?ref=3" target="_blank">%s</a> %s '
+                        . ' <a href="https://wpfront.com/integrations/duplicator-integration/?ref=3" target="_blank">%s</a>. %s'
+                        . ' <a href="https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=user_role_plugin&utm_campaign=duplicator_pro" target="_blank">%s</a>.',
+                        esc_html__('To enable custom roles with Duplicator please install the ', 'duplicator'),
+                        esc_html__('User Role Editor Free', 'duplicator'),
+                        esc_html__('OR', 'duplicator'),
+                        esc_html__('User Role Editor Professional', 'duplicator'),
+                        esc_html__('plugins.  Please note the User Role Editor Plugin is a separate plugin and does not unlock any Duplicator features.  For more information on User Role Editor plugin please see', 'duplicator'),
+                        esc_html__('the documentation', 'duplicator'),
+                        esc_html__('If you are interested in downloading Duplicator Pro then please use', 'duplicator'),
+                        esc_html__('this link', 'duplicator')
+                    );
+                    ?>
+                </p>
+            </td>
+        </tr>        
     </table>
 
     <p class="submit" style="margin: 20px 0px 0xp 5px;">
@@ -227,12 +257,7 @@ $reset_confirm->initConfirm();
 
 $msg_ajax_error                 = new DUP_UI_Messages(
     __('AJAX Call Error!', 'duplicator') . '<br>' .
-    __(
-        'AJAX error encountered when resetting packages. Please see <a href="'
-        . DUPLICATOR_DOCS_URL . 'how-to-resolve-duplicator-plugin-user-interface-ui-'
-        . 'issues/" target="_blank">this FAQ entry</a> for possible resolutions.',
-        'duplicator'
-    ),
+    __('AJAX error encountered when resetting packages. Please see <a href="https://snapcreek.com/duplicator/docs/faqs-tech/#faq-trouble-053-q" target="_blank">this FAQ entry</a> for possible resolutions.', 'duplicator'),
     DUP_UI_Messages::ERROR
 );
 $msg_ajax_error->hide_on_init   = true;

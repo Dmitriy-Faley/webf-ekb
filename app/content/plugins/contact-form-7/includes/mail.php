@@ -90,7 +90,7 @@ class WPCF7_Mail {
 			'</body>
 </html>', $this );
 
-		$html = $header . wpcf7_autop( $body ) . $footer;
+		$html = $header . wpautop( $body ) . $footer;
 		return $html;
 	}
 
@@ -218,7 +218,7 @@ class WPCF7_Mail {
 			$uploaded_files = $submission->uploaded_files();
 
 			foreach ( (array) $uploaded_files as $name => $paths ) {
-				if ( false !== strpos( $template, "[{$name}]" ) ) {
+				if ( false !== strpos( $template, "[${name}]" ) ) {
 					$attachments = array_merge( $attachments, (array) $paths );
 				}
 			}
@@ -385,9 +385,7 @@ class WPCF7_MailTaggedText {
 				$replaced = $this->format( $replaced, $format );
 			}
 
-			$replaced = wpcf7_flat_join( $replaced, array(
-				'separator' => wp_get_list_item_separator(),
-			) );
+			$replaced = wpcf7_flat_join( $replaced );
 
 			if ( $html ) {
 				$replaced = esc_html( $replaced );

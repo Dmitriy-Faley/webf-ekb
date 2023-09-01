@@ -3,6 +3,7 @@
 /**
  *
  * @package templates/default
+ *
  */
 
 use Duplicator\Installer\Core\Params\PrmMng;

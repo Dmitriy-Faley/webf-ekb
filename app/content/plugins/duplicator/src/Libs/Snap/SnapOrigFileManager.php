@@ -2,8 +2,9 @@
 
 /**
  *
- * @package   Duplicator
- * @copyright (c) 2022, Snap Creek LLC
+ * @package Duplicator
+ * @copyright (c) 2021, Snapcreek LLC
+ *
  */
 
 namespace Duplicator\Libs\Snap;
@@ -14,6 +15,7 @@ namespace Duplicator\Libs\Snap;
  * This class saves a file or folder in the original files folder and saves the original location persistent.
  * By entry we mean a file or a folder but not the files contained within it.
  * In this way it is possible, for example, to move an entire plugin to restore it later.
+ *
  */
 class SnapOrigFileManager
 {
@@ -22,13 +24,28 @@ class SnapOrigFileManager
     const ORIG_FOLDER_PREFIX    = 'original_files_';
     const PERSISTANCE_FILE_NAME = 'entries_stored.json';
 
-    /** @var string */
+    /**
+     *
+     * @var string
+     */
     protected $persistanceFile = null;
-    /** @var string */
+
+    /**
+     *
+     * @var string
+     */
     protected $origFilesFolder = null;
-    /** @var array<string, array{baseName:string, source:string, stored: string, mode:string, isRelative: bool}> */
+
+    /**
+     *
+     * @var array
+     */
     protected $origFolderEntries = array();
-    /** @var string */
+
+    /**
+     *
+     * @var string
+     */
     protected $rootPath = null;
 
     /**
@@ -43,10 +60,6 @@ class SnapOrigFileManager
         $this->rootPath        = SnapIO::safePathUntrailingslashit($root, true);
         $this->origFilesFolder = SnapIO::safePathTrailingslashit($origFolderParentPath, true) . self::ORIG_FOLDER_PREFIX . $hash;
         $this->persistanceFile = $this->origFilesFolder . '/' . self::PERSISTANCE_FILE_NAME;
-
-        if (file_exists($this->persistanceFile)) {
-            $this->load();
-        }
     }
 
     /**
@@ -138,6 +151,8 @@ HTACCESS;
      * @param bool|string $rename     if rename is a string the item is renamed in original folder.
      *
      * @return boolean true if succeded
+     *
+     * @throws Exception
      */
     public function addEntry($identifier, $path, $mode = self::MODE_MOVE, $rename = false)
     {
@@ -170,7 +185,7 @@ HTACCESS;
                 if (!SnapIO::rcopy($path, $dest)) {
                     throw new \Exception('Can\'t copy the original file  ' . SnapLog::v2str($path));
                 }
-                if (!SnapIO::rrmdir($path)) {
+                if (!SnapIO::rrmdir($path, $dest)) {
                     throw new \Exception('Can\'t remove the original file  ' . SnapLog::v2str($path));
                 }
                 break;
@@ -200,7 +215,7 @@ HTACCESS;
      *
      * @param string $identifier orig file identifier
      *
-     * @return false|array{baseName:string, source:string, stored: string, mode:string, isRelative: bool} false if entry don't exists
+     * @return boolean|string false if entry don't exists
      */
     public function getEntry($identifier)
     {
@@ -237,7 +252,7 @@ HTACCESS;
     public function isRelative($identifier)
     {
         if (isset($this->origFolderEntries[$identifier])) {
-            return $this->origFolderEntries[$identifier]['isRelative'];
+            $this->origFolderEntries[$identifier]['isRelative'];
         } else {
             return false;
         }
@@ -249,7 +264,7 @@ HTACCESS;
      * @param string      $identifier          orig file identifier
      * @param null|string $defaultIfIsAbsolute if isn't null return the value if path is absolute
      *
-     * @return false|string false if entry don't exists
+     * @return boolean false if entry don't exists
      */
     public function getEntryTargetPath($identifier, $defaultIfIsAbsolute = null)
     {
@@ -277,6 +292,8 @@ HTACCESS;
      * @param null|string $defaultIfIsAbsolute if isn't null return the value if path is absolute
      *
      * @return boolean true if succeded
+     *
+     * @throws Exception
      */
     public function restoreEntry($identifier, $save = true, $defaultIfIsAbsolute = null)
     {
@@ -333,7 +350,7 @@ HTACCESS;
     /**
      * Save notices from json file
      *
-     * @return bool
+     * @return void
      */
     public function save()
     {
@@ -346,7 +363,7 @@ HTACCESS;
     /**
      * Load notice from json file
      *
-     * @return bool
+     * @return boolean
      */
     private function load()
     {

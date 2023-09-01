@@ -108,45 +108,44 @@ class WPCF7_ContactForm {
 	 */
 	public static function get_template( $args = '' ) {
 		$args = wp_parse_args( $args, array(
-			'locale' => null,
+			'locale' => '',
 			'title' => __( 'Untitled', 'contact-form-7' ),
 		) );
 
-		if ( ! isset( $args['locale'] ) ) {
-			$args['locale'] = determine_locale();
+		$locale = $args['locale'];
+		$title = $args['title'];
+
+		if ( ! $switched = wpcf7_load_textdomain( $locale ) ) {
+			$locale = determine_locale();
 		}
 
-		$callback = function ( $args ) {
-			$contact_form = new self;
-			$contact_form->title = $args['title'];
-			$contact_form->locale = $args['locale'];
+		$contact_form = new self;
+		$contact_form->title = $title;
+		$contact_form->locale = $locale;
 
-			$properties = $contact_form->get_properties();
+		$properties = $contact_form->get_properties();
 
-			foreach ( $properties as $key => $value ) {
-				$default_template = WPCF7_ContactFormTemplate::get_default( $key );
+		foreach ( $properties as $key => $value ) {
+			$default_template = WPCF7_ContactFormTemplate::get_default( $key );
 
-				if ( isset( $default_template ) ) {
-					$properties[$key] = $default_template;
-				}
+			if ( isset( $default_template ) ) {
+				$properties[$key] = $default_template;
 			}
+		}
 
-			$contact_form->properties = $properties;
+		$contact_form->properties = $properties;
 
-			return $contact_form;
-		};
-
-		$contact_form = wpcf7_switch_locale(
-			$args['locale'],
-			$callback,
-			$args
-		);
-
-		self::$current = apply_filters( 'wpcf7_contact_form_default_pack',
+		$contact_form = apply_filters( 'wpcf7_contact_form_default_pack',
 			$contact_form, $args
 		);
 
-		return self::$current;
+		if ( $switched ) {
+			wpcf7_load_textdomain();
+		}
+
+		self::$current = $contact_form;
+
+		return $contact_form;
 	}
 
 
@@ -504,7 +503,6 @@ class WPCF7_ContactForm {
 		$args = wp_parse_args( $args, array(
 			'html_id' => '',
 			'html_name' => '',
-			'html_title' => '',
 			'html_class' => '',
 			'output' => 'form',
 		) );
@@ -541,9 +539,10 @@ class WPCF7_ContactForm {
 			$lang_tag = $matches[1];
 		}
 
-		$html = "\n" . sprintf( '<div %s>',
+		$html = sprintf( '<div %s>',
 			wpcf7_format_atts( array(
-				'class' => 'wpcf7 no-js',
+				'role' => 'form',
+				'class' => 'wpcf7',
 				'id' => $this->unit_tag(),
 				( get_option( 'html_type' ) == 'text/html' ) ? 'lang' : 'xml:lang'
 					=> $lang_tag,
@@ -570,8 +569,6 @@ class WPCF7_ContactForm {
 		$name_attr = apply_filters( 'wpcf7_form_name_attr',
 			preg_replace( '/[^A-Za-z0-9:._-]/', '', $args['html_name'] )
 		);
-
-		$title_attr = apply_filters( 'wpcf7_form_title_attr', $args['html_title'] );
 
 		$class = 'wpcf7-form';
 
@@ -603,22 +600,30 @@ class WPCF7_ContactForm {
 		$class = implode( ' ', $class );
 		$class = apply_filters( 'wpcf7_form_class_attr', $class );
 
-		$enctype = wpcf7_enctype_value( apply_filters( 'wpcf7_form_enctype', '' ) );
+		$enctype = apply_filters( 'wpcf7_form_enctype', '' );
 		$autocomplete = apply_filters( 'wpcf7_form_autocomplete', '' );
+
+		$novalidate = apply_filters( 'wpcf7_form_novalidate',
+			wpcf7_support_html5()
+		);
 
 		$atts = array(
 			'action' => esc_url( $url ),
 			'method' => 'post',
-			'class' => ( '' !== $class ) ? $class : null,
-			'id' => ( '' !== $id_attr ) ? $id_attr : null,
-			'name' => ( '' !== $name_attr ) ? $name_attr : null,
-			'aria-label' => ( '' !== $title_attr )
-				? $title_attr : __( 'Contact form', 'contact-form-7' ),
-			'enctype' => ( '' !== $enctype ) ? $enctype : null,
-			'autocomplete' => ( '' !== $autocomplete ) ? $autocomplete : null,
-			'novalidate' => true,
+			'class' => $class,
+			'enctype' => wpcf7_enctype_value( $enctype ),
+			'autocomplete' => $autocomplete,
+			'novalidate' => $novalidate ? 'novalidate' : '',
 			'data-status' => $data_status_attr,
 		);
+
+		if ( '' !== $id_attr ) {
+			$atts['id'] = $id_attr;
+		}
+
+		if ( '' !== $name_attr ) {
+			$atts['name'] = $name_attr;
+		}
 
 		$atts = wpcf7_format_atts( $atts );
 
@@ -630,10 +635,10 @@ class WPCF7_ContactForm {
 			$html .= $this->form_response_output();
 		}
 
-		$html .= "\n" . '</form>';
-		$html .= "\n" . '</div>';
+		$html .= '</form>';
+		$html .= '</div>';
 
-		return $html . "\n";
+		return $html;
 	}
 
 
@@ -853,9 +858,8 @@ class WPCF7_ContactForm {
 		$form = $this->prop( 'form' );
 
 		if ( wpcf7_autop_or_not() ) {
-			$form = $manager->replace_with_placeholders( $form );
+			$form = $manager->normalize( $form );
 			$form = wpcf7_autop( $form );
-			$form = $manager->restore_from_placeholders( $form );
 		}
 
 		$form = $manager->replace_all( $form );

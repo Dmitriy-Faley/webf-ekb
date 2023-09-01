@@ -1,8 +1,4 @@
 <?php
-
-use Duplicator\Core\Bootstrap;
-use Duplicator\Core\Views\TplMng;
-
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 DUP_Util::hasCapability('manage_options');
 global $wpdb;
@@ -15,11 +11,11 @@ $package         = DUP_Package::getByID($package_id);
 $err_found       = ($package == null || $package->Status < 100);
 $link_log        = DUP_Settings::getSsdirUrl() . "/{$package->NameHash}.log";
 $err_link_log    = "<a target='_blank' href='" . esc_url($link_log) . "' >" . esc_html__('package log', 'duplicator') . '</a>';
-$err_link_faq    = '<a target="_blank" href="' . DUPLICATOR_TECH_FAQ_URL .
+$err_link_faq    = '<a target="_blank" href="https://snapcreek.com/duplicator/docs/faqs-tech/' .
     '?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_campaign=problem_resolution&utm_content=pkg_details_faq">' .
     esc_html__('FAQ', 'duplicator') .
     '</a>';
-$err_link_ticket = '<a target="_blank" href="' . DUPLICATOR_TECH_FAQ_URL .
+$err_link_ticket = '<a target="_blank" href="https://snapcreek.com/duplicator/docs/faqs-tech/' .
     '?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_campaign=problem_resolution&utm_content=pkg_details_resources#faq-resource">' .
     esc_html__('resources page', 'duplicator') .
     '</a>';
@@ -62,8 +58,7 @@ $err_link_ticket = '<a target="_blank" href="' . DUPLICATOR_TECH_FAQ_URL .
             include(DUPLICATOR_PLUGIN_PATH . 'views/packages/details/detail.php');
             break;
         case 'transfer':
-            Bootstrap::mocksStyles();
-            TplMng::getInstance()->render('mocks/transfer/transfer', array(), true);
+            include(DUPLICATOR_PLUGIN_PATH . 'views/packages/details/transfer.php');
             break;
     }
     ?>

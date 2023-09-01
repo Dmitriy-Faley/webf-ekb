@@ -13,7 +13,7 @@ get_header();
             <ul class="keys__list">
                 <?php
                     $category_all = get_category(28, "keyscat");
-                    echo '<li href="#"><a class="active vse" data-id="' . intval($category_all->term_id) . '"  data-link="' . get_category_link($category_all->term_id) . '">Все</a></li>';
+                    echo '<li href="#"><a class="active vse" data-id="' . intval($category_all) . '"  data-link="' . get_category_link($category_all) . '">Все</a></li>';
                     $categories = get_categories(array('taxonomy' => 'keyscat', 'hide_empty' => 0, 'hierarchical' => 1, 'child_of' => '28'));
                     foreach ($categories as $category) {
                         echo '<li href="#"><a class="' . $category->slug . '" data-id="' . intval($category->term_id) . '"  data-link="' . get_category_link($category->term_id) . '">' . $category->cat_name . '</a></li>';

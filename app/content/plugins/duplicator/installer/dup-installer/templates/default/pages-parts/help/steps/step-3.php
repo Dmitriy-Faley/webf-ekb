@@ -1,6 +1,8 @@
 <?php
-
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
+if (!defined('MAX_SITES_TO_DEFAULT_ENABLE_CORSS_SEARCH')) {
+    define('MAX_SITES_TO_DEFAULT_ENABLE_CORSS_SEARCH', 10);
+}
 
 ?>
 <!-- ============================================
@@ -56,23 +58,6 @@ $expandClass = $sectionId == $open_section ? 'open' : 'close';
                 </td>
             </tr>
             <tr>
-                <td class="col-opt">Skip Path<br/> Replace</td>
-                <td>
-                    This is an advanced option that should be used when trying to install from either the "/" or "/html" location.   The following 
-                    conditions are set with this option when the install location is detected.
-                    <ul>
-                        <li>Source folder is <i>/</i> the parameter should be visible in read-only mode and not checkable.</li>
-                        <li>Source folder is <i>/html</i> the parameter must be check by default and kept checked.</li>
-                        <li>In other cases, the parameter must be inactive by default and checkable.</li>
-                    </ul>
-
-                    This option helps to resolve issues when the install path is either <i>"/" or "/html"</i>. In case the source path is /html this option
-                    is required to prevent data update conflicts.  For example the html_type option in the wp_options table with data such as
-                    <i>text/html</i> is replaced with text/[new_path] which can lead to other issues therefore this option is required to be checked to
-                    prevent those types of database update issues.
-                </td>
-            </tr>            
-            <tr>
                 <td class="col-opt">Email<br/> Domains</td>
                 <td>The domain portion of all email addresses will be updated if this option is enabled.</td>
             </tr>
@@ -89,7 +74,7 @@ $expandClass = $sectionId == $open_section ? 'open' : 'close';
                     <sup class="hlp-pro-lbl">Pro</sup>
                     This option enables the searching and replacing of subsite domains and paths that link to each other within a Multisite network.
                     Check this option if hyperlinks of at least one subsite point to another subsite.  Uncheck this option there if there are at least
-                    <?php echo 10; ?>  subsites and no subsites hyperlinking to each other.
+                    <?php echo MAX_SITES_TO_DEFAULT_ENABLE_CORSS_SEARCH ?>  subsites and no subsites hyperlinking to each other.
                     <br/>
                     <i>
                         Note: Checking this option in this scenario would unnecessarily load your server.  Check this option if you are unsure if
@@ -109,7 +94,7 @@ $expandClass = $sectionId == $open_section ? 'open' : 'close';
                 </td>
             </tr>
             <tr>
-                <td class="col-opt">Serialized<br/> Max Size</td>
+                <td class="col-opt">Serialized obj<br/> max size</td>
                 <td>
                     Large serialized objects can cause a fatal error when Duplicator attempts to transform them. <br>
                     If a fatal error is generated, lower this limit. <br>
@@ -219,9 +204,7 @@ $expandClass = $sectionId == $open_section ? 'open' : 'close';
                 <td class="col-opt">Constants</td>
                 <td>
                     The wp-config tab contains the list of constants that can be modified directly by the installer.<br>
-                    See the <a href="https://wordpress.org/support/article/editing-wp-config-php/" target="_blank">
-                        WordPress documentation for more information
-                    </a>.
+                    See the <a href="https://wordpress.org/support/article/editing-wp-config-php/" target="_blank">WordPress documentation for more information</a>.
                 </td>
             </tr>
             <tr>

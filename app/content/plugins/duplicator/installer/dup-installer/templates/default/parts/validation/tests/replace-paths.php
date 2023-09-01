@@ -3,6 +3,7 @@
 /**
  *
  * @package templates/default
+ *
  */
 
 /* @var $isOk bool */

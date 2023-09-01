@@ -399,10 +399,10 @@ get_header();
             <ul class="card-list">
                 <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
                 
-              <div class="projects__content__item <?php $post_categories = get_the_category($blog_posts->the_post->ID);
-                                                foreach ($post_categories as $post_category) {
-                                                    echo ' '. $post_category->slug.' ';
-                                                    }; ?>">
+              <div class="projects__content__item <?php $post_categories = get_the_category($wpb_all_query->the_post);
+                  foreach ($post_categories as $post_category) {
+                      echo ' '. $post_category->slug.' ';
+                      }; ?>">
                 <div>
                   <a href="<?php the_permalink(); ?>" class="item__img">
                       <?php the_post_thumbnail(); ?>
@@ -410,7 +410,7 @@ get_header();
                 </div>
                 <div class="item__data">
                   <div class="data__teg">
-                    <?php $post_categories = get_the_category($blog_posts->the_post->ID);
+                    <?php $post_categories = get_the_category($wpb_all_query->the_post);
                       foreach ($post_categories as $post_category) {
                           echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
                       }; ?>

@@ -10,9 +10,9 @@
  * Plugin Name:       Cyr-To-Lat
  * Plugin URI:        https://wordpress.org/plugins/cyr2lat/
  * Description:       Convert Non-Latin characters in post and term slugs to Latin characters. Useful for creating human-readable URLs. Based on the original plugin by Anton Skorobogatov.
- * Version:           6.0.3
+ * Version:           5.3.0
  * Requires at least: 5.1
- * Requires PHP:      7.0.0
+ * Requires PHP:      5.6.20
  * Author:            Sergey Biryukov, Mikhail Kobzarev, Igor Gergel
  * Author URI:        https://profiles.wordpress.org/sergeybiryukov/
  * License:           GPL v2 or later
@@ -22,13 +22,10 @@
  *
  *
  * WC requires at least: 3.0
- * WC tested up to:      7.9
+ * WC tested up to:      6.5
  */
 
-// phpcs:ignore Generic.Commenting.DocComment.MissingShort
-/** @noinspection PhpDefineCanBeReplacedWithConstInspection */
-
-use CyrToLat\Main;
+namespace Cyr_To_Lat;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	// @codeCoverageIgnoreStart
@@ -43,7 +40,7 @@ if ( defined( 'CYR_TO_LAT_VERSION' ) ) {
 /**
  * Plugin version.
  */
-define( 'CYR_TO_LAT_VERSION', '6.0.3' );
+define( 'CYR_TO_LAT_VERSION', '5.3.0' );
 
 /**
  * Path to the plugin dir.
@@ -78,30 +75,19 @@ define( 'CYR_TO_LAT_TERM_CONVERSION_ACTION', 'term_conversion_action' );
 /**
  * Minimum required php version.
  */
-define( 'CYR_TO_LAT_MINIMUM_PHP_REQUIRED_VERSION', '7.0' );
+define( 'CYR_TO_LAT_MINIMUM_PHP_REQUIRED_VERSION', '5.6' );
 
 /**
  * Minimum required max_input_vars value.
  */
 define( 'CYR_TO_LAT_REQUIRED_MAX_INPUT_VARS', 1000 );
 
-require_once constant( 'CYR_TO_LAT_PATH' ) . '/vendor/autoload.php';
-require_once constant( 'CYR_TO_LAT_PATH' ) . '/libs/polyfill-mbstring/bootstrap.php';
-
 /**
- * Get main class instance.
- *
- * @return Main
+ * Init plugin on plugin load.
  */
-function cyr_to_lat(): Main {
-	// Global for backwards compatibility.
-	global $cyr_to_lat_plugin;
+require_once constant( 'CYR_TO_LAT_PATH' ) . '/vendor/autoload.php';
 
-	if ( ! $cyr_to_lat_plugin ) {
-		$cyr_to_lat_plugin = new Main();
-	}
+global $cyr_to_lat_plugin;
 
-	return $cyr_to_lat_plugin;
-}
-
-cyr_to_lat()->init();
+$cyr_to_lat_plugin = new Main();
+$cyr_to_lat_plugin->init();

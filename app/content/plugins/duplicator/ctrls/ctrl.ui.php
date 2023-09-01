@@ -11,7 +11,6 @@ require_once(DUPLICATOR_PLUGIN_PATH . '/classes/ui/class.ui.viewstate.php');
 
 /**
  * Controller for Tools
- *
  * @package Duplicator\ctrls
  */
 class DUP_CTRL_UI extends DUP_CTRL_Base
@@ -139,6 +138,7 @@ class DUP_CTRL_UI extends DUP_CTRL_Base
 
     /**
    * Returns a JSON list of all saved view state items
+     *
      *
      * <code>
      *  See SaveViewState()

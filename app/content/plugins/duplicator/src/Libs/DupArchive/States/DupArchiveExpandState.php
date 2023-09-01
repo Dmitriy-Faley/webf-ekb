@@ -2,8 +2,9 @@
 
 /**
  *
- * @package   Duplicator
+ * @package Duplicator
  * @copyright (c) 2021, Snapcreek LLC
+ *
  */
 
 namespace Duplicator\Libs\DupArchive\States;
@@ -40,8 +41,6 @@ abstract class DupArchiveExpandState extends DupArchiveStateBase
     public $directoryModeOverride = -1;
     public $fileModeOverride      = -1;
     public $lastHeaderOffset      = -1;
-    /** @var bool */
-    public $keepFileTime = false;
 
     /**
      * Reset state for file

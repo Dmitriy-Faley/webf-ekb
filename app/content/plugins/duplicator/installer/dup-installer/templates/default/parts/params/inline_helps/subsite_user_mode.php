@@ -3,6 +3,7 @@
 /**
  *
  * @package Duplicator/Installer
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;

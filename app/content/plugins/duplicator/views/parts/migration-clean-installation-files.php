@@ -43,7 +43,7 @@ use Duplicator\Utils\CachesPurge\CachesPurge;
         ?>
         <p>
         <?php _e('Some of the installer files did not get removed, ', 'duplicator'); ?>
-            <span class="link-style" onclick="Duplicator.Tools.deleteInstallerFiles();">
+            <span class="link-style" onclick="DupPro.Tools.removeInstallerFiles();">
         <?php _e('please retry the installer cleanup process', 'duplicator'); ?>
             </span><br>
         <?php _e(' If this process continues please see the previous FAQ link.', 'duplicator'); ?>
@@ -67,8 +67,7 @@ use Duplicator\Utils\CachesPurge\CachesPurge;
             <?php
             _e(
                 'For more details please visit '
-                . 'the FAQ link <a href="' . DUPLICATOR_DOCS_URL
-                . 'which-files-need-to-be-removed-after-an-install" target="_blank">'
+                . 'the FAQ link <a href="https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-295-q" target="_blank">'
                 . 'Which files need to be removed after an install?'
                 . '</a>',
                 'duplicator'
@@ -82,7 +81,7 @@ use Duplicator\Utils\CachesPurge\CachesPurge;
             echo '<br/>';
             _e(
                 'Show your support with a '
-                . '<a href="' . esc_url(\Duplicator\Core\Notifications\Review::getReviewUrl()) . '" '
+                . '<a href="https://wordpress.org/support/plugin/duplicator/reviews/?filter=5" '
                 . 'target="_blank">5 star review</a>! We would be thrilled if you could!',
                 'duplicator'
             );

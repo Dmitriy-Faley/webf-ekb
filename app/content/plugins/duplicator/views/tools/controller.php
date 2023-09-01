@@ -1,7 +1,4 @@
 <?php
-
-use Duplicator\Core\Views\TplMng;
-
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 require_once(DUPLICATOR_PLUGIN_PATH . '/classes/ui/class.ui.dialog.php');
 require_once(DUPLICATOR_PLUGIN_PATH . '/assets/js/javascript.php');
@@ -33,10 +30,10 @@ if ('d' == $current_tab) {
             include(DUPLICATOR_PLUGIN_PATH . 'views/tools/diagnostics/main.php');
             break;
         case 'templates':
-            TplMng::getInstance()->render('mocks/templates/templates', array(), true);
+            include(DUPLICATOR_PLUGIN_PATH . "views/tools/templates.php");
             break;
         case 'recovery':
-            TplMng::getInstance()->render('mocks/recovery/recovery', array(), true);
+            include(DUPLICATOR_PLUGIN_PATH . "views/tools/recovery.php");
             break;
     }
     ?>

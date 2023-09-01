@@ -21,13 +21,13 @@ require_once(DUPLICATOR_PLUGIN_PATH . 'lib/forceutf8/Encoding.php');
  * Class for handling archive setup and build process
  *
  * Standard: PSR-2 (almost)
- *
  * @link http://www.php-fig.org/psr/psr-2
  *
- * @package    DUP
+ * @package DUP
  * @subpackage classes/package
- * @copyright  (c) 2017, Snapcreek LLC
- * @license    https://opensource.org/licenses/GPL-3.0 GNU Public License
+ * @copyright (c) 2017, Snapcreek LLC
+ * @license https://opensource.org/licenses/GPL-3.0 GNU Public License
+ *
  */
 class DUP_Archive
 {
@@ -214,7 +214,6 @@ class DUP_Archive
      *  Builds a list of files and directories to be included in the archive
      *
      *  Get the directory size recursively, but don't calc the snapshot directory, exclusion directories
-     *
      *  @link http://msdn.microsoft.com/en-us/library/aa365247%28VS.85%29.aspx Windows filename restrictions
      *
      *  @return obj Returns a DUP_Archive object
@@ -285,14 +284,17 @@ class DUP_Archive
     /**
      *  Properly creates the directory filter list that is used for filtering directories
      *
-     * @param string $dirs A semi-colon list of dir paths /path1_/path;/path1_/path2;
+     * @param string $dirs A semi-colon list of dir paths
+     *  /path1_/path/;/path1_/path2/;
      *
-     * @return string A cleaned up list of directory filters
+     * @returns string A cleaned up list of directory filters
+     * @return string
      */
     public function parseDirectoryFilter($dirs = "")
     {
-        $clean_array = array();
+        $filters     = "";
         $dir_array   = array_unique(explode(";", $dirs));
+        $clean_array = array();
         foreach ($dir_array as $val) {
             $val = SnapIO::safePathUntrailingslashit(SnapUtil::sanitizeNSCharsNewlineTrim($val));
             if (strlen($val) >= 2 && is_dir($val)) {
@@ -301,35 +303,40 @@ class DUP_Archive
         }
 
         if (count($clean_array)) {
-            return implode(';', array_unique($clean_array));
+            $clean_array = array_unique($clean_array);
+            sort($clean_array);
+            $filters = implode(';', $clean_array) . ';';
         }
-
-        return '';
+        return $filters;
     }
 
     /**
-     * Properly creates the file filter list that is used for filtering files
+     *  Properly creates the file filter list that is used for filtering files
      *
-     * @param string $files A semi-colon list of file paths /path1_/path/file1.ext;/path1_/path2/file2.ext;
+     * @param string $files A semi-colon list of file paths
+     *  /path1_/path/file1.ext;/path1_/path2/file2.ext;
      *
-     * @return string A cleaned up list of file filters
+     * @returns string A cleaned up list of file filters
+     * @return string
      */
     public function parseFileFilter($files = "")
     {
-        $clean_array = array();
+        $filters     = "";
         $file_array  = array_unique(explode(";", $files));
+        $clean_array = array();
         foreach ($file_array as $val) {
             $val = SnapIO::safePathUntrailingslashit(SnapUtil::sanitizeNSCharsNewlineTrim($val));
-            if (strlen($val) >= 2 && !is_dir($val)) {
+            if (strlen($val) >= 2 && file_exists($val)) {
                 $clean_array[] = $val;
             }
         }
 
         if (count($clean_array)) {
-            return implode(';', array_unique($clean_array));
+            $clean_array = array_unique($clean_array);
+            sort($clean_array);
+            $filters = implode(';', $clean_array) . ';';
         }
-
-        return '';
+        return $filters;
     }
 
     /**
@@ -361,9 +368,9 @@ class DUP_Archive
         //FILTER: INSTANCE ITEMS
         //Add the items generated at create time
         if ($this->FilterOn) {
-            $this->FilterInfo->Dirs->Instance  = strlen($this->FilterDirs) > 0 ? array_map('DUP_Util::safePath', explode(";", $this->FilterDirs)) : array();
-            $this->FilterInfo->Files->Instance = strlen($this->FilterFiles) > 0 ? array_map('DUP_Util::safePath', explode(";", $this->FilterFiles)) : array();
-            $this->FilterInfo->Exts->Instance  = explode(";", $this->FilterExts);
+            $this->FilterInfo->Dirs->Instance  = array_map('DUP_Util::safePath', explode(";", $this->FilterDirs, -1));
+            $this->FilterInfo->Files->Instance = array_map('DUP_Util::safePath', explode(";", $this->FilterFiles, -1));
+            $this->FilterInfo->Exts->Instance  = explode(";", $this->FilterExts, -1);
         }
 
         //FILTER: CORE ITMES
@@ -418,15 +425,9 @@ class DUP_Archive
                 $this->FilterInfo->Dirs->Core[] = $wp_content . '/' . $backwpup_cfg_logfolder;
             }
         }
-
         if ($GLOBALS['DUPLICATOR_GLOBAL_FILE_FILTERS_ON']) {
             $duplicator_global_file_filters  = apply_filters('duplicator_global_file_filters', $GLOBALS['DUPLICATOR_GLOBAL_FILE_FILTERS']);
             $this->FilterInfo->Files->Global = $duplicator_global_file_filters;
-        }
-
-        //Config files are handled separately
-        foreach ($this->Package->Installer->getConfigFilePaths() as $config_file_path) {
-            $this->FilterInfo->Files->Global[] = $config_file_path;
         }
 
         $this->FilterDirsAll    = array_merge($this->FilterInfo->Dirs->Instance, $this->FilterInfo->Dirs->Core);
@@ -478,10 +479,10 @@ class DUP_Archive
                 continue;
             }
             $currentPath = $path . '/' . $currentName;
+            //DUP_Log::trace(' ANALIZE PATH: '.$currentPath);
 
             if (is_dir($currentPath)) {
-                //Don't clutter the log with these
-                //DUP_Log::trace(' Scan dir: ' . $currentPath);
+                DUP_Log::trace(' Scan dir: ' . $currentPath);
                 $add = true;
                 if (is_link($currentPath)) {
                     //Get real path of link
@@ -759,7 +760,7 @@ class DUP_Archive
      * get the main target root path to make archive
      *
      * @staticvar type $targerRoorPath
-     * @return    string
+     * @return string
      */
     public static function getTargetRootPath()
     {
@@ -774,7 +775,6 @@ class DUP_Archive
 
     /**
      * @param null|string $urlKey if set will only return the url identified by that key
-     *
      * @return array|string|bool
      */
     public static function getOriginalUrls($urlKey = null)
@@ -804,7 +804,6 @@ class DUP_Archive
             $origUrls = array(
                 'home'      => $homeUrl,
                 'abs'       => site_url(),
-                'login'     => wp_login_url(),
                 'wpcontent' => content_url(),
                 'uploads'   => $updDirs['baseurl'],
                 'plugins'   => plugins_url(),
@@ -863,6 +862,7 @@ class DUP_Archive
     /**
      * return the wordpress original dir paths
      *
+     * @staticvar string[] $origPaths if is null retur the array of paths or the single key path
      * @param string|null $pathKey
      *
      * @return string[]|string|bool return false if key doesn\'t exist
@@ -913,6 +913,7 @@ class DUP_Archive
     /**
      * return the wordpress original dir paths
      *
+     * @staticvar string[] $paths if is null retur the array of paths or the single key path
      * @param string|null $pathKey
      *
      * @return string[]|string|bool return false if key doesn\'t exist
@@ -961,7 +962,6 @@ class DUP_Archive
      * return true if path is child of duplicator backup path
      *
      * @param string $path
-     *
      * @return boolean
      */
     public static function isBackupPathChild($path)

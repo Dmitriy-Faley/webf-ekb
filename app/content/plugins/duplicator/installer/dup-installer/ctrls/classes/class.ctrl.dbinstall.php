@@ -6,6 +6,7 @@
  * @link http://www.php-fig.org/psr/psr-2 Full Documentation
  *
  * @package CTRL
+ *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
@@ -39,30 +40,29 @@ class DUPX_DBInstall extends AbstractJsonSerializable
     const TABLES_REGEX_CHUNK_SIZE           = 100;
 
     /** @var \mysqli */
-    private $dbh              = null;
-    public $post              = array();
-    public $dbaction          = self::DBACTION_EMPTY;
-    public $dbcharset         = '';
-    public $dbcollate         = '';
-    public $dbvar_maxtime     = 300;
-    public $dbvar_maxpacks    = MB_IN_BYTES;
-    public $dbvar_sqlmode     = 'NOT_SET';
-    public $sql_file_path     = '';
-    public $table_count       = 0;
-    public $table_rows        = 0;
-    public $query_errs        = 0;
-    public $drop_tbl_log      = 0;
-    public $rename_tbl_log    = 0;
-    public $dbquery_errs      = 0;
-    public $dbquery_rows      = 0;
-    public $dbtable_count     = 0;
-    public $dbtable_rows      = 0;
-    public $profile_start     = 0;
-    public $start_microtime   = 0;
-    public $thread_start_time = 0;
-    public $dbsplit_creates   = true;
-    public $dbFileSize        = 0;
-    public $setQueries        = array();
+    private $dbh            = null;
+    public $post            = array();
+    public $dbaction        = self::DBACTION_EMPTY;
+    public $dbcharset       = '';
+    public $dbcollate       = '';
+    public $dbvar_maxtime   = 300;
+    public $dbvar_maxpacks  = MB_IN_BYTES;
+    public $dbvar_sqlmode   = 'NOT_SET';
+    public $sql_file_path   = '';
+    public $table_count     = 0;
+    public $table_rows      = 0;
+    public $query_errs      = 0;
+    public $drop_tbl_log    = 0;
+    public $rename_tbl_log  = 0;
+    public $dbquery_errs    = 0;
+    public $dbquery_rows    = 0;
+    public $dbtable_count   = 0;
+    public $dbtable_rows    = 0;
+    public $profile_start   = 0;
+    public $start_microtime = 0;
+    public $dbsplit_creates = true;
+    public $dbFileSize      = 0;
+    public $setQueries      = array();
     /** @var DbUserMode */
     protected $dbUserMode = null;
     /** @var QueryFixes */
@@ -215,7 +215,7 @@ class DUPX_DBInstall extends AbstractJsonSerializable
                 $msg          .= "at '{$GLOBALS['PHP_MEMORY_LIMIT']}'.  There is a high possibility that the installer script will fail with\n";
                 $msg          .= "a memory allocation error when trying to load the database.sql file.  It is\n";
                 $msg          .= "recommended to increase the 'memory_limit' setting in the php.ini config file.\n";
-                $msg          .= "see: " . DUPX_Constants::FAQ_URL . "how-to-manage-server-resources-cpu-memory-disk/ \n";
+                $msg          .= "see: " . DUPX_Constants::FAQ_URL . "#faq-trouble-056-q \n";
                 Log::info($msg);
                 unset($msg);
             }
@@ -343,7 +343,7 @@ class DUPX_DBInstall extends AbstractJsonSerializable
     /**
      *
      * @staticvar string $path
-     * @return    string
+     * @return string
      */
     protected static function seekTellFilePath()
     {
@@ -1055,7 +1055,7 @@ class DUPX_DBInstall extends AbstractJsonSerializable
                 'longMsgMode' => DUPX_NOTICE_ITEM::MSG_MODE_PRE,
                 'sections'    => 'database',
                 'faqLink'     => array(
-                    'url'   => DUPX_Constants::FAQ_URL . 'how-to-fix-database-errors-or-general-warnings-on-the-install-report',
+                    'url'   => 'https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-260-q',
                     'label' => 'FAQ Link'
                 )
                 ), DUPX_NOTICE_MANAGER::ADD_UNIQUE_APPEND, 'query-size-limit-msg');
@@ -1068,31 +1068,30 @@ class DUPX_DBInstall extends AbstractJsonSerializable
         if (($query_res = DUPX_DB::mysqli_query($this->dbh, $query)) === false) {
             $err    = mysqli_error($this->dbh);
             $errMsg = "DATABASE ERROR: '{$err}'\n\t[SQL=" . substr($query, 0, self::QUERY_ERROR_LOG_LEN) . "...]\n\n";
-            $url    = DUPX_Constants::FAQ_URL . 'how-to-fix-database-write-issues/';
 
             if (DUPX_U::contains($err, 'Unknown collation')) {
                 $nManager->addNextStepNotice(array(
                     'shortMsg'    => 'DATABASE ERROR: ' . $err,
                     'level'       => DUPX_NOTICE_ITEM::HARD_WARNING,
-                    'longMsg'     => 'Unknown collation<br>RECOMMENDATION: Try resolutions found at ' . $url,
+                    'longMsg'     => 'Unknown collation<br>RECOMMENDATION: Try resolutions found at https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-110-q',
                     'longMsgMode' => DUPX_NOTICE_ITEM::MSG_MODE_HTML,
                     'faqLink'     => array(
-                        'url'   => $url,
+                        'url'   => 'https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-110-q',
                         'label' => 'FAQ Link'
                     )
                     ), DUPX_NOTICE_MANAGER::ADD_UNIQUE, 'query-collation-write-msg');
                 $nManager->addFinalReportNotice(array(
                     'shortMsg'    => 'DATABASE ERROR: ' . $err,
                     'level'       => DUPX_NOTICE_ITEM::HARD_WARNING,
-                    'longMsg'     => 'Unknown collation<br>RECOMMENDATION: Try resolutions found at ' . $url . '<br>' . $errMsg,
+                    'longMsg'     => 'Unknown collation<br>RECOMMENDATION: Try resolutions found at https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-110-q' . '<br>' . $errMsg,
                     'longMsgMode' => DUPX_NOTICE_ITEM::MSG_MODE_HTML,
                     'sections'    => 'database',
                     'faqLink'     => array(
-                        'url'   => $url,
+                        'url'   => 'https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-110-q',
                         'label' => 'FAQ Link'
                     )
                 ));
-                Log::info('RECOMMENDATION: Try resolutions found at ' . $url);
+                Log::info('RECOMMENDATION: Try resolutions found at https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-110-q');
             } elseif (!$this->skipErrorNotice($err, $query)) {
                 $nManager->addNextStepNotice(array(
                     'shortMsg'    => 'DATABASE ERROR: database error write',
@@ -1306,8 +1305,8 @@ class DUPX_DBInstall extends AbstractJsonSerializable
     /**
      * @param $err   string Error message
      * @param $query string the SQL query
-     *
      * @return bool if true will skip front-end notice of error message
+     * @throws Exception
      */
     private function skipErrorNotice($err, $query)
     {

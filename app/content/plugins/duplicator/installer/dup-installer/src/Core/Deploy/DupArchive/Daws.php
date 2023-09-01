@@ -3,8 +3,9 @@
 /**
  * Dup archive expander
  *
- * @package   Duplicator
+ * @package Duplicator
  * @copyright (c) 2021, Snapcreek LLC
+ *
  */
 
 namespace Duplicator\Installer\Core\Deploy\DupArchive;
@@ -98,7 +99,6 @@ class Daws
             $fileModeOverride         = SnapUtil::getArrayValue($params, 'file_mode_override', false, 0644);
             $includedFiles            = SnapUtil::getArrayValue($params, 'includedFiles', false, array());
             $directoryModeOverride    = SnapUtil::getArrayValue($params, 'dir_mode_override', false, 0755);
-            $keepFileTime             = SnapUtil::getArrayValue($params, 'keep_file_time', false, false);
 
             $action = 'expand';
         } else {
@@ -124,7 +124,6 @@ class Daws
                     $expandState->fileRenames              = $fileRenames;
                     $expandState->fileModeOverride         = $fileModeOverride;
                     $expandState->directoryModeOverride    = $directoryModeOverride;
-                    $expandState->keepFileTime             = $keepFileTime;
 
                     $expandState->save();
                 }
