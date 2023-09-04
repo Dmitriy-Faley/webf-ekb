@@ -177,6 +177,7 @@
 
         ol {
             margin-left: 20px;
+            width: 820px;
 
             li {
                 list-style-type: decimal;
@@ -395,6 +396,14 @@
 
             a:hover {
                 color: #0E0F11;
+            }
+
+            p {
+                margin-top: 20px;
+                margin-bottom: 0px;
+            }
+            p:last-child {
+                margin-bottom: 0px;
             }
         }
     }
