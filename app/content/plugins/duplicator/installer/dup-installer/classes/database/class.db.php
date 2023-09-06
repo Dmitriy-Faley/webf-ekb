@@ -6,12 +6,13 @@
  * Standard: PSR-2
  *
  * @package SC\DUPX\DB
- * @link http://www.php-fig.org/psr/psr-2/
- *
+ * @link    http://www.php-fig.org/psr/psr-2/
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
+
 use Duplicator\Installer\Utils\Log\Log;
+
 class DUPX_DB
 {
     const DELETE_CHUNK_SIZE          = 500;
@@ -77,7 +78,9 @@ class DUPX_DB
      * Modified version of https://developer.wordpress.org/reference/classes/wpdb/parse_db_host/
      *
      * @param string $host The DB_HOST setting to parse
-     * @return array|bool Array containing the host, the port, the socket and whether it is an IPv6 address, in that order. If $host couldn't be parsed, returns false
+     *
+     * @return array|bool Array containing the host, the port, the socket and whether it is an IPv6 address, in that order.
+     *                    If $host couldn't be parsed, returns false
      */
     public static function parseDBHost($host)
     {
@@ -173,6 +176,7 @@ class DUPX_DB
      * Get default character set
      *
      * @param \mysqli $dbh   A valid database link handle
+     *
      * @return string    Default charset
      */
     public static function getDefaultCharSet($dbh)
@@ -197,6 +201,7 @@ class DUPX_DB
      * Get Supported charset list
      *
      * @param \mysqli $dbh   A valid database link handle
+     *
      * @return array     Supported charset list
      */
     public static function getSupportedCharSetList($dbh)
@@ -220,6 +225,7 @@ class DUPX_DB
      * Get Supported collations along with character set
      *
      * @param \mysqli $dbh   A valid database link handle
+     *
      * @return array     Supported collation
      */
     public static function getSupportedCollates($dbh)
@@ -247,6 +253,7 @@ class DUPX_DB
      * Get Supported collations along with character set
      *
      * @param \mysqli $dbh   A valid database link handle
+     *
      * @return array     Supported collation
      */
     public static function getSupportedCollateList($dbh)
@@ -399,6 +406,7 @@ class DUPX_DB
      *
      * @param \mysqli $dbh Database connection handle
      * @param string $feature the feature to check for
+     *
      * @return bool
      */
     public static function hasAbility($dbh, $feature)
@@ -540,9 +548,9 @@ class DUPX_DB
     /**
      * Sets the MySQL connection's character set.
      *
-     * @param \mysqli  $dbh     The resource given by mysqli_connect
-     * @param string   $charset The character set (optional)
-     * @param string   $collate The collation (optional)
+     * @param \mysqli $dbh     The resource given by mysqli_connect
+     * @param ?string $charset The character set, null default value
+     * @param ?string $collate The collation, null default value
      */
     public static function setCharset($dbh, $charset = null, $collate = null)
     {
@@ -552,16 +560,22 @@ class DUPX_DB
 
         $charset = (!isset($charset) ) ? $GLOBALS['DBCHARSET_DEFAULT'] : $charset;
         $collate = (!isset($collate) ) ? '' : $collate;
+
         if (empty($charset)) {
             return true;
         }
 
         if (function_exists('mysqli_set_charset') && self::hasAbility($dbh, 'set_charset')) {
-            if (($result1 = mysqli_set_charset($dbh, $charset)) === false) {
-                $errMsg = mysqli_error($dbh);
-                Log::info('DATABASE ERROR: mysqli_set_charset ' . Log::v2str($charset) . ' MSG: ' . $errMsg);
-            } else {
-                Log::info('DATABASE: mysqli_set_charset ' . Log::v2str($charset), Log::LV_DETAILED);
+            try {
+                if (($result1 = mysqli_set_charset($dbh, $charset)) === false) {
+                    $errMsg = mysqli_error($dbh);
+                    Log::info('DATABASE ERROR: mysqli_set_charset ' . Log::v2str($charset) . ' MSG: ' . $errMsg);
+                } else {
+                    Log::info('DATABASE: mysqli_set_charset ' . Log::v2str($charset), Log::LV_DETAILED);
+                }
+            } catch (Exception $e) {
+                Log::info('DATABASE ERROR: mysqli_set_charset ' . Log::v2str($charset) . ' MSG: ' . $e->getMessage());
+                $result1 = false;
             }
 
             if (!empty($collate)) {
@@ -597,8 +611,8 @@ class DUPX_DB
     /**
      *
      * @param \mysqli $dbh     The resource given by mysqli_connect
+     *
      * @return bool|string // return false if current database isent selected or the string name
-     * @throws Exception
      */
     public static function getCurrentDatabase($dbh)
     {

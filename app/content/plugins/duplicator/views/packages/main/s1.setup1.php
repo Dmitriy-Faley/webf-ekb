@@ -25,7 +25,7 @@ $ctrl_ui = new DUP_CTRL_UI();
 $ctrl_ui->setResponseType('PHP');
 $data = $ctrl_ui->GetViewStateList();
 
-$ui_css_storage     = (isset($data->payload['dup-pack-storage-panel']) && $data->payload['dup-pack-storage-panel']) ? 'display:block' : 'display:none';
+$ui_css_storage     = (isset($data->payload['dup-pack-storage-panel']) && !$data->payload['dup-pack-storage-panel']) ? 'display:none' : 'display:block';
 $ui_css_archive     = (isset($data->payload['dup-pack-archive-panel']) && $data->payload['dup-pack-archive-panel']) ? 'display:block' : 'display:none';
 $ui_css_installer   = (isset($data->payload['dup-pack-installer-panel']) && $data->payload['dup-pack-installer-panel']) ? 'display:block' : 'display:none';
 $dup_intaller_files = implode(", ", array_keys(DUP_Server::getInstallerFiles()));
@@ -108,7 +108,7 @@ SYSTEM REQUIREMENTS -->
                         <tr>
                             <td><?php printf("%s [%s]", esc_html__("PHP Version", 'duplicator'), phpversion()); ?></td>
                             <td><?php echo esc_html($dup_tests['PHP']['VERSION']); ?></td>
-                            <td><?php esc_html_e('PHP versions 5.2.9+ or higher is required.')?></td>
+                            <td><?php esc_html_e('PHP versions 5.2.9+ or higher is required.', 'duplicator')?></td>
                         </tr>
                         <?php if ($archive_build_mode == 'zip') : ?>
                             <tr>
@@ -128,7 +128,7 @@ SYSTEM REQUIREMENTS -->
                         <tr>
                             <td><?php esc_html_e('Safe Mode Off', 'duplicator'); ?></td>
                             <td><?php echo esc_html($dup_tests['PHP']['SAFE_MODE']); ?></td>
-                            <td><?php esc_html_e('Safe Mode should be set to Off in you php.ini file and is deprecated as of PHP 5.3.0.')?></td>
+                            <td><?php esc_html_e('Safe Mode should be set to Off in you php.ini file and is deprecated as of PHP 5.3.0.', 'duplicator')?></td>
                         </tr>                   
                         <tr>
                             <td><?php esc_html_e('Function', 'duplicator'); ?> <a href="http://php.net/manual/en/function.file-get-contents.php" target="_blank">file_get_contents</a></td>
@@ -205,7 +205,11 @@ SYSTEM REQUIREMENTS -->
                     </table>
                     <small>
                         <?php
-                        esc_html_e("MySQL version 5.0+ or better is required and the PHP MySQLi extension (note the trailing 'i') is also required.  Contact your server administrator and request that mysqli extension and MySQL Server 5.0+ be installed.", 'duplicator');
+                        esc_html_e(
+                            "MySQL version 5.0+ or better is required and the PHP MySQLi extension (note the trailing 'i') is also required.  " .
+                            "Contact your server administrator and request that mysqli extension and MySQL Server 5.0+ be installed.",
+                            'duplicator'
+                        );
                         echo "&nbsp;<i><a href='http://php.net/manual/en/mysqli.installation.php' target='_blank'>[" . esc_html__('more info', 'duplicator') . "]</a></i>";
                         ?>                                      
                     </small>
@@ -217,7 +221,8 @@ SYSTEM REQUIREMENTS -->
                         </tr>
                     </table>
                     <small>
-                        <?php esc_html_e("The function mysqli_real_escape_string is not working properly. Please consult host support and ask them to switch to a different PHP version or configuration."); ?>
+                        <?php esc_html_e("The function mysqli_real_escape_string is not working properly. Please consult host " .
+                            "support and ask them to switch to a different PHP version or configuration.", "duplicator"); ?>
                     </small>
                 </div>
             </div>

@@ -114,8 +114,190 @@
     }
 }
 
+.сontent_before {
+    .container {    
+        h2 {
+            font-weight: 600;
+            font-size: 48px;
+            padding-bottom: 0;
+            margin-bottom: 40px;
+            margin-top: 155px;
+            line-height: 59px;
+        }
+
+        p {
+            color: #0E0F11;
+            width: 840px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 20px;
+            padding: 0;
+        }
+
+        ul {
+            width: 820px;
+            margin-left: 20px;
+            list-style: disc !important;
+
+            li {
+                list-style-type: disc;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                margin-bottom: 20px;
+
+                a {
+                    color: #DC7148;
+                    text-decoration: underline;
+                }
+
+                a:hover {
+                    color: #0E0F11;
+                }
+            }
+        }
+
+        ol {
+            margin-left: 20px;
+            width: 820px;
+
+            li {
+                list-style-type: decimal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                margin-bottom: 20px;
+                
+                p {
+                    padding-top: 10px;
+                }
+            }
+        }
+
+        h4 {
+            width: 640px;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 28px;
+            color: #0E0F11;
+            margin-bottom: 20px;
+            margin-top: 70px;
+        }
+    
+        p {
+            color: #0E0F11;
+            width: 840px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            padding-bottom: 20px;
+            margin: 0;
+        }
+    
+        p:last-child {
+            padding-bottom: 0;
+        }
+
+        ul {
+            width: 820px;
+            margin-left: 20px;
+            list-style: disc !important;
+    
+            li {
+                list-style-type: disc;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                margin-bottom: 20px;
+    
+                a {
+                    color: #DC7148;
+                    text-decoration: underline;
+                }
+    
+                a:hover {
+                    color: #0E0F11;
+                }
+            }
+        }
+    }
+}
+
+.content_after {
+    .container {
+        h2 {
+            margin-top: 155px;
+            font-weight: 600;
+            font-size: 48px;
+            padding-bottom: 0;
+            margin-bottom: 40px;
+            line-height: 59px;
+        }
+    
+        ol {
+            width: 840px;
+            margin-top: 20px;
+            li {
+                margin-bottom: 40px;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 29px;
+                margin-bottom: 40px;
+    
+                p {
+                    margin-top: 20px;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 24px;
+                    margin-bottom: 0;
+                }
+            }
+    
+            li:last-child {
+                margin-bottom: 0;
+            }
+        }
+    
+        ul {
+            margin-top: 20px;
+            margin-left: 20px;
+            width: 840px;
+    
+            li:first-child {
+                margin-top: 20px;
+            }
+    
+            li {
+                list-style-type: disc;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                margin-bottom: 20px;
+            }
+        }
+    
+        ol>li>p {
+            margin-top: 20px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 0;
+        }
+    
+        p {
+            color: #0E0F11;
+            width: 840px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            margin-top: 20px;
+        }
+    }
+}
+
 .service-content {
-    padding-top: 155px;
+    padding-top: 0;
 
     .service-content__wrapper {
         margin: 0 0 70px;
@@ -253,7 +435,7 @@
 }
 
 .service-content__steps {
-
+    padding-top: 0;
     .container {
         div:first-child {
             h2 {

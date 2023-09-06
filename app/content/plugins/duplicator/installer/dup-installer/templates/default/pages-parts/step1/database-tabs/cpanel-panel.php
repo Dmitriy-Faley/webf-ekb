@@ -3,19 +3,18 @@
 /**
  *
  * @package templates/default
- *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
 use Duplicator\Installer\Core\Params\PrmMng;
-use Duplicator\Installer\Utils\Utils;
+use Duplicator\Installer\Utils\InstallerUpsell;
 
 $paramsManager = PrmMng::getInstance();
 
-$wpHostUrl      = Utils::getCampainUrl('free_install_no_cpanel', 'wordpress-hosting/');
-$freeStep2Url   = Utils::getCampainUrl('free_install_step2');
-$freeNoteUrl    = Utils::getCampainUrl('free_install_cpanel_note');
+$wpHostUrl    = InstallerUpsell::getCampaignUrl('installer', "For cPanel Get Pro");
+$freeStep2Url = InstallerUpsell::getCampaignUrl('installer', "With Pro use cPanel without leaving");
+$freeNoteUrl  = InstallerUpsell::getCampaignUrl('installer', "With Pro improve cPanel workflow");
 
 $pageURL        = DUPX_HTTP::get_page_url(false);
 $hostScheme     = parse_url($pageURL, PHP_URL_SCHEME);

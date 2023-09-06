@@ -2,12 +2,17 @@
 
 /**
  *
- * @package Duplicator
- * @copyright (c) 2021, Snapcreek LLC
- *
+ * @package   Duplicator
+ * @copyright (c) 2022, Snap Creek LLC
  */
 
 namespace Duplicator\Libs\Snap;
+
+use Exception;
+use WP_Roles;
+use WP_Site;
+use WP_Theme;
+use wpdb;
 
 /**
  * Wordpress utility functions
@@ -21,14 +26,18 @@ class SnapWP
     const PATH_RELATIVE                = 1;
     const PATH_AUTO                    = 2;
 
-    private static $corePathList = null;
-    private static $safeAbsPath  = null;
+    const PLUGIN_INFO_ALL      = 0;
+    const PLUGIN_INFO_ACTIVE   = 1;
+    const PLUGIN_INFO_INACTIVE = 2;
 
     /**
      *
      * @var string if not empty alters isWpCore's operation
      */
     private static $wpCoreRelativePath = '';
+
+    /** @var ?array<string, mixed> initialized inside wordpress_core_files.php */
+    private static $corePathList = null;
 
     /**
      * return safe ABSPATH without last /
@@ -38,15 +47,17 @@ class SnapWP
      */
     public static function getSafeAbsPath()
     {
-        if (is_null(self::$safeAbsPath)) {
+        static $safeAbsPath = null;
+
+        if (is_null($safeAbsPath)) {
             if (defined('ABSPATH')) {
-                self::$safeAbsPath = SnapIO::safePathUntrailingslashit(ABSPATH);
+                $safeAbsPath = SnapIO::safePathUntrailingslashit(ABSPATH);
             } else {
-                self::$safeAbsPath = '';
+                $safeAbsPath = '';
             }
         }
 
-        return self::$safeAbsPath;
+        return $safeAbsPath;
     }
 
 
@@ -80,12 +91,7 @@ class SnapWP
      * @param string $table  table name
      * @param string $prefix wordpress prefix
      *
-     * @return array [
-     *        'isCore'          => bool,
-     *        'havePrefix'      => bool,
-     *        'subsiteId'       => int,
-     *        'isMultisiteCore' => bool
-     *    ]
+     * @return array{isCore: bool, havePrefix: bool, subsiteId: int, isMultisiteCore: bool}
      */
     public static function getTableInfoByName($table, $prefix)
     {
@@ -150,7 +156,8 @@ class SnapWP
      *                                 semicolons. Default empty string.
      * @param bool            $execute Optional. Whether or not to execute the query right away.
      *                                 Default true.
-     * @return array Strings containing the results of the various update queries.
+     *
+     * @return string[] Strings containing the results of the various update queries.
      */
     public static function dbDelta($queries = '', $execute = true)
     {
@@ -163,6 +170,39 @@ class SnapWP
         mysqli_report($defReporting);
 
         return $result;
+    }
+
+    /**
+     * Schedules cron event if it's not already scheduled.
+     *
+     * @param int    $timestamp        Timestamp of the first next run time
+     * @param string $cronIntervalName Name of cron interval to be used
+     * @param string $hook             Hook that we want to assign to the given cron interval
+     *
+     * @return void
+     */
+    public static function scheduleEvent($timestamp, $cronIntervalName, $hook)
+    {
+        if (!wp_next_scheduled($hook)) {
+            // Assign the hook to the schedule
+            wp_schedule_event($timestamp, $cronIntervalName, $hook);
+        }
+    }
+
+    /**
+     * Unschedules cron event if it's scheduled.
+     *
+     * @param string $hook Name of the hook that we want to unschedule
+     *
+     * @return void
+     */
+    public static function unscheduleEvent($hook)
+    {
+        if (wp_next_scheduled($hook)) {
+            // Unschedule the hook
+            $timestamp = wp_next_scheduled($hook);
+            wp_unschedule_event($timestamp, $hook);
+        }
     }
 
     /**
@@ -223,7 +263,6 @@ class SnapWP
      * @param string $folder folder path
      *
      * @return boolean return true if folder is wordpress home folder
-     *
      */
     public static function isWpHomeFolder($folder)
     {
@@ -236,13 +275,12 @@ class SnapWP
             return false;
         }
 
-        return (preg_match('/require\s*[\s\(].*[\'"].*wp-blog-header.php[\'"]\s*\)?/', $indexContent) === 1);
+        return (preg_match('/^.*\srequire.*?[\'"].*wp-blog-header\.php[\'"].*?;.*$/s', $indexContent) === 1);
     }
 
     /**
      * This function is the equivalent of the get_home_path function but with various fixes
      *
-     * @staticvar string $home_path
      * @return string
      */
     public static function getHomePath()
@@ -252,7 +290,7 @@ class SnapWP
         if (is_null($home_path)) {
             // outside wordpress this function makes no sense
             if (!defined('ABSPATH')) {
-                $home_path = false;
+                $home_path = '';
                 return $home_path;
             }
 
@@ -307,6 +345,7 @@ class SnapWP
      * @param string $path   Optional. Path relative to the admin URL. Default 'admin'.
      * @param string $scheme The scheme to use. Default is 'admin', which obeys force_ssl_admin() and is_ssl().
      *                       'http' or 'https' can be passed to force those schemes.
+     *
      * @return string Admin  URL link with optional path appended.
      */
     public static function getAdminUrl($path, $scheme = 'admin')
@@ -341,7 +380,6 @@ class SnapWP
      *                         if PATH_RELATIVE consider path a relative path
      * @param bool   $isSafe   if false call rtrim(SnapIO::safePath( PATH ), '/')
      *                         if true consider path a safe path without check
-     *
      *
      * @return boolean
      */
@@ -399,8 +437,9 @@ class SnapWP
 
     /**
      *
-     * @param string $relPath // if empty is consider abs root path
-     * @return array    // [ 'dirs' => [] , 'files' => [] ]
+     * @param string $relPath If empty is consider abs root path
+     *
+     * @return array{dirs: string[], files: string[]}
      */
     public static function getWpCoreFilesListInFolder($relPath = '')
     {
@@ -439,7 +478,7 @@ class SnapWP
     }
 
     /**
-     * get core path list from relative abs path
+     * Get core path list from relative abs path
      * [
      *      'folder' => [
      *          's-folder1' => [
@@ -451,7 +490,7 @@ class SnapWP
      *      ]
      * ]
      *
-     * @return array
+     * @return array<string, mixed[]>
      */
     public static function getCorePathsList()
     {
@@ -459,6 +498,19 @@ class SnapWP
             require_once(dirname(__FILE__) . '/wordpress_core_files.php');
         }
         return self::$corePathList;
+    }
+
+    /**
+     * Get List of core folders inside the wp-content folder
+     *
+     * @return string[]
+     */
+    public static function getWPContentCoreDirs()
+    {
+        return array(
+            'languages',
+            'cache'
+        );
     }
 
     /**
@@ -493,9 +545,9 @@ class SnapWP
     /**
      * Return object list of sites
      *
-     * @param string|array $args list of filters, see wordpress get_sites function
+     * @param string|array<string, mixed> $args list of filters, see wordpress get_sites function
      *
-     * @return WP_Site[]|int[] site list or ids
+     * @return false|WP_Site[]|int[] site list or ids or false if isn't multisite
      */
     public static function getSites($args = array())
     {
@@ -600,6 +652,16 @@ class SnapWP
     }
 
     /**
+     * Returns gmt_offset * 3600
+     *
+     * @return int timezone offset in seconds
+     */
+    public static function getGMTOffset()
+    {
+        return get_option('gmt_offset') ? ((float) get_option('gmt_offset')) * 3600 : 0;
+    }
+
+    /**
      * Returns wp option "timezone_string"
      *
      * @return string // timezone_string, will be empty if manual offset is chosen
@@ -617,9 +679,9 @@ class SnapWP
      * Returns 1 if DST is active on given timestamp, 0 if it's not active.
      * Currently active timezone is taken into account.
      *
-     * @param integer $timestamp In seconds
+     * @param int $timestamp In seconds
      *
-     * @return integer // 1 if DST is active, 0 otherwise
+     * @return int 1 if DST is active, 0 otherwise
      */
     public static function getDST($timestamp)
     {
@@ -631,17 +693,17 @@ class SnapWP
         $date = new \DateTime();
         $date->setTimestamp($timestamp);
         $date->setTimezone(new \DateTimeZone($timezoneString));
-        return $date->format('I');
+        return (int) $date->format('I');
     }
 
     /**
      * Converts timestamp to date string with given format, according to
      * currently selected timezone in Wordpress settings
      *
-     * @param string  $format    Format for date
-     * @param integer $timestamp In seconds
+     * @param string $format    Format for date
+     * @param int    $timestamp In seconds
      *
-     * @return string // Date converted to string in currently selected timezone
+     * @return string Date converted to string in currently selected timezone
      */
     public static function getDateInWPTimezone($format, $timestamp)
     {
@@ -656,19 +718,20 @@ class SnapWP
         }
         // Manual offset is selected. In this case there is no DST so we can
         // create the date string using current gmt_offset.
-        $local_time = $timestamp + ((int) get_option('gmt_offset') * 3600);
+        $local_time = $timestamp + SnapWP::getGMTOffset();
         return (string) date($format, $local_time);
     }
 
     /**
      *
-     * @param int $blogId // f multisite and blogId > 0 return the user of blog
-     * @return array
+     * @param int $blogId if multisite and blogId > 0 return the user of blog
+     *
+     * @return array<object{ID: int, user_login: string}>
      */
     public static function getAdminUserLists($blogId = 0)
     {
         $args = array(
-            'fields' => array('id', 'user_login')
+            'fields' => array('ID', 'user_login')
         );
 
         if (is_multisite()) {
@@ -684,9 +747,21 @@ class SnapWP
     }
 
     /**
+     * Get users count
+     *
+     * @return int
+     */
+    public static function getUsersCount()
+    {
+        global $wpdb;
+        $sql = "SELECT COUNT(ID) FROM $wpdb->users";
+        return (int) $wpdb->get_var($sql);
+    }
+
+    /**
      * Return post types count
      *
-     * @return array
+     * @return array<string, int>
      */
     public static function getPostTypesCount()
     {
@@ -698,6 +773,8 @@ class SnapWP
             if (!$postObj->public) {
                 continue;
             }
+
+            /** @var int[] */
             $postCountForTypes = (array) wp_count_posts($postName);
             $postCount         = 0;
             foreach ($postCountForTypes as $num) {
@@ -707,5 +784,283 @@ class SnapWP
         }
 
         return $postTypeCount;
+    }
+
+    /**
+     * Get plugins array info with multisite, must-use and drop-ins
+     *
+     * @param string $key User meta key
+     *
+     * @return bool true on success, false on failure
+     */
+    public static function deleteUserMetaKey($key)
+    {
+        /** @var wpdb $wpdb */
+        global $wpdb;
+
+        if (
+            $wpdb->delete(
+                $wpdb->usermeta,
+                array('meta_key' => $key),
+                array('%s')
+            ) === false
+        ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * return plugin formatted data from plugin info
+     *
+     * @param WP_Theme $theme instance of WP Core class WP_Theme. theme info from get_themes function
+     *
+     * @return array<string, mixed>
+     */
+    protected static function getThemeArrayData(WP_Theme $theme)
+    {
+        $slug   = $theme->get_stylesheet();
+        $parent = $theme->parent();
+        return array(
+            'slug'         => $slug,
+            'themeName'    => $theme->get('Name'),
+            'version'      => $theme->get('Version'),
+            'themeURI'     => $theme->get('ThemeURI'),
+            'parentTheme'  => (false === $parent) ? false : $parent->get_stylesheet(),
+            'template'     => $theme->get_template(),
+            'stylesheet'   => $theme->get_stylesheet(),
+            'description'  => $theme->get('Description'),
+            'author'       => $theme->get('Author'),
+            "authorURI"    => $theme->get('AuthorURI'),
+            'tags'         => $theme->get('Tags'),
+            'isAllowed'    => $theme->is_allowed(),
+            'isActive'     => (is_multisite() ? array() : false),
+            'defaultTheme' => (defined('WP_DEFAULT_THEME') && WP_DEFAULT_THEME == $slug),
+        );
+    }
+
+    /**
+     * get themes array info with active template, stylesheet
+     *
+     * @return array<string, mixed[]>
+     */
+    public static function getThemesInfo()
+    {
+        if (!function_exists('wp_get_themes')) {
+            require_once ABSPATH . 'wp-admin/includes/theme.php';
+        }
+
+        $result = array();
+
+        foreach (wp_get_themes() as $slug => $theme) {
+            $result[$slug] = self::getThemeArrayData($theme);
+        }
+
+        if (is_multisite()) {
+            foreach (SnapWP::getSitesIds() as $siteId) {
+                switch_to_blog($siteId);
+                $stylesheet = get_stylesheet();
+                if (isset($result[$stylesheet])) {
+                    $result[$stylesheet]['isActive'][] = $siteId;
+                }
+
+                //Also set parent theme to active if it exists
+                $template = get_template();
+                if ($template !== $stylesheet && isset($result[$template])) {
+                    $result[$template]['isActive'][] = $siteId;
+                }
+
+                restore_current_blog();
+            }
+        } else {
+            $stylesheet = get_stylesheet();
+            if (isset($result[$stylesheet])) {
+                $result[$stylesheet]['isActive'] = true;
+            }
+
+            //Also set parent theme to active if it exists
+            $template = get_template();
+            if ($template !== $stylesheet && isset($result[$template])) {
+                $result[$template]['isActive'] = true;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Get plugins array info with multisite, must-use and drop-ins
+     *
+     * @param int $filter ENUM: PLUGIN_INFO_ALL, PLUGIN_INFO_ACTIVE, PLUGIN_INFO_INACTIVE
+     *
+     * @return array<string, mixed[]>
+     */
+    public static function getPluginsInfo($filter = self::PLUGIN_INFO_ALL)
+    {
+        if (!defined('ABSPATH')) {
+            throw new Exception('This function can be used only on wp');
+        }
+
+        if (!function_exists('get_plugins')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        // parse all plugins
+        $result = array();
+        foreach (get_plugins() as $path => $plugin) {
+            $result[$path]                  = self::getPluginArrayData($path, $plugin);
+            $result[$path]['networkActive'] = is_plugin_active_for_network($path);
+            if (!is_multisite()) {
+                $result[$path]['active'] = is_plugin_active($path);
+            } else {
+                // if is _multisite the active value is an array with the blog ids list where the plugin is active
+                $result[$path]['active'] = array();
+            }
+        }
+
+        // If is _multisite the active value is an array with the blog ids list where the plugin is active
+        if (is_multisite()) {
+            foreach (SnapWP::getSitesIds() as $siteId) {
+                switch_to_blog($siteId);
+                foreach ($result as $path => $plugin) {
+                    if (!$result[$path]['networkActive'] && is_plugin_active($path)) {
+                        $result[$path]['active'][] = $siteId;
+                    }
+                }
+                restore_current_blog();
+            }
+        }
+
+        // parse all must use plugins
+        foreach (get_mu_plugins() as $path => $plugin) {
+            $result[$path]            = self::getPluginArrayData($path, $plugin);
+            $result[$path]['mustUse'] = true;
+        }
+
+        // parse all dropins plugins
+        foreach (get_dropins() as $path => $plugin) {
+            $result[$path]            = self::getPluginArrayData($path, $plugin);
+            $result[$path]['dropIns'] = true;
+        }
+
+        switch ($filter) {
+            case self::PLUGIN_INFO_ACTIVE:
+                return array_filter(
+                    $result,
+                    function ($info) {
+                        return self::isPluginActiveByInfo($info);
+                    }
+                );
+            case self::PLUGIN_INFO_INACTIVE:
+                return array_filter(
+                    $result,
+                    function ($info) {
+                        return !self::isPluginActiveByInfo($info);
+                    }
+                );
+            case self::PLUGIN_INFO_ALL:
+            default:
+                return $result;
+        }
+    }
+
+    /**
+     * Determine if a plugin is active by info
+     *
+     * @param array{active: bool|bool[], networkActive: bool, dropIns: bool, mustUse: bool} $info Plugin info
+     *
+     * @return bool
+     */
+    protected static function isPluginActiveByInfo($info)
+    {
+        return (
+            $info['active'] === true ||
+            $info['networkActive'] ||
+            (
+                is_array($info['active']) &&
+                !empty($info['active'])
+            ) ||
+            $info['dropIns'] ||
+            $info['mustUse']
+        );
+    }
+
+    /**
+     * Check if a plugin is installed
+     *
+     * @param string $pluginSlug plugin slug
+     *
+     * @return bool
+     */
+    public static function isPluginInstalled($pluginSlug)
+    {
+        if (!defined('ABSPATH')) {
+            throw new Exception('This function can be used only on wp');
+        }
+
+        if (!function_exists('get_plugins')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        $plugins = array_keys(get_plugins());
+        return in_array($pluginSlug, $plugins);
+    }
+
+    /**
+     * return plugin formatted data from plugin info
+     * plugin info =  Array (
+     *      [Name] => Hello Dolly
+     *      [PluginURI] => http://wordpress.org/extend/plugins/hello-dolly/
+     *      [Version] => 1.6
+     *      [Description] => This is not just ...
+     *      [Author] => Matt Mullenweg
+     *      [AuthorURI] => http://ma.tt/
+     *      [TextDomain] =>
+     *      [DomainPath] =>
+     *      [Network] =>
+     *      [Title] => Hello Dolly
+     *      [AuthorName] => Matt Mullenweg
+     * )
+     *
+     * @param string               $slug   plugin slug
+     * @param array<string, mixed> $plugin pluhin info from get_plugins function
+     *
+     * @return array<string, mixed>
+     */
+    protected static function getPluginArrayData($slug, $plugin)
+    {
+        return array(
+            'slug'          => $slug,
+            'name'          => $plugin['Name'],
+            'version'       => $plugin['Version'],
+            'pluginURI'     => $plugin['PluginURI'],
+            'author'        => $plugin['Author'],
+            'authorURI'     => $plugin['AuthorURI'],
+            'description'   => $plugin['Description'],
+            'title'         => $plugin['Title'],
+            'networkActive' => false,
+            'active'        => false,
+            'mustUse'       => false,
+            'dropIns'       => false
+        );
+    }
+
+    /**
+     * Retrieves the global WP_Roles instance and instantiates it if necessary.
+     * Added for compatibility with WP < 4.3
+     *
+     * @return WP_Roles WP_Roles global instance if not already instantiated.
+     */
+    public static function wpRoles()
+    {
+        if (function_exists('wp_roles')) {
+            return wp_roles();
+        }
+        global $wp_roles;
+        if (! isset($wp_roles)) {
+            $wp_roles = new WP_Roles();
+        }
+        return $wp_roles;
     }
 }

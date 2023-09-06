@@ -4,16 +4,17 @@
  * controller step 0
  *
  * Standard: PSR-2
+ *
  * @link http://www.php-fig.org/psr/psr-2 Full Documentation
  *
  * @package SC\DUPX
- *
  */
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
 use Duplicator\Installer\Utils\Log\Log;
 use Duplicator\Installer\Core\Params\PrmMng;
+use Duplicator\Installer\Utils\Tests\WP\TestsExecuter;
 use Duplicator\Libs\Snap\SnapJson;
 use Duplicator\Libs\Snap\SnapString;
 use Duplicator\Libs\Snap\SnapUtil;
@@ -28,6 +29,7 @@ final class DUPX_Ctrl_ajax
     // ACCEPTED ACTIONS
     const ACTION_INITPASS_CHECK         = 'initpass';
     const ACTION_PROCEED_CONFIRM_DIALOG = 'proceed_confirm_dialog';
+    const ACTION_EMAIL_SUBSCRIPTION     = 'email_subscription';
     const ACTION_VALIDATE               = 'validate';
     const ACTION_SET_PARAMS_S1          = 'sparam_s1';
     const ACTION_SET_PARAMS_S2          = 'sparam_s2';
@@ -47,6 +49,7 @@ final class DUPX_Ctrl_ajax
             $actions = array(
                 self::ACTION_PROCEED_CONFIRM_DIALOG,
                 self::ACTION_VALIDATE,
+                self::ACTION_EMAIL_SUBSCRIPTION,
                 self::ACTION_SET_PARAMS_S1,
                 self::ACTION_SET_PARAMS_S2,
                 self::ACTION_SET_PARAMS_S3,
@@ -136,8 +139,8 @@ final class DUPX_Ctrl_ajax
      * ajax actions
      *
      * @param string $action
+     *
      * @return mixed
-     * @throws Exception
      */
     protected static function actions($action)
     {
@@ -148,6 +151,9 @@ final class DUPX_Ctrl_ajax
         switch ($action) {
             case self::ACTION_PWD_CHECK:
                 $actionData = DUPX_Security::getInstance()->securityCheck();
+                break;
+            case self::ACTION_EMAIL_SUBSCRIPTION:
+                $actionData = DUPX_Ctrl_Params::setParamEmail();
                 break;
             case self::ACTION_PROCEED_CONFIRM_DIALOG:
                 $vData = DUPX_Validation_database_service::getInstance();
@@ -215,10 +221,10 @@ final class DUPX_Ctrl_ajax
                 $actionData = DUPX_S3_Funcs::getInstance()->updateWebsite();
                 break;
             case self::ACTION_FINAL_TESTS_PREPARE:
-                $actionData = DUPX_test_wordpress_exec::preTestPrepare();
+                $actionData = TestsExecuter::preTestPrepare();
                 break;
             case self::ACTION_FINAL_TESTS_AFTER:
-                $actionData = DUPX_test_wordpress_exec::afterTestClean();
+                $actionData = TestsExecuter::afterTestClean();
                 break;
             case self::ACTION_SET_AUTO_CLEAN_FILES:
                 if (DUPX_Ctrl_Params::setParamAutoClean()) {

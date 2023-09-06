@@ -18,6 +18,7 @@ use Duplicator\Installer\Core\Params\Items\ParamItem;
 use Duplicator\Installer\Core\Params\Items\ParamForm;
 use Duplicator\Installer\Core\Params\Items\ParamOption;
 use DUPX_InstallerState;
+use DUPX_ArchiveConfig;
 
 /**
  * class where all parameters are initialized. Used by the param manager
@@ -70,7 +71,8 @@ final class ParamDescEngines implements DescriptorInterface
             },
             // Temporarly diabled for inital release 1.5
             //            'proFlagTitle'   => 'Upgrade Features',
-            //            'proFlag'        => 'Enhance the install experience with custom extraction modes.  When performing an overwrite install process users can '
+            //            'proFlag'        => 'Enhance the install experience with custom extraction modes.
+            // When performing an overwrite install process users can '
             //                . 'automate and customize that files they need to be installed.'
             )
         );
@@ -241,7 +243,7 @@ final class ParamDescEngines implements DescriptorInterface
             PrmMng::PARAM_DB_CHUNK,
             ParamForm::TYPE_BOOL,
             array(
-            'default' => ($params[PrmMng::PARAM_DB_ENGINE]->getValue() === \DUPX_DBInstall::ENGINE_CHUNK)
+                'default' => ($params[PrmMng::PARAM_DB_ENGINE]->getValue() === \DUPX_DBInstall::ENGINE_CHUNK)
             )
         );
 
@@ -257,11 +259,25 @@ final class ParamDescEngines implements DescriptorInterface
             ))
         );
 
-        $params[PrmMng::PARAM_SKIP_PATH_REPLACE] = new ParamItem(
+        $oldHomePath                             = DUPX_ArchiveConfig::getInstance()->getRealValue('archivePaths')->home;
+        $params[PrmMng::PARAM_SKIP_PATH_REPLACE] = new ParamForm(
             PrmMng::PARAM_SKIP_PATH_REPLACE,
             ParamForm::TYPE_BOOL,
+            ParamForm::FORM_TYPE_CHECKBOX,
             array(
-            'default' => false
+                'default' => in_array($oldHomePath, array('', '/html'))
+            ),
+            array(
+                'label' => 'Skip Path Replace:',
+                'checkboxLabel' => 'Skips the replacement of the source path',
+                'status' => function (ParamForm $paramObj) {
+                    $sourcePath = PrmMng::getInstance()->getValue(PrmMng::PARAM_PATH_OLD);
+                    if (strlen($sourcePath) == 0) {
+                        return ParamForm::STATUS_DISABLED;
+                    } else {
+                        return ParamForm::STATUS_ENABLED;
+                    }
+                }
             )
         );
     }
@@ -280,12 +296,6 @@ final class ParamDescEngines implements DescriptorInterface
             DUPX_InstallerState::isRestoreBackup($params[PrmMng::PARAM_INST_TYPE]->getValue())
         ) {
             $params[PrmMng::PARAM_ARCHIVE_ACTION]->setValue(DUP_Extraction::ACTION_REMOVE_WP_FILES);
-        }
-
-        if ($params[PrmMng::PARAM_SKIP_PATH_REPLACE]->getStatus() !== ParamItem::STATUS_OVERWRITE) {
-            if (strlen($params[PrmMng::PARAM_PATH_OLD]->getValue()) === 0) {
-                $params[PrmMng::PARAM_SKIP_PATH_REPLACE]->setValue(true);
-            }
         }
 
         if (DUPX_InstallerState::isRestoreBackup($params[PrmMng::PARAM_INST_TYPE]->getValue())) {
@@ -350,7 +360,7 @@ final class ParamDescEngines implements DescriptorInterface
         } else {
             $subNote = <<<SUBNOTEHTML
 * Option enabled when archive has been pre-extracted
-<a href="https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-015-q" target="_blank">[more info]</a>               
+<a href="https://duplicator.com/knowledge-base/how-to-handle-various-install-scenarios" target="_blank">[more info]</a>               
 SUBNOTEHTML;
         }
         if (($zipEnable = ($archiveConfig->isZipArchive() && \DUPX_Conf_Utils::archiveExists() && \DUPX_Conf_Utils::classZipArchiveEnable())) === true) {
@@ -412,14 +422,14 @@ SUBNOTEHTML;
             );
         }
 
-        if ($zipEnable) {
+        if ($manualEnable) {
+            $default = DUP_Extraction::ENGINE_MANUAL;
+        } elseif ($zipEnable) {
             $default = DUP_Extraction::ENGINE_ZIP_CHUNK;
         } elseif ($shellZipEnable) {
             $default = DUP_Extraction::ENGINE_ZIP_SHELL;
         } elseif ($dupEnable) {
             $default = DUP_Extraction::ENGINE_DUP;
-        } elseif ($manualEnable) {
-            $default = DUP_Extraction::ENGINE_MANUAL;
         } else {
             $default = null;
         }

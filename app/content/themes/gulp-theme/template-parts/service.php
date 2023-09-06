@@ -39,20 +39,24 @@ get_header();
     </div>
 </section>
 
-<section class="service-content">
+<section class="service-content сontent_before">
     <div class="container">
         <div class="service-content__wrapper">
             <?php the_field('vidy_saitov'); ?>
         </div>
+        <?php the_field('kontent_do_formy'); ?>
         <?php the_field('podhod_k_sozdaniyu'); ?>
     </div>
 </section>
 
 <?php theme_sidebar( 'form' ); ?>
 
-<section class="service-content__steps">
+<section class="service-content__steps content_after">
     <div class="container">
         <?php the_field('etapy_sozdaniya_sajta'); ?>
+    </div>
+    <div class="container">
+        <?php the_field('kontent_posle_formy'); ?>
     </div>
 </section>
 
