@@ -41,11 +41,7 @@ get_header();
 
 <section class="service-content сontent_before">
     <div class="container">
-        <div class="service-content__wrapper">
-            <?php the_field('vidy_saitov'); ?>
-        </div>
         <?php the_field('kontent_do_formy'); ?>
-        <?php the_field('podhod_k_sozdaniyu'); ?>
     </div>
 </section>
 
@@ -53,16 +49,7 @@ get_header();
 
 <section class="service-content__steps content_after">
     <div class="container">
-        <?php the_field('etapy_sozdaniya_sajta'); ?>
-    </div>
-    <div class="container">
         <?php the_field('kontent_posle_formy'); ?>
-    </div>
-</section>
-
-<section class="service-content__client">
-    <div class="container">
-        <?php the_field('podhod_k_klientam'); ?>
     </div>
 </section>
 <?php get_footer(); ?>
@@ -74,4 +61,15 @@ get_header();
     if(parent.childNodes.length != 0) {
         section.style.display = 'none';
     }
+
+    const listParent = document.querySelectorAll('ol');
+
+    listParent.forEach(parentItem => {
+        const listChild = parentItem.querySelectorAll('li');
+        listChild.forEach(listItem => {
+            if(listItem.childNodes.length > 1) {
+                parentItem.classList.add('list_bold');
+            }
+        })
+    })
 </script>
