@@ -224,7 +224,7 @@ get_header();
                   <div class="services__item">
                     <?php the_post_thumbnail(); ?>
                     <p class="name"><?php the_title(); ?></p>
-                    <p class="desk"><?php echo get_bloginfo( 'description' )?></p>
+                    <p class="desk"><?php echo substr(the_field('opisanie_dlya_kartochki'), 0, 5) . '...'; ?></p>
                   </div>
                 </div>
               <?php } ?>

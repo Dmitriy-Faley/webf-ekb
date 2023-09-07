@@ -36,6 +36,24 @@
                     display: list-item;
                 }
             }
+
+            ol {
+                margin-left: 20px;
+                width: 820px;
+                margin-left: 30px;
+
+                li {
+                    list-style-type: decimal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 24px;
+                    margin-bottom: 20px;
+
+                    p {
+                        padding-top: 10px;
+                    }
+                }
+            }
         }
     }
 
@@ -165,7 +183,7 @@
         ol {
             margin-left: 20px;
             width: 820px;
-            margin-left: 44px;
+            margin-left: 30px;
 
             li {
                 list-style-type: decimal;
@@ -307,7 +325,7 @@
         }
 
         ol {
-            margin-left: 44px;
+            margin-left: 30px;
             li {
                 list-style-type: decimal;
             }
@@ -364,7 +382,25 @@
                         }
                     }
                 }
+
+                ol {
+                    width: 598px;
+                    margin-left: 34px;
+
+                    li {
+                        list-style-type: decimal;
+                        font-size: 14px;
+                        line-height: 21px;
+                        margin-bottom: 14px;
+
+                        p {
+                            padding-top: 10px;
+                        }
+                    }
+                }
             }
+
+
         }
     
         .button {
@@ -635,6 +671,21 @@
                     padding-bottom: 20px;
                     line-height: 24px;
                 }
+
+                ol {
+                    width: 708px;
+                    margin-left: 24px;
+
+                    li {
+                        list-style-type: decimal;
+
+                        p {
+                            padding-top: 10px;
+                            width: 100%;
+                        }
+                    }
+                }
+
             }
         }
     
@@ -842,6 +893,28 @@
                     font-size: 14px;
                     padding-bottom: 15px;
                     line-height: 21px;
+                }
+
+                ol {
+                    width: 100%;
+                    margin-right: 16px;
+                    margin-left: 16px;
+
+                    li {
+                        margin-bottom: 40px;
+                        font-weight: 600;
+                        font-size: 20px;
+                        line-height: 24px;
+                        margin-bottom: 40px;
+
+                        p {
+                            margin-top: 20px;
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 21px;
+                            width: 100%;
+                        }
+                    }
                 }
             }
         }
