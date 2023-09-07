@@ -142,7 +142,8 @@
 
 		const deleteArrowDesc = headerMenu.querySelectorAll('li');
 		const deleteArrowMob = mobilHeaderMenu.querySelectorAll('li');
-		const heightOfMenu = headerMenu.querySelectorAll('li')
+		const listOfMenus = headerMenu.querySelectorAll('ul.sub-menu');
+
 
 		const firstArrows = [...firstLevelArrow];
 		const secondArrows = [...secondLevelArrow];
@@ -150,7 +151,12 @@
 
 		let count = 0;
 
-		
+		if(window.clientWidth >= 1369) {
+			headerMenu.style.height = '712px';
+		} else if (window.clientWidth <= 1368) {
+			headerMenu.style.height = '512px';
+		}
+
 		if (document.documentElement.clientWidth > 1e3) {
 			closeButton.style.display = 'none';
 
@@ -176,6 +182,7 @@
 						e.target.classList.add("activeLi"), 
 						e.target.closest("li").querySelector("ul") && (e.target.closest("li").querySelector("ul").classList.add("activeUl"), 
 						hoverLastLinks(e.target.closest("li").querySelector("ul")));
+						// headerMenu.style.height = '900px';
 					})
 				})
 			}
@@ -194,12 +201,7 @@
 						e.querySelectorAll("li>a").forEach(e => {
 							e.classList.contains("activeLi") && e.classList.remove("activeLi")
 						}), l.target.classList.add("activeLi");
-						headerMenu.style.height = window.getComputedStyle(subSubMenu).height;
-						console.log('y')
-					})
-					l.addEventListener("mouseleave", l => {
-							headerMenu.style.height = 'fix-content';
-							console.log('j')
+						headerMenu.style.height = '1102px';
 					})
 				})
 			}
@@ -207,6 +209,7 @@
 			subSubMenu.addEventListener('mouseover', (e) => {
 				subSubMenu.classList.add('activeUl');
 			});
+
 			subSubMenu.addEventListener('mouseleave', (e) => {
 				subSubMenu.classList.remove('activeUl');
 			});
@@ -375,5 +378,14 @@
 			if(!arrow.classList.contains('menu-item-has-children')) {
 				arrowSpanM.style.display = 'none';
 			}
+		})
+
+		listOfMenus.forEach(list => {
+			list.addEventListener('mouseover', (e) => {
+				if(list.childNodes.length > 15) {
+					headerMenu.style.overflow  = 'auto';
+					headerMenu.style.height = '712px';
+				}
+			})
 		})
 	</script>
