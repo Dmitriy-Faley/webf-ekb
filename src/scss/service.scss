@@ -942,6 +942,14 @@
                     margin-bottom: 15px;
                     margin-right: 16px;
                     display: list-item;
+                    &::before {
+                        content: '·';
+                        color:#0E0F11;
+                        font-size: 35px;
+                        line-height: 24px;
+                        position: absolute;
+                        margin: -2px -20px 0;
+                    }
 
                     a {
                         color: #DC7148;
@@ -1083,6 +1091,15 @@
                             margin-right: 16px;
                             display: list-item;
                         }
+
+                        &::before {
+                            content: '·';
+                            color:#0E0F11;
+                            font-size: 35px;
+                            line-height: 24px;
+                            position: absolute;
+                            margin: -2px -20px 0;
+                        }
                     }
                 }
 
@@ -1108,6 +1125,17 @@
                     margin-bottom: 15px;
                     margin-right: 16px;
                     display: list-item;
+                }
+            }
+
+            ul {
+                li::before {
+                    content: '·';
+                    color:#0E0F11;
+                    font-size: 35px;
+                    line-height: 24px;
+                    position: absolute;
+                    margin: -2px -20px 0;
                 }
             }
 

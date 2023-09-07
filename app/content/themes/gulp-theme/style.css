@@ -432,7 +432,7 @@ Version: 1.0
 		color: #dc7148;
 	}
 
-	.mobile-menu__ul>li:first-child>ul>li>a>span {
+	.mobile-menu__ul>li>ul>li>a>span {
 		content: "";
 		display: inline-block;
 		background: url("/content/themes/gulp-theme/assets/img/icons/tablet-sub-arrow.svg");
@@ -443,7 +443,7 @@ Version: 1.0
 		margin-left: 12px;
 	}
 
-	.mobile-menu__ul>li:first-child>ul>li>a.activeMobilA>span {
+	.mobile-menu__ul>li>ul>li>a.activeMobilA>span {
 		background: url("/content/themes/gulp-theme/assets/img/icons/tablet-active-sub-arrow.svg");
 		background-repeat: no-repeat;
 	}
@@ -456,7 +456,7 @@ Version: 1.0
 		padding: 4px;
 	}
 
-	.mobile-menu__ul>li>ul>li>ul>li:first-child>a>span {
+	.mobile-menu__ul>li>ul>li>ul>li>a>span {
 		content: "";
 		display: inline-block;
 		background: url("/content/themes/gulp-theme/assets/img/icons/tablet-sub-sub-arrow.svg");
@@ -673,7 +673,7 @@ Version: 1.0
 		line-height: 120%;
 	}
 	
-	.mobile-menu__ul>li:first-child>ul>li>a>span {
+	.mobile-menu__ul>li>ul>li>a>span {
 		content: "";
 		display: inline-block;
 		background: url("/content/themes/gulp-theme/assets/img/icons/mobile-sub-menu.svg");

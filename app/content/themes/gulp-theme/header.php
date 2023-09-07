@@ -140,19 +140,16 @@
 
 		const openSub = document.querySelector(".mobile-menu__ul");
 
+		const deleteArrowDesc = headerMenu.querySelectorAll('li');
+		const deleteArrowMob = mobilHeaderMenu.querySelectorAll('li');
+		const heightOfMenu = headerMenu.querySelectorAll('li')
+
 		const firstArrows = [...firstLevelArrow];
 		const secondArrows = [...secondLevelArrow];
 		const thirdArrows = [...thirdLevelArrow];
 
 		let count = 0;
 
-
-		//open and close menu
-		if(window.clientWidth >= 1369) {
-			headerMenu.style.height = '712px';
-		} else if (window.clientWidth <= 1368) {
-			headerMenu.style.height = '512px';
-		}
 		
 		if (document.documentElement.clientWidth > 1e3) {
 			closeButton.style.display = 'none';
@@ -197,22 +194,18 @@
 						e.querySelectorAll("li>a").forEach(e => {
 							e.classList.contains("activeLi") && e.classList.remove("activeLi")
 						}), l.target.classList.add("activeLi");
-							headerMenu.style.height = '1102px';
+						headerMenu.style.height = window.getComputedStyle(subSubMenu).height;
+						console.log('y')
 					})
 					l.addEventListener("mouseleave", l => {
-							headerMenu.style.height = '712px';
+							headerMenu.style.height = 'fix-content';
+							console.log('j')
 					})
 				})
 			}
 
 			subSubMenu.addEventListener('mouseover', (e) => {
 				subSubMenu.classList.add('activeUl');
-
-				if(subSubMenu.classList.contains('activeUl')) {
-					headerMenu.style.height = '1102px';
-				} else {
-					headerMenu.style.height = '712px';
-				}
 			});
 			subSubMenu.addEventListener('mouseleave', (e) => {
 				subSubMenu.classList.remove('activeUl');
@@ -259,7 +252,6 @@
 					el.addEventListener('mouseover', (e) => {
 						el.classList.add('activeSpan');
 						el.parentNode.classList.add('activeSpan');
-						console.log('d')
 					})
 				})
 
@@ -269,7 +261,6 @@
 						el.classList.remove('activeLi');
 						el.parentNode.classList.remove('activeLi');
 						el.parentNode.classList.remove('activeSpan');
-						console.log('s')
 					})
 				})
 			}
@@ -309,13 +300,15 @@
 			firstArrows.forEach(el => {
 				el.addEventListener('click', (e) => {
 					e.preventDefault();
+					const targetOne = el.parentNode.parentNode;
+					const levelOne = targetOne.querySelector('ul');
 					if(el.parentNode.innerHTML === "О компании<span></span>") {
-						secondLevel.classList.toggle('activeMobileUl');
+						levelOne.classList.toggle('activeMobileUl');
 						subSecondLevel.classList.toggle('activeMobileUl');
 						el.parentNode.classList.toggle('activeMobilALarge');
 						openSub.classList.toggle('sub-open');
 					} else {
-						secondLevel.classList.toggle('activeMobileUl');
+						levelOne.classList.toggle('activeMobileUl');
 						el.parentNode.classList.toggle('activeMobilA');
 						openSub.classList.toggle('open');
 					}
@@ -329,7 +322,9 @@
 			secondArrows.forEach(el => {
 				el.addEventListener('click', (e) => {
 					e.preventDefault();
-					thirdLevel.classList.toggle('activeMobileUl');
+					const targetTwo = el.parentNode.parentNode;
+					const levelTwo = targetTwo.querySelector('ul');
+					levelTwo.classList.toggle('activeMobileUl');
 					el.parentNode.classList.toggle('activeMobilA');
 
 					if(e.target.elementName === "a") {
@@ -341,12 +336,14 @@
 			thirdArrows.forEach(el => {
 				el.addEventListener('click', (e) => {
 					e.preventDefault();
-					fourthLevel.classList.toggle('activeMobileUl');
+					const targetThree = el.parentNode.parentNode;
+					const levelThree = targetThree.querySelector('ul')
+					levelThree.classList.toggle('activeMobileUl');
 					el.parentNode.classList.toggle('activeMobilA');
-					if(!fourthLevel.classList.contains('activeMobileUl')) {
-						fourthLevel.style.display = 'none';
+					if(!levelThree.classList.contains('activeMobileUl')) {
+						levelThree.style.display = 'none';
 					} else {
-						fourthLevel.style.display = 'block';
+						levelThree.style.display = 'block';
 					}
 
 					if(e.target.elementName === "a") {
@@ -363,6 +360,20 @@
 			}
 			if(menuTwo.classList.contains('activeUl') && target !== menuTwo) {
 				closeButton.click();
+			}
+		})
+
+		deleteArrowDesc.forEach(arrow => {
+			const arrowSpan =arrow.querySelector('span');
+			if(!arrow.classList.contains('menu-item-has-children')) {
+				arrowSpan.style.display = 'none';
+			}
+		})
+
+		deleteArrowMob.forEach(arrow => {
+			const arrowSpanM = arrow.querySelector('span');
+			if(!arrow.classList.contains('menu-item-has-children')) {
+				arrowSpanM.style.display = 'none';
 			}
 		})
 	</script>
