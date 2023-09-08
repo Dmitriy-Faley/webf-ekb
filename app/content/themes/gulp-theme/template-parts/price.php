@@ -135,11 +135,9 @@ get_header();
 
 
 
-    window.addEventListener('DOMContentLoaded', (e) => {
-        const filterItem = document.querySelectorAll('.tabs__btn');
+    const filterItem = document.querySelectorAll('.tabs__btn');
 
-        filterItem[0].classList.add('tabs__btn_active');
-    })
+    filterItem[0].classList.add('tabs__btn_active');
 </script>
 
 

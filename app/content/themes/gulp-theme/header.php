@@ -182,7 +182,7 @@
 						e.target.classList.add("activeLi"), 
 						e.target.closest("li").querySelector("ul") && (e.target.closest("li").querySelector("ul").classList.add("activeUl"), 
 						hoverLastLinks(e.target.closest("li").querySelector("ul")));
-						headerMenu.style.height = '900px';
+						headerMenu.style.height = '880px';
 					})
 				})
 			}
@@ -201,7 +201,7 @@
 						e.querySelectorAll("li>a").forEach(e => {
 							e.classList.contains("activeLi") && e.classList.remove("activeLi")
 						}), l.target.classList.add("activeLi");
-						headerMenu.style.height = '900px';
+						headerMenu.style.height = '880px';
 					})
 				})
 			}
@@ -384,7 +384,6 @@
 			list.addEventListener('mouseover', (e) => {
 				if(list.childNodes.length > 15) {
 					headerMenu.style.overflow  = 'auto';
-					headerMenu.style.height = '712px';
 				}
 			})
 		})
