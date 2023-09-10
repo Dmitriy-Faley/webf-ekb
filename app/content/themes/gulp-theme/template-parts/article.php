@@ -92,7 +92,7 @@ get_header();
 <section class="article__more">
     <div class="container">
         <div class="article__content">
-            <?php the_field('chitat_dalshe'); ?>
+            <h2>Читать дальше</h2>
             <div class="projects__content">
             <?php
                 // запрос
