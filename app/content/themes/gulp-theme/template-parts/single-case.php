@@ -287,19 +287,24 @@ body {
         <?php
             // запрос
             $wpb_all_query = new WP_Query(array(
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'keyscat',
+                        'field'    => 'id',
+                        'terms'    => '28'
+                    )
+                ),
                 'post_type'=>'keys',
                 'post_status'=>'publish',
-                'posts_per_page'=>3,
-                'order' => 'DESC'));
-            ?>
+            ));?>
 
             <?php if ( $wpb_all_query->have_posts() ) : ?>
             <ul class="card-list">
                 <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
-                    <div class="projects__content__item <?php $post_categories = get_the_category($wpb_all_query->the_post);
-                                        foreach ($post_categories as $post_category) {
-                                            echo ' '. $post_category->slug.' ';
-                                            }; ?>">
+                    <div class="projects__content__item <?php $post_categories = get_the_terms(get_the_ID(), "keyscat");
+                                   foreach ($post_categories as $post_category) {
+                                      echo ' '. $post_category->slug.' ';
+                                    }; ?>">
                         <div>
                         <a href="<?php the_permalink(); ?>" class="item__img">
                                         <?php the_post_thumbnail(); ?>
@@ -307,10 +312,10 @@ body {
                         </div>
                         <div class="item__data">
                             <div class="data__tag">
-                                    <?php $post_categories = get_the_category($wpb_all_query->the_post);
-                                        foreach ($post_categories as $post_category) {
-                                            echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
-                                        }; ?>
+                            <?php $post_categories = get_the_terms(get_the_ID(), "keyscat");
+                                   foreach ($post_categories as $post_category) {
+                                       echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
+                                    }; ?>
                             </div>
                             <div class="data__info">
                             <a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>

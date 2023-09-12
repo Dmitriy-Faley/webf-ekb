@@ -91,7 +91,13 @@ get_header();
                             </div>
                             <div class="data__info">
                                 <a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
-                                <p class="desk">Сфера проекта</p>
+                                <p class="desk"><?php while (have_rows('shapka_kejsa')): the_row();
+                                        ?>
+                                        <?php if( get_row_layout() == 'Описание' ):
+                                            ?>
+                                        <?php the_sub_field('klient'); ?>
+                                        <?php endif; ?>
+                                        <?php endwhile; ?></p>
                             </div>
                         </div>
                     </div>
@@ -433,3 +439,44 @@ get_header();
 
 
 <?php get_footer(); ?>
+
+<script>
+  function get_vw() {
+    return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  }
+
+  var current = $(window).scrollTop();
+  var brands_title = $(".strip .text");
+
+  $(window).on("scroll", function (event) {
+    current = $(window).scrollTop();
+
+    if(brands_title.offset() !== 'undefined') {
+      brands_title_top = brands_title.offset().top;
+      brands_title_diff = current - brands_title_top + 100;
+      brands_title_newPosition =
+        (get_vw() - brands_title.outerWidth()) / 2 + brands_title_diff;
+
+      brands_title.stop().css({
+        left: brands_title_newPosition + "px",
+      });
+    } else {
+      return;
+    }
+  });
+
+  var service = $(".swiper-wrapper");
+
+  $(window).on("scroll", function (event) {
+    let current = $(window).scrollTop();
+
+    service_top = service.offset().top;
+    service_diff = current - service_top + 100;
+    service_newPosition =
+      (get_vw() - service.outerWidth()) / 2 + service_diff;
+
+    service.stop().css({
+      right: service_newPosition + "px",
+    });
+  });
+</script>

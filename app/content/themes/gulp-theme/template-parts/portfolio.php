@@ -58,7 +58,13 @@ get_header();
                             </div>
                             <div class="data__info">
                                 <a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
-                                <p class="desk">Сфера проекта</p>
+                                <p class="desk"><?php while (have_rows('shapka_kejsa')): the_row();
+                                        ?>
+                                        <?php if( get_row_layout() == 'Описание' ):
+                                            ?>
+                                        <?php the_sub_field('klient'); ?>
+                                        <?php endif; ?>
+                                        <?php endwhile; ?></p>
                             </div>
                         </div>
                     </div>
