@@ -169,7 +169,7 @@ body {
 
                         <img src="<?php echo $image['url']; ?>" alt="typography_right">
                         <p class="color-hex">HEX</p>
-                        <?php echo $firsthex; ?>
+                        <p><?php echo $firsthex; ?></p>
                 </div>
                 <?php endwhile; ?>
                 <?php endif; ?>
