@@ -529,7 +529,8 @@ function register_keys_post_type() {
 			'not_found'          => 'Кейсы не найдены',
 			'not_found_in_trash' => 'В корзине кейсов не найдено',
 			'parent_item_colon'  => '',
-			'menu_name'          => 'Портфолио'
+			'menu_name'          => 'Портфолио',
+			'attributes'     	 => 'page-attributes',
 		),
 		'description'         => '',
 		'public'              => true,
@@ -541,11 +542,11 @@ function register_keys_post_type() {
 		'exclude_from_search' => false,
 		'capability_type'     => 'post',
 		'map_meta_cap'        => true,
-		'hierarchical'        => false,
+		'hierarchical'        => true,
 		'rewrite'             => array( 'slug'=>'keys/%keyscat%', 'with_front'=>false, 'pages'=>false, 'feeds'=>false, 'feed'=>false ),
 		'has_archive'         => 'keys',
 		'query_var'           => true,
-		'supports'            => array( 'title', 'editor' , 'thumbnail'),
+		'supports'            => array( 'title', 'editor', 'page-attributes' , 'thumbnail'),
 		'taxonomies'          => array( 'keyscat' ),
 	] );
 
