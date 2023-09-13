@@ -229,7 +229,7 @@ get_header();
                 <div class="swiper-slide">
                   <div class="services__item">
                     <?php the_post_thumbnail(); ?>
-                    <p class="name"><?php the_title(); ?></p>
+                    <p class="name"><a href="<?php echo get_page_uri($post -> ID) ; ?>"><?php the_title(); ?></a></p>
                     <p class="desk"><?php the_field('opisanie_dlya_kartochki'); ?></p>
                   </div>
                 </div>

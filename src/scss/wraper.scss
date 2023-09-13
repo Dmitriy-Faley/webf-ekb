@@ -557,11 +557,19 @@
         transition: all 0.2s ease-in;
         color: #DC7148;
         padding: 20px 0;
+
+      a {
+        color: #DC7148;
+      }
       }
 
       &:hover {
         .name {
           color: #0E0F11;
+
+          a {
+            color: #0E0F11;
+          }
         }
       }
     }

@@ -342,6 +342,10 @@ body {
 <script>
     const accordionItem = document.querySelectorAll('.step-item');
 
+    const activeMenuItem = document.querySelector('#menu-item-49');
+    activeMenuItem.classList.add('current-menu-item');
+    activeMenuItem.classList.add('current_page_item');
+
     accordionItem.forEach(item => {
         const button = item.querySelector('p>span');
         const field = item.querySelector('.inner');
@@ -363,8 +367,6 @@ body {
     })
 
     const pageMore = document.querySelector('.page-more');
-    console.log(pageMore.childNodes.length)
-
     if(pageMore.childNodes.length <= 3) {
         pageMore.style.display = 'none';
     }
