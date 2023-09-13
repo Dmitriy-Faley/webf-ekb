@@ -348,9 +348,9 @@ body {
         button.addEventListener('click', (e) => {
             if(button.classList.contains('open')){
                 field.classList.remove('vis');
+                field.classList.remove('open');
                 setTimeout(() => {
                     button.classList.remove('open');
-                    field.classList.remove('open');
                 }, 100)
             } else {
                 button.classList.add('open');
