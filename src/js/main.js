@@ -135,6 +135,7 @@ class ItcAccordion {
 	constructor(target, config) {
 	  this._el = typeof target === 'string' ? document.querySelector(target) : target;
 	  const defaultConfig = {
+		parent: true,
 		alwaysOpen: true,
 		duration: 400
 	  };
@@ -223,7 +224,6 @@ class ItcAccordion {
   new ItcAccordion(document.querySelector('.accordion'), {
 	alwaysOpen: false
   });
-
 /* (function ($) {
 
 	$.fn.iComputerSlide = function (options) {

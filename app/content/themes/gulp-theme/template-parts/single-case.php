@@ -96,23 +96,21 @@ body {
                 <div class="steps-accordion">
             <?php while (have_rows('etapy_razrabotki')): the_row();?>
             <?php if( get_row_layout() == 'Аккордион этапов' ):?>
-                <?php while (have_rows('Etap')): the_row();?>
-                <?php while (have_rows('nazvanie_etapa')): the_row();
+                <?php while (have_rows('Etap')): the_row();
+                        $name = get_sub_field('nazvanie_etapa');
+                ?>
+                <?php while (have_rows('soderzhanie_etapa')): the_row();
+                        $entry = get_sub_field('vnutrennee_opisanie');
                 ?>
                     <div class="step-item">
-                    <?php echo the_sub_field('nazvanie_etapa'); ?>
-                    <span></span>
+                        <p class="toggle"><?php echo $name; ?><span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                <rect x="9" width="1" height="19" rx="0.5" fill="#0E0F11"/>
+                                <rect x="19" y="9" width="1" height="19" rx="0.5" transform="rotate(90 19 9)" fill="#0E0F11"/>
+                            </svg>
+                        </span></p>
                         <div class="inner">
-                                <?php while (have_rows('Etap')): the_row();?>
-                                <?php while (have_rows('nazvanie_etapa')): the_row();
-                                ?>
-                                <?php while (have_rows('soderzhanie_etapa')): the_row();?>
-                                    <div class="inner-descr">
-                                    <?php echo get_sub_field('vnutrennee_opisanie'); ?>
-                                    </div>
-                                <?php endwhile; ?>
-                                <?php endwhile; ?>
-                                <?php endwhile; ?>
+                            <?php echo $entry; ?>
                         </div>
                     </div>
                 <?php endwhile; ?>
@@ -340,3 +338,27 @@ body {
     </div>
 </section>
 <?php get_footer(); ?>
+
+<script>
+    const accordionItem = document.querySelectorAll('.step-item');
+
+    accordionItem.forEach(item => {
+        const button = item.querySelector('p>span');
+        const field = item.querySelector('.inner');
+        button.addEventListener('click', (e) => {
+            if(button.classList.contains('open')){
+                field.classList.remove('vis');
+                setTimeout(() => {
+                    button.classList.remove('open');
+                    field.classList.remove('open');
+                }, 100)
+            } else {
+                button.classList.add('open');
+                field.classList.add('open');
+                setTimeout(() => {
+                    field.classList.add('vis');
+                }, 100)
+            }
+        })
+})
+</script>
