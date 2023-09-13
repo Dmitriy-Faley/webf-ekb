@@ -360,5 +360,12 @@ body {
                 }, 100)
             }
         })
-})
+    })
+
+    const pageMore = document.querySelector('.page-more');
+    console.log(pageMore.childNodes.length)
+
+    if(pageMore.childNodes.length <= 3) {
+        pageMore.style.display = 'none';
+    }
 </script>
