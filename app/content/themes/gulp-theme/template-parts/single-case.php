@@ -334,7 +334,7 @@ body {
                 <?php wp_reset_postdata(); ?>
                 <?php endif; ?>
         </div>
-        <button class="button button-more" id="blogs-more">Все проекты</button>
+        <button class="button button-more" id="keys-more">Все проекты</button>
     </div>
 </section>
 <?php get_footer(); ?>
@@ -368,4 +368,9 @@ body {
     if(pageMore.childNodes.length <= 3) {
         pageMore.style.display = 'none';
     }
+
+    const moreButton = document.querySelector('#keys-more');
+    moreButton.addEventListener('click', (e) => {
+        document.querySelector('#menu-item-49 a').click();
+    })
 </script>

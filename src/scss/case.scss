@@ -470,7 +470,6 @@
                 }
 
                 p {
-                    padding-left: 10px;
                     width: 640px;
                     font-size: 16px;
                     font-style: normal;
@@ -482,7 +481,6 @@
             margin-top: 30px;
             padding-bottom: 40px;
             display: flex;
-            gap: 355px;
 
             .tech-descr {
                 h2 {
@@ -696,8 +694,8 @@
 @media screen and (max-width: 1366px) {
     .keys {
         .container {
-            margin: 100px auto 70px;
-            width: 996px;
+            margin: 50px auto 70px;
+            min-width: 996px;
             background-color: #ffffff;
             border: none;
             border-radius: 28.5px;
@@ -877,17 +875,74 @@
                     line-height: 120%;
                 }
 
-                p {
-                    width: 455px;
-                    font-size: 11px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: 150%;
+                .steps-wrapper {
+                    p {
+                        width: 455px;
+                        font-size: 11px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 150%;
+                    }
+
+                    .steps-accordion {
+                        width: 455px;
+                        margin: 30px 0 0;
+
+                        .step-item {
+                            position: relative;
+                            border-bottom: 1px solid #D9D9D9;
+                            padding: 12px 0;
+                            cursor: pointer;
+                            p {
+                                width: 100%;
+                                font-size: 14px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 120%;
+                                span {
+                                    position: absolute;
+                                    right: 0;
+                                }
+
+                                span.open {
+                                    transform: rotate(90deg);
+                                    transition: all .7s ease;
+                                }
+                            }
+
+                            .inner {
+                                cursor: default;
+                                height: 0;
+                                margin: 0;
+                                visibility: hidden;
+                                width: 100%;
+                                font-size: 11px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 120%;
+                                transition: all .2s ease-in-out;
+                            }
+
+                            .inner.open {
+                                height: auto;
+                                margin: 12px 0;
+                                transition: all .7s ease-in-out;
+                            }
+
+                            .inner.vis {
+                                visibility: visible;
+                            }
+                        }
+
+                        .step-item:first-child {
+                            border-top: 1px solid #D9D9D9;
+                        }
+                    }
                 }
             }
 
             .keys__graph {
-                margin-top: 21px;
+                margin-top: 22px;
                 border-bottom: 1px solid #D9D9D9;
                 padding-bottom: 78px;
 
@@ -909,13 +964,14 @@
                             font-weight: 400;
                             line-height: 150%;
                         }
+
                 }
 
                 .graph-images {
                     display: flex;
                     justify-content: space-between;
                     margin-top: 50px;
-                    gap: 40px;
+                    gap: 28px;
 
                     img {
                         width: 455px;
@@ -929,7 +985,7 @@
                         flex-direction: column;
                         gap: 28.5px;
                         img {
-                            width: 455px;
+                            min-width: 455px;
                             height: 219px;
                             border-radius: 21px;
                         }
@@ -937,15 +993,15 @@
                 }
             }
             .keys__color {
-                margin-top: 21px;
+                margin-top: 22px;
                 border-bottom: 1px solid #D9D9D9;
-                padding-bottom: 78px;
+                padding-bottom: 73px;
 
                 .color-description {
                     display: flex;
                     justify-content: space-between;
                     gap: 325px;
-                    margin-bottom: 28px;
+                    margin-bottom: 50px;
                         h2 {
                             font-size: 17px;
                             font-style: normal;
@@ -971,7 +1027,12 @@
                         .color-hex {
                             color:#ACAFB5;
                             margin-top: 7px;
-                            margin-bottom: 1px;
+                            margin-bottom: -3px;
+                            font-size: 12px;
+                        }
+
+                        p {
+                            font-size: 12px;
                         }
 
                         img {
@@ -991,12 +1052,11 @@
             .keys__arhitect {
                 margin-top: 21px;
                 border-bottom: 1px solid #D9D9D9;
-                padding-bottom: 78px;
+                padding-bottom: 99px;
 
                 .arhitect-description {
                     display: flex;
                     justify-content: space-between;
-                    gap: 325px;
                         h2 {
                             font-size: 17px;
                             font-style: normal;
@@ -1014,7 +1074,7 @@
                 }
 
                 .arhitect-images {
-                    margin-top: 50px;
+                    margin-top: 53px;
                     width: 100%;
 
                     img {
@@ -1040,7 +1100,7 @@
                         }
 
                         p {
-                            width: 455px;
+                            width: 454px;
                             font-size: 11px;
                             font-style: normal;
                             font-weight: 400;
@@ -1050,7 +1110,7 @@
 
                 .page-image {
                     width: 100%;
-                    margin-top: 50px;
+                    margin-top: 76px;
 
                     img {
                         width: 100%;
@@ -1094,10 +1154,9 @@
             .keys__seo {
                 margin-top: 21px;
                 border-bottom: 1px solid #D9D9D9;
-                padding-bottom: 78px;
+                padding-bottom: 82px;
                 display: flex;
                 justify-content: space-between;
-                gap: 325px;
 
                     h2 {
                         font-size: 17px;
@@ -1116,9 +1175,9 @@
             }
             .keys__tech {
                 margin-top: 21px;
-                padding-bottom: 75px;
+                padding-bottom: 32px;
                 display: flex;
-                gap: 252px;
+                gap: 254px;
 
                 .tech-descr {
                     h2 {
@@ -1130,12 +1189,12 @@
 
                     .tech-items {
                         display: flex;
-                        gap: 15px;
+                        gap: 10px;
                         margin-top: 22px;
 
                         div {
                             border-radius: 50%;
-                            padding: 8.5px 9px;
+                            padding: 7px 8.5px;
                             background-color: #FDD0BF;
 
                             img {
@@ -1156,7 +1215,7 @@
                     }
 
                     .over-left, .under-left {
-                        margin-bottom: 18px;
+                        margin-bottom: 14px;
                     }
 
                     .front, .back, .design, .inter {
@@ -1253,6 +1312,10 @@
 
         .button-more {
             margin: 43px auto 107px;
+            font-size: 11.383px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 140%;
         }
     }
 }
