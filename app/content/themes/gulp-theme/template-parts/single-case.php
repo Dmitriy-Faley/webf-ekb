@@ -9,7 +9,14 @@ get_header();
 body {
     background: <?php the_field('czvet_fona'); ?> !important;
 }
+
+<?php if( the_field('czvet_fona') === '#1f1f1f'):?>
+    body {
+        color: #ffffff;
+    }
+<?php endif; ?>
 </style>
+<span class="back_color" style="height: 0; visibility: hidden; margin: 0; padding: none;"><?php the_field('czvet_fona'); ?></span>
 <section class="keys">
     <div class="container">
         <div class="keys__header">
@@ -147,6 +154,7 @@ body {
             <?php endwhile; ?>
             </div>
         </div>
+        <?php if(have_rows('czvetovaya_palitra')):?>
         <div class="keys__color">
             <div class="color-description">
                 <h2>Цветовая палитра</h2>
@@ -174,6 +182,8 @@ body {
                 <?php endwhile; ?>
             </div>
         </div>
+        <?php endif; ?>
+        <?php if(have_rows('informaczionnaya_arhitektura')):?>
         <div class="keys__arhitect">
             <div class="arhitect-description">
                 <h2>Информационная архитектура</h2>
@@ -193,11 +203,10 @@ body {
             <?php endwhile; ?>
             </div>
         </div>
+        <?php endif; ?>
         <div class="keys__pages">
             <?php while (have_rows('opisanie_stranicz')): the_row();?>
-            <?php if( get_row_layout() == 'Часть страницы' ):
-                $image = get_sub_field('izobrazhenie');
-            ?>
+            <?php if( get_row_layout() == 'Часть страницы' ): ?>
             <div class="page-description">
                 <h2>
                     <?php the_sub_field('zagolovok'); ?>
@@ -205,7 +214,11 @@ body {
                     <?php the_sub_field('opisanie'); ?>
             </div>
             <div class="page-image">
+                <?php while (have_rows('izobrazhenie')): the_row();
+                    $image = get_sub_field('kartinka');
+                 ?>
 				<img src="<?php echo $image['url']; ?>" alt="page_image" />
+                <?php endwhile; ?>
             </div>
             <?php endif; ?>
             <?php endwhile; ?>
@@ -250,10 +263,12 @@ body {
             <?php endwhile; ?>
 
         </div>
+        <?php if(have_rows('seo_optimizacziya')):?>
         <div class="keys__seo">
             <h2>SEO оптимизация</h2>
             <?php the_field('seo_optimizacziya'); ?>
         </div>
+        <?php endif; ?>
         <div class="keys__tech">
             <div class="tech-descr">
                 <h2>Используемые технологии</h2>
@@ -273,23 +288,36 @@ body {
                 <?php while (have_rows('ispolzuemye_tehnologii')): the_row();?>
                 <?php if( get_row_layout() == 'схема технологий' ): ?>
                 <div class="list-over">
-                    <div class="over-left">
+                    <div class="over-left <?php if(empty(get_sub_field('frontend'))): ?>
+                            none
+                        <?php endif; ?>
+                        ">
                         <p class="front"><span>Фронтэнд</span></p>
                         <p class="front"><?php the_sub_field('frontend'); ?></p>
                     </div>
-                    <div class="over-right">
+
+                    <div class="over-right <?php if(empty(get_sub_field('bekend'))): ?>
+                            none
+                        <?php endif; ?>
+                        ">
                         <p class="back"><span>Бэкэнд</span></p>
                         <p class="back"><?php the_sub_field('bekend'); ?></p>
                     </div>
                 </div>
                 <div class="list-under">
-                    <div class="under-left">
+                    <div class="under-left <?php if(empty(get_sub_field('dizajn'))): ?>
+                            none
+                        <?php endif; ?>
+                        ">
                         <p class="design"><span>Дизайн</span></p>
                         <p class="design"><?php the_sub_field('dizajn'); ?></p>
                     </div>
-                    <div class="under-right">
-                        <p class="inter"><span>Интеграции</span></span></p>
-                        <p class="inter"><?php the_sub_field('integracziya'); ?></span></p>
+                    <div class="under-right <?php if(empty(get_sub_field('integracziya'))): ?>
+                            none
+                        <?php endif; ?>
+                        ">
+                        <p class="inter"><span>Интеграции</span></p>
+                        <p class="inter"><?php the_sub_field('integracziya'); ?></p>
                     </div>
                 </div>
                 <?php endif; ?>
@@ -387,21 +415,33 @@ body {
     })
 
     const pageMore = document.querySelector('.page-more>h2');
-    if(pageMore.innerHTML === ' ') {
+    if(pageMore && pageMore.innerHTML === ' ') {
         pageMore.style.display = 'none';
         pageMore.style.margin = '0';
     }
 
     const pageImageMore = document.querySelectorAll('.page-image__more');
+    const typographRight = document.querySelector('.graph-right');
+    const typographLeft = document.querySelector('.graph-images>img');
+
     pageImageMore.forEach(page => {
-        console.log(page.childNodes.length)
         if(page.childNodes.length === 5) {
             page.classList.add('double');
         }
     })
 
+    if(typographRight.childNodes.length) {
+        typographLeft.classList.add('double');
+        typographRight.childNodes[3].style.display = 'none';
+    }
+
     const moreButton = document.querySelector('#keys-more');
     moreButton.addEventListener('click', (e) => {
         document.querySelector('#menu-item-49 a').click();
     })
+
+    const color = document.querySelector('.back_color');
+    if(color === '#1f1f1f') {
+        document.querySelector('.header').style.color = '#111111';
+    }
 </script>
