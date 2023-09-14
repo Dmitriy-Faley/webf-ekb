@@ -209,17 +209,18 @@ body {
             </div>
             <?php endif; ?>
             <?php endwhile; ?>
+
             <?php while (have_rows('opisanie_stranicz')): the_row();?>
             <?php if( get_row_layout() == 'многовариантивные страницы' ):
-                $image = get_sub_field('izobrazhenie');
-            ?>
+                $bigFoto = get_sub_field('glavnoe_foto')
+                ?>
             <div class="page-more">
-            <h2>
-                    <?php the_sub_field('zagolovok'); ?>
-                </h2>
-                    <?php the_sub_field('opisanie'); ?>
+                <h2><?php the_sub_field('zagolovok'); ?> </h2>
+                <?php the_sub_field('opisanie'); ?>
+                        <?php if(!empty($bigFoto)):?>
+                            <img src="<?php echo $bigFoto['url']; ?>" alt="page_image-more" />
+                        <?php endif; ?>
             </div>
-
             <div class="page-image__more">
             <?php while (have_rows('galereya')): the_row();
                         $image = get_sub_field('foto');
@@ -229,6 +230,25 @@ body {
             </div>
             <?php endif; ?>
             <?php endwhile; ?>
+
+            <?php while (have_rows('opisanie_stranicz')): the_row();?>
+            <?php if( get_row_layout() == 'адаптивы' ):?>
+                <div class="page-responsive">
+                    <h2>Адаптивы</h2>
+                    <div class="responsive-slider">
+                    <?php while (have_rows('foto_adaptivov')): the_row();
+                                            $image = get_sub_field('foto');
+                                            $color = get_sub_field('czvet_fona');
+                                        ?>
+                                    <div class="responsive-color" style="background-color: <?php echo $color; ?>">
+                                        <img src="<?php echo $image['url']; ?>" alt="page_image-more" />
+                                    </div>
+                                <?php endwhile; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php endwhile; ?>
+
         </div>
         <div class="keys__seo">
             <h2>SEO оптимизация</h2>
@@ -366,10 +386,19 @@ body {
         })
     })
 
-    const pageMore = document.querySelector('.page-more');
-    if(pageMore.childNodes.length <= 3) {
+    const pageMore = document.querySelector('.page-more>h2');
+    if(pageMore.innerHTML === ' ') {
         pageMore.style.display = 'none';
+        pageMore.style.margin = '0';
     }
+
+    const pageImageMore = document.querySelectorAll('.page-image__more');
+    pageImageMore.forEach(page => {
+        console.log(page.childNodes.length)
+        if(page.childNodes.length === 5) {
+            page.classList.add('double');
+        }
+    })
 
     const moreButton = document.querySelector('#keys-more');
     moreButton.addEventListener('click', (e) => {

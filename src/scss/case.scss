@@ -146,7 +146,7 @@
         }
 
         .keys__about {
-            .about-task, .about-about {
+            .about-project, .about-about {
                 margin-top: 30px;
                 display: flex;
                 border-bottom: 1px solid #D9D9D9;
@@ -387,13 +387,10 @@
             }
         }
         .keys__pages {
-            margin-top: 30px;
-            border-bottom: 1px solid #D9D9D9;
-            padding-bottom: 80px;
-
             .page-description {
                 display: flex;
-                justify-content: space-between;;
+                justify-content: space-between;
+                margin-top: 30px;
                     h2 {
                         min-width: max-content;
                         font-size: 24px;
@@ -414,6 +411,8 @@
             .page-image {
                 width: 100%;
                 margin-top: 80px;
+                padding-bottom: 80px;
+                border-bottom: 1px solid #D9D9D9;
 
                 img {
                     width: 100%;
@@ -423,9 +422,9 @@
 
             .page-more {
                 display: flex;
-                justify-content: space-between;
-                margin-top: 50px;
+                flex-direction: column;
                     h2 {
+                        margin-top: 50px;
                         min-width: max-content;
                         font-size: 24px;
                         font-style: normal;
@@ -433,6 +432,9 @@
                         line-height: 120%;
                     }
 
+                    img {
+                        margin-top: 70px;
+                    }
                     p {
                         width: 640px;
                         font-size: 16px;
@@ -452,6 +454,43 @@
                 img {
                     border-radius: 30px;
                 }
+
+                padding-bottom: 80px;
+                border-bottom: 1px solid #D9D9D9;
+            }
+
+            .page-responsive {
+                margin-top: 50px;
+                width: 100%;
+
+                h2 {
+                    min-width: max-content;
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 120%;
+                }
+
+                .responsive-slider {
+                    margin-top: 70px;
+                    display: flex;
+                    justify-content: space-between;
+                    .responsive-color {
+                        width: 413px;
+                        padding: 66px 92px;
+                        border-radius: 30px;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+                img {
+                    border-radius: 30px;
+                }
+
+                padding-bottom: 80px;
+                border-bottom: 1px solid #D9D9D9;
             }
         }
         .keys__seo {
@@ -836,7 +875,7 @@
             }
 
             .keys__about {
-                .about-task, .about-about {
+                .about-project, .about-about {
                     margin-top: 21px;
                     display: flex;
                     border-bottom: 1px solid #D9D9D9;
@@ -1081,14 +1120,11 @@
                 }
             }
             .keys__pages {
-                margin-top: 21px;
-                border-bottom: 1px solid #D9D9D9;
-                padding-bottom: 56px;
-
                 .page-description {
                     display: flex;
                     justify-content: space-between;
                         h2 {
+                            margin-top: 21px;
                             font-size: 17px;
                             font-style: normal;
                             font-weight: 600;
@@ -1117,13 +1153,18 @@
                 .page-more {
                     display: flex;
                     justify-content: space-between;
-                    margin-top: 35px;
                         h2 {
+                            margin-top: 35px;
                             font-size: 17px;
                             font-style: normal;
                             font-weight: 600;
                             line-height: 120%;
                         }
+
+                        img {
+                            margin-top: 50px;
+                        }
+
 
                         p {
                             width: 455px;
@@ -1145,6 +1186,51 @@
                         width: 219px;
                         border-radius: 21px;
                     }
+
+                    border-bottom: 1px solid #D9D9D9;
+                    padding-bottom: 56px;
+                }
+
+                .page-image__more.double {
+                    img {
+                        width: 455px;
+                        border-radius: 21px;
+                    }
+                }
+
+                .page-responsive {
+                    margin-top: 35px;
+                    width: 100%;
+
+                    h2 {
+                        min-width: max-content;
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 120%;
+                    }
+
+                    .responsive-slider {
+                        margin-top: 50px;
+                        display: flex;
+                        justify-content: space-between;
+                        .responsive-color {
+                            width: 293px;
+                            padding: 47px 65px;
+                            border-radius: 21px;
+
+                            img {
+                                width: 100%;
+                                border-radius: 0px;
+                            }
+                        }
+                    }
+                    img {
+                        border-radius: 30px;
+                    }
+
+                    padding-bottom: 80px;
+                    border-bottom: 1px solid #D9D9D9;
                 }
             }
             .keys__seo {
@@ -1462,7 +1548,7 @@
             }
 
             .keys__about {
-                .about-task, .about-about {
+                .about-project, .about-about {
                     margin-top: 20px;
                     display: flex;
                     border-bottom: 1px solid #D9D9D9;
@@ -1718,15 +1804,12 @@
                 }
             }
             .keys__pages {
-                margin-top: 20px;
-                border-bottom: 1px solid #D9D9D9;
-                padding-bottom: 60px;
-
                 .page-description {
                     display: flex;
                     justify-content: space-between;
                     flex-direction: column;
                         h2 {
+                            margin-top: 20px;
                             font-size: 20px;
                             font-style: normal;
                             font-weight: 600;
@@ -1757,8 +1840,8 @@
                     display: flex;
                     justify-content: space-between;
                     flex-direction: column;
-                    margin-top: 30px;
                         h2 {
+                            margin-top: 30px;
                             font-size: 20px;
                             font-style: normal;
                             font-weight: 600;
@@ -1786,6 +1869,56 @@
                         width: 156px;
                         border-radius: 21px;
                     }
+
+                    border-bottom: 1px solid #D9D9D9;
+                    padding-bottom: 60px;
+                }
+
+                .page-image__more.double {
+                    img {
+                        width: 100%;
+                        border-radius: 21px;
+                        margin-bottom: 30px;
+                    }
+                    img:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+
+                .page-responsive {
+                    margin-top: 35px;
+                    width: 100%;
+
+                    h2 {
+                        min-width: max-content;
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 120%;
+                    }
+
+                    .responsive-slider {
+                        margin-top: 20px;
+                        display: flex;
+                        justify-content: space-between;
+
+                        .responsive-color {
+                            width: 196px;
+                            padding: 41px 45px;
+                            border-radius: 30px;
+
+                            img {
+                                width: 100%;
+                                border-radius: 0;
+                            }
+                        }
+                    }
+                    img {
+                        border-radius: 30px;
+                    }
+
+                    padding-bottom: 60px;
+                    border-bottom: 1px solid #D9D9D9;
                 }
             }
             .keys__seo {
@@ -2107,7 +2240,7 @@
             }
 
             .keys__about {
-                .about-task, .about-about {
+                .about-project, .about-about {
                     margin-top: 20px;
                     display: flex;
                     border-bottom: 1px solid #D9D9D9;
@@ -2194,7 +2327,7 @@
                     img {
                         min-width: 100%;
                         height: 265px;
-                        border-radius: 15px;
+                        border-radius: 10px;
                     }
 
                     .graph-right {
@@ -2205,7 +2338,7 @@
                         img {
                             min-width: 100%;
                             height: 124px;
-                            border-radius: 15px;
+                            border-radius: 10px;
                         }
                     }
                 }
@@ -2225,7 +2358,7 @@
                             font-style: normal;
                             font-weight: 600;
                             line-height: 120%;
-                            margin-bottom: 15px;
+                            margin-bottom: 10px;
                         }
 
                         p {
@@ -2309,15 +2442,13 @@
                 }
             }
             .keys__pages {
-                margin-top: 20px;
-                border-bottom: 1px solid #D9D9D9;
-                padding-bottom: 60px;
-
                 .page-description {
                     display: flex;
                     justify-content: space-between;
                     flex-direction: column;
+                    margin: 0;
                         h2 {
+                            margin-top: 20px;
                             font-size: 20px;
                             font-style: normal;
                             font-weight: 600;
@@ -2340,7 +2471,7 @@
 
                     img {
                         width: 100%;
-                        border-radius: 30px;
+                        border-radius: 10px;
                     }
                 }
 
@@ -2348,8 +2479,8 @@
                     display: flex;
                     justify-content: space-between;
                     flex-direction: column;
-                    margin-top: 30px;
                         h2 {
+                            margin-top: 20px;
                             font-size: 20px;
                             font-style: normal;
                             font-weight: 600;
@@ -2367,7 +2498,7 @@
                 }
 
                 .page-image__more {
-                    margin-top: 30px;
+                    margin-top: 20px;
                     width: 100%;
                     display: flex;
                     flex-wrap: wrap;
@@ -2377,6 +2508,57 @@
                         width: 78px;
                         border-radius: 0;
                     }
+                    border-bottom: 1px solid #D9D9D9;
+                    padding-bottom: 60px;
+                }
+
+                .page-image__more.double {
+                    img {
+                        width: 100%;
+                        border-radius: 10px;
+                        margin-bottom: 30px;
+                    }
+                    img:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+
+                .page-responsive {
+                    margin-top: 35px;
+                    width: 100%;
+
+                    h2 {
+                        min-width: max-content;
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 120%;
+                    }
+
+                    .responsive-slider {
+                        margin-top: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        gap: 20px;
+
+                        .responsive-color {
+                            width: 258px;
+                            padding: 28px 82px;
+                            border-radius: 30px;
+
+                            img {
+                                width: 100%;
+                                border-radius: 0;
+                            }
+                        }
+                    }
+                    img {
+                        border-radius: 30px;
+                    }
+
+                    padding-bottom: 60px;
+                    border-bottom: 1px solid #D9D9D9;
                 }
             }
             .keys__seo {

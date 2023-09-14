@@ -128,7 +128,6 @@
 		//Tablet & Mobile
 		const mobilHeaderMenu = document.querySelector(".mobile-menu__ul>li>ul");
 		const openMobileMenu = document.querySelector(".menu__but-open");
-		const mobilePhon = document.querySelector(".header__phone");
 		const closeMobileButton = document.querySelector(".menu__but-close");
 		const secondLevel = document.querySelector(".block-mobile-menu>ul>li>ul");
 		const thirdLevel = document.querySelector(".mobile-menu__ul>li>ul>li>ul");
@@ -152,247 +151,252 @@
 
 		let count = 0;
 
-		window.addEventListener('resize', (e) => {
-			if(window.clientWidth >= 1369) {
-				headerMenu.style.height = '712px';
-			} else if (window.clientWidth <= 1368) {
-				headerMenu.style.height = '512px';
+		if(window.clientWidth >= 1369) {
+			headerMenu.style.height = '712px';
+		} else if (window.clientWidth <= 1368) {
+			headerMenu.style.height = '512px';
+		}
+
+		if (document.documentElement.clientWidth > 1e3) {
+			closeButton.style.display = 'none';
+
+			function openSecondLevelMenu(e) {
+				e.addEventListener("mouseover", l => {
+					closeButton.style.display = "block",
+					header.classList.add("active_header"),
+					closeMenu(e.closest("ul")),
+					l.target.closest("li>a").classList.add("activeLi"),
+					l.target.closest("li").querySelector("ul") && (l.target.closest("li").querySelector("ul").classList.add("activeUl"),
+					openThirdLevelMenu());
+					if(l.target.innerHTML === 'Портфолио<span></span>' || l.target.innerHTML === 'Контакты<span></span>' || l.target.innerHTML === 'Блог<span></span>') {
+						l.target.classList.remove("activeLi");
+					}
+				})
 			}
 
-			if(window.clientWidth >= 768) {
-				openMobileMenu.style.order = '2';
-				mobilePhon.style.order = '1';
+			function openThirdLevelMenu() {
+				document.querySelectorAll(".activeUl>li>a").forEach(l => {
+					l.parentNode.classList.add('activeLi')
+					l.addEventListener("mouseover", e => {
+						e.preventDefault();
+						closeMenu(document.querySelector(".activeUl")),
+						e.target.classList.add("activeLi"),
+						e.target.closest("li").querySelector("ul") && (e.target.closest("li").querySelector("ul").classList.add("activeUl"),
+						hoverLastLinks(e.target.closest("li").querySelector("ul")));
+						headerMenu.style.height = '880px';
+					})
+				})
 			}
 
-			if (document.documentElement.clientWidth > 1e3) {
-					closeButton.style.display = 'none';
+			function closeMenu(e) {
+				e.querySelectorAll("li>a").forEach(e => {
+					e.classList.contains("activeLi") && e.classList.remove("activeLi")
+				}), e.querySelectorAll("li>ul").forEach(e => {
+					e.classList.contains("activeUl") && e.classList.remove("activeUl")
+				})
+			}
 
-					function openSecondLevelMenu(e) {
-						e.addEventListener("mouseover", l => {
-							closeButton.style.display = "block",
-							header.classList.add("active_header"),
-							closeMenu(e.closest("ul")),
-							l.target.closest("li>a").classList.add("activeLi"),
-							l.target.closest("li").querySelector("ul") && (l.target.closest("li").querySelector("ul").classList.add("activeUl"),
-							openThirdLevelMenu());
-							if(l.target.innerHTML === 'Портфолио<span></span>' || l.target.innerHTML === 'Контакты<span></span>' || l.target.innerHTML === 'Блог<span></span>') {
-								l.target.classList.remove("activeLi");
-							}
-						})
-					}
-
-					function openThirdLevelMenu() {
-						document.querySelectorAll(".activeUl>li>a").forEach(e => {
-							e.parentNode.classList.add('activeLi')
-							e.addEventListener("mouseover", e => {
-								closeMenu(document.querySelector(".activeUl")),
-								e.target.classList.add("activeLi"),
-								e.target.closest("li").querySelector("ul") && (e.target.closest("li").querySelector("ul").classList.add("activeUl"),
-								hoverLastLinks(e.target.closest("li").querySelector("ul")));
-								headerMenu.style.height = '880px';
-							})
-						})
-					}
-
-					function closeMenu(e) {
+			function hoverLastLinks(e) {
+				e.querySelectorAll("li>a").forEach(l => {
+					l.addEventListener("mouseover", l => {
+						return;
+					})
+					l.childNodes[1].addEventListener("click", l => {
+						l.preventDefault();
 						e.querySelectorAll("li>a").forEach(e => {
 							e.classList.contains("activeLi") && e.classList.remove("activeLi")
-						}), e.querySelectorAll("li>ul").forEach(e => {
-							e.classList.contains("activeUl") && e.classList.remove("activeUl")
-						})
+						}), l.target.classList.add("activeLi");
+						headerMenu.style.height = '880px';
+					})
+				})
+			}
+
+			// subSubMenu.addEventListener('mouseover', (e) => {
+			// 	subSubMenu.classList.add('activeUl');
+			// });
+
+			// subSubMenu.addEventListener('mouseleave', (e) => {
+			// 	subSubMenu.classList.remove('activeUl');
+			// });
+
+			// subSubElements.forEach(el => {
+			// 	el.addEventListener('mouseover', (e) => {
+			// 		const parent = el.parentNode;
+			// 		parent.parentNode.classList.add('activeSub');
+			// 	});
+
+			// 	el.addEventListener('mouseleave', (e) => {
+			// 		const parent = el.parentNode;
+			// 		parent.parentNode.classList.remove('activeSub');
+			// 	});
+			// });
+
+			document.querySelectorAll(".main-header-menu").forEach(e => {
+					e.querySelector("ul") && e.querySelector("ul").classList.add("header-menu__ul")
+				}), closeButton.onclick = (() => {
+					closeMenu(document.querySelector(".activeUl")), closeMenu(document.querySelector(".header-menu__ul")),
+						closeButton.style.display = "none", header.classList
+						.remove("active_header")
+				}), closeButton.style.display = "none", header.classList
+				.remove("active_header"), document.querySelectorAll(".header-menu__ul>li>a").forEach(e => {
+					openSecondLevelMenu(e)
+					if(header.classList.contains("active_header")) {
+						body.style.overflow = 'hidden'
 					}
+				})
 
-					function hoverLastLinks(e) {
-						e.querySelectorAll("li>a").forEach(l => {
-							l.addEventListener("mouseover", l => {
-								e.querySelectorAll("li>a").forEach(e => {
-									e.classList.contains("activeLi") && e.classList.remove("activeLi")
-								}), l.target.classList.add("activeLi");
-								headerMenu.style.height = '880px';
-							})
-						})
-					}
-
-					subSubMenu.addEventListener('mouseover', (e) => {
-						subSubMenu.classList.add('activeUl');
-					});
-
-					subSubMenu.addEventListener('mouseleave', (e) => {
-						subSubMenu.classList.remove('activeUl');
-					});
-
-					subSubElements.forEach(el => {
-						el.addEventListener('mouseover', (e) => {
-							const parent = el.parentNode;
-							parent.parentNode.classList.add('activeSub');
-						});
-
-						el.addEventListener('mouseleave', (e) => {
-							const parent = el.parentNode;
-							parent.parentNode.classList.remove('activeSub');
-						});
-					});
-
-					document.querySelectorAll(".main-header-menu").forEach(e => {
-							e.querySelector("ul") && e.querySelector("ul").classList.add("header-menu__ul")
-						}), closeButton.onclick = (() => {
-							closeMenu(document.querySelector(".activeUl")), closeMenu(document.querySelector(".header-menu__ul")),
-								closeButton.style.display = "none", header.classList
-								.remove("active_header")
-						}), closeButton.style.display = "none", header.classList
-						.remove("active_header"), document.querySelectorAll(".header-menu__ul>li>a").forEach(e => {
-							openSecondLevelMenu(e)
-						})
-
-					window.addEventListener('mouseover', (e) => {
-						if(e.target.innerHTML === "Портфолио<span></span>" || e.target.innerHTML === "Контакты<span></span>" || e.target.innerHTML === "Блог<span></span>") {
-							closeButton.style.display = 'none';
-							header.classList.remove('active_header');
-						}
-					})
-					window.addEventListener('mouseleave', (e) => {
-						if(e.target.innerHTML === "Портфолио<span></span>" || e.target.innerHTML === "Контакты<span></span>" || e.target.innerHTML === "Блог<span></span>") {
-							closeButton.style.display = 'none';
-							header.classList.remove('active_header');
-						}
-					})
-
-					function activeSpan(arr) {
-						arr.forEach(el => {
-							el.addEventListener('mouseover', (e) => {
-								el.classList.add('activeSpan');
-								el.parentNode.classList.add('activeSpan');
-							})
-						})
-
-						arr.forEach(el => {
-							el.addEventListener('mouseleave', (e) => {
-								el.classList.remove('activeSpan');
-								el.classList.remove('activeLi');
-								el.parentNode.classList.remove('activeLi');
-								el.parentNode.classList.remove('activeSpan');
-							})
-						})
-					}
-					activeSpan(arrows);
-					activeSpan(subArrows);
-
-				} else if(window.innerWidth <= 768 && window.innerWidth >=320) {
-					openMobileMenu.addEventListener('click', (e) => {
-						menuMobile.classList.add('activeMenu');
-						body.style.overflow = 'hidden';
-						menuMobile.style.overflowY = 'auto';
-						menuMobile.style.overflowX = 'hidden';
-
-
-						if(menuMobile.classList.contains('activeMenu')) {
-							openMobileMenu.style.display = 'none';
-							closeMobileButton.style.display = 'block';
-							menuMobile.style.transition = 'all 0.7s';
-							document.querySelector(".header").style.backgroundColor = '#FFFFFF';
-							document.querySelector(".header").style.transition = '';
-						}
-					})
-
-					closeMobileButton.addEventListener('click', (e) => {
-						menuMobile.classList.remove('activeMenu');
-						body.style.overflow = '';
-						menuMobile.style.overflowX = 'hidden';
-
-						if(!menuMobile.classList.contains('activeMenu')) {
-							openMobileMenu.style.display = 'block';
-							closeMobileButton.style.display = 'none';
-							document.querySelector(".header").style.backgroundColor = '';
-							document.querySelector(".header").style.transition = '';
-						}
-					})
-
-					firstArrows.forEach(el => {
-						el.addEventListener('click', (e) => {
-							e.preventDefault();
-							const targetOne = el.parentNode.parentNode;
-							const levelOne = targetOne.querySelector('ul');
-							if(el.parentNode.innerHTML === "О компании<span></span>") {
-								levelOne.classList.toggle('activeMobileUl');
-								subSecondLevel.classList.toggle('activeMobileUl');
-								el.parentNode.classList.toggle('activeMobilALarge');
-								openSub.classList.toggle('sub-open');
-							} else {
-								levelOne.classList.toggle('activeMobileUl');
-								el.parentNode.classList.toggle('activeMobilA');
-								openSub.classList.toggle('open');
-							}
-
-							if(e.target.elementName === "a") {
-								return true;
-							}
-						})
-					});
-
-					secondArrows.forEach(el => {
-						el.addEventListener('click', (e) => {
-							e.preventDefault();
-							const targetTwo = el.parentNode.parentNode;
-							const levelTwo = targetTwo.querySelector('ul');
-							levelTwo.classList.toggle('activeMobileUl');
-							el.parentNode.classList.toggle('activeMobilA');
-
-							if(e.target.elementName === "a") {
-								return true;
-							}
-						})
-					});
-
-					thirdArrows.forEach(el => {
-						el.addEventListener('click', (e) => {
-							e.preventDefault();
-							const targetThree = el.parentNode.parentNode;
-							const levelThree = targetThree.querySelector('ul')
-							levelThree.classList.toggle('activeMobileUl');
-							el.parentNode.classList.toggle('activeMobilA');
-							if(!levelThree.classList.contains('activeMobileUl')) {
-								levelThree.style.display = 'none';
-							} else {
-								levelThree.style.display = 'block';
-							}
-
-							if(e.target.elementName === "a") {
-								return true;
-							}
-						})
-					})
+			window.addEventListener('mouseover', (e) => {
+				if(e.target.innerHTML === "Портфолио<span></span>" || e.target.innerHTML === "Контакты<span></span>" || e.target.innerHTML === "Блог<span></span>") {
+					closeButton.style.display = 'none';
+					header.classList.remove('active_header');
 				}
+			})
+			window.addEventListener('mouseleave', (e) => {
+				if(e.target.innerHTML === "Портфолио<span></span>" || e.target.innerHTML === "Контакты<span></span>" || e.target.innerHTML === "Блог<span></span>") {
+					closeButton.style.display = 'none';
+					header.classList.remove('active_header');
+				}
+			})
 
-				window.addEventListener('click', (e) => {
-					let target = e.target;
-					if(headerMenu.classList.contains('activeUl') && target !== headerMenu) {
-						closeButton.click();
-					}
-					if(menuTwo.classList.contains('activeUl') && target !== menuTwo) {
-						closeButton.click();
-					}
-				})
-
-				deleteArrowDesc.forEach(arrow => {
-					const arrowSpan =arrow.querySelector('span');
-					if(!arrow.classList.contains('menu-item-has-children')) {
-						arrowSpan.style.display = 'none';
-					}
-				})
-
-				deleteArrowMob.forEach(arrow => {
-					const arrowSpanM = arrow.querySelector('span');
-					if(!arrow.classList.contains('menu-item-has-children')) {
-						arrowSpanM.style.display = 'none';
-					}
-				})
-
-				listOfMenus.forEach(list => {
-					list.addEventListener('mouseover', (e) => {
-						if(list.childNodes.length > 15) {
-							headerMenu.style.overflow  = 'auto';
-						}
+			function activeSpan(arr) {
+				arr.forEach(el => {
+					el.addEventListener('mouseover', (e) => {
+						el.classList.add('activeSpan');
+						el.parentNode.classList.add('activeSpan');
 					})
 				})
+
+				arr.forEach(el => {
+					el.addEventListener('mouseleave', (e) => {
+						el.classList.remove('activeSpan');
+						el.classList.remove('activeLi');
+						el.parentNode.classList.remove('activeLi');
+						el.parentNode.classList.remove('activeSpan');
+					})
+				})
+			}
+			activeSpan(arrows);
+			activeSpan(subArrows);
+
+		} else if(window.innerWidth <= 768 && window.innerWidth >=320) {
+			openMobileMenu.addEventListener('click', (e) => {
+				menuMobile.classList.add('activeMenu');
+				body.style.overflow = 'hidden';
+				menuMobile.style.overflowY = 'auto';
+				menuMobile.style.overflowX = 'hidden';
+
+
+				if(menuMobile.classList.contains('activeMenu')) {
+					openMobileMenu.style.display = 'none';
+					closeMobileButton.style.display = 'block';
+					menuMobile.style.transition = 'all 0.7s';
+					document.querySelector(".header").style.backgroundColor = '#FFFFFF';
+					document.querySelector(".header").style.transition = '';
+				}
+			})
+
+			closeMobileButton.addEventListener('click', (e) => {
+				menuMobile.classList.remove('activeMenu');
+				body.style.overflow = '';
+				menuMobile.style.overflowX = 'hidden';
+
+				if(!menuMobile.classList.contains('activeMenu')) {
+					openMobileMenu.style.display = 'block';
+					closeMobileButton.style.display = 'none';
+					document.querySelector(".header").style.backgroundColor = '';
+					document.querySelector(".header").style.transition = '';
+				}
+			})
+
+			firstArrows.forEach(el => {
+				el.addEventListener('click', (e) => {
+					e.preventDefault();
+					const targetOne = el.parentNode.parentNode;
+					const levelOne = targetOne.querySelector('ul');
+					if(el.parentNode.innerHTML === "О компании<span></span>") {
+						levelOne.classList.toggle('activeMobileUl');
+						subSecondLevel.classList.toggle('activeMobileUl');
+						el.parentNode.classList.toggle('activeMobilALarge');
+						openSub.classList.toggle('sub-open');
+					} else {
+						levelOne.classList.toggle('activeMobileUl');
+						el.parentNode.classList.toggle('activeMobilA');
+						openSub.classList.toggle('open');
+					}
+
+					if(e.target.elementName === "a") {
+						return true;
+					}
+				})
+			});
+
+			secondArrows.forEach(el => {
+				el.addEventListener('click', (e) => {
+					e.preventDefault();
+					const targetTwo = el.parentNode.parentNode;
+					const levelTwo = targetTwo.querySelector('ul');
+					levelTwo.classList.toggle('activeMobileUl');
+					el.parentNode.classList.toggle('activeMobilA');
+
+					if(e.target.elementName === "a") {
+						return true;
+					}
+				})
+			});
+
+			thirdArrows.forEach(el => {
+				el.addEventListener('click', (e) => {
+					e.preventDefault();
+					const targetThree = el.parentNode.parentNode;
+					const levelThree = targetThree.querySelector('ul')
+					levelThree.classList.toggle('activeMobileUl');
+					el.parentNode.classList.toggle('activeMobilA');
+					if(!levelThree.classList.contains('activeMobileUl')) {
+						levelThree.style.display = 'none';
+					} else {
+						levelThree.style.display = 'block';
+					}
+
+					if(e.target.elementName === "a") {
+						return true;
+					}
+				})
+			})
+		}
+
+		window.addEventListener('click', (e) => {
+			let target = e.target;
+			if(headerMenu.classList.contains('activeUl') && target !== headerMenu) {
+				closeButton.click();
+			}
+			if(menuTwo.classList.contains('activeUl') && target !== menuTwo) {
+				closeButton.click();
+			}
 		})
+
+		deleteArrowDesc.forEach(arrow => {
+			const arrowSpan =arrow.querySelector('span');
+			if(!arrow.classList.contains('menu-item-has-children')) {
+				arrowSpan.style.display = 'none';
+			}
+		})
+
+		deleteArrowMob.forEach(arrow => {
+			const arrowSpanM = arrow.querySelector('span');
+			if(!arrow.classList.contains('menu-item-has-children')) {
+				arrowSpanM.style.display = 'none';
+			}
+		})
+
+		// listOfMenus.forEach(list => {
+		// 	list.addEventListener('mouseover', (e) => {
+		// 		if(list.childNodes.length > 15) {
+		// 			headerMenu.style.overflow  = 'auto';
+		// 		}
+		// 	})
+		// })
+
+		// window.addEventListener('mouseover', (e) => {
+		// 	console.log(e.target.childNodes)
+		// })
 	</script>
