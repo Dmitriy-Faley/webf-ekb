@@ -475,6 +475,14 @@
                 gap: 140px;
             }
 
+            .page-image__more.bag.double, .page-image__more.bag {
+                gap: 80px;
+            }
+
+            .page-image__more.phone.double, .page-image__more.phone {
+                gap: 140px;
+            }
+
             .page-responsive {
                 margin-top: 50px;
                 width: 100%;
@@ -491,6 +499,13 @@
                     margin-top: 70px;
                     display: flex;
                     justify-content: space-between;
+                    position: relative;
+
+                    .responsive {
+                        position: absolute;
+                        width:  90%;
+                        margin: 50px auto;
+                    }
                     .responsive-color {
                         width: 413px;
                         padding: 66px 92px;
@@ -1037,6 +1052,10 @@
                         border-radius: 21px;
                     }
 
+                    img.double {
+                        height: 219px;
+                    }
+
                     .graph-right {
                         display: flex;
                         justify-content: space-between;
@@ -1215,6 +1234,22 @@
                 .page-image__more.double {
                     img {
                         width: 455px;
+                        border-radius: 21px;
+                    }
+                }
+
+                .page-image__more.bag.double, .page-image__more.bag {
+                    gap: 56px;
+                    img {
+                        width: 100%;
+                        border-radius: 21px;
+                    }
+                }
+
+                .page-image__more.phone.double, .page-image__more.phone {
+                    gap: 99px;
+                    img {
+                        width: 245px;
                         border-radius: 21px;
                     }
                 }
@@ -1714,6 +1749,11 @@
                         border-radius: 15px;
                     }
 
+                    img.double {
+                        height: 147px;
+                    }
+
+
                     .graph-right {
                         display: flex;
                         justify-content: space-between;
@@ -1853,7 +1893,7 @@
 
                     img {
                         width: 100%;
-                        border-radius: 30px;
+                        border-radius: 0;
                     }
                 }
 
@@ -1903,6 +1943,25 @@
                     }
                     img:last-child {
                         margin-bottom: 0;
+                    }
+                }
+
+                .page-image__more.bag.double, .page-image__more.bag {
+                    gap: 20px;
+                    img {
+                        width: 100%;
+                        border-radius: 0;
+                        margin: 0;
+                    }
+                }
+
+                .page-image__more.phone.double, .page-image__more.phone {
+                    gap: 20px;
+                    img {
+                        width: 157px;
+                        border-radius: 0;
+                        height: 340px;
+                        margin: 0;
                     }
                 }
 
@@ -2351,6 +2410,11 @@
                         border-radius: 10px;
                     }
 
+                    img.double {
+                        height: 124px;
+                    }
+
+
                     .graph-right {
                         display: flex;
                         justify-content: space-between;
@@ -2492,7 +2556,6 @@
 
                     img {
                         width: 100%;
-                        border-radius: 10px;
                     }
                 }
 
@@ -2541,6 +2604,16 @@
                     }
                     img:last-child {
                         margin-bottom: 0;
+                    }
+                }
+
+                .page-image__more.phone.double, .page-image__more.phone {
+                    gap: 20px;
+                    img {
+                        width: 119px;
+                        border-radius: 0;
+                        height: 259px;
+                        margin: 0;
                     }
                 }
 

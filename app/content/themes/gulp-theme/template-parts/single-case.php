@@ -234,7 +234,7 @@ body {
                             <img src="<?php echo $bigFoto['url']; ?>" alt="page_image-more" />
                         <?php endif; ?>
             </div>
-            <div class="page-image__more">
+            <div class="page-image__more <?php the_sub_field('klass'); ?>">
             <?php while (have_rows('galereya')): the_row();
                         $image = get_sub_field('foto');
                      ?>
@@ -245,7 +245,9 @@ body {
             <?php endwhile; ?>
 
             <?php while (have_rows('opisanie_stranicz')): the_row();?>
-            <?php if( get_row_layout() == 'адаптивы' ):?>
+            <?php if( get_row_layout() == 'адаптивы' ):
+                $responsive = get_sub_field('foto_dlya_adaptiva');
+                ?>
                 <div class="page-responsive">
                     <h2>Адаптивы</h2>
                     <div class="responsive-slider">
@@ -258,6 +260,7 @@ body {
                                     </div>
                                 <?php endwhile; ?>
                     </div>
+                        <img src="<?php echo $responsive['url']; ?>" alt="respansive-background" class="responsive"/>
                 </div>
             <?php endif; ?>
             <?php endwhile; ?>
@@ -421,6 +424,7 @@ body {
     }
 
     const pageImageMore = document.querySelectorAll('.page-image__more');
+    const pageImages = document.querySelectorAll('.page-image__more>img');
     const typographRight = document.querySelector('.graph-right');
     const typographLeft = document.querySelector('.graph-images>img');
 
