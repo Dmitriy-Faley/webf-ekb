@@ -245,9 +245,7 @@ body {
             <?php endwhile; ?>
 
             <?php while (have_rows('opisanie_stranicz')): the_row();?>
-            <?php if( get_row_layout() == 'адаптивы' ):
-                $responsive = get_sub_field('foto_dlya_adaptiva');
-                ?>
+            <?php if( get_row_layout() == 'адаптивы' ):?>
                 <div class="page-responsive">
                     <h2>Адаптивы</h2>
                     <div class="responsive-slider <?php the_sub_field('klass'); ?>">
@@ -260,7 +258,13 @@ body {
                                     </div>
                                 <?php endwhile; ?>
                     </div>
-                        <img src="<?php echo $responsive['url']; ?>" alt="respansive-background" class="responsive"/>
+                    <?php while (have_rows('foto_dlya_adaptiva')): the_row();?>
+                        <?php if ( get_row_layout() == 'картинка'):
+                        $responsive = get_sub_field('kartinka');
+                        ?>
+                            <img src="<?php echo $responsive['url']; ?>" alt="<?php echo $responsive['alt']; ?>" class="responsive"/>
+                        <?php endif; ?>
+                    <?php endwhile; ?>
                 </div>
             <?php endif; ?>
             <?php endwhile; ?>
