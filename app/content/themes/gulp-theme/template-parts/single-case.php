@@ -250,13 +250,13 @@ body {
                 ?>
                 <div class="page-responsive">
                     <h2>Адаптивы</h2>
-                    <div class="responsive-slider">
+                    <div class="responsive-slider <?php the_sub_field('klass'); ?>">
                     <?php while (have_rows('foto_adaptivov')): the_row();
                                             $image = get_sub_field('foto');
                                             $color = get_sub_field('czvet_fona');
                                         ?>
                                     <div class="responsive-color" style="background-color: <?php echo $color; ?>">
-                                        <img src="<?php echo $image['url']; ?>" alt="page_image-more" />
+                                        <img src="<?php echo $image['url']; ?>" alt="page_image-more"/>
                                     </div>
                                 <?php endwhile; ?>
                     </div>

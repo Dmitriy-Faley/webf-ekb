@@ -501,11 +501,6 @@
                     justify-content: space-between;
                     position: relative;
 
-                    .responsive {
-                        position: absolute;
-                        width:  90%;
-                        margin: 50px auto;
-                    }
                     .responsive-color {
                         width: 413px;
                         padding: 66px 92px;
@@ -516,9 +511,39 @@
                         }
                     }
                 }
+
+                .responsive-slider.armani {
+                    margin-top: 682px;
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+                    z-index: 100;
+
+                    .responsive-color{
+                        width: 345px;
+                        padding: 0;
+                        border-radius: 0;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+
                 img {
                     border-radius: 0;
                 }
+
+                .responsive {
+                    position: absolute;
+                    width:  90%;
+                    margin: 50px auto;
+                    width: 1320px;
+                    max-height: 850px;
+                    margin-top: -1250px;
+                    border-radius: 10px;
+                }
+
 
                 padding-bottom: 80px;
                 border-bottom: 1px solid #D9D9D9;
@@ -1281,8 +1306,36 @@
                             }
                         }
                     }
+
+                    .responsive-slider.armani {
+                        margin-top: 486px;
+                        display: flex;
+                        justify-content: space-between;
+                        position: relative;
+                        z-index: 100;
+
+                        .responsive-color{
+                            width: 245px;
+                            padding: 0;
+                            border-radius: 0;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    
                     img {
                         border-radius: 30px;
+                    }
+
+                    .responsive {
+                        position: absolute;
+                        margin: 50px auto;
+                        width: 939px;
+                        max-height: 604px;
+                        margin-top: -980px;
+                        border-radius: 10px;
                     }
 
                     padding-bottom: 80px;
@@ -1993,8 +2046,36 @@
                             }
                         }
                     }
+
+                    .responsive-slider.armani {
+                        margin-top: 313px;
+                        display: flex;
+                        justify-content: space-between;
+                        position: relative;
+                        z-index: 100;
+
+                        .responsive-color{
+                            width: 196px;
+                            padding: 0;
+                            border-radius: 0;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+
                     img {
                         border-radius: 30px;
+                    }
+
+                    .responsive {
+                        position: absolute;
+                        margin: 50px auto;
+                        width: 628px;
+                        max-height: 404px;
+                        margin-top: -710px;
+                        border-radius: 10px;
                     }
 
                     padding-bottom: 60px;
@@ -2647,8 +2728,37 @@
                             }
                         }
                     }
+
+                    .responsive-slider.armani {
+                        margin-top: 146px;
+                        display: flex;
+                        justify-content: space-between;
+                        flex-direction: row;
+                        position: relative;
+                        z-index: 100;
+
+                        .responsive-color{
+                            width: 72px;
+                            padding: 0;
+                            border-radius: 0;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+
                     img {
                         border-radius: 30px;
+                    }
+
+                    .responsive {
+                        position: absolute;
+                        margin: 50px auto;
+                        width: 258px;
+                        max-height: 166px;
+                        margin-top: -270px;
+                        border-radius: 10px;
                     }
 
                     padding-bottom: 60px;
