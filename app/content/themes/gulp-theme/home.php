@@ -68,7 +68,8 @@ get_header();
                 ),
                 'post_type'=>'keys', 
                 'post_status'=>'publish', 
-                'posts_per_page'=>-1
+                'posts_per_page'=>3,
+                'order' => 'DESC'
     )); ?>
             <?php if ( $wpb_all_query->have_posts() ) : ?>
             <ul class="card-list">

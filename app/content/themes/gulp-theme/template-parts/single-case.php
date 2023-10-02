@@ -30,12 +30,15 @@ body {
                         }; ?>
                 </div>
                 <div class="content-area__title">
-                <?php
-                    $image = get_field('ikonka_zagolovka');
+                    <h1 class="h1"><?php the_title(); ?>
+                    <?php
+                        $image = get_field('ikonka_zagolovka');
 
                     if( !empty($image) ): ?>
-                    <h1 class="h1"><?php the_title(); ?> <img src="<?php echo $image['url']; ?>" alt="title_icon"></h1>
+                    <img src="<?php echo $image['url']; ?>" alt="title_icon">
                     <?php endif; ?>
+
+                </h1>
                 </div>
                 <div class="content-area__info">
                 <?php while (have_rows('shapka_kejsa')): the_row();
@@ -75,24 +78,16 @@ body {
                 </div>
             </div>
         </div>
+        <?php while (have_rows('o_proekte')): the_row();?>
         <div class="keys__about">
             <div class="about-project">
-            <?php while (have_rows('o_proekte')): the_row();?>
-            <?php if( get_row_layout() == 'О проекте' ):?>
-                <h2><?php echo the_sub_field('zagolovok'); ?></h2>
-                <?php echo the_sub_field('opisanie'); ?>
-            <?php endif; ?>
-            <?php endwhile; ?>
-            </div>
-            <div class="about-task">
-            <?php while (have_rows('o_proekte')): the_row();?>
-            <?php if( get_row_layout() == 'Задачи' ):?>
-                <h2><?php echo the_sub_field('zagolovok'); ?></h2>
-                <?php echo the_sub_field('opisanie'); ?>
-            <?php endif; ?>
-            <?php endwhile; ?>
+                <?php if( get_row_layout() == 'О проекте' ):?>
+                    <h2><?php echo the_sub_field('zagolovok'); ?></h2>
+                    <?php echo the_sub_field('opisanie'); ?>
+                <?php endif; ?>
             </div>
         </div>
+        <?php endwhile; ?>
         <div class="keys__steps">
             <h2>Этапы разработки</h2>
             <div class="steps-wrapper">
@@ -140,17 +135,16 @@ body {
             </div>
             <div class="graph-images">
             <?php while (have_rows('tipografika')): the_row();?>
-            <?php if( get_row_layout() == 'фото' ):?>
-            <?php
+            <?php if( get_row_layout() == 'фото' ):
                 $imageOne = get_sub_field('kartinka_sleva');
-                $imageTwo = get_sub_field('kartinka_sprava');
-                $imageTwoTwo = get_sub_field('vtoraya_kartinka_sprava');
                 ?>
-
                 <img src="<?php echo $imageOne['url']; ?>" alt="typography_left">
                 <div class="graph-right">
-                    <img src="<?php echo $imageTwo['url']; ?>" alt="typography_right">
-                    <img src="<?php echo $imageTwoTwo['url']; ?>" alt="typography_right">
+                    <?php while (have_rows('kartinki_sprava')): the_row();
+                        $image = get_sub_field('izobrazhenie');
+                    ?>
+                        <img src="<?php echo $image['url']; ?>" alt="" />
+                    <?php endwhile; ?>
                 </div>
             <?php endif; ?>
             <?php endwhile; ?>
@@ -221,6 +215,13 @@ body {
                  ?>
 				<img src="<?php echo $image['url']; ?>" alt="page_image" />
                 <?php endwhile; ?>
+                <div class="page-image_more dop <?php the_sub_field('klass'); ?>">
+                    <?php while (have_rows('dop_izobrazheniya')): the_row();
+                                $image = get_sub_field('foto');
+                            ?>
+                        <img src="<?php echo $image['url']; ?>" alt="page_image-more" />
+                    <?php endwhile; ?>
+                </div>
             </div>
             <?php endif; ?>
             <?php endwhile; ?>
@@ -272,10 +273,14 @@ body {
             <?php endwhile; ?>
 
         </div>
-        <?php if(have_rows('seo_optimizacziya')):?>
+        <?php if (have_rows('seo_razrabotka')):?>
         <div class="keys__seo">
-            <h2>SEO оптимизация</h2>
-            <?php the_field('seo_optimizacziya'); ?>
+        <?php while (have_rows('seo_razrabotka')): the_row();?>
+                <?php if( get_row_layout() == 'SEO' ):?>
+                    <h2><?php echo the_sub_field('zagolovok'); ?></h2>
+                    <?php echo the_sub_field('opisanie'); ?>
+                <?php endif; ?>
+                <?php endwhile; ?>
         </div>
         <?php endif; ?>
         <div class="keys__tech">
@@ -351,6 +356,8 @@ body {
                 ),
                 'post_type'=>'keys',
                 'post_status'=>'publish',
+                'posts_per_page'=>3,
+                'order' => 'DESC'
             ));?>
 
             <?php if ( $wpb_all_query->have_posts() ) : ?>
@@ -440,18 +447,14 @@ body {
         }
     })
 
-    if(typographRight.childNodes.length) {
+    console.log(typographRight.childNodes.length)
+
+    if(typographRight.childNodes.length === 3) {
         typographLeft.classList.add('double');
-        typographRight.childNodes[3].style.display = 'none';
     }
 
     const moreButton = document.querySelector('#keys-more');
     moreButton.addEventListener('click', (e) => {
         document.querySelector('#menu-item-49 a').click();
     })
-
-    const color = document.querySelector('.back_color');
-    if(color === '#1f1f1f') {
-        document.querySelector('.header').style.color = '#111111';
-    }
 </script>

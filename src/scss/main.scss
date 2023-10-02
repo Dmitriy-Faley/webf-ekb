@@ -56,6 +56,12 @@ body.black {
         }
     }
 
+    .header__menu .menu__but-open span:before,
+    .header__menu .menu__but-open span:after,
+    .header__menu .menu__but-open span{
+      background: #fff;
+    }
+
     .fixed, .active_header {
         .header__logo {
             filter: none;
@@ -63,6 +69,12 @@ body.black {
 
         .main-header-menu>ul>li>a {
             color: #0E0F11;
+        }
+
+        .header__menu .menu__but-open span,
+        .header__menu .menu__but-open span:after,
+        .header__menu .menu__but-open span:before {
+        background: #0E0F11;
         }
     }
 
