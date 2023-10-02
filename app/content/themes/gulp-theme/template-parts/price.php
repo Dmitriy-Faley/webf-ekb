@@ -11,10 +11,8 @@ get_header();
         <h1 class="title"><?php the_title(); ?></h1>
         <div class="prices__tabs">
             <div class="tabs__nav">
-                <?php while (have_rows('czeny')): the_row();  
-                            $category = get_sub_field('kategoriya');
-                ?>
-                <?php while (have_rows('kategoriya')): the_row();  
+                <?php while (have_rows('czeny')): the_row();?>
+                <?php while (have_rows('kategoriya')): the_row();
                             $category = get_sub_field('nazvanie_kategorii');
                             $numberOfCategory = get_sub_field('nomer_kategorii');
                 ?>
@@ -24,11 +22,11 @@ get_header();
             </div>
             <div class="tabs__content">
                 <?php while (have_rows('czeny')): the_row();?>
-                 <?php while (have_rows('kategoriya')): the_row();  
+                 <?php while (have_rows('kategoriya')): the_row();
                             $rownumber = get_sub_field('nomer_kategorii');
                         ?>
                 <div class="tabs__pane" data-row="<?php echo $rownumber; ?>">
-                        <?php while (have_rows('vneshnij_spisok')): the_row();  
+                        <?php while (have_rows('vneshnij_spisok')): the_row();
                                     $outer_name = get_sub_field('zagolovok_vneshnego_spiska');
                                     $outer_price = get_sub_field('czena_vneshnego_spiska');
                         ?>
@@ -46,7 +44,7 @@ get_header();
                             </div>
                         </a>
                         <div class="inner">
-                            <?php while (have_rows('vnutrennij_spisok')): the_row();  
+                            <?php while (have_rows('vnutrennij_spisok')): the_row();
                                         $inner_name = get_sub_field('zagolovok_vnutrennego_spiska');
                                         $inner_price = get_sub_field('czena_vnutrennego_spiska');
                             ?>
@@ -87,13 +85,12 @@ get_header();
         _init() {
             this._elTabs.setAttribute('role', 'tablist');
             this._elButtons.forEach((el, index) => {
-                el.dataset.index = index;
                 el.setAttribute('role', 'tab');
                 this._elPanes[index].setAttribute('role', 'tabpanel');
             });
         }
         show(elLinkTarget) {
-            const elPaneTarget = this._elPanes[elLinkTarget.dataset.index];
+            const elPaneTarget = this._elPanes[elLinkTarget.getAttribute('data-index')];
             const elLinkActive = this._elTabs.querySelector('.tabs__btn_active');
             const elPaneShow = this._elTabs.querySelector('.tabs__pane_show');
             if (elLinkTarget === elLinkActive) {
@@ -133,11 +130,6 @@ get_header();
         localStorage.setItem('tabs-index', index);
     })
 
-
-
-    const filterItem = document.querySelectorAll('.tabs__btn');
-
-    filterItem[0].classList.add('tabs__btn_active');
 </script>
 
 

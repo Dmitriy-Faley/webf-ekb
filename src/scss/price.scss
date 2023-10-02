@@ -196,10 +196,13 @@
 }
 
 
+.tabs__pane {
+    display: none;
+}
+
 .tabs__pane_show {
     display: block;
 }
-
 
 @media screen and (max-width: 1368px) {
     .prices {
