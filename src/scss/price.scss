@@ -8,7 +8,6 @@
 }
 
 .accordion__item_show .toggle .tabs__pane__name svg path{
-    transition: all 0.2s ease;
     stroke: #DC7148;
 }
 
@@ -68,10 +67,51 @@
                 .tabs__pane__item {
                     background: #fff;
                     border-radius: 40px;
-                    padding: 14px 40px 15px 40px;
 
                     &:not(:last-child) {
                         margin-bottom: 20px;
+                    }
+                }
+
+                .tabs__pane__item.accordion__item_show, .accordion__item_slidedown {
+                    .tabs__pane__name {
+                        font-weight: 500;
+                        font-size: 24px;
+                        line-height: 29px;
+                        padding: 14px 0 0 40px;
+
+                        svg {
+                            margin-left: 16px;
+                            width: 14px;
+                            height: 9px;
+                        }
+                    }
+
+                    .tabs__pane__info {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 25.5rem;
+                        padding: 14px 40px 0 0;
+
+                        .price {
+                            font-weight: 500;
+                            font-size: 24px;
+                            line-height: 29px;
+                            //padding-right: 50px;
+                        }
+
+                        .button {
+                            background: #0E0F11;
+                            color: #fff;
+                            font-size: 16px;
+                            line-height: 22px;
+
+                            &:hover {
+                                background: #FDD0BF;
+                                color: #0E0F11;
+                            }
+                        }
                     }
                 }
 
@@ -79,6 +119,7 @@
                     font-weight: 500;
                     font-size: 24px;
                     line-height: 29px;
+                    padding: 14px 0 15px 40px;
 
                     svg {
                         margin-left: 16px;
@@ -92,6 +133,7 @@
                     justify-content: space-between;
                     align-items: center;
                     width: 25.5rem;
+                    padding: 14px 40px 15px 0;
 
                     .price {
                         font-weight: 500;
@@ -157,7 +199,7 @@
             }
 
             .inner {
-
+                padding: 0 0 0 0;
                 .inner__item {
                     display: flex;
                     justify-content: space-between;
@@ -165,6 +207,7 @@
                     cursor: default;
                     margin-top: 20px;
                     margin-bottom: 15px;
+                    padding: 0 0 15px 0;
 
                     &:not(:last-child) {
                         margin-bottom: 20px;

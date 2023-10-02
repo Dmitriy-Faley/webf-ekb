@@ -9,14 +9,16 @@ get_header();
 body {
     background: <?php the_field('czvet_fona'); ?> !important;
 }
-
-<?php if( the_field('czvet_fona') === '#1f1f1f'):?>
-    body {
-        color: #ffffff;
-    }
-<?php endif; ?>
 </style>
-<span class="back_color" style="height: 0; visibility: hidden; margin: 0; padding: none;"><?php the_field('czvet_fona'); ?></span>
+
+<?php if( get_field('chernyj_fon') ): ?>
+
+<script>
+    document.body.classList.add('black');
+</script>
+
+<?php endif; ?>
+
 <section class="keys">
     <div class="container">
         <div class="keys__header">

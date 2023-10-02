@@ -101,34 +101,6 @@ app();
 //End фильтр
 
 
-
-
-// $('.toggle').click(function (e) {
-// 	e.preventDefault();
-
-// 	var $this = $(this);
-
-// 	if ($this.next().hasClass('show') && $(this).hasClass('active')) {
-// 		$this.next().removeClass('show');
-// 		$(this).removeClass('active');
-// 		$this.next().slideUp('slow', 'linear');
-// 	} else {
-// 		$this.parent().parent().find('li .inner').removeClass('show');
-// 		$(this).parent().parent().find('li .toggle').removeClass('active');
-// 		$this.parent().parent().find('li .inner').slideUp('slow', 'linear');
-
-// 		$this.parent().parent().find('.tabs__pane__item .inner').removeClass('show');
-// 		$(this).parent().parent().find('.tabs__pane__item .toggle').removeClass('active');
-// 		$this.parent().parent().find('.tabs__pane__item .inner').slideUp('slow', 'linear');
-
-
-// 		$this.next().toggleClass('show');
-// 		$(this).toggleClass('active');
-// 		$this.next().slideToggle('slow', 'linear');
-// 	}
-// });
-
-
 //
 
 class ItcAccordion {
@@ -215,9 +187,8 @@ class ItcAccordion {
 
   
   document.querySelectorAll('.tabs__pane').forEach(tab => {
-	console.log(tab)
 	new ItcAccordion(tab, {
-		alwaysOpen: false
+		alwaysOpen: true
 	  });
   })
 
