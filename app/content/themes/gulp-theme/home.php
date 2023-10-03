@@ -109,7 +109,7 @@ get_header();
                 <p><?php _e( 'Извините, нет кейсов, соответствуюших Вашему запросу.' ); ?></p>
             <?php endif; ?>
     </div>
-    <a href="/portfolio" class="button">Все проекты</a>
+    <a href="/portfolio/" class="button">Все проекты</a>
   </div>
 </section>
 
@@ -433,7 +433,7 @@ get_header();
                 <?php wp_reset_postdata(); ?>
                 <?php endif; ?>
     </div>
-    <a href="/blog" class="button">Все статьи</a>
+    <a href="/blog/" class="button">Все статьи</a>
   </div>
 </section>
 

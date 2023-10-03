@@ -415,7 +415,7 @@ body {
                 <?php wp_reset_postdata(); ?>
                 <?php endif; ?>
         </div>
-        <a href="/portfolio" class="button button-more">Все проекты</a>
+        <a href="/portfolio/" class="button button-more">Все проекты</a>
     </div>
 </section>
 <?php get_footer(); ?>

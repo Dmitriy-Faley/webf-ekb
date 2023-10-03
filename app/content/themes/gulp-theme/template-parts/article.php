@@ -133,7 +133,7 @@ get_header();
                     <?php wp_reset_postdata(); ?>
                     <?php endif; ?>
             </div>
-            <button class="button button-more" id="blogs-more">Все статьи</button>
+            <a href="/blog/" class="button button-more"  id="blogs-more">Все статьи</a>
         </div>
     </div>
 </section>
