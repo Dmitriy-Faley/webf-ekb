@@ -1,4 +1,4 @@
-@keyframes showLinks {
+ @keyframes showLinks {
     0% {
         margin-bottom: 0;
     }
@@ -331,22 +331,37 @@
                 gap: 40px;
 
                 .item-color {
+                    max-width: 300px;
                     .color-hex {
                         color:#ACAFB5;
                         margin-top: 10px;
                         margin-bottom: 6px;
                     }
 
-                    img {
+                    img, picture {
                         width: 100%;
-                        height: 300px;
                         border-radius: 30px;
+                        max-height: 300px;
                     }
 
-                    img:last-child {
+                    img:last-child, picture:last-child {
                         width: 640px;
                     }
                 }
+
+                .item-color:last-child {
+                    max-width: 640px;
+                }
+            }
+
+            .color_dop-after {
+                width: 100%;
+                height: 100%;
+                margin-top: 40px;
+            }
+
+            .color_dop-after:last-child {
+                margin-top: 110px;
             }
         }
         .keys__arhitect {
@@ -383,12 +398,18 @@
                     border-radius: 30px;
                 }
             }
+
+            .architect_dop-after {
+                width: 100%;
+                height: 100%;
+            }
         }
         .keys__pages {
             .page-description {
                 display: flex;
                 justify-content: space-between;
                 margin-top: 30px;
+                margin-bottom: 120px;
                     h2 {
                         min-width: max-content;
                         font-size: 24px;
@@ -418,25 +439,23 @@
                     margin-top: -50px;
                 }
 
-                img:first-child {
-                    margin-top: 0;
-                }
-
                 .page-image_more, .dop {
                     margin-top: 50px;
                     display: flex;
                     flex-wrap: wrap;
                     gap: 425px;
 
-                    img {
+                    img, picture {
                         position: relative;
                         width: 415px;
+                        margin-top: 90px;
                     }
                 }
 
                 .page-image_more.abstract {
-                    img:nth-child(2) {
-                        top: -90px;
+                    picture:nth-child(2), img:nth-child(2) {
+                        top: -65px;
+                        margin-top: 0;
                     }
                 }
             }
@@ -1154,6 +1173,14 @@
                         }
                     }
                 }
+
+                .color_dop-after {
+                    margin-top: 30px;
+                }
+    
+                .color_dop-after:last-child {
+                    margin-top: 80px;
+                }
             }
             .keys__arhitect {
                 margin-top: 21px;
@@ -1194,6 +1221,7 @@
                     display: flex;
                     justify-content: space-between;
                     margin-top: 0;
+                    margin-bottom: 50px;
                         h2 {
                             margin-top: 21px;
                             font-size: 17px;
@@ -1214,11 +1242,13 @@
 
                 .page-image {
                     width: 100%;
-                    margin-top: 50px;
+                    margin-top: 0;
+                    padding-bottom: 30px;
 
-                    img {
+                    img, picture {
                         width: 100%;
                         border-radius: 21px;
+                        margin-top: 0;
                     }
 
                     .page-image_more, .dop {
@@ -1227,15 +1257,15 @@
                         flex-wrap: wrap;
                         gap: 303px;
 
-                        img {
+                        img, picture {
                             position: relative;
-                            width: 295px;
+                            max-width: 295px;
                         }
                     }
 
                     .page-image_more.abstract {
-                        img:nth-child(2) {
-                            top: -65px;
+                        img:nth-child(2), picture:nth-child(2) {
+                            top: -55px;
                         }
                     }
                 }
@@ -1899,6 +1929,14 @@
                         }
                     }
                 }
+
+                .color_dop-after {
+                    margin-top: 20px;
+                } 
+    
+                .color_dop-after:last-child {
+                    margin-top: 60px;
+                }
             }
             .keys__arhitect {
                 margin-top: 20px;
@@ -1941,6 +1979,7 @@
                     display: flex;
                     justify-content: space-between;
                     flex-direction: column;
+                    margin-bottom: 30px;
                         h2 {
                             margin-top: 20px;
                             font-size: 20px;
@@ -1963,7 +2002,8 @@
 
                 .page-image {
                     width: 100%;
-                    margin-top: 30px;
+                    margin-top: 0;
+                    padding-bottom: 60px;
 
                     img {
                         width: 100%;
@@ -1971,20 +2011,21 @@
                     }
 
                     .page-image_more, .dop {
-                        margin-top: 50px;
+                        margin-top: 0;
                         display: flex;
                         flex-wrap: wrap;
                         gap: 177px;
 
-                        img {
+                        img, picture {
                             position: relative;
-                            width: 215px;
+                            max-width: 215px;
+                            margin-top: 70px;
                         }
                     }
 
                     .page-image_more.abstract {
-                        img:nth-child(2) {
-                            top: -50px;
+                        img:nth-child(2), picture:nth-child(2) {
+                            top: -20px;
                         }
                     }
                 }
@@ -2234,6 +2275,7 @@
                         margin-bottom: 20px;
                         a.item__img {
                             width: 100%;
+                            height: 100%
                             img {
                                 width: 100%;
                                 min-height: 362px;
@@ -2249,7 +2291,7 @@
 
                         .data__tag {
                             height: 44px;
-                            margin: 63px 40px 0;
+                            margin: 0 40px 0;
 
                             span {
                                 font-size: 14px;
@@ -2601,6 +2643,14 @@
                         }
                     }
                 }
+
+                .color_dop-after {
+                    margin-top: 20px;
+                } 
+    
+                .color_dop-after:last-child {
+                    margin-top: 60px;
+                }
             }
             .keys__arhitect {
                 margin-top: 20px;
@@ -2666,30 +2716,30 @@
                 .page-image {
                     width: 100%;
                     margin-top: 30px;
+                    padding-bottom: 60px;
 
                     img {
                         width: 100%;
                     }
 
                     .page-image_more, .dop {
-                        margin-top: 20px;
+                        margin-top: 0;
                         display: flex;
                         flex-wrap: wrap;
                         gap: 55px;
 
-                        img {
+                        img, picture {
                             position: relative;
-                            width: 100px;
+                            max-width: 100px;
+                            margin-top: 40px;
                         }
                     }
 
                     .page-image_more.abstract {
-                        img:nth-child(2) {
-                            top: 5px;
+                        img:nth-child(2),  picture:nth-child(2){
+                            top: -10px;
                         }
                     }
-
-                    padding-bottom: 40px;
                 }
 
                 .page-more {
@@ -2720,6 +2770,7 @@
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-between;
+                    gap: 0;
 
                     img {
                         width: 78px;

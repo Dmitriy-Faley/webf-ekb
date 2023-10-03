@@ -1,0 +1,166 @@
+{
+    "operation-mode": "varied-image-responses",
+    "image-types": 3,
+    "destination-folder": "mingled",
+    "destination-extension": "append",
+    "destination-structure": "image-roots",
+    "cache-control": "no-header",
+    "cache-control-custom": "public, max-age=31536000, stale-while-revalidate=604800, stale-if-error=604800",
+    "cache-control-max-age": "one-week",
+    "cache-control-public": false,
+    "scope": [
+        "themes",
+        "uploads"
+    ],
+    "enable-logging": false,
+    "prevent-using-webps-larger-than-original": true,
+    "enable-redirection-to-converter": true,
+    "only-redirect-to-converter-on-cache-miss": false,
+    "only-redirect-to-converter-for-webp-enabled-browsers": true,
+    "do-not-pass-source-in-query-string": true,
+    "redirect-to-existing-in-htaccess": true,
+    "forward-query-string": true,
+    "enable-redirection-to-webp-realizer": true,
+    "jpeg-encoding": "auto",
+    "jpeg-enable-near-lossless": true,
+    "jpeg-near-lossless": 60,
+    "quality-auto": true,
+    "max-quality": 80,
+    "quality-specific": 70,
+    "png-encoding": "auto",
+    "png-enable-near-lossless": true,
+    "png-near-lossless": 60,
+    "png-quality": 85,
+    "alpha-quality": 80,
+    "converters": [
+        {
+            "converter": "cwebp",
+            "options": {
+                "use-nice": true,
+                "try-common-system-paths": true,
+                "try-supplied-binary-for-os": true,
+                "method": 6,
+                "low-memory": true,
+                "command-line-options": ""
+            },
+            "working": true
+        },
+        {
+            "converter": "vips",
+            "options": {
+                "smart-subsample": false,
+                "preset": "none"
+            },
+            "working": false
+        },
+        {
+            "converter": "imagemagick",
+            "options": {
+                "use-nice": true
+            },
+            "working": false
+        },
+        {
+            "converter": "graphicsmagick",
+            "options": {
+                "use-nice": true
+            },
+            "working": false
+        },
+        {
+            "converter": "ffmpeg",
+            "options": {
+                "use-nice": true,
+                "method": 4
+            },
+            "working": false
+        },
+        {
+            "converter": "wpc",
+            "working": false,
+            "options": {
+                "api-key": ""
+            }
+        },
+        {
+            "converter": "ewww",
+            "working": false
+        },
+        {
+            "converter": "imagick",
+            "working": true
+        },
+        {
+            "converter": "gmagick",
+            "working": false
+        },
+        {
+            "converter": "gd",
+            "options": {
+                "skip-pngs": false
+            },
+            "working": true
+        }
+    ],
+    "metadata": "none",
+    "convert-on-upload": false,
+    "fail": "original",
+    "success-response": "converted",
+    "alter-html": {
+        "enabled": true,
+        "only-for-webp-enabled-browsers": false,
+        "alter-html-add-picturefill-js": true,
+        "only-for-webps-that-exists": false,
+        "replacement": "picture",
+        "hooks": "ob",
+        "hostname-aliases": []
+    },
+    "web-service": {
+        "enabled": false,
+        "whitelist": []
+    },
+    "environment-when-config-was-saved": {
+        "doc-root-available": true,
+        "doc-root-resolvable": true,
+        "doc-root-usable-for-structuring": true,
+        "image-roots": [
+            {
+                "id": "uploads",
+                "rel-path": "content/uploads",
+                "url": "http://webf-ekb.loc/content/uploads"
+            },
+            {
+                "id": "themes",
+                "rel-path": "content/themes",
+                "url": "http://webf-ekb.loc/content/themes"
+            },
+            {
+                "id": "plugins",
+                "rel-path": "content/plugins",
+                "url": "http://webf-ekb.loc/content/plugins"
+            },
+            {
+                "id": "wp-content",
+                "rel-path": "content",
+                "url": "http://webf-ekb.loc/content"
+            },
+            {
+                "id": "index",
+                "rel-path": "wp",
+                "url": "http://webf-ekb.loc"
+            }
+        ],
+        "document-root": null
+    },
+    "base-htaccess-on-these-capability-tests": {
+        "passThroughHeaderWorking": false,
+        "passThroughEnvWorking": true,
+        "modHeaderWorking": true,
+        "canRunTestScriptInWOD": true,
+        "canRunTestScriptInWOD2": true
+    },
+    "document-root": "C:/OpenServer/domains/webf-ekb.loc/app",
+    "paths-used-in-htaccess": {
+        "wod-url-path": "content/plugins/webp-express/wod/webp-on-demand.php"
+    }
+}

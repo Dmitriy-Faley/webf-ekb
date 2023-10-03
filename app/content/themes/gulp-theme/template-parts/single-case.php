@@ -165,26 +165,35 @@ body {
                 <?php if( get_row_layout() == 'фото_палитры' ):?>
                     <?php while (have_rows('palitra')): the_row();
                         $image = get_sub_field('foto');
+                        $hex = get_sub_field('hex');
                         $firsthex = get_sub_field('hex-color');
                      ?>
                 <div class="item-color">
 
-                        <img src="<?php echo $image['url']; ?>" alt="typography_right">
-                        <p class="color-hex">HEX</p>
+                        <img src="<?php echo $image['url']; ?>" alt="colors_right">
+                        <p class="color-hex"><?php echo $hex; ?></p>
                         <p><?php echo $firsthex; ?></p>
                 </div>
                 <?php endwhile; ?>
                 <?php endif; ?>
                 <?php endwhile; ?>
             </div>
+            <?php while (have_rows('czvetovaya_palitra')): the_row();?>
+                <?php if( get_row_layout() == 'большое_фото' ):
+                        $image = get_sub_field('gradient');?>
+                        <div class="color_dop-after">
+                            <img src="<?php echo $image['url']; ?>" alt="colors_gradient">
+                        </div>
+                <?php endif; ?>
+                <?php endwhile; ?>
         </div>
         <?php endif; ?>
         <?php if(have_rows('informaczionnaya_arhitektura')):?>
         <div class="keys__arhitect">
             <div class="arhitect-description">
-                <h2>Информационная архитектура</h2>
-                <?php while (have_rows('informaczionnaya_arhitektura')): the_row();?>
+            <?php while (have_rows('informaczionnaya_arhitektura')): the_row();?>
                 <?php if( get_row_layout() == 'Описание архитектуры' ):?>
+                <h2><?php echo the_sub_field('zagolovok'); ?></h2>
                     <?php echo the_sub_field('opisanie'); ?>
                 <?php endif; ?>
                 <?php endwhile; ?>
@@ -194,10 +203,18 @@ body {
             <?php if( get_row_layout() == 'архитектура' ):
                 $image = get_sub_field('shema_arhitektury');
             ?>
-                <img src="<?php echo $image['url']; ?>" alt="typography_right">
+                <img src="<?php echo $image['url']; ?>" alt="architect">
             <?php endif; ?>
             <?php endwhile; ?>
             </div>
+            <?php while (have_rows('informaczionnaya_arhitektura')): the_row();?>
+                <?php if( get_row_layout() == 'большое_фото' ):
+                        $image = get_sub_field('foto');?>
+                        <div class="architect_dop-after">
+                            <img src="<?php echo $image['url']; ?>" alt="colors_gradient">
+                        </div>
+                <?php endif; ?>
+            <?php endwhile; ?>
         </div>
         <?php endif; ?>
         <div class="keys__pages">
@@ -219,7 +236,7 @@ body {
                     <?php while (have_rows('dop_izobrazheniya')): the_row();
                                 $image = get_sub_field('foto');
                             ?>
-                        <img src="<?php echo $image['url']; ?>" alt="page_image-more" />
+                        <img src="<?php echo $image['url']; ?>" class="<?php the_sub_field('klass'); ?>" alt="page_image-more" />
                     <?php endwhile; ?>
                 </div>
             </div>
@@ -398,7 +415,7 @@ body {
                 <?php wp_reset_postdata(); ?>
                 <?php endif; ?>
         </div>
-        <button class="button button-more" id="keys-more">Все проекты</button>
+        <a href="/portfolio" class="button button-more">Все проекты</a>
     </div>
 </section>
 <?php get_footer(); ?>
