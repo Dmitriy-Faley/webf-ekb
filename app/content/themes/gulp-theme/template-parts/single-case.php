@@ -88,6 +88,23 @@ body {
             </div>
         </div>
         <?php endwhile; ?>
+        <?php if (have_rows('bannery')):?>
+        <div class="keys__banner">
+            <h2>Рекламные баннеры</h2>
+            <div class="banner-wrapper">
+            <?php while (have_rows('bannery')): the_row();?>
+            <?php if( get_row_layout() == 'строка_баннеров' ):?>
+                <?php while (have_rows('galereya')): the_row();
+                        $banner = get_sub_field('foto');
+                ?>
+                <img src="<?php echo $banner['url']; ?>" alt="banner">
+                <?php endwhile; ?>
+            <?php endif; ?>
+            <?php endwhile; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+        <?php if (have_rows('etapy_razrabotki')): ?>
         <div class="keys__steps">
             <h2>Этапы разработки</h2>
             <div class="steps-wrapper">
@@ -124,6 +141,8 @@ body {
                 </div>
             </div>
         </div>
+        <?php endif; ?>
+        <?php if (have_rows('tipografika')): the_row();?>
         <div class="keys__graph">
             <div class="graph-description">
                 <h2>Типографика</h2>
@@ -150,6 +169,7 @@ body {
             <?php endwhile; ?>
             </div>
         </div>
+        <?php endif; ?>
         <?php if(have_rows('czvetovaya_palitra')):?>
         <div class="keys__color">
             <div class="color-description">

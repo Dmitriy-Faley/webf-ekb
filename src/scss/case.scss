@@ -171,6 +171,35 @@
             }
         }
 
+        .keys__banner {
+            h2 {
+                min-width: max-content;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 120%;
+                margin-top: 30px;
+            }
+
+            p {
+                width: 640px;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 150%;
+            }
+
+            .banner-wrapper {
+                margin-top: 70px;
+                display: flex;
+                border-bottom: 1px solid #D9D9D9;
+                padding-bottom: 110px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+        }
+
         .keys__steps {
             margin-top: 30px;
             display: flex;
@@ -991,6 +1020,54 @@
                 }
             }
 
+            .keys__banner {
+                h2 {
+                    min-width: max-content;
+                    font-size: 17px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 120%;
+                    margin-top: 21px;
+                }
+    
+                p {
+                    width: 455px;
+                    font-size: 11px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 150%;
+                }
+    
+                .banner-wrapper {
+                    margin-top: 50px;
+                    border-bottom: 1px solid #D9D9D9;
+                    padding-bottom: 78px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 28px;
+                }
+
+                img, picture  {
+                    width: 100%;
+                }
+
+                img:nth-child(3), picture:nth-child(3), 
+                img:nth-child(4), picture:nth-child(4), 
+                img:nth-child(5), picture:nth-child(5) {
+                    width: 294px;
+                }
+
+                img:nth-child(1), picture:nth-child(1), 
+                picture:nth-child(2),
+                img:nth-child(7), picture:nth-child(7), 
+                img:nth-child(8), picture:nth-child(8), 
+                img:nth-child(10), picture:nth-child(10),
+                img:nth-child(11), picture:nth-child(11) {
+                    width: 455px;
+                }
+                
+            }    
+
             .keys__steps {
                 margin-top: 21px;
                 display: flex;
@@ -1740,6 +1817,54 @@
                 }
             }
 
+            .keys__banner {
+                h2 {
+                    min-width: max-content;
+                    font-size: 17px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 120%;
+                    margin-top: 20px;
+                }
+    
+                p {
+                    width: 455px;
+                    font-size: 11px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 150%;
+                }
+    
+                .banner-wrapper {
+                    margin-top: 30px;
+                    border-bottom: 1px solid #D9D9D9;
+                    padding-bottom: 60px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
+
+                img, picture  {
+                    width: 100%;
+                }
+
+                img:nth-child(3), picture:nth-child(3), 
+                img:nth-child(4), picture:nth-child(4), 
+                img:nth-child(5), picture:nth-child(5) {
+                    width: 196px;
+                }
+
+                img:nth-child(1), picture:nth-child(1), 
+                picture:nth-child(2),
+                img:nth-child(7), picture:nth-child(7), 
+                img:nth-child(8), picture:nth-child(8), 
+                img:nth-child(10), picture:nth-child(10),
+                img:nth-child(11), picture:nth-child(11) {
+                    width: 304px;
+                }
+                
+            }  
+
             .keys__steps {
                 margin-top: 20px;
                 display: flex;
@@ -2289,7 +2414,7 @@
 
                     .item__data {
                         margin-left: 0;
-                        margin-top: 0;
+                        margin-top: 70px;
 
                         .data__tag {
                             height: 44px;
@@ -2509,6 +2634,53 @@
                     }
                 }
             }
+
+            .keys__banner {
+                h2 {
+                    min-width: max-content;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 120%;
+                    margin-top: 20px;
+                }
+    
+                p {
+                    width: 100%;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 150%;
+                }
+    
+                .banner-wrapper {
+                    margin-top: 30px;
+                    border-bottom: 1px solid #D9D9D9;
+                    padding-bottom: 60px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
+
+                img, picture {
+                    width: 100%;
+                }
+
+                img:nth-child(3), picture:nth-child(3), 
+                img:nth-child(4), picture:nth-child(4), 
+                img:nth-child(5), picture:nth-child(5) {
+                    width: 100%;
+                }
+
+                img:nth-child(1), picture:nth-child(1), 
+                picture:nth-child(2),
+                img:nth-child(7), picture:nth-child(7), 
+                img:nth-child(8), picture:nth-child(8), 
+                img:nth-child(10), picture:nth-child(10),
+                img:nth-child(11), picture:nth-child(11) {
+                    width: 100%;
+                }
+            }    
 
             .keys__steps {
                 margin-top: 20px;
