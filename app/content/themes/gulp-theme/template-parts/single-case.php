@@ -88,6 +88,91 @@ body {
             </div>
         </div>
         <?php endwhile; ?>
+
+        <?php if (have_rows('posty')):?>
+        <div class="keys__posts">
+            <h2>Посты</h2>
+            <div class="posts-foto_double">
+                <?php while (have_rows('posty')): the_row();?>
+                <?php if( get_row_layout() == 'пара_картинок' ):?>
+                    <?php while (have_rows('foto')): the_row();
+                            $image = get_sub_field('kartinki');
+                            $color = get_sub_field('czvet_fona');
+                    ?>
+                    <div class="double-item" style="background-color: <?php echo $color; ?>">
+                        <img src="<?php echo $image['url']; ?>" alt="post-banner">
+                    </div>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+                <?php endwhile; ?>
+            </div>
+            <?php while (have_rows('posty')): the_row();?>
+                <?php if( get_row_layout() == 'галерея' ):
+                    $color = get_sub_field('czvet_fona');?>
+            <div class="posts-gallery" style="background-color: <?php echo $color; ?>">
+                    <?php while (have_rows('galereya_kartinok')): the_row();
+                            $image = get_sub_field('foto');
+                    ?>
+                        <img src="<?php echo $image['url']; ?>" alt="post-galery">
+                    <?php endwhile; ?>
+            </div>
+                <?php endif; ?>
+            <?php endwhile; ?>
+            <?php while (have_rows('posty')): the_row();?>
+                <?php if( get_row_layout() == 'рекламное_фото' ):
+                     $image = get_sub_field('foto');
+                     $color = get_sub_field('czvet_fona');
+            ?>
+            <div class="posts-marketing" style="background-color: <?php echo $color; ?>">
+                        <img src="<?php echo $image['url']; ?>" alt="post-marketing">
+                <?php endif; ?>
+                <?php endwhile; ?>
+            </div>
+            <?php while (have_rows('posty')): the_row();?>
+                <?php if( get_row_layout() == 'скриншоты' ):
+                    $color =  get_sub_field('czvet_fona');
+                ?>
+            <div class="posts-screen <?php echo the_sub_field('klass'); ?>" style="background-color: <?php echo $color; ?>">
+                <?php while (have_rows('ekrany')): the_row();
+                                $image = get_sub_field('foto');
+                    ?>
+                    <img src="<?php echo $image['url']; ?>" alt="post-screen">
+                    <?php endwhile; ?>
+            </div>
+                <?php endif; ?>
+            <?php endwhile; ?>
+            <?php while (have_rows('posty')): the_row();?>
+                <?php if( get_row_layout() == 'слипшийся_коллаж' ):
+                    $color =  get_sub_field('czvet_fona');
+                ?>
+            <div class="posts-collage <?php echo the_sub_field('klass'); ?>" style="background-color: <?php echo $color; ?>">
+                <?php while (have_rows('galereya')): the_row();
+                                $image = get_sub_field('foto');
+                    ?>
+                    <img src="<?php echo $image['url']; ?>" alt="post-collage">
+                    <?php endwhile; ?>
+            </div>
+                <?php endif; ?>
+            <?php endwhile; ?>
+
+            <div class="posts-foto_end">
+            <?php while (have_rows('posty')): the_row();?>
+                <?php if( get_row_layout() == 'завершающее_фото' ):
+                    $image = get_sub_field('foto');
+                    $logo = get_sub_field('logo');
+                ?>
+                    <div class="foto-first">
+                        <img src="<?php echo $image['url']; ?>" alt="pet-foto">
+                        <div class="foto-logo">
+                            <img src="<?php echo $logo['url']; ?>" alt="pet-logo">
+                        </div>
+                    </div>
+                <?php endif; ?>
+            <?php endwhile; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+
         <?php if (have_rows('bannery')):?>
         <div class="keys__banner">
             <h2>Рекламные баннеры</h2>
@@ -104,6 +189,7 @@ body {
             </div>
         </div>
         <?php endif; ?>
+
         <?php if (have_rows('etapy_razrabotki')): ?>
         <div class="keys__steps">
             <h2>Этапы разработки</h2>
@@ -142,6 +228,7 @@ body {
             </div>
         </div>
         <?php endif; ?>
+
         <?php if (have_rows('tipografika')): the_row();?>
         <div class="keys__graph">
             <div class="graph-description">
@@ -170,6 +257,7 @@ body {
             <?php endwhile; ?>
         </div>
         <?php endif; ?>
+
         <?php if(have_rows('czvetovaya_palitra')):?>
         <div class="keys__color">
             <div class="color-description">
@@ -208,6 +296,7 @@ body {
                 <?php endwhile; ?>
         </div>
         <?php endif; ?>
+
         <?php if (have_rows('ikonki')):?>
         <div class="keys__icons">
             <div class="icons-description">
@@ -231,6 +320,7 @@ body {
             </div>
         </div>
         <?php endif; ?>
+
         <?php if(have_rows('informaczionnaya_arhitektura')):?>
         <div class="keys__arhitect">
             <div class="arhitect-description">
@@ -260,6 +350,7 @@ body {
             <?php endwhile; ?>
         </div>
         <?php endif; ?>
+
         <div class="keys__pages">
             <?php while (have_rows('opisanie_stranicz')): the_row();?>
             <?php if( get_row_layout() == 'Часть страницы' ): ?>
@@ -333,6 +424,7 @@ body {
             <?php endwhile; ?>
 
         </div>
+
         <?php if (have_rows('seo_razrabotka')):?>
         <div class="keys__seo">
         <?php while (have_rows('seo_razrabotka')): the_row();?>
@@ -343,6 +435,7 @@ body {
                 <?php endwhile; ?>
         </div>
         <?php endif; ?>
+
         <div class="keys__tech">
             <div class="tech-descr">
                 <h2>Используемые технологии</h2>
@@ -464,16 +557,17 @@ body {
 <?php get_footer(); ?>
 
 <script>
+
+    const activeMenuItem = document.querySelector('#menu-item-49');
+    activeMenuItem.classList.add('current-menu-item');
+    activeMenuItem.classList.add('current_page_item');
+
     const parentImage = document.querySelectorAll('.color-images')[0];
     const largeImage = parentImage.querySelectorAll('.item-color')[2];
     largeImage.classList.add('large');
 
 
     const accordionItem = document.querySelectorAll('.step-item');
-
-    const activeMenuItem = document.querySelector('#menu-item-49');
-    activeMenuItem.classList.add('current-menu-item');
-    activeMenuItem.classList.add('current_page_item');
 
     accordionItem.forEach(item => {
         const button = item.querySelector('p>span');
