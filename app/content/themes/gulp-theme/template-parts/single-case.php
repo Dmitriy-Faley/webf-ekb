@@ -152,11 +152,11 @@ body {
                 <?php endif; ?>
                 <?php endwhile; ?>
             </div>
-            <div class="graph-images">
             <?php while (have_rows('tipografika')): the_row();?>
             <?php if( get_row_layout() == 'фото' ):
                 $imageOne = get_sub_field('kartinka_sleva');
                 ?>
+            <div class="graph-images">
                 <img src="<?php echo $imageOne['url']; ?>" alt="typography_left">
                 <div class="graph-right">
                     <?php while (have_rows('kartinki_sprava')): the_row();
@@ -165,9 +165,9 @@ body {
                         <img src="<?php echo $image['url']; ?>" alt="" />
                     <?php endwhile; ?>
                 </div>
+            </div>
             <?php endif; ?>
             <?php endwhile; ?>
-            </div>
         </div>
         <?php endif; ?>
         <?php if(have_rows('czvetovaya_palitra')):?>
@@ -180,9 +180,9 @@ body {
                 <?php endif; ?>
                 <?php endwhile; ?>
             </div>
+            <?php while (have_rows('czvetovaya_palitra')): the_row();?>
+            <?php if( get_row_layout() == 'фото_палитры' ):?>
             <div class="color-images">
-                <?php while (have_rows('czvetovaya_palitra')): the_row();?>
-                <?php if( get_row_layout() == 'фото_палитры' ):?>
                     <?php while (have_rows('palitra')): the_row();
                         $image = get_sub_field('foto');
                         $hex = get_sub_field('hex');
@@ -195,9 +195,9 @@ body {
                         <p><?php echo $firsthex; ?></p>
                 </div>
                 <?php endwhile; ?>
-                <?php endif; ?>
-                <?php endwhile; ?>
             </div>
+            <?php endif; ?>
+            <?php endwhile; ?>
             <?php while (have_rows('czvetovaya_palitra')): the_row();?>
                 <?php if( get_row_layout() == 'большое_фото' ):
                         $image = get_sub_field('gradient');?>
@@ -206,6 +206,29 @@ body {
                         </div>
                 <?php endif; ?>
                 <?php endwhile; ?>
+        </div>
+        <?php endif; ?>
+        <?php if (have_rows('ikonki')):?>
+        <div class="keys__icons">
+            <div class="icons-description">
+                <h2>Иконки</h2>
+                <?php while (have_rows('ikonki')): the_row();?>
+                    <?php if( get_row_layout() == 'строка_иконок' ):?>
+                        <?php echo the_sub_field('opisanie_ikonok'); ?>
+                    <?php endif; ?>
+                    <?php endwhile; ?>
+            </div>
+            <div class="icons-wrapper">
+            <?php while (have_rows('ikonki')): the_row();?>
+            <?php if( get_row_layout() == 'строка_иконок' ):?>
+                <?php while (have_rows('galereya')): the_row();
+                        $banner = get_sub_field('foto');
+                ?>
+                <img src="<?php echo $banner['url']; ?>" alt="banner">
+                <?php endwhile; ?>
+            <?php endif; ?>
+            <?php endwhile; ?>
+            </div>
         </div>
         <?php endif; ?>
         <?php if(have_rows('informaczionnaya_arhitektura')):?>
@@ -441,6 +464,11 @@ body {
 <?php get_footer(); ?>
 
 <script>
+    const parentImage = document.querySelectorAll('.color-images')[0];
+    const largeImage = parentImage.querySelectorAll('.item-color')[2];
+    largeImage.classList.add('large');
+
+
     const accordionItem = document.querySelectorAll('.step-item');
 
     const activeMenuItem = document.querySelector('#menu-item-49');
@@ -484,8 +512,6 @@ body {
         }
     })
 
-    console.log(typographRight.childNodes.length)
-
     if(typographRight.childNodes.length === 3) {
         typographLeft.classList.add('double');
     }
@@ -493,5 +519,5 @@ body {
     const moreButton = document.querySelector('#keys-more');
     moreButton.addEventListener('click', (e) => {
         document.querySelector('#menu-item-49 a').click();
-    })
+    });
 </script>
