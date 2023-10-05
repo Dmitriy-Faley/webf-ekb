@@ -35,7 +35,7 @@
 }
 
 .blog {
-    padding-top: 99px;
+    padding-top: 0;
 
     .blog__title {
         padding-bottom: 40px !important;
@@ -128,7 +128,7 @@
 
 @media screen and (max-width: 1368px) {
     .blog {
-        padding-top: 55px;
+        padding-top: 0;
 
         .blog__title {
             padding-bottom: 29px !important;
@@ -176,7 +176,7 @@
 
 @media screen and (max-width: 768px) {
     .blog {
-        padding-top: 70px;
+        padding-top: 0;
 
         .blog__tags {
             padding-bottom: 18px;
@@ -225,7 +225,7 @@
 
 @media screen and (max-width: 480px) {
     .blog {
-        padding-top: 30px;
+        padding-top: 0;
 
         .blog__tags {
             padding-bottom: 22px;

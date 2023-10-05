@@ -18,6 +18,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap"
 		rel="stylesheet">
+	<link type="image/x-icon" href="<?php echo get_template_directory_uri() ?>/assets/img/icons/favicon.svg" rel="shortcut icon">
+	<link type="Image/x-icon" href="<?php echo get_template_directory_uri() ?>/assets/img/icons/favicon.svg" rel="icon">
 
 	<!-- Link Swiper's CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />

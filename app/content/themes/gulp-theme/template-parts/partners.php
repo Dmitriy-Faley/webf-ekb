@@ -7,6 +7,7 @@ get_header();
 
 <section class="parners">
     <div class="container">
+        <div class="breadcrumbs"><?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?></div>
         <h1 class="title"><?php the_title(); ?></h1>
         <div class="parners__icons">
             <div class="icons__item">

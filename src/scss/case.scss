@@ -8,6 +8,15 @@
 }
 
 .keys {
+
+    .breadcrumbs {
+        margin: 24px auto 76px;
+        .container {
+            margin: 0 auto;
+            padding: 0;
+            background: none;
+        }
+    }
     .container {
         margin: 88px auto 102px;
         min-width: 1400px;

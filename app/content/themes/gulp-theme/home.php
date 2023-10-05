@@ -380,9 +380,7 @@ get_header();
       </div>
     </div>
     <div class="contacts__map">
-      <iframe
-        src="<?php the_field('ssylka_na_yandeks_kartu', 'option') ?>"
-        width="100%" height="485" frameborder="0"></iframe>
+      <div id="map1" class="map"></div>
     </div>
   </div>
 </section>

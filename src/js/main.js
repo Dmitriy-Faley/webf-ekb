@@ -249,7 +249,27 @@ $.each(nav_btns, function () {
 });
 
 
-
-
-
-//Ajax
+//maps
+jQuery(document).ready(function ($) {
+function init() {
+	let map1 = new ymaps.Map('map1', {
+	  center: [55.701648, 37.940220],
+	  zoom: 16
+	});
+	let placemark1 = new ymaps.Placemark([55.701648, 37.940220], {}, {
+	  iconLayout: 'default#image',
+	  iconImageSize: [32, 32],
+	  iconImageOffset: [-69, -84]
+	});
+	const maps = [map1];
+	maps.forEach(map => map.controls.remove('geolocationControl'));
+	maps.forEach(map => map.controls.remove('searchControl'));
+	maps.forEach(map => map.controls.remove('trafficControl'));
+	maps.forEach(map => map.controls.remove('typeSelector'));
+	maps.forEach(map => map.controls.remove('fullscreenControl'));
+	maps.forEach(map => map.controls.remove('zoomControl'));
+	maps.forEach(map => map.controls.remove('rulerControl'));
+	map1.geoObjects.add(placemark1);
+  }
+  ymaps.ready(init);
+});

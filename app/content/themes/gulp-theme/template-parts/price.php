@@ -8,6 +8,7 @@ get_header();
 
 <section class="prices">
     <div class="container">
+        <div class="breadcrumbs"><?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?></div>
         <h1 class="title"><?php the_title(); ?></h1>
         <div class="prices__tabs">
             <div class="tabs__nav">

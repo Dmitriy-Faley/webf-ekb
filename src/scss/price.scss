@@ -17,7 +17,7 @@
 
 
 .prices {
-    padding-top: 100px;
+    padding-top: 0;
 
     .prices__tabs {
         padding-top: 10px;
@@ -249,7 +249,7 @@
 
 @media screen and (max-width: 1368px) {
     .prices {
-        padding-top: 55px;
+        padding-top: 0;
 
         .prices__tabs {
             padding-top: 5px;
@@ -322,7 +322,7 @@
 
 @media screen and (max-width: 768px) {
     .prices {
-        padding-top: 70px;
+        padding-top: 0;
 
         .prices__tabs {
             padding-top: 0;
@@ -394,7 +394,7 @@
 
 @media screen and (max-width: 480px) {
     .prices {
-        padding-top: 30px;
+        padding-top: 0;
 
         .prices__tabs {
             padding-top: 0;

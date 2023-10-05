@@ -27,7 +27,7 @@
 }
 
 .portfolio {
-    padding-top: 99px;
+    padding-top: 0;
 
     .portfolio__title {
         padding-bottom: 40px !important;
@@ -94,7 +94,7 @@
 
 @media screen and (max-width: 1368px) {
     .portfolio {
-        padding-top: 55px;
+        padding-top: 0;
 
         .portfolio__title {
             padding-bottom: 29px !important;
@@ -128,7 +128,7 @@
 
 @media screen and (max-width: 768px) {
     .portfolio {
-        padding-top: 70px;
+        padding-top: 0;
 
         .portfolio__tags {
             padding-bottom: 18px;
@@ -154,7 +154,7 @@
 
 @media screen and (max-width: 480px) {
     .portfolio {
-        padding-top: 30px;
+        padding-top: 0;
 
         .portfolio__tags {
             padding-bottom: 22px;

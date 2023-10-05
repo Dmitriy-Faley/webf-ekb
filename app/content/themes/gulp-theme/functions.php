@@ -14,6 +14,7 @@ function gulp_scripts() {
   // при подключении slick.min.js будут проблемы с работой слайдеров
   wp_enqueue_script( 'slick-script', get_template_directory_uri() . '/assets/js/slick.js', array(), '1.1', true ); 
   wp_enqueue_script( 'gulp-script', get_template_directory_uri() . '/assets/main.min.js', array(), '1.1', true );
+  wp_enqueue_script('apimaps', 'https://api-maps.yandex.ru/2.1/?lang=ru_RU', array('jquery'), true, true);
 }
 // Добавить скрипты и стили на сайт
 add_action( 'wp_enqueue_scripts', 'gulp_scripts' );
@@ -186,7 +187,7 @@ function dimox_breadcrumbs() {
 
 	$wrap_before    = '<div class="container" itemscope itemtype="http://schema.org/BreadcrumbList">'; // открывающий тег обертки
 	$wrap_after     = '</div><!-- .breadcrumbs -->'; // закрывающий тег обертки
-	$sep            = '<span class="separator"></span>'; // разделитель между "крошками"
+	$sep            = '<span class="separator">/</span>'; // разделитель между "крошками"
 	$before         = '<span class="breadcrumbs__current">'; // тег перед текущей "крошкой"
 	$after          = '</span>'; // тег после текущей "крошки"
 
@@ -678,3 +679,22 @@ function load_portf()
     wp_reset_postdata();
     die($html);
 }
+
+//удаляет url для сертификатов
+add_action('template_redirect', 'remove_wp_cases_tag_archives');
+
+function remove_wp_cases_tag_archives()
+{
+
+  if (is_category()) {
+
+    global $wp_query;
+    $wp_query->set_404();
+    status_header(404);
+    nocache_headers();
+    get_template_part('404');
+    die();
+  }
+}
+
+//map

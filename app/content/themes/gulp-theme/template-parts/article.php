@@ -8,6 +8,7 @@ get_header();
 
 <section class="article">
     <div class="container">
+        <div class="breadcrumbs"><?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?></div>
         <div class="article__content">
             <div class="article__img">
                 <?php the_post_thumbnail('full'); ?>
@@ -191,5 +192,10 @@ get_header();
     moreButton.addEventListener('click', (e) => {
         document.querySelector('#menu-item-46 a').click();
     })
+
+    const breadcrumbs = document.querySelector('.breadcrumbs');
+    const deletedSpan = breadcrumbs.querySelectorAll('span');
+    deletedSpan[deletedSpan.length - 3].remove();
+    deletedSpan[deletedSpan.length - 2].remove();
 
 </script>

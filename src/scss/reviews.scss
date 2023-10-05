@@ -1,5 +1,5 @@
 .reviews-page {
-    padding-top: 100px;
+    padding-top: 0;
 
     .reviews__content {
         column-count: 2;
@@ -63,7 +63,7 @@
 
 @media screen and (max-width: 1368px) {
     .reviews-page {
-        padding-top: 55px;
+        padding-top: 0;
 
         .reviews__content {
             .reviews__item {
@@ -103,7 +103,7 @@
 
 @media screen and (max-width: 768px) {
     .reviews-page {
-        padding-top: 70px;
+        padding-top: 0;
 
         .reviews__content {
             columns: 1;
@@ -145,7 +145,7 @@
 
 @media screen and (max-width: 480px) {
     .reviews-page {
-        padding-top: 30px;
+        padding-top: 0;
         padding-bottom: 24px;
 
         .reviews__content {

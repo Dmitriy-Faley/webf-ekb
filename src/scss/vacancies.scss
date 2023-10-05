@@ -31,7 +31,7 @@
   }
 
 .distribution {
-    padding-top: 100px;
+    padding-top: 0;
     overflow: hidden;
 
     .distribution__content--info {
@@ -199,7 +199,7 @@
 
 @media screen and (max-width: 1368px) {
     .distribution {
-        padding-top: 55px;
+        padding-top: 0;
 
         .distribution__content--info {
             .tabs__nav {
@@ -270,7 +270,7 @@
 
 @media screen and (max-width: 960px) {
     .distribution {
-        padding-top: 70px;
+        padding-top: 0;
 
         .title {
             padding-bottom: 30px;
@@ -352,7 +352,7 @@
 
 @media screen and (max-width: 480px) {
     .distribution {
-        padding-top: 30px;
+        padding-top: 0;
 
         .title {
             padding-bottom: 30px;
