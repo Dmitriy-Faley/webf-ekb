@@ -133,7 +133,7 @@ Version: 1.0
 }
 
 .header-menu__ul>li>ul>li {
-	margin: 0 auto;
+	margin: 0 50px;
 	max-width: 1160px;
 	width: 100%;
 }

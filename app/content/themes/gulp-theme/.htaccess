@@ -6,32 +6,10 @@
 RewriteEngine On
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 RewriteBase /
-
-# Буквы в верхнем регистре 
-# RewriteCond expr "tolower(%{REQUEST_URI}) =~ /(.+)/"
-# RewriteRule [A-Z] %1 [R=301,L]
-RewriteCond %{HTTPS} off
-RewriteCond %{REQUEST_URI} !(wp-json)
-RewriteCond expr "tolower(%{REQUEST_URI}) =~ /(.+)/"
-RewriteRule [A-Z] https://%{HTTP_HOST}%1 [R=301,L]
-
-#http -> https
-RewriteCond %{HTTPS} off
-RewriteCond %{HTTP:X-Forwarded-Proto} !https
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
-
-#index.php
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
-RewriteRule ^index\.php$ https://%{HTTP_HOST}/$1 [R=301,L]
-
-#index.html
-Redirect 301 /index.html /
-
 </IfModule>
 
 # END WordPress

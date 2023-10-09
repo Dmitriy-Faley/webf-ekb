@@ -205,37 +205,36 @@ get_header();
           <p class="subtitle">Заказчик должен все получить в одном месте! Исповедуем только такой подход.
             Рекламно-маркетинговое агентство «Веб Фокус» охватывает все диджитал-направления:</p>
         </div>
-        <div class="slider-wrapper">
-          <?php
-              // запрос
-              $wpb_all_query = get_pages( [
-                'sort_order'   => 'ASC',
-                'sort_column'  => 'post_title',
-                'hierarchical' => 1,
-                'exclude'      => '',
-                'include'      => '',
-                'meta_key'     => '',
-                'meta_value'   => '',
-                'authors'      => '',
-                'child_of'     => 172,
-                'parent'       => 172,
-                'exclude_tree' => '',
-                'number'       => '',
-                'offset'       => 0,
-                'post_type'    => 'page',
-                'post_status'  => 'publish',
-              ] ); ?>
-          <div class="swiper-wrapper container">
-            <?php foreach( $wpb_all_query as $post ){ ?>
-                <div class="swiper-slide">
-                  <div class="services__item">
-                    <?php the_post_thumbnail(); ?>
-                    <p class="name"><a href="<?php echo get_page_uri($post -> ID) ; ?>"><?php the_title(); ?></a></p>
-                    <p class="desk"><?php the_field('opisanie_dlya_kartochki'); ?></p>
+          <div class="slider-wrapper">
+            <?php
+                // запрос
+                $wpb_all_query = get_pages( [
+                  'sort_order'   => 'ASC',
+                  'sort_column'  => 'post_title',
+                  'hierarchical' => 0,
+                  'exclude'      => '',
+                  'include'      => '',
+                  'meta_key'     => 'otobrazhat_na_glavnoj',
+                  'meta_value'   => '',
+                  'authors'      => '',
+                  'exclude_tree' => '',
+                  'number'       => '',
+                  'offset'       => 0,
+                  'post_type'    => 'page',
+                  'posts_per_page'  => 10,
+                  'post_status'  => 'publish',
+                ] ); ?>
+            <div class="swiper-wrapper container">
+              <?php foreach( $wpb_all_query as $post ){ ?>
+                  <div class="swiper-slide">
+                    <div class="services__item">
+                      <?php the_post_thumbnail(); ?>
+                      <p class="name"><a href="<?php echo get_page_uri($post -> ID) ; ?>"><?php the_title(); ?></a></p>
+                      <p class="desk"><?php the_field('opisanie_dlya_kartochki'); ?></p>
+                    </div>
                   </div>
-                </div>
-              <?php } ?>
-          </div>
+                <?php } ?>
+            </div>
         </div>
 
         <div class="container">
