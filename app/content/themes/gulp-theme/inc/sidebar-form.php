@@ -15,9 +15,9 @@
         <?php echo do_shortcode('[contact-form-7 id="18" title="Связаться с нами"]'); ?>
       </div>
       <div class="connect__icons">
-        <img class="icon" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/ee.svg" alt="icon">
-        <img class="icon" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/about2.svg" alt="icon">
-        <img class="icon" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/about4.svg" alt="icon">
+        <img class="icon one" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/ee.svg" alt="icon">
+        <img class="icon two" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/about2.svg" alt="icon">
+        <img class="icon three" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/about4.svg" alt="icon">
       </div>
     </div>
   </div>

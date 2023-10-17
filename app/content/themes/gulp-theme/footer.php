@@ -11,7 +11,7 @@
         <a href="mailto:<?php the_field('pochta', 'option') ?>"><?php the_field('pochta', 'option') ?></a>
         <a href="https://yandex.by/maps/213/moscow/house/ulitsa_vertolyotchikov_7k1/Z04YfwNgS0cHQFtvfXtxcHpnbA==/?ll=37.940221%2C55.701648&z=17.15" target="_blank"><?php the_field('adres', 'option') ?></a>
       </div>
-      <div class="footer__social">
+      <!-- <div class="footer__social">
         <div>
           <a href="#">
             <svg viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +70,7 @@
             Одноклассники
           </a>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="footer__bottom">
       <div>
@@ -145,17 +145,51 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
 
 <!-- jQuery Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
+<script async>
+    function initializeYM() {
+        console.log('initialize');
+        var myMap,
+            myPlacemark;
+
+        myMap = new ymaps.Map("map", {
+            center: [55.701648, 37.940220],
+            zoom: 16
+        });
+        myMap.controls.remove('mapTools');
+        myPlacemark = new ymaps.Placemark([55.701648, 37.940220], {
+            iconLayout: 'default#image',
+            iconImageSize: [25, 25],
+            iconImageOffset: [-12, -40]
+        });
+        myMap.geoObjects.add(myPlacemark);
+    }
+
+    $(document).ready(function () {
+        $('.map_inner').click(function () {
+          console.log('click');
+            if (!$('.map').hasClass('active')) {
+                $('.map').addClass('active');
+                $.getScript('https://api-maps.yandex.ru/2.1/?lang=ru_RU', function () {
+                    ymaps.ready(function () {
+                        initializeYM();
+                    });
+                });
+            }
+        });
+    });
+</script>
+
 <script>
   const scroll = document.querySelector('.swiper-wrapper.container');
   var swiper = new Swiper(".slider-wrapper", {
     slidesPerView: 5,
-    spaceBetween: 10,
+    spaceBetween: 20,
     freeMode: {
       enabled: true,
       sticky: false,
@@ -167,551 +201,84 @@
       // when window width is >= 320px
       320: {
         slidesPerView: 1,
-        spaceBetween: 15
+        spaceBetween: 10
       },
       // when window width is >= 480px
       480: {
         slidesPerView: 2,
-        spaceBetween: 10
+        spaceBetween: 5
       },
       // when window width is >= 640px
       769: {
+        slidesPerView: 5,
+        spaceBetween: 40
+      },
+
+      1023: {
+        slidesPerView: 4,
+        spaceBetween: 10
+      },
+
+      1439: {
+        slidesPerView: 4,
+        spaceBetween: 40
+      },
+
+      1800: {
         slidesPerView: 5,
         spaceBetween: 40
       }
     }
   });
 
+  var event_status = false; // Статус события (ещё не произошло)
 
+window.addEventListener("load", function () {
+
+  // Страница загрузилась полностью
+
+  ["mouseover", "click", "scroll"].forEach(function (event) {
+
+    window.addEventListener(event, function () {
+      console.log('произошло событие');
+
+      // Произошло нужное событие (mouseover, click или scroll) с объектом window
+
+      if (!event_status) {
+
+        setTimeout(njumutfyjmutf, 1000);
+
+
+        event_status = true; // Статус события (произошло)
+
+      }
+
+    }, {
+      once: true
+    });
+
+  });
+
+});
+
+function njumutfyjmutf(){
+  let GTMObject = document.createElement("script"); 
+  GTMObject.src = 'https://www.googletagmanager.com/gtag/js?id=G-KXZNPMTTQW&l=dataLayer&cx=c'; 
+  GTMObject.async = true; 
+  document.body.appendChild(GTMObject); 
+  let GTMObject2 = document.createElement("script"); 
+  GTMObject2.innerHTML = "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-101836187-59');";
+
+  document.body.appendChild(GTMObject2); 
+  let GTMObject3 = document.createElement("script"); GTMObject3.innerHTML = "(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date(); for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }} k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym'); ym(93459805, 'init', { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});"; 
+  document.body.appendChild(GTMObject3); 
+  let GTMObject4 = document.createElement("noscript"); 
+  GTMObject4.innerHTML = '<div><img src="https://mc.yandex.ru/watch/93459805" style="position:absolute; left:-9999px;" alt="" /></div>'; 
+  document.body.appendChild(GTMObject4); 
+  console.log('Добавили код'); 
+} 
 </script>
 
-
-
-
-<!-- <script>
-  // аккордеон
-  $(".accordion__content_item a").each(function () {
-    !$(this)
-      .closest(".accordion__item")
-      .find(".accordion__title")
-      .addClass("new1");
-  });
-
-  $(".sub-menu").each(function () {
-    // меню стрелочки 1920
-    $(this).closest(".menu-item").find(".active_after_three").addClass("new2");
-    // меню стрелочки 930
-    $(this).closest(".menu-item").find(".submenu__link").addClass("new2");
-  });
-
-
-  //Добавление классов меню
-  function classesMenu() {
-    const submenuLi = document.querySelectorAll(".submenu>li"),
-      submenuLiA = document.querySelectorAll(".submenu>li>a"),
-      submenuLiUl = document.querySelectorAll(".submenu>li>ul"),
-      submenuLiUlLi = document.querySelectorAll(".submenu>li>ul>li"),
-      submenuLiUlLiA = document.querySelectorAll(".submenu>li>ul>li>a"),
-      submenuLiUlLiUl = document.querySelectorAll(".submenu>li>ul>li>ul"),
-      submenuLiUlLiUlLi = document.querySelectorAll(".submenu>li>ul>li>ul>li"),
-      submenuLiUlLiUlLiA = document.querySelectorAll(".submenu>li>ul>li>ul>li>a"),
-      submenuLiUlLiUlLiUl = document.querySelectorAll(
-        ".submenu>li>ul>li>ul>li>ul"
-      ),
-      submenuLiUlLiUlLiUlLi = document.querySelectorAll(
-        ".submenu>li>ul>li>ul>li>ul>li"
-      ),
-      submenuLiUlLiUlLiUlLiA = document.querySelectorAll(
-        ".submenu>li>ul>li>ul>li>ul>li>a"
-      );
-
-    submenuLi.forEach((item) => {
-      item.classList.add("submenu__list");
-    });
-
-    submenuLiA.forEach((item) => {
-      item.classList.add("submenu__link");
-      item.classList.add("submenu__link_li_a");
-    });
-
-    submenuLiUl.forEach((item) => {
-      item.classList.add("pod_submenu");
-    });
-
-    submenuLiUlLi.forEach((item) => {
-      item.classList.add("pod_submenu-link");
-      item.classList.add("submenu__link-list");
-    });
-
-    submenuLiUlLiA.forEach((item) => {
-      item.classList.add("sabmenu__link");
-      item.classList.add("sabmenu__link-color");
-      item.classList.add("sabmenu__link_two");
-    });
-
-    submenuLiUlLiUl.forEach((item) => {
-      item.classList.add("pod_submenu-list");
-    });
-
-    submenuLiUlLiUlLi.forEach((item) => {
-      item.classList.add("sabmenu__link");
-      item.classList.add("sabmenu__link-2");
-      item.classList.add("pod_submenu-list-link");
-    });
-
-    submenuLiUlLiUlLiA.forEach((item) => {
-      item.classList.add("sabmenu__link");
-      item.classList.add("sabmenu__link_three");
-    });
-
-    submenuLiUlLiUlLiUl.forEach((item) => {
-      item.classList.add("pod_submenu-list-2");
-    });
-
-    submenuLiUlLiUlLiUlLi.forEach((item) => {
-      item.classList.add("sabmenu__link");
-      item.classList.add("sabmenu__link_five");
-    });
-
-    submenuLiUlLiUlLiUlLiA.forEach((item) => {
-      item.classList.add("sabmenu__link");
-      item.classList.add("sabmenu__link_four");
-    });
-  }
-
-  classesMenu();
-
-  const submenu = document.querySelector(".submenu");
-  const subMenu = document.querySelectorAll(".sub-menu");
-  const allHidden = document.querySelector(".all_hidden");
-  const submenuLi = document.querySelectorAll(".submenuLi");
-  const lineMenu2 = document.querySelector(".line-menu--2");
-  const lineMenu1 = document.querySelector(".line-menu--1");
-  const menuCloset = document.querySelector(".menu__closet");
-  const menuHidden = document.querySelector(".menu__hidden");
-  const wrapperMenu = document.querySelector(".wrapper-menu");
-  const navMenuBtn = document.querySelector(".nav__menu-btn");
-  const podSubmenu = document.querySelectorAll(".pod_submenu");
-  const submenuLink = document.querySelectorAll(".submenu__link");
-  const submenuHeight = document.querySelector(".submenu-height");
-  const sabmenuLink = document.querySelectorAll(".sabmenu__link");
-  const submenuList = document.querySelectorAll(".submenu__list");
-  // const menuItem23Ul = document.querySelector('#menu-item-23>ul');
-  const mobileBtnUp = document.querySelectorAll(".mobile-btn--up");
-  const btnArrowImg = document.querySelectorAll(".btn-arrow--img");
-  const menuHiddenBtn = document.querySelector(".menu__hidden-btn");
-  const sabmenuLink2 = document.querySelectorAll(".sabmenu__link-2");
-  const submenuBtnUp = document.querySelectorAll(".submenu-btn--up");
-  const linkUnderline = document.querySelectorAll(".link_underline");
-  const menuHiddenNone = document.querySelector(".menu__hidden-none");
-  const headerNavFixed = document.querySelector(".header-nav--fixed");
-  const subMenuList = document.querySelectorAll(".submenu__link-list");
-  const podSubmenuList = document.querySelectorAll(".pod_submenu-list");
-  const sabmenuLinkTwo = document.querySelectorAll(".sabmenu__link_two");
-  const submenuLinkLiA = document.querySelectorAll(".submenu__link_li_a");
-  const podSubmenuList2 = document.querySelectorAll(".pod_submenu-list-2");
-  const submenuArrowImg = document.querySelectorAll(".submenu-arrow--img");
-  const navMenuBtnMobile = document.querySelector(".nav__menu-btn--mobile");
-  const activeAfterThree = document.querySelectorAll(".active_after_three");
-  const sabmenuLinkThree = document.querySelectorAll(".sabmenu__link_three");
-  const sabmenuLinkColor = document.querySelectorAll(".sabmenu__link-color");
-
-  $(".nav__menu-btn").click(function () {
-    $("body").addClass("disable-scroll");
-  });
-
-  $(".menu__hidden-btn").click(function () {
-    $("body").removeClass("disable-scroll");
-  });
-
-  function toogleMenu() {
-    menuHidden.classList.toggle("start_menu-active");
-    navMenuBtnMobile.classList.toggle("start_menu-active");
-    document.querySelector("body").classList.toggle("header-nav--fixed");
-  }
-
-  menuCloset.addEventListener("click", (e) => {
-    subMenu.forEach((el, indOne) => {
-      el.classList.remove("show");
-      el.classList.remove("flex");
-    });
-  });
-
-  navMenuBtn.addEventListener("click", toogleMenu);
-  navMenuBtnMobile.addEventListener("click", toogleMenu);
-  menuHiddenBtn.addEventListener("click", toogleMenu);
-
-  const menu = () => {
-    const menuPC = () => {
-      if (document.documentElement.clientHeight <= 870) {
-        subMenu.forEach((item) => {
-          item.style.height = "90vh";
-          item.style.overflow = "scroll";
-        });
-        menuHidden.style.paddingTop = "40px";
-        // menuItem23Ul.style.marginTop = '-60px';
-      }
-      sabmenuLinkTwo.forEach((item) => {
-        let div = document.createElement("span");
-        div.className = "active_after";
-        if (item.nextSibling) {
-          item.after(div);
-        }
-        // наведения на 1 уровень и открытие 2 уровня
-        submenuLink.forEach((elem, ind) => {
-          elem.addEventListener("mouseover", (e) => {
-            submenuLink.forEach((el) => {
-              el.classList.remove("hover_color");
-              el.style.color = "#000";
-            });
-            subMenu.forEach((el, indOne) => {
-              el.classList.remove("show");
-              el.classList.remove("flex");
-            });
-
-            sabmenuLinkTwo.forEach((el) => {
-              el.style.color = "#000";
-              item.classList.remove("oke");
-            });
-            sabmenuLinkThree.forEach((el) => {
-              el.style.borderBottom = "0px solid #000";
-              el.classList.remove("oke");
-            });
-            div.classList.remove("active");
-            div.classList.remove("active_two");
-            div.classList.remove("okei");
-            div.classList.remove("oke");
-            e.target.classList.add("hover_color");
-            e.target.style.color = "#B796F5";
-            e.target.nextSibling.nextSibling.classList.add("show");
-            if (ind == 7) {
-              e.target.nextSibling.nextSibling.classList.add("flex");
-            }
-          });
-        });
-
-        // наведения на 2 уровень
-        item.addEventListener("mouseover", (e) => {
-          if (!div.classList.contains("active")) {
-            e.target.style.color = "#B796F5";
-            div.classList.add("active_two");
-          }
-        });
-        item.addEventListener("mouseout", (e) => {
-          if (!div.classList.contains("active")) {
-            e.target.style.color = "#000";
-            div.classList.remove("active_two");
-          }
-        });
-
-        //открытие 3 уровня
-        item.addEventListener("click", (e) => {
-          if (!e.target.classList.contains("oke")) {
-            const activeAfter = document.querySelectorAll(".active_after ");
-
-            activeAfter.forEach((item) => {
-              item.classList.remove("active");
-              item.classList.remove("active_two");
-            });
-            sabmenuLinkThree.forEach((el) => {
-              el.style.borderBottom = "0px solid #000";
-              el.classList.remove("oke");
-            });
-            podSubmenuList.forEach((elem) => {
-              elem.classList.remove("show");
-            });
-            podSubmenuList2.forEach((elem) => {
-              elem.classList.remove("show");
-            });
-            sabmenuLinkTwo.forEach((el) => {
-              el.style.color = "#000";
-              el.classList.remove("oke");
-            });
-
-            e.target.style.color = "#B796F5";
-            e.target.classList.add("oke");
-            div.classList.add("active");
-            div.nextSibling.nextSibling.classList.add("show");
-          } else {
-            e.target.classList.remove("oke");
-          }
-          if (e.target.classList.contains("oke")) {
-            e.preventDefault();
-          }
-        });
-
-        //Закрытие 3 уровня
-        div.addEventListener("click", (e) => {
-          const activeAfter = document.querySelectorAll(".active_after ");
-          activeAfter.forEach((item) => {
-            item.classList.remove("active");
-            item.classList.remove("active_two");
-          });
-          podSubmenuList.forEach((elem) => {
-            elem.classList.remove("show");
-          });
-          sabmenuLinkThree.forEach((el) => {
-            el.style.borderBottom = "0px solid #000";
-            el.classList.remove("oke");
-          });
-          podSubmenuList2.forEach((elem) => {
-            elem.classList.remove("show");
-          });
-          sabmenuLinkTwo.forEach((el) => {
-            el.style.color = "#000";
-            el.classList.remove("oke");
-          });
-        });
-      });
-
-      //открытие 4 уровня
-      sabmenuLinkThree.forEach((itemOne) => {
-        let divOne = document.createElement("span");
-        divOne.className = "active_after_two";
-        if (itemOne.nextSibling) {
-          itemOne.after(divOne);
-        }
-
-        itemOne.addEventListener("click", (e) => {
-          if (!e.target.classList.contains("oke")) {
-            podSubmenuList2.forEach((elem) => {
-              elem.classList.remove("show");
-            });
-            sabmenuLinkThree.forEach((el) => {
-              el.classList.remove("oke");
-              el.style.borderBottom = "0px solid #000";
-            });
-            e.target.style.borderBottom = "1px solid #000";
-            e.target.classList.add("oke");
-            divOne.classList.add("active");
-            divOne.nextSibling.nextSibling.classList.add("show");
-          } else {
-            e.target.classList.remove("oke");
-          }
-          if (e.target.classList.contains("oke")) {
-            e.preventDefault();
-          }
-        });
-
-        //Закрытие 4 уровня
-        divOne.addEventListener("click", (e) => {
-          podSubmenuList2.forEach((elem) => {
-            elem.classList.remove("show");
-            divOne.classList.remove("active");
-          });
-          sabmenuLinkThree.forEach((el) => {
-            el.style.borderBottom = "0px solid #000";
-            el.classList.remove("oke");
-          });
-        });
-      });
-    };
-    if (document.documentElement.clientWidth >= 931) {
-      menuPC();
-    }
-
-    const menuMob = () => {
-      menuCloset.addEventListener("click", (e) => {
-        submenuList.forEach((item) => {
-          item.style.display = "block";
-        });
-        submenuLinkLiA.forEach((item) => {
-          item.classList.remove("active");
-        });
-        headerNavFixed.style.overflow = "initial";
-      });
-
-      submenuLinkLiA.forEach((itemOne, ind) => {
-        if (ind === 7) return;
-
-        let div = document.createElement("span");
-        div.className = "active_after_three";
-        itemOne.after(div);
-        const activeAfterThree = document.querySelectorAll(".active_after_three");
-
-        menuCloset.addEventListener("click", (e) => {
-          div.classList.remove("active");
-          div.classList.remove("okei");
-          div.classList.remove("oke");
-        });
-
-
-        menuCloset.addEventListener("click", (e) => {
-          allHidden.classList.remove("hidden");
-        });
-
-        div.addEventListener("click", (e) => {
-          e.target.classList.add("oke");
-          submenuList.forEach((item) => {
-            // item.style.display = 'none';
-          });
-          if (e.target.classList.contains("okei")) {
-            e.target.classList.remove("oke");
-            e.target.classList.remove("active");
-          }
-
-          if (e.target.classList.contains("okei")) {
-            e.target.nextSibling.nextSibling.classList.remove("show");
-            e.target.classList.remove("okei");
-            e.target.previousSibling.classList.remove("active");
-            submenuList.forEach((item) => {
-              item.style.display = "block";
-            });
-            podSubmenuList.forEach((item) => {
-              item.classList.remove("show");
-            });
-            sabmenuLinkTwo.forEach((item) => {
-              item.nextSibling.classList.remove("okei");
-              item.nextSibling.classList.remove("oke");
-              item.nextSibling.classList.remove("active");
-            });
-          }
-
-          if (e.target.classList.contains("oke")) {
-            e.target.nextSibling.nextSibling.classList.add("show");
-            e.target.classList.add("okei");
-            e.target.classList.add("active");
-            e.target.style.display = "block";
-            e.target.previousSibling.classList.add("active");
-            e.target.parentNode.style.display = "block";
-          }
-        });
-      });
-
-      sabmenuLinkTwo.forEach((item) => {
-        let div = document.createElement("span");
-        div.className = "active_after_two";
-        if (item.nextSibling) {
-          item.after(div);
-        }
-        div.addEventListener("click", (e) => {
-          e.target.classList.add("oke");
-
-          if (e.target.classList.contains("okei")) {
-            e.target.classList.remove("oke");
-            e.target.classList.remove("active");
-          }
-
-          if (e.target.classList.contains("okei")) {
-            e.target.nextSibling.nextSibling.classList.remove("show");
-            e.target.classList.remove("okei");
-            e.target.previousSibling.classList.remove("active");
-            podSubmenuList2.forEach((item) => {
-              item.classList.remove("show");
-            });
-            sabmenuLinkThree.forEach((item) => {
-              item.nextSibling.classList.remove("okei");
-              item.nextSibling.classList.remove("oke");
-              item.nextSibling.classList.remove("active");
-            });
-          }
-
-          if (e.target.classList.contains("oke")) {
-            e.target.nextSibling.nextSibling.classList.add("show");
-            e.target.classList.add("okei");
-            e.target.classList.add("active");
-            e.target.previousSibling.classList.add("active");
-            e.target.parentNode.style.display = "block";
-          }
-        });
-      });
-
-      sabmenuLinkThree.forEach((item) => {
-        let div = document.createElement("span");
-        div.className = "active_after_four";
-        if (item.nextSibling) {
-          item.after(div);
-        }
-        div.addEventListener("click", (e) => {
-          e.target.classList.add("oke");
-          if (e.target.classList.contains("okei")) {
-            e.target.classList.remove("oke");
-            e.target.classList.remove("active");
-          }
-
-          if (e.target.classList.contains("okei")) {
-            e.target.nextSibling.nextSibling.classList.remove("show");
-            e.target.classList.remove("okei");
-            e.target.previousSibling.classList.remove("active");
-          }
-
-          if (e.target.classList.contains("oke")) {
-            e.target.nextSibling.nextSibling.classList.add("show");
-            e.target.classList.add("okei");
-            e.target.classList.add("active");
-            e.target.previousSibling.classList.add("active");
-            e.target.parentNode.style.display = "block";
-          }
-        });
-      });
-      // 930 закрытие пунктов
-
-      //Препослд
-      $(".active_after_three").click(function (e) {
-        e.preventDefault();
-
-        $(this)
-          .siblings(".pod_submenu")
-          .find(".sabmenu__link_three")
-          .removeClass("active");
-        $(this)
-          .siblings(".pod_submenu")
-          .find(".sabmenu__link_two")
-          .removeClass("active");
-        $(this)
-          .siblings(".pod_submenu")
-          .find(".active_after_two")
-          .removeClass("oke");
-        $(this)
-          .siblings(".pod_submenu")
-          .find(".active_after_two")
-          .removeClass("okei");
-        $(this)
-          .siblings(".pod_submenu")
-          .find(".active_after_two")
-          .removeClass("active");
-        $(this)
-          .siblings(".pod_submenu")
-          .find(".pod_submenu-list-2")
-          .removeClass("show");
-      });
-
-      //посл
-      $(".active_after_two").click(function (e) {
-        e.preventDefault();
-
-        $(this)
-          .siblings(".pod_submenu-list")
-          .find(".sabmenu__link_three")
-          .removeClass("active");
-        $(this)
-          .siblings(".pod_submenu-list")
-          .find(".active_after_four")
-          .removeClass("oke");
-        $(this)
-          .siblings(".pod_submenu-list")
-          .find(".active_after_four")
-          .removeClass("okei");
-        $(this)
-          .siblings(".pod_submenu-list")
-          .find(".active_after_four")
-          .removeClass("active");
-        $(this)
-          .siblings(".pod_submenu-list")
-          .find(".pod_submenu-list-2")
-          .removeClass("show");
-      });
-    };
-    if (document.documentElement.clientWidth <= 930) {
-      menuMob();
-    }
-  };
-  menu();
-
-  $(".sabmenu__link").click(function () {
-    $(this).addClass("oke");
-  });
-</script> -->
 
 <?php wp_footer(); ?>
 

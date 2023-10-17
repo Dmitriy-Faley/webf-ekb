@@ -5,10 +5,6 @@ Author URI: https://t.me/dmitriySD
 Version: 1.0
 */
 
-* {
-	transition: all 0.7s ease;
-}
-
 /*CF7*/
 .wpcf7-not-valid-tip {
 	/* display: none; */

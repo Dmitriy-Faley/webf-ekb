@@ -40,10 +40,10 @@ get_header();
         </div>
       </div>
       <div class="aboutus__icons">
-        <img class="icon" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/about1.svg" alt="icon">
-        <img class="icon" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/super.svg" alt="icon">
-        <img class="icon" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/about2.svg" alt="icon">
-        <img class="icon" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/about3.svg" alt="icon">
+        <img class="icon one" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/about1.svg" alt="icon">
+        <img class="icon two" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/super.svg" alt="icon">
+        <img class="icon three" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/about2.svg" alt="icon">
+        <img class="icon four" src="<?php echo get_template_directory_uri() ?>/assets/img/icons/about3.svg" alt="icon">
       </div>
     </div>
   </div>
@@ -51,7 +51,7 @@ get_header();
 
 
 
-<section class="projects">
+<!-- <section class="projects">
   <div class="container">
     <h3 class="title">Недавние проекты нашей компании<img
         src="<?php echo get_template_directory_uri() ?>/assets/img/icons/fire-title.svg" alt="fire"></h3>
@@ -87,7 +87,7 @@ get_header();
                             <div class="data__teg">
                                    <?php $post_categories = get_the_terms(get_the_ID(), "keyscat");
                                    foreach ($post_categories as $post_category) {
-                                       echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
+                                       echo '<span  href="#" data-id="' . intval($post_category->term_id) . '">' . $post_category->name . '</span>';
                                     }; ?>
                             </div>
                             <div class="data__info">
@@ -104,14 +104,14 @@ get_header();
                     </div>
                 <?php endwhile; ?>
             </ul>
-                <?php wp_reset_postdata(); ?>
+                 <?php wp_reset_postdata(); ?> 
             <?php else : ?>
                 <p><?php _e( 'Извините, нет кейсов, соответствуюших Вашему запросу.' ); ?></p>
             <?php endif; ?>
     </div>
     <a href="/portfolio/" class="button">Все проекты</a>
   </div>
-</section>
+</section>  -->
 
 
 <?php if( have_rows('sotrudniki', 60) ): ?>
@@ -215,7 +215,7 @@ get_header();
                   'exclude'      => '',
                   'include'      => '',
                   'meta_key'     => 'otobrazhat_na_glavnoj',
-                  'meta_value'   => '',
+                  'meta_value'   => 1,
                   'authors'      => '',
                   'exclude_tree' => '',
                   'number'       => '',
@@ -229,7 +229,7 @@ get_header();
                   <div class="swiper-slide">
                     <div class="services__item">
                       <?php the_post_thumbnail(); ?>
-                      <p class="name"><a href="<?php echo get_page_uri($post -> ID) ; ?>"><?php the_title(); ?></a></p>
+                      <p class="name"><a href="<?php echo the_permalink() ; ?>"><?php the_title(); ?></a></p>
                       <p class="desk"><?php the_field('opisanie_dlya_kartochki'); ?></p>
                     </div>
                   </div>
@@ -273,71 +273,62 @@ get_header();
     <div class="reviews__content">
       <div class="reviews__item">
         <div class="item__info">
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/review1.png" alt="review">
+          <img src="<?php echo get_template_directory_uri() ?>/assets/img/review3.png" alt="review">
           <div>
-            <p class="name">Полина Ходасевич</p>
-            <p class="job">Директор магазина</p>
+            <p class="name">Александр Бондарев</p>
+            <p class="job">Владелец интернет-магазина</p>
           </div>
         </div>
         <div class="item__text">
-          Если с настройкой Яндекс Директ я как-то совладала самостоятельно (хотя там все понятно и логично), то с
-          контектсной рекламой в Гугле были колоссальные затруднения. По совету коллеги я обратилась в эту компанию,
-          осталась абсолютно удовлетворена! А именно - в течение трех дней копировали все рекламные материалы с текстами
-          и фото из Я-Директ и отдали мне под ключ. А там такое количество одних только рекламируемых товаров, что у
-          меня руки опускались делать даже это самостоятельно. Очень быстро работают и команда профессиональная.
+        Сотрудничал с компанией в рамках разработки интернет-магазина. Хочу отметить высокий профессионализм и внимательное отношение к моим потребностям. Специалисты выслушали все мои пожелания к сайту. Предложили в том числе свои идеи. Весь процесс разработки сайта прошел гладко, команда, которая работала со мной, постоянно была на связи и предоставляла отчеты выполненных работ. Они действительно понимают, как сделать сайт, который привлечет посетителей и увеличит конверсию.
         </div>
       </div>
       <div class="reviews__item">
         <div class="item__info">
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/review2.png" alt="review">
           <div>
-            <p class="name">Наталья Лученок</p>
-            <p class="job">Директор магазина</p>
+            <p class="name">Екатерина Янко</p>
+            <p class="job">Владелец интернет-магазина</p>
           </div>
         </div>
         <div class="item__text">
-          Заказывали разработку мобильной версии лендинга - очень довольны! Подход к работе профессиональный, сроки
-          соблюдают. Нам не пришлось вносить никаких корректировок - все настолько понравилось!
-        </div>
-      </div>
-      <div class="reviews__item">
-        <div class="item__info">
-          <img src="<?php echo get_template_directory_uri() ?>/assets/img/review3.png" alt="review">
-          <div>
-            <p class="name">Андерс Войковичев</p>
-            <p class="job">Директор магазина</p>
-          </div>
-        </div>
-        <div class="item__text">
-          Обращался для продвижения своего сайта ремонтной компании, результат приятно удивил, через месяц заметил
-          прирост потенциальных клиентов, посещения начали расти, в поисковой выдаче сайт добавил позиции. На
-          достигнутом не останавливаюсь и продолжаю плодотворно сотрудничать. Хороший результат за приемлемую цену
+        Хочу выразить огромную благодарность команде за их профессионализм, творческий подход и отличную работу. Я с уверенностью рекомендую эту компанию всем, кто ищет надежного партнера для создания веб-проектов.
         </div>
       </div>
       <div class="reviews__item">
         <div class="item__info">
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/review4.png" alt="review">
           <div>
-            <p class="name">Владимир Волошинович</p>
-            <p class="job">Директор магазина</p>
+            <p class="name">Анатолий Терешко</p>
+            <p class="job">Маркетолог</p>
           </div>
         </div>
         <div class="item__text">
-          Хорошее агентство интернет-маркетинга, помогли нам выйти на хорошую посещаемость сайта магазина, раскрутили за
-          несколько месяцев до хорошего прироста продаж в соотношении с предыдущими периодами. Рекомендую.
+        Обращался за продвижением сайта в Веб Фокус и ребята превзошли все мои ожидания. Они не только повысили видимость в поисковых системах, но и создавали оптимизированный и качественный контент, который очень хорошо отработал в моей нише. Спасибо за вашу отличную работу и профессионализм.
+        </div>
+      </div>
+      <div class="reviews__item">
+        <div class="item__info">
+          <img src="<?php echo get_template_directory_uri() ?>/assets/img/review1.png" alt="review">
+          <div>
+            <p class="name">Мария Новикова</p>
+            <p class="job">Владелец интернет-магазина</p>
+          </div>
+        </div>
+        <div class="item__text">
+        Выражаю свою благодарность специалистам компании Веб Фокус, которые работали над моим проектом. От сотрудничества остались крайне положительные эмоции, все работы делали в срок и предоставляли подробные отчеты. Дополнительное обучили работе с сайтом, как что-то поменять, редактировать. Порадовала и базовая оптимизация, сайт хорошо ранжируется и без дополнительного продвижения.
         </div>
       </div>
       <div class="reviews__item">
         <div class="item__info">
           <img src="<?php echo get_template_directory_uri() ?>/assets/img/review5.png" alt="review">
           <div>
-            <p class="name">Костя Сомов</p>
-            <p class="job">Директор магазина</p>
+            <p class="name">Михаил Наумчик</p>
+            <p class="job">Маркетолог</p>
           </div>
         </div>
         <div class="item__text">
-          В короткие сроки смогли продвинуть мой сайт зоотоваров. Очень доволен что воспользовался именно их услугами.
-          Цены у них вполне адекватные на услуги. Могу смело всем рекомендовать.
+        Хочу поблагодарить студию Веб Фокус за первоклассное продвижение моего сайта юридических услуг. Специалисты берутся за проекты в любой нише и любой сложности. Очень порадовал факт, что у компании есть юридические копирайтеры. Не пришлось дополнительно искать исполнителей по доработкам на сайт. Сделали абсолютно все необходимые работы под ключ.
         </div>
       </div>
     </div>
@@ -378,6 +369,18 @@ get_header();
         <a href="tel:<?php the_field('telefon', 'option') ?>"><?php the_field('telefon', 'option') ?></a>
       </div>
     </div>
+    <!-- <div class="contacts__map">
+      <div class="wrap-map" id="a5">
+            <div class="map" id="map">
+                <div class="map_inner">
+                    <picture>
+                        <source srcset="<?php echo get_template_directory_uri()?>/assets/img/map.webp" type="image/webp">
+                        <img alt="Карта" class="lozad" data-src="<?php echo get_template_directory_uri()?>/assets/img/map.jpg">
+                    </picture>
+                </div>
+            </div>
+      </div>
+    </div> -->
     <div class="contacts__map">
       <div id="map1" class="map"></div>
     </div>
@@ -416,7 +419,7 @@ get_header();
                   <div class="data__teg">
                     <?php $post_categories = get_the_category($wpb_all_query->the_post);
                       foreach ($post_categories as $post_category) {
-                          echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
+                          echo '<span  href="#" data-id="' . intval($post_category->term_id) . '">' . $post_category->name . '</span>';
                       }; ?>
                   </div>
                   <div class="data__info">
@@ -437,6 +440,8 @@ get_header();
 
 
 <?php get_footer(); ?>
+
+
 
 <script>
   function get_vw() {
