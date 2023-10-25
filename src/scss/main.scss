@@ -1096,20 +1096,10 @@ span::selection {
         }
     }
 
-    .btn_click {
-        width: 263px;
+    .button {
+        width: 240px;
+        margin: 41px auto 0;
         padding: 18px 42px;
-        background-color: #fff;
-        border-radius: 40px;
-        margin: 41px 0 0 236px;
-
-        a {
-            font-family: 'Inter';
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 140%;
-        }
     }
 }
 
@@ -1146,20 +1136,10 @@ span::selection {
             }
         }
     
-        .btn_click {
-            width: 182px;
-            padding: 10px 30px 12px;
-            background-color: #fff;
-            border-radius: 40px;
-            margin: 41px 0 0 177px;
-    
-            a {
-                font-family: 'Inter';
-                font-size: 11px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 140%;
-            }
+        .button {
+            width: 215px;
+            margin: 41px auto 0;
+            padding: 12px 30px;
         }
     }
 }
@@ -1197,20 +1177,10 @@ span::selection {
             }
         }
     
-        .btn_click {
-            width: 264px;
+        .button {
+            width: 261px;
+            margin: 33px auto 0;
             padding: 18px 42px;
-            background-color: #fff;
-            border-radius: 40px;
-            margin: 33px 0 0 23px;
-    
-            a {
-                font-family: 'Inter';
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 140%;
-            }
         }
     }
 }
@@ -1218,7 +1188,7 @@ span::selection {
 @media screen and (max-width: 450px) {
     .container_error {
         max-width:298px;
-        margin: 80px auto 0;
+        margin: 80px auto;
         .error404-numb {
             color: #0E0F11;
             font-family: 'Inter';
@@ -1248,20 +1218,10 @@ span::selection {
             }
         }
     
-        .btn_click {
+        .button {
             width: 261px;
+            margin: 39px auto 0;
             padding: 18px 42px;
-            background-color: #fff;
-            border-radius: 40px;
-            margin: 39px 0 0 22px;
-    
-            a {
-                font-family: 'Inter';
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 140%;
-            }
         }
     }
 }
@@ -1269,7 +1229,7 @@ span::selection {
 @media screen and (max-width: 320px) {
     .container_error {
         max-width:298px;
-        margin: 80px auto 0;
+        margin: 80px auto;
         .error404-numb {
             color: #0E0F11;
             font-family: 'Inter';
@@ -1299,20 +1259,179 @@ span::selection {
             }
         }
     
-        .btn_click {
+        .button {
             width: 261px;
+            margin: 39px auto 0;
             padding: 18px 42px;
-            background-color: #fff;
-            border-radius: 40px;
-            margin: 39px 0 0 22px;
+        }
+    }
+}
+
+.politik_title {
+    h1 {
+        color: #0E0F11;
+        font-family: 'Inter';
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 120%;
+        width: 766px;
+    }
+}
+
+.content-politika {
+    width: 840px;
+
+    h2 {
+        color: #0E0F11;
+        font-family: 'Inter';
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+        margin-top: 70px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    p {
+        color: #0E0F11;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        padding-top: 20px;
+    }
+
+    ul {
+        list-style-type: disc;
+        margin-left: 28px;
+        li {
+            list-style-type: disc;
+            color: #0E0F11;
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%;
+            padding-top: 15px;
+        }
+    }
+}
+
+.politika_form {
+    margin-bottom: 150px;
+}
+
+@media screen and (max-width: 1368px){
+    .politik_title{
+        padding-bottom: 20px;
+        h1 {
+            font-size: 34px;
+            width: 545px;
+        }
+    }
     
-            a {
-                font-family: 'Inter';
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 140%;
+    .content-politika {
+        width: 597px;
+    
+        h2 {
+            font-size: 17px;
+            margin-top: 50px;
+            margin-bottom: 14px;
+        }
+    
+        p {
+            font-size: 11px;
+            padding-top: 14px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 22px;
+            li {
+                font-size: 11px;
+                padding-top: 10px;
             }
         }
+    }
+    
+    .politika_form {
+        margin-bottom: 100px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .politik_title{
+        h1 {
+            font-size: 48px;
+            width: 708px;
+        }
+    }
+    
+    .content-politika {
+        width: 708px;
+    
+        h2 {
+            font-size: 24px;
+            margin-top: 70px;
+            margin-bottom: 20px;
+        }
+    
+        p {
+            font-size: 16px;
+            padding-top: 20px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 28px;
+            li {
+                font-size: 16px;
+                padding-top: 15px;
+            }
+        }
+    }
+    
+    .politika_form {
+        margin-bottom: 120px;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .politik_title{
+        h1 {
+            font-size: 24px;
+            width: 90%;
+        }
+    }
+    
+    .content-politika {
+        width: 90%;
+    
+        h2 {
+            font-size: 20px;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+    
+        p {
+            font-size: 14px;
+            padding-top: 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 24px;
+            li {
+                font-size: 14px;
+                padding-top: 10px;
+            }
+        }
+    }
+    
+    .politika_form {
+        margin-bottom: 80px;
     }
 }

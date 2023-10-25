@@ -300,7 +300,7 @@
         display: block;
       }
 
-      picture>img {
+      img {
         display: block;
         width: 320px;
         height: 435px;
@@ -952,7 +952,7 @@
       padding: 30px 0 3px 0;
 
       .team__item {
-        img, picture {
+        img {
           width: 277px;
           height: 310px;
           border-radius: 28px ;
@@ -1512,7 +1512,7 @@
         border-radius: 40px ;
         margin-bottom: 115px;
 
-        img, picture {
+        img{
           width: 334px;
           height: 435px;
         }
@@ -2162,7 +2162,7 @@
         width: 47%;
         margin-bottom: 20px;
 
-        img, picture {
+        img {
           width: 136px;
           height: 178px;
           border-radius: 20px;

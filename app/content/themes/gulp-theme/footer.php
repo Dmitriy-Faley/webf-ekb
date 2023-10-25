@@ -77,8 +77,8 @@
         <p class="copy">© <?php the_field('copyright', 'option') ?></p>
       </div>
       <div class="footer__bottom__menu">
-        <a href="#">Политика конфиденциальности</a>
-        <a href="#">Условия использования</a>
+        <a href="/privacy-policy/">Политика конфиденциальности</a>
+        <a href="/usloviya-ispolzovaniya/">Условия использования</a>
         <a href="/karta-sajta/">Карта сайта</a>
       </div>
     </div>
