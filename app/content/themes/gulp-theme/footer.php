@@ -79,7 +79,7 @@
       <div class="footer__bottom__menu">
         <a href="#">Политика конфиденциальности</a>
         <a href="#">Условия использования</a>
-        <a href="#">Карта сайта</a>
+        <a href="/karta-sajta/">Карта сайта</a>
       </div>
     </div>
   </div>

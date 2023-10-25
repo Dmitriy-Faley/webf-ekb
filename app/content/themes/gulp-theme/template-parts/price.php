@@ -58,7 +58,6 @@ get_header();
                                 </div>
                                 <div class="tabs__pane__info">
                                     <p class="price"><?php echo $inner_price; ?> ₽</p>
-                                    <button class="button"><a href="<?php echo $inner_link; ?>">Подробнее</a></button>
                                 </div>
                             </div>
                             <?php endwhile; ?>

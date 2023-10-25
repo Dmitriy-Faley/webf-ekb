@@ -253,10 +253,10 @@ $.each(nav_btns, function () {
 jQuery(document).ready(function ($) {
 function init() {
 	let map1 = new ymaps.Map('map1', {
-	  center: [55.701648, 37.940220],
+	  center: [56.826754, 60.616186],
 	  zoom: 11
 	});
-	let placemark1 = new ymaps.Placemark([55.701648, 37.940220], {}, {});
+	let placemark1 = new ymaps.Placemark([56.826754, 60.616186], {}, {});
 	const maps = [map1];
 	maps.forEach(map => map.controls.remove('geolocationControl'));
 	maps.forEach(map => map.controls.remove('searchControl'));

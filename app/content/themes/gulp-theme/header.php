@@ -59,7 +59,7 @@
 						'link_before'     => '',
 						'link_after'      => '<span></span>',
 						'items_wrap'      => '<ul id="%1$s" class="header-menu__ul">%3$s</ul>',
-						'depth'           => 0,
+						'depth'           => 5,
 						'walker'          => '',
 						] );?>
 
