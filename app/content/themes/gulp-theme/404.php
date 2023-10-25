@@ -1,5 +1,6 @@
 <?php get_header(); ?>
-
+<div class="container">
+    <div class="breadcrumbs"><?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?></div>
     <div class="container_error">
 
         <div class="wrapper">
@@ -8,11 +9,11 @@
 
                 <h1 class="error404-numb">404</h1>
 
-                <h3 class="error404-text">Страница, которую вы ищете,<br> не удалось найти.</h3>
+                <h3 class="error404-text">Упс......Страница не найдена<span class="error404-icon"><img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/error-icon.svg" alt=""></span></h3>
 
-                <div class="btn_clic">
+                <div class="btn_click">
 
-                    <a href="<?php echo esc_js('javascript:history.go(-1)'); ?>">Вернуться назад</a>
+                    <a class="/">Вернуться на главную</a>
 
                 </div>
 
@@ -21,5 +22,4 @@
         </div>
 
     </div>
-
-<?php get_footer(); ?>
+</div>

@@ -1063,3 +1063,256 @@ span::selection {
 .hidden {
     animation: bounce-in .5s ease-out both;
 }
+
+.container_error {
+    max-width: 766px;
+    margin: 0 auto;
+    .error404-numb {
+        color: #0E0F11;
+        font-family: 'Inter';
+        font-size: 350px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 100%; /* 350px */
+        letter-spacing: 14px;
+        text-transform: uppercase;
+    }
+
+    .error404-text {
+        width: 389px;
+        margin: 0 auto;
+        color: #0E0F11;
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+
+        .error404-icon {
+            display: inline-block;
+            width: 39px;
+            height: 39px;
+            margin-left: 8px;
+        }
+    }
+
+    .btn_click {
+        width: 263px;
+        padding: 18px 42px;
+        background-color: #fff;
+        border-radius: 40px;
+        margin: 41px 0 0 236px;
+
+        a {
+            font-family: 'Inter';
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 140%;
+        }
+    }
+}
+
+@media screen and (max-width: 1368px) {
+    .container_error {
+        max-width: 498px;
+        margin: 0 auto;
+        .error404-numb {
+            color: #0E0F11;
+            font-family: 'Inter';
+            font-size: 249px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 100%; /* 350px */
+            letter-spacing: 14px;
+            text-transform: uppercase;
+        }
+    
+        .error404-text {
+            width: 234px;
+            margin: 0 auto;
+            color: #0E0F11;
+            font-family: 'Inter';
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
+    
+            .error404-icon {
+                display: inline-block;
+                width: 27px;
+                height: 27px;
+                margin-left: 7px;
+            }
+        }
+    
+        .btn_click {
+            width: 182px;
+            padding: 10px 30px 12px;
+            background-color: #fff;
+            border-radius: 40px;
+            margin: 41px 0 0 177px;
+    
+            a {
+                font-family: 'Inter';
+                font-size: 11px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 140%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container_error {
+        max-width: 310px;
+        margin: 0 auto;
+        .error404-numb {
+            color: #0E0F11;
+            font-family: 'Inter';
+            font-size: 140px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 100%; /* 350px */
+            letter-spacing: 14px;
+            text-transform: uppercase;
+        }
+    
+        .error404-text {
+            width: 274px;
+            margin: 0 auto;
+            color: #0E0F11;
+            font-family: 'Inter';
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
+    
+            .error404-icon {
+                display: inline-block;
+                width: 39px;
+                height: 39px;
+                margin-left: 10px;
+            }
+        }
+    
+        .btn_click {
+            width: 264px;
+            padding: 18px 42px;
+            background-color: #fff;
+            border-radius: 40px;
+            margin: 33px 0 0 23px;
+    
+            a {
+                font-family: 'Inter';
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 140%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .container_error {
+        max-width:298px;
+        margin: 80px auto 0;
+        .error404-numb {
+            color: #0E0F11;
+            font-family: 'Inter';
+            font-size: 140px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 100%; /* 350px */
+            letter-spacing: 14px;
+            text-transform: uppercase;
+        }
+    
+        .error404-text {
+            width: 272px;
+            margin: 0 auto;
+            color: #0E0F11;
+            font-family: 'Inter';
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
+    
+            .error404-icon {
+                display: inline-block;
+                width: 39px;
+                height: 39px;
+                margin-left: 8px;
+            }
+        }
+    
+        .btn_click {
+            width: 261px;
+            padding: 18px 42px;
+            background-color: #fff;
+            border-radius: 40px;
+            margin: 39px 0 0 22px;
+    
+            a {
+                font-family: 'Inter';
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 140%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .container_error {
+        max-width:298px;
+        margin: 80px auto 0;
+        .error404-numb {
+            color: #0E0F11;
+            font-family: 'Inter';
+            font-size: 140px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 100%; /* 350px */
+            letter-spacing: 14px;
+            text-transform: uppercase;
+        }
+    
+        .error404-text {
+            width: 272px;
+            margin: 0 0 0 17px;
+            color: #0E0F11;
+            font-family: 'Inter';
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
+    
+            .error404-icon {
+                display: inline-block;
+                width: 39px;
+                height: 39px;
+                margin-left: 8px;
+            }
+        }
+    
+        .btn_click {
+            width: 261px;
+            padding: 18px 42px;
+            background-color: #fff;
+            border-radius: 40px;
+            margin: 39px 0 0 22px;
+    
+            a {
+                font-family: 'Inter';
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 140%;
+            }
+        }
+    }
+}
