@@ -8,6 +8,7 @@ get_header();
 <?php if( have_rows('otzyvy') ): ?>
 <section class="reviews-page">
     <div class="container">
+        <div class="breadcrumbs"><?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?></div>
         <h1 class="title">Отзывы</h1>
         <div class="reviews__content">
 

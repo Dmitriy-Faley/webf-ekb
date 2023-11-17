@@ -7,6 +7,7 @@ get_header();
 
 <section class="projects blog">
     <div class="container">
+        <div class="breadcrumbs"><?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?></div>
         <h1 class="title blog__title"><?php the_title(); ?></h1>
         <div class="blog__tags">
             <ul class="tag__list">

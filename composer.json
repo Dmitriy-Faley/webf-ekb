@@ -12,7 +12,8 @@
     "wpackagist-plugin/duplicator": "*",
     "wpackagist-plugin/classic-editor": "*",
     "wpackagist-plugin/contact-form-7": "*",
-    "wpackagist-plugin/invisible-recaptcha": "*"
+    "wpackagist-plugin/invisible-recaptcha": "*",
+    "wpackagist-plugin/seo-by-rank-math": "*"
   },
   "extra": {
     "wordpress-install-dir": "app/wp",

@@ -8,6 +8,7 @@ get_header();
 
 <section class="header-service">
     <div class="container">
+        <div class="breadcrumbs"><?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?></div>
         <div class="content">
             <div class="header-service__info">
                 <h1 class="title"><?php the_title(); ?></h1>

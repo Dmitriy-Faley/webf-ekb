@@ -7,6 +7,7 @@ get_header();
 
 <section class="contacts contacts-page">
   <div class="container">
+    <div class="breadcrumbs"><?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?></div>
     <h1 class="title contacts__title"><?php the_title(); ?></h1>
     <div class="contacts__info">
       <div class="address">
@@ -18,9 +19,7 @@ get_header();
       </div>
     </div>
     <div class="contacts__map">
-      <iframe
-        src="<?php the_field('ssylka_na_yandeks_kartu', 'option') ?>"
-        width="100%" height="485" frameborder="0"></iframe>
+      <div id="map1" class="map"></div>
     </div>
   </div>
 </section>

@@ -8,6 +8,7 @@ get_header();
 <?php if( have_rows('sotrudniki') ): ?>
 <section class="team team-page">
     <div class="container">
+        <div class="breadcrumbs"><?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?></div>
         <h1 class="title"><?php the_title(); ?></h1>
         <div class="team__content">
         

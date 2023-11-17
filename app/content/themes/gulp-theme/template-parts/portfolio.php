@@ -8,6 +8,7 @@ get_header();
 
 <section class="projects portfolio">
     <div class="container">
+        <div class="breadcrumbs"><?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?></div>
         <h3 class="title portfolio__title">Портфолио</h3>
         <div class="portfolio__tags">
             <ul class="keys__list">
