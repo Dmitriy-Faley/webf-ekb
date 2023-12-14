@@ -120,7 +120,7 @@ get_header();
                                 <div class="data__tag">
                                         <?php $post_categories = get_the_category($wpb_all_query->the_post);
                                             foreach ($post_categories as $post_category) {
-                                                echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
+                                                echo '<span  href="#" data-id="' . intval($post_category->term_id) . '">' . $post_category->name . '</span>';
                                             }; ?>
                                 </div>
                                 <div class="data__info">

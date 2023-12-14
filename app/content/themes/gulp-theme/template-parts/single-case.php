@@ -27,7 +27,7 @@ body {
                 <div class="content-area__tags">
                     <?php $post_categories = get_the_terms(get_the_ID(), "keyscat");
                         foreach ($post_categories as $post_category) {
-                            echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
+                            echo '<span  href="#" data-id="' . intval($post_category->term_id) . '">' . $post_category->name . '</span>';
                         }; ?>
                 </div>
                 <div class="content-area__title">
@@ -530,7 +530,7 @@ body {
                             <div class="data__tag">
                             <?php $post_categories = get_the_terms(get_the_ID(), "keyscat");
                                    foreach ($post_categories as $post_category) {
-                                       echo '<span  href="#" data-id="' . intval($post_category->term_id) . '"  data-link="' . get_category_link($post_category->term_id) . '">' . $post_category->name . '</span>';
+                                       echo '<span  href="#" data-id="' . intval($post_category->term_id) . '">' . $post_category->name . '</span>';
                                     }; ?>
                             </div>
                             <div class="data__info">

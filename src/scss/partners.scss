@@ -1,5 +1,5 @@
 .parners {
-    padding-top: 100px;
+    padding-top: 0;
 
     .parners__icons {
         display: flex;
@@ -31,7 +31,7 @@
 
 @media screen and (max-width: 1368px) {
     .parners {
-        padding-top: 55px;
+        padding-top: 0;
 
         .parners__icons {
             padding: 10px 0 0 0;
@@ -51,7 +51,7 @@
 
 @media screen and (max-width: 768px) {
     .parners {
-        padding-top: 69px;
+        padding-top: 0;
 
         .title{
             padding-bottom: 33px;
@@ -74,7 +74,7 @@
 
 @media screen and (max-width: 480px) {
     .parners {
-        padding-top: 30px;
+        padding-top: 0;
 
         .title{
             padding-bottom: 33px;

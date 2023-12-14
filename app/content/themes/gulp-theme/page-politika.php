@@ -1,15 +1,27 @@
-<?php get_header('shop'); ?>
+<?php
+/**
+*Template name: Политика
+*/
+get_header();
+?>
 
+<div class="container">
 <div class="content-page">
 	<div class="wrapper">
-		<div class="container-title">
-			<h2 class="title">Политика конфиденциальности</h2>
+		<div class="breadcrumbs"><?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?></div>
+		<div class="politik_title">
+			<h1 class="title"><?php the_title(); ?></h1>
 		</div>
-		<p class="description_title">Обязательна к прочтению</p>
 		<div class="content-politika">
 		<?php the_content(); ?>
 		</div>
 	</div>
 </div>
+</div>
+
+<div class="politika_form">
+	<?php theme_sidebar( 'form' ); ?>
+</div>
+
   
 <?php get_footer(); ?>

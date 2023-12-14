@@ -30,6 +30,8 @@ get_header();
                         <?php while (have_rows('vneshnij_spisok')): the_row();
                                     $outer_name = get_sub_field('zagolovok_vneshnego_spiska');
                                     $outer_price = get_sub_field('czena_vneshnego_spiska');
+                                    $outer_link = get_sub_field('ssylka_vneshnego_spiska');
+
                         ?>
                     <div class="tabs__pane__item">
                         <a class="toggle" href="javascript:void(0);">
@@ -41,20 +43,21 @@ get_header();
                             </div>
                             <div class="tabs__pane__info">
                                 <p class="price">от <?php echo $outer_price; ?> ₽</p>
-                                <button class="button">Подробнее</button>
+                                <button class="button" href="<?php echo $outer_link; ?>">Подробнее</button>
                             </div>
                         </a>
                         <div class="inner">
                             <?php while (have_rows('vnutrennij_spisok')): the_row();
                                         $inner_name = get_sub_field('zagolovok_vnutrennego_spiska');
                                         $inner_price = get_sub_field('czena_vnutrennego_spiska');
+                                        $inner_link = get_sub_field('ssylka_vnutrennego_spiska');
                             ?>
                             <div class="inner__item">
                                 <div class="tabs__pane__name">
                                     <?php echo $inner_name; ?>
                                 </div>
                                 <div class="tabs__pane__info">
-                                    <p class="price">от <?php echo $inner_price; ?></p>
+                                    <p class="price"><?php echo $inner_price; ?> ₽</p>
                                 </div>
                             </div>
                             <?php endwhile; ?>
@@ -123,13 +126,20 @@ get_header();
     // инициализация elTab как табы
     const tab = new ItcTabs(elTab);
 
-    const index = localStorage.getItem('tabs-index');
-    index > -1 ? tab.showByIndex(index) : null;
+    const activeBtn = document.querySelectorAll('.tabs__btn')[0];
 
-    elTab.addEventListener('tab.itc.change', (e) => {
-        const index = elTab.querySelector('.tabs__btn_active').dataset.index;
-        localStorage.setItem('tabs-index', index);
+    window.addEventListener('DOMContentLoaded', () => {
+        activeBtn.click();
     })
+    // const index = localStorage.getItem('tabs-index');
+    // index > -1 ? tab.showByIndex(index) : null;
+
+    // elTab.addEventListener('tab.itc.change', (e) => {
+    //     const index = elTab.querySelector('.tabs__btn_active').dataset.index;
+    //     localStorage.setItem('tabs-index', index);
+    // })
+
+    
 
 </script>
 

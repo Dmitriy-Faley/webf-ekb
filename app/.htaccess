@@ -1,3 +1,23 @@
+RewriteEngine On
+# Буквы в верхнем регистре 
+RewriteCond %{HTTPS} off
+RewriteCond %{REQUEST_URI} !(wp-json)
+RewriteCond expr "tolower(%{REQUEST_URI}) =~ /(.+)/"
+RewriteRule [A-Z] https://%{HTTP_HOST}%1 [R=301,L]
+
+#http -> https
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#index.html
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+#index.php
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ https://%{HTTP_HOST}/$1 [R=301,L]
+
 # BEGIN WordPress
 # Директивы (строки) между `BEGIN WordPress` и `END WordPress`
 # созданы автоматически и подлежат изменению только через фильтры WordPress.
@@ -10,6 +30,7 @@ RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
+
 </IfModule>
 
 # END WordPress

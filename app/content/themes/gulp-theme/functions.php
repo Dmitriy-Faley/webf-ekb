@@ -7,12 +7,6 @@ function gulp_scripts() {
   wp_enqueue_style( 'gulp-style', get_stylesheet_uri(), '1.1', true );
   wp_enqueue_style( 'gulp-main', get_template_directory_uri() . '/assets/main.min.css', '1.1', true );  
   
-  wp_deregister_script( 'jquery' );
-  wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', false, null, true );
-  wp_enqueue_script( 'jquery' );
-  
-  // при подключении slick.min.js будут проблемы с работой слайдеров
-  wp_enqueue_script( 'slick-script', get_template_directory_uri() . '/assets/js/slick.js', array(), '1.1', true ); 
   wp_enqueue_script( 'gulp-script', get_template_directory_uri() . '/assets/main.min.js', array(), '1.1', true );
   wp_enqueue_script('apimaps', 'https://api-maps.yandex.ru/2.1/?lang=ru_RU', array('jquery'), true, true);
 }
@@ -28,9 +22,63 @@ function remove_styles () {
 add_action ('wp_print_styles','remove_styles',100);
 
 
+add_filter( 'category_link', function($a){
+	return str_replace( 'category/', '', $a );
+}, 99 );
+add_filter( 'post_link', function($a){
+	return str_replace( 'category/', '', $a );
+}, 99 );
 
 
+/*
+* Удаляем лишнее из шапки
+*/
+// Удаляет ссылки RSS-лент записи и комментариев
+remove_action('wp_head', 'feed_links', 2);
+// Удаляет ссылки RSS-лент категорий и архивов
+remove_action('wp_head', 'feed_links_extra', 3);
+// Удаляет RSD ссылку для удаленной публикации
+remove_action('wp_head', 'rsd_link');
+// Удаляет ссылку Windows для Live Writer
+remove_action('wp_head', 'wlwmanifest_link');
+// Удаляет короткую ссылку
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+// Удаляет информацию о версии WordPress
+remove_action('wp_head', 'wp_generator');
+// Удаляет ссылки на предыдущую и следующую статьи
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
+
+//Удалить jquery_migrate
+function wpschool_remove_jquery_migrate($scripts)
+{
+  if (!is_admin() && isset($scripts->registered['jquery'])) {
+    $script = $scripts->registered['jquery'];
+    if ($script->deps) {
+      $script->deps = array_diff($script->deps, array('jquery-migrate'));
+    }
+  }
+}
+add_action('wp_default_scripts', 'wpschool_remove_jquery_migrate');
+
+//Предзагрузите изображение для элемента "Отрисовка самого крупного контента"
+function insert_counters_footer()
+{
+?>
+  <link rel="preload" as="image" href="<?php echo get_template_directory_uri() ?>/assets/img/icons/lightning.svg" />
+  <link rel="preload" as="image" href="<?php echo get_template_directory_uri() ?>/assets/img/icons/fire.svg" />
+<?php
+}
+add_action('wp_footer', 'insert_counters_footer', 99);
+
+function insert_counters_header()
+{
+?>
+  <link rel="preload" as="image" href="<?php echo get_template_directory_uri() ?>/assets/img/icons/lightning.svg" />
+  <link rel="preload" as="image" href="<?php echo get_template_directory_uri() ?>/assets/img/icons/fire.svg" />
+<?php
+}
+add_action('wp_head', 'insert_counters_header', 99);
 
 
 
