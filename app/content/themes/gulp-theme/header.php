@@ -154,12 +154,6 @@
 
 		let count = 0;
 
-		if(window.clientWidth >= 1369) {
-			headerMenu.style.height = '712px';
-		} else if (window.clientWidth <= 1368) {
-			headerMenu.style.height = '512px';
-		}
-
 		if (document.documentElement.clientWidth > 1e3) {
 			closeButton.style.display = 'none';
 
@@ -174,6 +168,8 @@
 					if(l.target.innerHTML === 'Портфолио<span></span>' || l.target.innerHTML === 'Контакты<span></span>' || l.target.innerHTML === 'Блог<span></span>') {
 						l.target.classList.remove("activeLi");
 					}
+
+					body.style.overflow = 'hidden'
 				})
 			}
 
@@ -186,7 +182,6 @@
 						e.target.classList.add("activeLi"),
 						e.target.closest("li").querySelector("ul") && (e.target.closest("li").querySelector("ul").classList.add("activeUl"),
 						hoverLastLinks(e.target.closest("li").querySelector("ul")));
-						headerMenu.style.height = '880px';
 					})
 				})
 			}
@@ -209,30 +204,9 @@
 						e.querySelectorAll("li>a").forEach(e => {
 							e.classList.contains("activeLi") && e.classList.remove("activeLi")
 						}), l.target.classList.add("activeLi");
-						headerMenu.style.height = '880px';
 					})
 				})
 			}
-
-			// subSubMenu.addEventListener('mouseover', (e) => {
-			// 	subSubMenu.classList.add('activeUl');
-			// });
-
-			// subSubMenu.addEventListener('mouseleave', (e) => {
-			// 	subSubMenu.classList.remove('activeUl');
-			// });
-
-			// subSubElements.forEach(el => {
-			// 	el.addEventListener('mouseover', (e) => {
-			// 		const parent = el.parentNode;
-			// 		parent.parentNode.classList.add('activeSub');
-			// 	});
-
-			// 	el.addEventListener('mouseleave', (e) => {
-			// 		const parent = el.parentNode;
-			// 		parent.parentNode.classList.remove('activeSub');
-			// 	});
-			// });
 
 			document.querySelectorAll(".main-header-menu").forEach(e => {
 					e.querySelector("ul") && e.querySelector("ul").classList.add("header-menu__ul")
@@ -240,6 +214,7 @@
 					closeMenu(document.querySelector(".activeUl")), closeMenu(document.querySelector(".header-menu__ul")),
 						closeButton.style.display = "none", header.classList
 						.remove("active_header")
+						body.style.overflow = '';
 				}), closeButton.style.display = "none", header.classList
 				.remove("active_header"), document.querySelectorAll(".header-menu__ul>li>a").forEach(e => {
 					openSecondLevelMenu(e)

@@ -83,6 +83,8 @@
 
         .sub-menu {
           max-width: 565px;
+          max-height: 80%;
+          overflow-y: auto;
 
           li {
             margin:  0 0 20px;
